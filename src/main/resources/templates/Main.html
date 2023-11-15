@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메인화면</title>
+    <link rel="stylesheet" href="css/Main.css" />
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/Main.js"></script>
+
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <div class="wrap">
+      <div id="mainimg">
+        <img id="roll" src="/img/main/roll_1.jpg" alt="롤이미지" />
+      </div>
+      <div class="header">
+        <div id="himg">
+          <div id="himg-1">
+            <img src="/img/main/m1.png" alt="바코드" />
+          </div>
+          <div id="himg-2">
+            <img src="/img/main/m2.png" alt="알림" />
+          </div>
+        </div>
+      </div>
+      <div class="nav">
+        <div id="username">유저 님</div>
+        <div id="navbtn">
+          <div id="navbtn-1">
+            <div id="navbtnimg">
+              <img src="/img/main/stamp.png" alt="" />
+            </div>
+            <div id="navbtntext">스탬프</div>
+          </div>
+          <div id="navbtn-1">
+            <div id="navbtnimg">
+              <img src="/img/main/coupon.png" alt="" />
+            </div>
+            <div id="navbtntext">쿠폰</div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div id="secimg">
+          <div id="sectext">5/5</div>
+        </div>
+      </div>
+      <div class="aside">
+        <div id="astext">~ 님을 위한 추천 메뉴</div>
+        <!-- Swiper -->
+        <div class="swiper mySwiper" id="asswiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" id="asslide">
+              <img src="/img/main/menu1.jpg" alt="" />
+            </div>
+            <div class="swiper-slide" id="asslide">
+              <img src="/img/main/menu2.jpg" alt="" />
+            </div>
+            <div class="swiper-slide" id="asslide">
+              <img src="/img/main/menu3.jpg" alt="" />
+            </div>
+            <div class="swiper-slide" id="asslide">
+              <img src="/img/main/menu4.jpg" alt="" />
+            </div>
+            <div class="swiper-slide" id="asslide">
+              <img src="/img/main/menu5.jpg" alt="" />
+            </div>
+            <div class="swiper-slide" id="asslide">
+              <img src="/img/main/menu6.jpg" alt="" />
+            </div>
+            <div class="swiper-slide" id="asslide">Slide 7</div>
+            <div class="swiper-slide" id="asslide">Slide 8</div>
+            <div class="swiper-slide" id="asslide">Slide 9</div>
+          </div>
+          <!-- <div class="swiper-pagination"></div> -->
+        </div>
+      </div>
+      <div class="notice">
+        <div id="notext">
+          <div id="notext1">새소식</div>
+          <div id="notext2">전체보기</div>
+        </div>
+        <!-- Swiper -->
+        <div class="swiper mySwiper2" id="noswiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" id="noslide">
+              <img src="/img/main/menu1.jpg" alt="" />
+            </div>
+            <div class="swiper-slide" id="noslide">
+              <img src="/img/main/menu2.jpg" alt="" />
+            </div>
+            <div class="swiper-slide" id="noslide">
+              <img src="/img/main/menu3.jpg" alt="" />
+            </div>
+            <div class="swiper-slide" id="noslide">
+              <img src="/img/main/menu4.jpg" alt="" />
+            </div>
+            <div class="swiper-slide" id="noslide">
+              <img src="/img/main/menu5.jpg" alt="" />
+            </div>
+            <div class="swiper-slide" id="noslide">
+              <img src="/img/main/menu6.jpg" alt="" />
+            </div>
+          </div>
+          <!-- <div class="swiper-pagination"></div> -->
+        </div>
+      </div>
+      <div class="footer">
+        <div class="fmenu">
+          <div class="fimg">
+            <img src="/img/paycard/c1.png" alt="메인" />
+          </div>
+          <div class="ftext">메인</div>
+        </div>
+        <div class="fmenu">
+          <div class="fimg">
+            <img src="/img/paycard/c2.png" alt="메가선불카드" />
+          </div>
+          <div class="ftext">메가선불카드</div>
+        </div>
+        <div class="fmenu">
+          <div class="fimg">
+            <img src="/img/paycard/c3.png" alt="메가오더" />
+          </div>
+          <div class="ftext">메가오더</div>
+        </div>
+        <div class="fmenu">
+          <div class="fimg">
+            <img src="/img/paycard/c4.png" alt="더보기" />
+          </div>
+          <div class="ftext">더보기</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        // pagination: {
+        //   el: ".swiper-pagination",
+        //   clickable: true,
+        // },
+      });
+
+      var swiper = new Swiper(".mySwiper2", {
+        slidesPerView: 1.5,
+        spaceBetween: 30,
+        // pagination: {
+        //   el: ".swiper-pagination",
+        //   clickable: true,
+        // },
+      });
+    </script>
+  </body>
+</html>
