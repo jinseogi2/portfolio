@@ -1,0 +1,207 @@
+* {
+  padding: 0;
+  margin: 0;
+  /* overflow: hidden; */
+  overflow: auto;
+  overflow-x: hidden;
+}
+body {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  background-color: #f0f0f0;
+  flex-wrap: nowrap;
+}
+.container {
+  background-color: white;
+  border: 2px solid #d3d3d3;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 550px;
+  height: auto;
+  min-height: 100%;
+}
+.head {
+  display: flex;
+  flex-direction: column; /* 컨테이너 내용을 세로로 배치 */
+  font-size: 13px;
+}
+.nav-link {
+  color: black;
+  padding: 0;
+}
+.nav {
+  list-style: none;
+  padding: 0;
+  margin: 10px;
+  display: flex;
+  justify-content: flex-start; /* 내비게이션 아이템들을 왼쪽으로 정렬 */
+}
+
+.nav-item {
+  margin-right: 10px; /* 네비게이션 아이템 간 간격 설정 */
+}
+
+#user-info {
+  display: flex;
+  align-items: center;
+  margin-top: 10px; /* user-info와 네비게이션 사이의 간격 설정 */
+}
+#user-nickname {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#user-nickname {
+  margin-right: 10px;
+}
+/* 여기까지 완료 이미지 목록 */
+.section {
+  position: relative;
+  height: 320px;
+  width: 100%;
+  /* display: flex;
+  flex-direction: column; */
+}
+.image-text {
+  display: block;
+  position: absolute;
+  top: 89%;
+  left: 93%;
+  transform: translate(-50%, -50%);
+  color: white;
+  height: 70px;
+}
+
+/* 여기까지 완료 */
+.center {
+  height: 150px;
+  width: 100%;
+  font-size: 10px;
+  text-align: start;
+  color: gray;
+  padding: 5px;
+}
+.center-box {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+.center-box > a {
+  text-decoration: none;
+  margin-top: 15px;
+  color: black;
+  font-size: 15px;
+}
+/* 여기까지 완료 */
+.under {
+  margin-top: 20px;
+  height: 280px;
+  width: 100%;
+  font-size: 10px;
+  text-align: start;
+  color: gray;
+  padding: 5px;
+}
+.under-box {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+.under-box > a {
+  text-decoration: none;
+  margin-top: 20px;
+  color: black;
+  font-size: 15px;
+}
+/* 여기까지 완료 */
+.end {
+  margin-top: 25px;
+  height: 150px;
+  width: 100%;
+  font-size: 10px;
+  text-align: start;
+  color: gray;
+  padding: 5px;
+}
+.end-box {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+.end-box > a {
+  text-decoration: none;
+  margin-top: 20px;
+  color: black;
+  font-size: 15px;
+}
+.last1 {
+  height: 150px;
+  width: 100%;
+  font-size: 10px;
+  text-align: start;
+  color: gray;
+  padding: 5px;
+}
+.last1-box {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+.last1-box > a {
+  text-decoration: none;
+  margin-top: 20px;
+  color: black;
+  font-size: 15px;
+}
+/* ----- css --- */
+.fotter {
+  z-index: 1;
+  width: 530px;
+  height: 60px;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  /* left: 28%; */
+}
+.fmenu {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+.fimg {
+  width: 100%;
+  height: 70%;
+
+  text-align: center;
+}
+.ftext {
+  width: 100%;
+  height: 25%;
+  text-align: center;
+}
+.fimg > img {
+  width: 20%;
+  height: 70%;
+}
+
+/* test */
+/* .test1 {
+  background-image: url("/Image/lastpage_bb1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 330px;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+.test-txt {
+  margin-bottom: 20px;
+  margin-right: 5px;
+} */
