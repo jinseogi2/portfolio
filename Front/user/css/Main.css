@@ -1,0 +1,238 @@
+html {
+  overflow: auto;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+}
+body {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+}
+.wrap {
+  background-color: rgb(248, 249, 251);
+  border: 2px solid #d3d3d3;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 550px;
+  height: auto;
+  min-height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+/* 해더 메인해더*/
+.header {
+  width: 100%;
+  height: 350px;
+  position: relative;
+}
+#mainimg {
+  position: absolute;
+  top: 0;
+  height: 350px;
+}
+#mainimg > img {
+  width: 100%;
+  height: 100%;
+}
+#himg {
+  display: flex;
+  justify-content: end;
+}
+#himg-1,
+#himg-2 {
+  height: 8%;
+  width: 5%;
+  margin-top: 5px;
+}
+#himg-1 {
+  margin-right: 10px;
+}
+#himg-2 {
+  margin-right: 10px;
+}
+#himg-1 > img,
+#himg-2 > img {
+  height: 100%;
+  width: 100%;
+}
+
+/* nav 스탬프,쿠폰*/
+.nav {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+}
+#username {
+  width: 100%;
+  height: 40%;
+
+  line-height: 50px;
+  margin-left: 10px;
+}
+#navbtn {
+  width: 95%;
+  height: 50%;
+  display: flex;
+  border: 1px solid skyblue;
+  background-color: skyblue;
+  border-radius: 10px;
+  margin-left: 15px;
+}
+#navbtn-1 {
+  width: 25%;
+  height: 100%;
+  display: flex;
+}
+#navbtnimg,
+#navbtntext {
+  width: 35%;
+  height: 100%;
+}
+
+/* ~~ 님 */
+#navbtntext {
+  line-height: 50px;
+  margin-left: 5px;
+  width: 40%;
+}
+/* 스탬프,쿠폰이미지 div */
+#navbtnimg {
+  margin-left: 20px;
+}
+#navbtnimg > img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 섹션 중앙이벤트배너*/
+.section {
+  width: 100%;
+  height: 300px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#secimg {
+  width: 90%;
+  height: 100%;
+  border-radius: 10px;
+  background-image: url("/img/main/roll-2_1.jpg");
+  background-repeat: no-repeat;
+  background-size: 500px 300px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+#sectext {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+/* aside 상품추천탭 */
+.aside {
+  margin-top: 30px;
+  width: 100%;
+  height: 250px;
+}
+
+#astext {
+  width: 100%;
+  height: 20%;
+  font-size: 20px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+#asswiper {
+  width: 100%;
+  height: 80%;
+}
+
+#asslide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#asslide img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 공지사항 탭 */
+.notice {
+  width: 100%;
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+}
+#notext {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 20%;
+}
+
+#noswiper {
+  width: 100%;
+  height: 80%;
+}
+
+#noslide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#noslide img {
+  width: 100%;
+  height: 100%;
+}
+/* 푸터 하단메뉴*/
+.footer {
+  z-index: 1;
+  width: 550px;
+  height: 50px;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+}
+.fmenu {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+.fimg {
+  width: 100%;
+  height: 70%;
+
+  text-align: center;
+}
+.ftext {
+  width: 100%;
+  height: 25%;
+  text-align: center;
+}
+.fimg > img {
+  width: 20%;
+  height: 70%;
+}
