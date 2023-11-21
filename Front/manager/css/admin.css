@@ -1,0 +1,170 @@
+/* 전체 초기화 */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+/* 컨테이너 설정 */
+.myContainer {
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  /* border: 2px solid black; */
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  min-height: 100%;
+}
+
+/* 헤더 설정 */
+.myHeader {
+  display: flex;
+  border-bottom: 1px solid lightgrey;
+  width: 100%;
+  height: 10%;
+}
+
+/* 헤더 로고 설정 */
+.headerLogo {
+  width: 20%;
+  height: 100%;
+}
+.headerLogo:hover {
+  background-color: gold;
+}
+.headerLogo > img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 헤더 가운데 설정 */
+.headerCenter {
+  width: 60%;
+  height: 100%;
+  font-family: "Sunflower", sans-serif;
+  margin-top: 20px;
+}
+
+/* 관리자 설정 */
+.admin {
+  display: flex;
+  justify-content: flex-end;
+  width: 20%;
+  height: 100%;
+  margin-top: 17px;
+}
+.adminBtn {
+  size: 10px;
+  display: flex;
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  border: none;
+  font-family: "Source Code Pro", monospace;
+  margin-right: 20px;
+}
+.adminBtn > img {
+  display: block;
+  width: 30%;
+  height: 50%;
+  border-radius: 30px;
+}
+.adminName {
+  font-size: 10px;
+  line-height: 20px;
+  margin-top: 10px;
+}
+
+/* 메인 영역 설정 */
+.myMain {
+  display: flex;
+  width: 100%;
+  height: 90%;
+}
+
+/* 왼쪽 카테고리 설정 */
+.kategorie {
+  border: 1px solid lightgrey;
+  width: 12%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: none;
+}
+.myBtn {
+  display: flex;
+  height: 100%;
+  background-color: rgb(258, 208, 0);
+  color: white;
+  border: 1px;
+  border-radius: 5px;
+  margin: 30px;
+}
+.myBtn > img {
+  margin: 1px;
+  width: 30%;
+  height: 80%;
+}
+
+/* 카테고리 버튼 설정 */
+.btnGroup {
+  width: 100%;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  height: 13%;
+  margin-top: 30px;
+}
+.btnGroup:hover {
+  background-color: gold;
+  border-bottom-color: black;
+}
+#btnBox {
+  width: 100%;
+  height: 50%;
+}
+.btn.active {
+  background-color: gold;
+}
+
+/* 카테고리 텍스트 설정 */
+#kategorieText {
+  font-size: 35px;
+  font-family: "Dongle", sans-serif;
+}
+
+/* 스크린 설정 */
+.screen {
+  border: 1px solid lightgrey;
+  border-right: none;
+  width: 90%;
+  height: 100%;
+}
+.screenHeader {
+  border-bottom: 3px solid lightgrey;
+  font-family: "Sunflower", sans-serif;
+  font-size: 30px;
+  height: 20%;
+}
+
+/* 추가 버튼 설정 */
+.addBtn > a {
+  background-color: black;
+  color: white;
+}
+.addBtn > a:hover {
+  background-color: black;
+  color: white;
+}
+td > img {
+  width: 40%;
+  height: 80%;
+}
+a:hover {
+  cursor: pointer;
+}
+
+/* 카드 설정 */
+.card {
+  margin: 20px;
+}
