@@ -15,7 +15,7 @@
     />
 
     <!-- 나의 스타일 추가 -->
-    <link rel="stylesheet" href="../static/css/loginpage.css" />
+    <link rel="stylesheet" href="/css/loginpage.css" />
   </head>
   <body>
     <!--  html 전체 영역을 지정하는 container -->
@@ -30,15 +30,16 @@
             style="max-width: 70%; max-height: 70%"
           />
         </div>
+
         <!-- 아이디, 비번, 버튼 박스 -->
         <div id="inputBox">
           <div class="input-form-box">
             <span>아이디 </span
-            ><input type="text" name="uid" class="form-control" />
+            ><input type="text" name="inputId" class="form-control" />
           </div>
           <div class="input-form-box">
             <span>비밀번호 </span
-            ><input type="password" name="upw" class="form-control" />
+            ><input type="password" name="inputPw" class="form-control" />
           </div>
           <ul class="nav">
             <li class="nav-item">
@@ -55,7 +56,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./join.html">회원가입</a>
+              <a class="nav-link" th:href="@{join}">회원가입</a>
             </li>
           </ul>
           <div class="button-login-box">
@@ -63,6 +64,7 @@
               type="button"
               class="btn btn-primary btn-xs"
               style="width: 50%"
+              onclick="loginAction()"
             >
               로그인
             </button>

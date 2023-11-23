@@ -30,6 +30,8 @@ public class MemberEntity {
     private String memberPw;
     @Column(name = "member_name")
     private String memberName;
+    @Column(name = "member_email")
+    private String memberEmail;
     @Column(name = "member_role")
     private String memberRole; //권한 "admin" "user"
     @Column(name = "member_stamp")
