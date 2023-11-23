@@ -83,7 +83,7 @@
 }
 
 /* 왼쪽 카테고리 설정 */
-.kategorie {
+.categorie {
   border: 1px solid lightgrey;
   width: 12%;
   height: 100%;
@@ -128,7 +128,7 @@
 }
 
 /* 카테고리 텍스트 설정 */
-#kategorieText {
+#categorieText {
   font-size: 35px;
   font-family: "Dongle", sans-serif;
 }

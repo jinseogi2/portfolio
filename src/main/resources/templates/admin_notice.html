@@ -31,7 +31,7 @@
         <div class="headerLogo">
           <img
             src="/img/admin/blackYellowLogo.png"
-            onclick="location.href='admin.html'"
+            th:onclick="|location.href='/'|"
             alt=""
           />
         </div>
@@ -52,35 +52,35 @@
 
       <!-- 왼쪽 카테고리 메뉴 -->
       <div class="myMain">
-        <div class="kategorie">
+        <div class="categorie">
           <!-- 왼쪽 카테고리 버튼 - 공지사항 -->
           <div
             class="btnGroup"
             style="background-color: gold"
-            onclick="location.href='admin_notice.html'"
+            th:onclick="|location.href='/'|"
           >
             <div id="btnBox">
               <button type="button" class="myBtn">
                 <img src="/img/admin/공지사항.png" alt="" />
-                <div id="kategorieText">공지사항</div>
+                <div id="categorieText">공지사항</div>
               </button>
             </div>
           </div>
           <!-- 왼쪽 카테고리 버튼 - 회원정보 -->
-          <div class="btnGroup" onclick="location.href='admin_member.html'">
+          <div class="btnGroup" th:onclick="|location.href='/member'|">
             <div id="btnBox">
               <button type="button" class="myBtn">
                 <img src="/img/admin/회원정보.png" alt="" />
-                <div id="kategorieText">회원정보</div>
+                <div id="categorieText">회원정보</div>
               </button>
             </div>
           </div>
           <!-- 왼쪽 카테고리 버튼 - 상품정보 -->
-          <div class="btnGroup" onclick="location.href='admin_menu.html'">
+          <div class="btnGroup" th:onclick="|location.href='/menu'|">
             <div id="btnBox">
               <button type="button" class="myBtn">
                 <img src="/img/admin/상품정보.png" alt="" />
-                <div id="kategorieText">상품정보</div>
+                <div id="categorieText">상품정보</div>
               </button>
             </div>
           </div>
@@ -88,12 +88,12 @@
           <div
             class="btnGroup"
             id="btnid"
-            onclick="location.href='admin_order.html'"
+            th:onclick="|location.href='/order'|"
           >
             <div id="btnBox">
               <button type="button" class="myBtn">
                 <img src="/img/admin/주문정보.png" alt="" />
-                <div id="kategorieText">주문정보</div>
+                <div id="categorieText">주문정보</div>
               </button>
             </div>
           </div>
@@ -108,13 +108,7 @@
 
           <!-- 추가 버튼 -->
           <div class="addBtn d-flex justify-content-end">
-            <a
-              class="btn m-3"
-              href="/admin_notice_add.html"
-              onclick="window.open(this.href, '_blank', 'width=1135, height=785'); return false;"
-              role="button"
-              >게시물 추가</a
-            >
+            <a class="btn m-3" th:href="@{/notice_add}" onclick="window.open(this.href, '_blank', 'width=1135, height=785'); return false;" role="button">게시물 추가</a>
           </div>
 
           <!-- 공지사항 목록 테이블 -->

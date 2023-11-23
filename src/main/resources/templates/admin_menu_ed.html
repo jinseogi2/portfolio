@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/admin_ed.css" />
   </head>
   <body>
+
     <div class="myContainer d-flex justify-content-start">
       <div
         class="image-container"
@@ -33,6 +34,7 @@
             class="form-control"
             id="floatingInput"
             placeholder="메뉴이름"
+            name="name"
           />
           <label for="floatingInput">메뉴이름</label>
         </div>
@@ -42,10 +44,12 @@
             class="form-control"
             id="floatingPrice"
             placeholder="가격"
+
+            name="price"
           />
           <label for="floatingPrice">가격</label>
         </div>
-        <div class="kategorie d-flex justify-content-start">
+        <div class="categorie d-flex justify-content-start">
           <select
             class="form-select"
             style="width: 25%; height: 100%; margin-left: 15px"
@@ -79,6 +83,7 @@
         </div>
       </div>
     </div>
+
     <script>
       function readImage(input) {
         // 인풋 태그에 파일이 있는 경우
