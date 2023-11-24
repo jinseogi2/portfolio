@@ -28,6 +28,8 @@ public class MemberEntity {
     private String memberId;
     @Column(name = "member_pw")
     private String memberPw;
+    @Column(name = "member_email")
+    private String memberEmail;
     @Column(name = "member_name")
     private String memberName;
     @Column(name = "member_role")
@@ -43,7 +45,9 @@ public class MemberEntity {
                 .memberNo(0L)
                 .memberId(dto.getLoginId())
                 .memberPw(dto.getLoginPw())
+                .memberEmail(dto.getLoginEmail())
                 .memberRole("ROLE_USER")
+                .memberName(dto.getLoginName())
                 .memberStamp(0)
                 .memberJoinDatetime(LocalDateTime.now())
                 .build();
@@ -54,6 +58,7 @@ public class MemberEntity {
                 .memberId(dto.getMemberId())
                 .memberPw(dto.getMemberPw())
                 .memberName(dto.getMemberName())
+                .memberEmail(dto.getMemberEmail())
                 .memberRole(dto.getMemberRole())
                 .memberStamp(dto.getMemberPoint())
                 .memberJoinDatetime(dto.getMemberJoinDatetime())

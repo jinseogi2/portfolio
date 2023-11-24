@@ -23,6 +23,7 @@ public class MemberDto {
     private String memberRole; //권한 "admin" "user"
     private Integer memberPoint;
     private LocalDateTime memberJoinDatetime; //가입일 "2023-10-12T23:12:23"
+    private String memberEmail;
 
     public static MemberDto toDto(MemberEntity entity){
         return MemberDto.builder()
@@ -30,6 +31,7 @@ public class MemberDto {
                 .memberId(entity.getMemberId())
                 .memberPw(entity.getMemberPw())
                 .memberName(entity.getMemberName())
+                .memberEmail(entity.getMemberEmail())
                 .memberRole(entity.getMemberRole())
                 .memberPoint(entity.getMemberStamp())
                 .memberJoinDatetime(entity.getMemberJoinDatetime())
