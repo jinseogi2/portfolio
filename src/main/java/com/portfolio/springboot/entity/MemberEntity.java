@@ -32,6 +32,8 @@ public class MemberEntity {
     private String memberName;
     @Column(name = "member_role")
     private String memberRole; //권한 "admin" "user"
+    @Column(name = "member_email")
+    private String memberEmail;
     @Column(name = "member_stamp")
     private Integer memberStamp;
     @Column(name = "member_join_datetime")
