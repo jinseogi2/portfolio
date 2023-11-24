@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Source+Code+Pro&family=Sunflower:wght@300&display=swap"
       rel="stylesheet"
     />
+    <script src="js/admin.js"></script>
     <!-- 관리자 페이지 스타일시트 추가 -->
     <link rel="stylesheet" href="/css/admin.css" />
     <!-- 부트스트랩 추가 -->
@@ -31,7 +32,7 @@
         <div class="headerLogo">
           <img
             src="/img/admin/blackYellowLogo.png"
-            onclick="location.href='admin.html'"
+            onclick="click_main();"
             alt=""
           />
         </div>
@@ -53,7 +54,7 @@
       <div class="myMain">
         <div class="kategorie">
           <!-- 왼쪽 카테고리 버튼 - 공지사항 -->
-          <div class="btnGroup" onclick="location.href='admin_notice.html'">
+          <div class="btnGroup" onclick="click_notice();">
             <div id="btnBox">
               <button type="button" class="myBtn">
                 <img src="/img/admin/공지사항.png" alt="" />
@@ -62,7 +63,7 @@
             </div>
           </div>
           <!-- 왼쪽 카테고리 버튼 - 회원정보 -->
-          <div class="btnGroup" onclick="location.href='admin_member.html'">
+          <div class="btnGroup" onclick="click_member();">
             <div id="btnBox">
               <button type="button" class="myBtn">
                 <img src="/img/admin/회원정보.png" alt="" />
@@ -71,7 +72,7 @@
             </div>
           </div>
           <!-- 왼쪽 카테고리 버튼 - 상품정보 -->
-          <div class="btnGroup" onclick="location.href='admin_menu.html'">
+          <div class="btnGroup" onclick="click_menu();">
             <div id="btnBox">
               <button type="button" class="myBtn">
                 <img src="/img/admin/상품정보.png" alt="" />
@@ -83,7 +84,7 @@
           <div
             class="btnGroup"
             id="btnid"
-            onclick="location.href='admin_order.html'"
+            onclick="click_order();"
             style="background-color: gold"
           >
             <div id="btnBox">

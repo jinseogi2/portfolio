@@ -11,6 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Source+Code+Pro&family=Sunflower:wght@300&display=swap"
       rel="stylesheet"
     />
+    <script src="js/admin.js"></script>
     <!-- 관리자 페이지 스타일시트 추가 -->
     <link rel="stylesheet" href="/css/admin.css" />
     <!-- 부트스트랩 추가 -->
@@ -31,7 +32,7 @@
         <div class="headerLogo">
           <img
             src="/img/admin/blackYellowLogo.png"
-            onclick="location.href='admin.html'"
+            onclick="click_main();"
             alt=""
           />
         </div>
@@ -54,7 +55,7 @@
       <div class="myMain">
         <div class="kategorie">
           <!-- 왼쪽 카테고리 버튼 - 공지사항 -->
-          <div class="btnGroup" onclick="location.href='admin_notice.html'">
+          <div class="btnGroup" onclick="click_notice();">
             <div id="btnBox">
               <button type="button" class="myBtn">
                 <img src="/img/admin/공지사항.png" alt="" />
@@ -63,7 +64,7 @@
             </div>
           </div>
           <!-- 왼쪽 카테고리 버튼 - 회원정보 -->
-          <div class="btnGroup" onclick="location.href='admin_member.html'">
+          <div class="btnGroup" onclick="click_member();">
             <div id="btnBox">
               <button type="button" class="myBtn">
                 <img src="/img/admin/회원정보.png" alt="" />
@@ -75,7 +76,7 @@
           <div
             class="btnGroup"
             style="background-color: gold"
-            onclick="location.href='admin_menu.html'"
+            onclick="click_menu();"
           >
             <div id="btnBox">
               <button type="button" class="myBtn">
@@ -88,7 +89,7 @@
           <div
             class="btnGroup"
             id="btnid"
-            onclick="location.href='admin_order.html'"
+            onclick="click_order();"
           >
             <div id="btnBox">
               <button type="button" class="myBtn">
@@ -180,7 +181,7 @@
               <div class="addBtn d-flex justify-content-start" style="width: 100%;">
                 <a
                   class="btn " style="margin-left: 160px;"
-                  href="/admin_menu_add.html"
+                  th:href="@{admin_menu_add}"
                   onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
                   role="button"
                   >메뉴 추가</a
@@ -225,7 +226,7 @@
                   <p class="card-title" style="font-size: 20px">아메리카노</p>
                   <p class="card-text">까만커피1</p>
                   <a
-                    href="/admin_menu_ed.html"
+                    th:href="@{admin_menu_ed}"
                     onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
                     class="btn"
                     style="width: 100px; background-color: gold"

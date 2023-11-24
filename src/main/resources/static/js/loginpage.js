@@ -33,7 +33,7 @@ function loginAction() {
     }else if( json.result == 1 ){
         //로그인 성공
         //다음페이지로 이동
-        window.location.href = "/Main";
+        window.location.href = "/main";
     }else{
         //로그인 실패
         alert('로그인 실패입니다.');
