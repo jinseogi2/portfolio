@@ -3,6 +3,7 @@ package com.portfolio.springboot.entity;
 
 import com.portfolio.springboot.dto.JoinDto;
 import com.portfolio.springboot.dto.MemberDto;
+import com.portfolio.springboot.dto.MemberEdDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -57,8 +58,17 @@ public class MemberEntity {
                 .memberPw(dto.getMemberPw())
                 .memberName(dto.getMemberName())
                 .memberRole(dto.getMemberRole())
-                .memberStamp(dto.getMemberPoint())
+                .memberStamp(dto.getMemberStamp())
                 .memberJoinDatetime(dto.getMemberJoinDatetime())
+                .build();
+    }
+
+    public static MemberEntity toMemberEntity(MemberEdDto dto){
+        return MemberEntity.builder()
+                .memberId(dto.getMemberId())
+                .memberPw(dto.getMemberPw())
+                .memberRole(dto.getMemberRole())
+                .memberStamp(dto.getMemberStamp())
                 .build();
     }
 }

@@ -31,8 +31,7 @@ public class MainController {
     @GetMapping("/admin_notice")
     public String admin_notice(){   return "admin_notice";    }
 
-    @GetMapping("/admin_member")
-    public String admin_member(){   return "admin_member";  }
+
 
     @GetMapping("/admin_menu")
     public String admin_menu(){   return "admin_menu";  }
@@ -40,14 +39,12 @@ public class MainController {
     @GetMapping("/admin_order")
     public String admin_order(){   return "admin_order";  }
 
-    @GetMapping("/admin_member_ed")
-    public String admin_member_ed(){
-        return "admin_member_ed";
-    }
+
     @GetMapping("/admin_menu_add")
     public String admin_menu_add(){
         return "admin_menu_add";
     }
+
     @GetMapping("/admin_menu_ed")
     public String admin_menu_ed(){
         return "admin_menu_ed";
