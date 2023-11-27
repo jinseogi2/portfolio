@@ -159,6 +159,8 @@
                   </tr>
                 </thead>
                 <tbody>
+                <tr th:if="${#lists.isEmpty(list)}">
+                  <td colspan="5">회원 정보가 없습니다.</td>
                 <tr th:each="member, status:${list}">
                   <th scope="row"><span th:text="${status.count}"></span></th>
                   <td><span th:text="${member.memberName}"></span></td>
@@ -168,7 +170,7 @@
                     <button class="btn btn-primary" th:onclick="|func_member_ed(${member.memberNo});|">수정</button>
                   </td>
                   <td class="p-3">
-                    <button class="btn btn-danger">삭제</button>
+                    <button class="btn btn-danger" th:onclick="|func_member_delete(${member.memberNo});|">삭제</button>
                   </td>
                 </tr>
                 </tbody>

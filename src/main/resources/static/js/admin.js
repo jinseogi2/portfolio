@@ -21,26 +21,33 @@ function func_member_ed(memberNo) {
   window.location.href = "/admin_member_ed?memberNo=" + memberNo;
 }
 
-function func_member_Ed_Action() {
+function func_member_updateAction() {
+
+console.log("func_member_updateAction에 들어왔습니다.");
+  const inputMemberNo = document.getElementById("inputMemberNo").value;
   const inputMemberId = document.getElementById("inputMemberId").value;
+    const inputMemberName = document.getElementById("inputMemberName").value;
   const inputMemberPw = document.getElementById("inputMemberPw").value;
   const inputMemberEmail = document.getElementById("inputMemberEmail").value;
 
   var memberRole = document.getElementById("inputMemberRole");
   const inputMemberRole = memberRole.options[memberRole.selectedIndex].value;
 
-  const inputMemberPoint = document.getElementById("inputMemberStamp").value;
-
+  const inputMemberStamp = document.getElementById("inputMemberStamp").value;
 
   let params = {
+    memberNo: inputMemberNo,
     memberId: inputMemberId,
+    memberName : inputMemberName,
     memberPw: inputMemberPw,
      memberEmail: inputMemberEmail,
     memberRole: inputMemberRole,
     memberStamp: inputMemberStamp,
   };
 
-  fetch("/member_Ed_Action", {
+  console.log("params : " + params);
+
+  fetch("/memberUpdateAction", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(params),
@@ -87,7 +94,7 @@ function func_member_delete(memberNo) {
       console.log("json:" + json);
 
       //다음페이지로 이동
-      window.location.href = "/adminMember";
+      window.location.href = "/admin_member";
     }) //실제 데이타
     .catch((error) => {
       console.log(error);

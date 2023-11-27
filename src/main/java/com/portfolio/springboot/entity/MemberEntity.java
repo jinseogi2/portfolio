@@ -65,10 +65,13 @@ public class MemberEntity {
 
     public static MemberEntity toMemberEntity(MemberEdDto dto){
         return MemberEntity.builder()
+                .memberNo(dto.getMemberNo())
                 .memberId(dto.getMemberId())
                 .memberPw(dto.getMemberPw())
+                .memberName(dto.getMemberName())
                 .memberRole(dto.getMemberRole())
                 .memberStamp(dto.getMemberStamp())
+                .memberEmail(dto.getMemberEmail())
                 .build();
     }
 }

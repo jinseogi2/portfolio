@@ -20,12 +20,23 @@
         <h2 class="d-flex m-3" style="justify-content: flex-start">
           회원 정보 수정 페이지
         </h2>
+        <input type="hidden" id="inputMemberNo" th:value="${member.memberNo}">
+        <div class="form-floating d-flex m-3">
+          <input
+                  type="text"
+                  class="form-control"
+                  id="inputMemberName"
+                  placeholder="Name"
+                  th:value="${member.memberName}"
+          />
+          <label for="inputMemberName">Name</label>
+        </div>
         <div class="form-floating d-flex m-3">
           <input
             type="text"
             class="form-control"
             id="inputMemberId"
-            placeholder="Name"
+            placeholder="Id"
             th:value="${member.memberId}"
           />
           <label for="inputMemberId">Id</label>
@@ -83,8 +94,8 @@
         <div class="m-3" style="padding-bottom: 20px">
           <tr>
             <td class="p-3">
-              <button class="btn btn-primary" th:onclick="|func_member_Ed_Action();|"> 수정하기</button>
-              <button class="btn btn-danger" >취소하기</button>
+              <button class="btn btn-primary" th:onclick="|func_member_updateAction();|"> 수정하기</button>
+              <button class="btn btn-danger" th:onclick="window.history.back();">취소하기</button>
             </td>
           </tr>
         </div>

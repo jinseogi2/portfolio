@@ -1,9 +1,6 @@
 package com.portfolio.springboot.Controller;
 
-import com.portfolio.springboot.dto.LoginDto;
-import com.portfolio.springboot.dto.MemberDto;
-import com.portfolio.springboot.dto.MemberEdDto;
-import com.portfolio.springboot.dto.ResultDto;
+import com.portfolio.springboot.dto.*;
 import com.portfolio.springboot.entity.MemberEntity;
 import com.portfolio.springboot.entity.MemberRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -126,17 +123,25 @@ public class Controller_1 {
 
         return "admin_member_ed";
     }
-    @PostMapping("/member_Ed_Action")
+    @PostMapping("/memberUpdateAction")
     @ResponseBody
     public ResultDto memberEdAction(@RequestBody MemberEdDto memberEdDto){
 
+        System.out.println("memberEdDto.No :: " + memberEdDto.getMemberNo());
         System.out.println("memberEdDto.Id :: " + memberEdDto.getMemberId());
+        System.out.println("memberEdDto.Name :: " + memberEdDto.getMemberName());
         System.out.println("memberEdDto.Pw :: " + memberEdDto.getMemberPw());
         System.out.println("memberEdDto.Role :: " + memberEdDto.getMemberRole());
         System.out.println("memberEdDto.Stamp :: " + memberEdDto.getMemberStamp());
         System.out.println("memberEdDto.Email :: " + memberEdDto.getMemberEmail());
 
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberEdDto);
+
+        //생성시간을 다시 넣어주기 위해서
+        MemberEntity tEntity = memberRepository.findById(memberEdDto.getMemberNo()).get();
+
+        LocalDateTime time = tEntity.getMemberJoinDatetime();
+        memberEntity.setMemberJoinDatetime(time);
 
         MemberEntity newEntity = memberRepository.save(memberEntity);
 
@@ -158,4 +163,23 @@ public class Controller_1 {
 
         return resultDto;
     }
+
+    @PostMapping("/memberDeleteAction")
+    @ResponseBody
+    public ResultDto memberDeleteAction(@RequestBody MemberDeleteDto memberDeleteDto) {
+
+        MemberEntity memberEntity = memberRepository.findById(Long.valueOf(memberDeleteDto.getMemberNo())).get();
+
+        memberRepository.delete(memberEntity);
+
+        ResultDto resultDto = null;
+
+        resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .build();
+
+        return resultDto;
+    }
+
 }
