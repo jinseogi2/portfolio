@@ -23,10 +23,9 @@ function func_member_ed(memberNo) {
 
 function func_member_updateAction() {
 
-console.log("func_member_updateAction에 들어왔습니다.");
   const inputMemberNo = document.getElementById("inputMemberNo").value;
   const inputMemberId = document.getElementById("inputMemberId").value;
-    const inputMemberName = document.getElementById("inputMemberName").value;
+  const inputMemberName = document.getElementById("inputMemberName").value;
   const inputMemberPw = document.getElementById("inputMemberPw").value;
   const inputMemberEmail = document.getElementById("inputMemberEmail").value;
 
@@ -60,7 +59,7 @@ console.log("func_member_updateAction에 들어왔습니다.");
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
 
-      //다음페이지로 이동
+      //원래페이지로 이동
       window.location.href = "/admin_member";
     }) //실제 데이타
     .catch((error) => {
@@ -95,6 +94,45 @@ function func_member_delete(memberNo) {
 
       //다음페이지로 이동
       window.location.href = "/admin_member";
+    }) //실제 데이타
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+function func_admin_notice_add(){
+    window.location.href ="/admin_notice_add";
+}
+
+function func_notice_ed(noticeNo){
+window.location.href = "/admin_notice_ed?noticeNo=" + noticeNo;
+}
+
+function func_notice_delete(noticeNo) {
+  const result = confirm("삭제할까요?");
+  if (result == false) {
+    return;
+  }
+
+  let params = {
+    noticeNo: noticeNo,
+  };
+
+  fetch("/noticeDeleteAction", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params),
+  })
+    .then((response) => {
+      console.log("response:" + response);
+      return response.json();
+    }) //HTTP 응답
+    .then((json) => {
+      //{ status: "ok", result: 5 }
+      console.log("json:" + json);
+
+      //다음페이지로 이동
+      window.location.href = "/admin_notice";
     }) //실제 데이타
     .catch((error) => {
       console.log(error);

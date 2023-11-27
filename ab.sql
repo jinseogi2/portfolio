@@ -12,7 +12,7 @@ CREATE TABLE megacoffee.member(
    member_pw VARCHAR(255) NOT NULL, -- 암호
 	member_name VARCHAR(255) NOT NULL, -- 이름
 	member_email VARCHAR(255) NOT NULL,	-- 이메일
-	member_role VARCHAR(255) DEFAULT('ROLE_USER' 'ADMIN') NOT NULL, -- 권한
+	member_role VARCHAR(255) DEFAULT('ROLE_USER') NOT NULL, -- 권한 ROLE_USER , ADMIN 중
 	member_stamp INT DEFAULT(0), -- 스탬프
    member_join_datetime DATETIME DEFAULT NOW() -- 작성/수정 시간
 );
@@ -367,9 +367,15 @@ SELECT * FROM megacoffee.item;
 DROP TABLE if EXISTS megacoffee.notice;
 CREATE TABLE megacoffee.notice (
 	notice_no INT AUTO_INCREMENT NOT NULL PRIMARY KEY, -- 게시글 번호
-	notice_type VARCHAR(255) NOT NULL,  -- 공지사항 종류(이벤트, 배송지연안내 등등)
+	notice_type VARCHAR(255) DEFAULT('BASIC') NOT NULL,  -- 공지사항 종류(BASIC, EVENT 등등)
 	notice_title VARCHAR(255) NOT NULL,  -- 공지사항 제목
 	notice_content TEXT NULL,  -- 공지사항 내용
 	notice_image_url TEXT NULL, -- 공지사항 첨부이미지 url
 	notice_datetime DATETIME DEFAULT NOW() -- 작성시간
 );
+INSERT INTO notice VALUES(NULL,'BASIC','환영합니다',
+				'관리자페이지에 오신걸 환영합니다.',
+				'/img/notice/notice1.jpg',
+					DEFAULT);
+
+SELECT * FROM notice;

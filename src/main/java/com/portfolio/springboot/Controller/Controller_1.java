@@ -3,6 +3,8 @@ package com.portfolio.springboot.Controller;
 import com.portfolio.springboot.dto.*;
 import com.portfolio.springboot.entity.MemberEntity;
 import com.portfolio.springboot.entity.MemberRepository;
+import com.portfolio.springboot.entity.NoticeEntity;
+import com.portfolio.springboot.entity.NoticeRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -127,14 +129,6 @@ public class Controller_1 {
     @ResponseBody
     public ResultDto memberEdAction(@RequestBody MemberEdDto memberEdDto){
 
-        System.out.println("memberEdDto.No :: " + memberEdDto.getMemberNo());
-        System.out.println("memberEdDto.Id :: " + memberEdDto.getMemberId());
-        System.out.println("memberEdDto.Name :: " + memberEdDto.getMemberName());
-        System.out.println("memberEdDto.Pw :: " + memberEdDto.getMemberPw());
-        System.out.println("memberEdDto.Role :: " + memberEdDto.getMemberRole());
-        System.out.println("memberEdDto.Stamp :: " + memberEdDto.getMemberStamp());
-        System.out.println("memberEdDto.Email :: " + memberEdDto.getMemberEmail());
-
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberEdDto);
 
         //생성시간을 다시 넣어주기 위해서
@@ -181,5 +175,39 @@ public class Controller_1 {
 
         return resultDto;
     }
+
+    @Autowired
+    private NoticeRepository noticeRepository;
+
+    @GetMapping("/admin_notice")
+    public String admin_notice(Model model){
+
+        List<NoticeEntity> noticeEntity = noticeRepository.findAll();
+
+        model.addAttribute("count",noticeEntity.size());
+        model.addAttribute("list",noticeEntity);
+
+        return "admin_notice";
+    }
+
+    @PostMapping("/noticeDeleteAction")
+    @ResponseBody
+    public ResultDto noticeDeleteAction(@RequestBody NoticeDeleteDto noticeDeleteDto) {
+
+        NoticeEntity noticeEntity = noticeRepository.findById(Long.valueOf(noticeDeleteDto.getNoticeNo())).get();
+
+        noticeRepository.delete(noticeEntity);
+
+        ResultDto resultDto = null;
+
+        resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .build();
+
+        return resultDto;
+    }
+
+
 
 }

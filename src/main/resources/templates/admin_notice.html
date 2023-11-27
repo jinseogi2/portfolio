@@ -109,13 +109,14 @@
 
           <!-- 추가 버튼 -->
           <div class="addBtn d-flex justify-content-end">
-            <a
-              class="btn m-3"
-              th:href="@{admin_notice_add}"
-              onclick="window.open(this.href, '_blank', 'width=1135, height=785'); return false;"
-              role="button"
-              >게시물 추가</a
-            >
+<!--            <a-->
+<!--              class="btn m-3"-->
+<!--              th:href="@{admin_notice_add}"-->
+<!--              onclick="window.open(this.href, '_blank', 'width=1135, height=785'); return false;"-->
+<!--              role="button"-->
+<!--              >게시물 추가</a-->
+<!--            >-->
+            <button class="text-white bg-dark m-3" onclick="func_admin_notice_add()">게시물 추가</button>
           </div>
 
           <!-- 공지사항 목록 테이블 -->
@@ -123,70 +124,31 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
+                <th scope="col">제목</th>
                 <th scope="col">배너</th>
                 <th scope="col">설명</th>
                 <th scope="col">수정/삭제</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th class="p-3" scope="row">1</th>
-                <td class="p-3"><img src="/img/admin/배너1.jpg" alt="" /></td>
-                <td>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                  vitae tenetur repudiandae facilis aliquam qui nisi dolorem
-                  voluptatibus id? Ut aspernatur laudantium quo error iure
-                  quibusdam nam magni sed corrupti.
-                </td>
-                <td class="p-3">
-                  <a
-                    class="btn btn-primary"
-                    th:href="@{admin_notice_ed}"
-                    onclick="window.open(this.href, '_blank', 'width=1135, height=785'); return false;"
-                    role="button"
-                    >수정</a
-                  >
-                  <a class="btn btn-danger" href="" role="button">삭제</a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td class="p-3"><img src="/img/admin/배너2.jpg" alt="" /></td>
-                <td>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                  vitae tenetur repudiandae facilis aliquam qui nisi dolorem
-                  voluptatibus id? Ut aspernatur laudantium quo error iure
-                  quibusdam nam magni sed corrupti.
-                </td>
-                <td class="p-3">
-                  <a
-                    class="btn btn-primary"
-                    th:href="@{admin_notice_ed}"
-                    onclick="window.open(this.href, '_blank', 'width=1135, height=785'); return false;"
-                    role="button"
-                    >수정</a
-                  >
-                  <a class="btn btn-danger" href="" role="button">삭제</a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td class="p-3"><img src="/img/admin/배너3.jpg" alt="" /></td>
-                <td>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                  vitae tenetur repudiandae facilis aliquam qui nisi dolorem
-                  voluptatibus id? Ut aspernatur laudantium quo error iure
-                  quibusdam nam magni sed corrupti.
-                </td>
-                <td class="p-3">
-                  <a
-                    class="btn btn-primary"
-                    th:href="@{admin_notice_ed}"
-                    onclick="window.open(this.href, '_blank', 'width=1135, height=785'); return false;"
-                    role="button"
-                    >수정</a
-                  >
-                  <a class="btn btn-danger" href="" role="button">삭제</a>
+            <tr th:if="${#lists.isEmpty(list)}">
+              <td colspan="5">공지가 없습니다.</td>
+
+            <tr th:each="notice, status:${list}">
+               <th class="p-4" scope="row"><span th:text="${status.count}"></span></th>
+               <td class="p-4"><span th:text="${notice.noticeTitle}"></span></td>
+               <td class="p-4"><img th:src="${notice.noticeImageUrl}"></td>
+               <td><span th:text="${notice.noticeContent}"></span></td>
+               <td class="p-4">
+<!--                  <a class="btn btn-primary"-->
+<!--                    th:href="@{admin_notice_ed}"-->
+<!--                    onclick="window.open(this.href, '_blank', 'width=1135, height=785'); return false;"-->
+<!--                    role="button"-->
+<!--                    >수정</a-->
+<!--                  >-->
+                 <button th:onclick="|func_notice_ed(${notice.noticeNo});|">수정</button>
+                 <button th:onclick="|func_notice_delete(${notice.noticeNo});|">삭제</button>
+<!--                  <a class="btn btn-danger" href="" role="button">삭제</a>-->
                 </td>
               </tr>
             </tbody>

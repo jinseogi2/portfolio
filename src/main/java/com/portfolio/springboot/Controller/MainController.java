@@ -28,9 +28,6 @@ public class MainController {
         return "join";
     }
 
-    @GetMapping("/admin_notice")
-    public String admin_notice(){   return "admin_notice";    }
-
 
 
     @GetMapping("/admin_menu")
