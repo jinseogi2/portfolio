@@ -1,6 +1,8 @@
 package com.portfolio.springboot.entity;
 
 
+import com.portfolio.springboot.dto.MemberDto;
+import com.portfolio.springboot.dto.NoticeDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -40,4 +42,15 @@ public class NoticeEntity {
     @Column(name = "notice_datetime")
     @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")
     private LocalDateTime noticeDatetime;
+
+    public static NoticeEntity toNoticeEntity(NoticeDto dto){
+        return NoticeEntity.builder()
+                .noticeNo(dto.getNoticeNo())
+                .noticeType(dto.getNoticeType())
+                .noticeTitle(dto.getNoticeTitle())
+                .noticeContent(dto.getNoticeContent())
+                .noticeImageUrl(dto.getNoticeImageUrl())
+                .noticeDatetime(dto.getNoticeDatetime())
+                .build();
+    }
 }

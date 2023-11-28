@@ -1,20 +1,20 @@
-function click_main(){
+function click_main() {
   window.location.href = "/admin";
 }
 
-function click_notice(){
-window.location.href = "/admin_notice";
+function click_notice() {
+  window.location.href = "/admin_notice";
 }
 
-function click_member(){
-window.location.href = "/admin_member"
+function click_member() {
+  window.location.href = "/admin_member";
 }
 
-function click_menu(){
-window.location.href = "/admin_menu"
+function click_menu() {
+  window.location.href = "/admin_menu";
 }
-function click_order(){
-window.location.href ="/admin_order"
+function click_order() {
+  window.location.href = "/admin_order";
 }
 
 function func_member_ed(memberNo) {
@@ -22,7 +22,6 @@ function func_member_ed(memberNo) {
 }
 
 function func_member_updateAction() {
-
   const inputMemberNo = document.getElementById("inputMemberNo").value;
   const inputMemberId = document.getElementById("inputMemberId").value;
   const inputMemberName = document.getElementById("inputMemberName").value;
@@ -37,9 +36,9 @@ function func_member_updateAction() {
   let params = {
     memberNo: inputMemberNo,
     memberId: inputMemberId,
-    memberName : inputMemberName,
+    memberName: inputMemberName,
     memberPw: inputMemberPw,
-     memberEmail: inputMemberEmail,
+    memberEmail: inputMemberEmail,
     memberRole: inputMemberRole,
     memberStamp: inputMemberStamp,
   };
@@ -66,8 +65,6 @@ function func_member_updateAction() {
       console.log(error);
     });
 }
-
-
 
 function func_member_delete(memberNo) {
   const result = confirm("삭제할까요?");
@@ -100,12 +97,12 @@ function func_member_delete(memberNo) {
     });
 }
 
-function func_admin_notice_add(){
-    window.location.href ="/admin_notice_add";
+function func_admin_notice_add() {
+  window.location.href = "/admin_notice_add";
 }
 
-function func_notice_ed(noticeNo){
-window.location.href = "/admin_notice_ed?noticeNo=" + noticeNo;
+function func_notice_ed(noticeNo) {
+  window.location.href = "/admin_notice_ed?noticeNo=" + noticeNo;
 }
 
 function func_notice_delete(noticeNo) {
@@ -137,4 +134,28 @@ function func_notice_delete(noticeNo) {
     .catch((error) => {
       console.log(error);
     });
+}
+
+// 파일올리고 그 이미지를 화면에 띄우기
+function fileUpLoad(){
+  let selectFile = document.querySelector("#input-image").files[0];
+
+  // 오류처리
+  if (selectFile) {
+    const file = URL.createObjectURL(selectFile);
+    document.querySelector(".uploadImage").src = file;
+  } else {
+    // Handle the case where no file is selected
+    console.error("No file selected");
+  }
+  // src 가 잘 셋팅되나 확인
+  const upload = document.querySelector(".uploadImage").src;
+  console.log(upload);
+
+  document.querySelector(".uploadImage").src = file;
+}
+function func_notice_updateAtion() {
+    // 업로드한 이미지의 src 를 가져온다
+    var uploadimg = document.querySelector(".uploadImage").src;
+
 }
