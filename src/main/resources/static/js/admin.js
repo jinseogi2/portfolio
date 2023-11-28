@@ -164,3 +164,8 @@ function func_notice_updateAtion() {
   // 업로드한 이미지의 src 를 가져온다
   var uploadimg = document.querySelector(".uploadImage").src;
 }
+//공지사항 새창띄우는 함수
+function openNewWindow(url, width, height) {
+    var options = 'width=' + width + ',height=' + height;
+    window.open(url, '_blank', options);
+  }

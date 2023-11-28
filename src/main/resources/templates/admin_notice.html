@@ -116,7 +116,7 @@
 <!--              role="button"-->
 <!--              >게시물 추가</a-->
 <!--            >-->
-            <button class="text-white bg-dark m-3" onclick="func_admin_notice_add()">게시물 추가</button>
+            <<button id="addNoticeButton" class="text-white bg-dark m-3" onclick="openNewWindow('admin_notice_add', 1135, 835);">게시물 추가</button>
           </div>
 
           <!-- 공지사항 목록 테이블 -->
@@ -146,7 +146,7 @@
 <!--                    role="button"-->
 <!--                    >수정</a-->
 <!--                  >-->
-                 <button th:onclick="|func_notice_ed(${notice.noticeNo});|">수정</button>
+                 <button th:onclick="|func_notice_ed(${notice.noticeNo}) |">수정</button>
                  <button th:onclick="|func_notice_delete(${notice.noticeNo});|">삭제</button>
 <!--                  <a class="btn btn-danger" href="" role="button">삭제</a>-->
                 </td>
