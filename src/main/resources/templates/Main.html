@@ -8,6 +8,18 @@
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/Main.js"></script>
 
+    <div style="display:none;">
+      <input type="hidden" id="eIndex" value="0"/>
+      <table>
+        <tr th:each="event, status:${event}">
+          <td><input type="hidden" class="eImg-list" th:value="${event.noticeImageUrl}"/></td>
+        </tr>
+        <tr th:each="basic, status:${basic}">
+          <td><input type="hidden" class="bImg-list" th:value="${basic.noticeImageUrl}"/></td>
+        </tr>
+      </table>
+    </div>
+
     <!-- Link Swiper's CSS -->
     <link
       rel="stylesheet"
@@ -17,7 +29,7 @@
   <body>
     <div class="wrap">
       <div id="mainimg">
-        <img id="roll" src="/img/main/roll_1.jpg" alt="롤이미지" />
+        <img id="roll" src="" alt="롤이미지" />
       </div>
       <div class="header">
         <div id="himg">
@@ -30,13 +42,13 @@
         </div>
       </div>
       <div class="nav">
-        <div id="username">유저 님</div>
+        <div id="username" th:text="|${user.memberName} 님|">사용자이름</div>
         <div id="navbtn">
           <div id="navbtn-1">
             <div id="navbtnimg">
               <img src="/img/main/stamp.png" alt="" />
             </div>
-            <div id="navbtntext">스탬프</div>
+            <div id="navbtntext" th:text="|스탬프 ${user.memberStamp}개|">스탬프갯수</div>
           </div>
           <div id="navbtn-1">
             <div id="navbtnimg">
@@ -52,7 +64,7 @@
         </div>
       </div>
       <div class="aside">
-        <div id="astext">~ 님을 위한 추천 메뉴</div>
+        <div id="astext" th:text="|${user.memberName} 님을 위한 추천 메뉴|">~ 님을 위한 추천 메뉴</div>
         <!-- Swiper -->
         <div class="swiper mySwiper" id="asswiper">
           <div class="swiper-wrapper">

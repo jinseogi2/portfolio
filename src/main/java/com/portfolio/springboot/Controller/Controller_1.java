@@ -21,6 +21,40 @@ public class Controller_1 {
     @Autowired
     private MemberRepository memberRepository;
 
+    @Autowired
+    private NoticeRepository noticeRepository;
+
+    @GetMapping("/main")
+    public String main(Model model, HttpServletRequest request){
+
+        //저장돼있는 곳 정보를 불러와서 로그인해있는 유저의 정보를 불러옴
+        String loginId = (String)request.getSession().getAttribute("loginId");
+        String loginPw = (String)request.getSession().getAttribute("loginPw");
+        List<MemberEntity> mlist = memberRepository.findByMemberIdAndMemberPw(
+                loginId,loginPw );
+        MemberEntity user = mlist.get(0);
+
+        // 유저의 정보를 html 에 넘겨줌
+        model.addAttribute("user",user);
+
+        // 이벤트 배너로 분류돼있는 것을 찾아옴.
+        List<NoticeEntity> nElist = noticeRepository.findByNoticeType("EVENT");
+        List<NoticeEntity> nBlist = noticeRepository.findByNoticeType("BASIC");
+
+        System.out.println("eventImg-1" + nBlist.get(0).getNoticeImageUrl());
+        System.out.println("eventImg-2" + nBlist.get(1).getNoticeImageUrl());
+
+        if (!nElist.isEmpty()) {
+            model.addAttribute("event",nElist);
+        }
+        if (!nBlist.isEmpty()) {
+            model.addAttribute("basic", nBlist);
+        }
+
+
+        return "Main";
+    }
+
 
 
     @PostMapping("/join")
@@ -55,6 +89,9 @@ public class Controller_1 {
     }
 
 
+
+
+    // 접속한 사용자를 담아놓기 위해서
     @PostMapping("/loginAction")
     @ResponseBody
     public ResultDto loginAction(@RequestBody LoginDto loginDto, HttpServletRequest request) {
@@ -84,8 +121,14 @@ public class Controller_1 {
                         .build();
             }
 
+            // ID, PW 를 가상의 공간에 저장해줌
             request.getSession().setAttribute("loginId", loginDto.getLoginId());
-            //request.getSession().invalidate(); //로그아웃처리
+            request.getSession().setAttribute("loginPw", loginDto.getLoginPw());
+
+            // 얻어올때
+            // String n = (String)request.getSession().getAttribute("loginId");
+
+            // request.getSession().invalidate(); //로그아웃처리하기 전까지
         }else{
             //로그인 실패
             resultDto = ResultDto.builder()
@@ -179,9 +222,6 @@ public class Controller_1 {
 
         return resultDto;
     }
-
-    @Autowired
-    private NoticeRepository noticeRepository;
 
     @GetMapping("/admin_notice")
     public String admin_notice(Model model){

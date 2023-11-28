@@ -64,6 +64,7 @@ function func_member_updateAction() {
     .then((json) => {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
+
       //원래페이지로 이동
       window.location.href = "/admin_member";
     }) //실제 데이타

@@ -10,6 +10,6 @@ public interface NoticeRepository extends JpaRepository<NoticeEntity, Long> {
     // List<NoticeEntity> findByMemberIdAndMemberPw(String id, String pw);
 
     // select * form member where member_id = ?
-    List<NoticeEntity> findByNoticeTitle(String noticeTitle);
+    List<NoticeEntity> findByNoticeType(String noticeType);
 
 }

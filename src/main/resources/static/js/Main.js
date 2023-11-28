@@ -4,14 +4,25 @@ window.onload = function () {
 };
 
 //메인이미지 돌리기
+// 메인 이미지 돌리기
 function mainrollimg() {
-  var roll = 1;
-  setInterval(function () {
-    roll++;
-    // 3장만있어서 3으로 돌려놓음
-    if (roll > 3) roll = 1;
-    $("#roll").attr("src", "img/main/roll_" + roll + ".jpg");
-  }, 2000);
+  let eImgList = document.getElementsByClassName("eImg-list");
+  let eIndex = document.getElementById("eIndex");
+
+  if (eImgList.length > 0) {
+    setInterval(function () {
+
+      let eIndexValue = Number(eIndex.value);
+      if (eIndexValue >= 0 && eIndexValue < eImgList.length) {
+        let eImageName = eImgList[eIndexValue].value;
+        eIndex.value = String(eIndexValue + 1);
+        // 순수 JavaScript로 이미지 소스 변경
+        document.getElementById("roll").src = eImageName;
+      }
+
+    }, 2000);
+
+  }
 }
 
 function eventrollimg() {
