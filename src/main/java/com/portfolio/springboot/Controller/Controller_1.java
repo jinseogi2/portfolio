@@ -129,14 +129,18 @@ public class Controller_1 {
     @ResponseBody
     public ResultDto memberEdAction(@RequestBody MemberEdDto memberEdDto){
 
+        // MemberEdDto 가져온걸 Entity로 바꿔준다.
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberEdDto);
 
-        //생성시간을 다시 넣어주기 위해서
+        // MemberNo를 레파지토리에 넣어서 그 DB 를 찾아서 tEntity에 가져옴
         MemberEntity tEntity = memberRepository.findById(memberEdDto.getMemberNo()).get();
 
+        // MemberEdDto에는 시간을 담고있는 변수가 없어서
+        // 생성시간을 다시 넣어주기 위해서
         LocalDateTime time = tEntity.getMemberJoinDatetime();
         memberEntity.setMemberJoinDatetime(time);
 
+        // 업데이트
         MemberEntity newEntity = memberRepository.save(memberEntity);
 
         ResultDto resultDto = null;
