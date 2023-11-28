@@ -373,9 +373,33 @@ CREATE TABLE megacoffee.notice (
 	notice_image_url TEXT NULL, -- 공지사항 첨부이미지 url
 	notice_datetime DATETIME DEFAULT NOW() -- 작성시간
 );
-INSERT INTO notice VALUES(NULL,'BASIC','환영합니다',
-				'관리자페이지에 오신걸 환영합니다.',
+INSERT INTO notice VALUES(NULL,'BASIC','기본공지 예제1',
+				'기본공지 예제1 입니다 ~~~~',
 				'/img/notice/notice1.jpg',
+					DEFAULT);
+INSERT INTO notice VALUES(NULL,'BASIC','기본공지 예제2',
+				'기본공지 예제2 입니다 ~~~~',
+				'/img/notice/notice2.jpg',
+					DEFAULT);
+INSERT INTO notice VALUES(NULL,'BASIC','기본공지 예제3',
+				'기본공지 예제3 입니다 ~~~~',
+				'/img/notice/notice3.jpg',
+					DEFAULT);
+INSERT INTO notice VALUES(NULL,'EVENT','이벤트공지 예제1',
+				'이벤트공지 예제1 입니다 ~~~~',
+				'/img/notice/notice1.jpg',
+					DEFAULT);
+INSERT INTO notice VALUES(NULL,'EVENT','이벤트공지 예제2',
+				'이벤트공지 예제2 입니다 ~~~~',
+				'/img/notice/notice2.jpg',
+					DEFAULT);
+INSERT INTO notice VALUES(NULL,'EVENT','이벤트공지 예제3',
+				'이벤트공지 예제3 입니다 ~~~~',
+				'/img/notice/notice1.jpg',
+					DEFAULT);
+INSERT INTO notice VALUES(NULL,'EVENT','이벤트공지 예제4',
+				'이벤트공지 예제4 입니다 ~~~~',
+				'/img/notice/notice3.jpg',
 					DEFAULT);
 
 SELECT * FROM notice;
