@@ -2,6 +2,7 @@ package com.portfolio.springboot.entity;
 
 
 import com.portfolio.springboot.dto.ItemDto;
+import com.portfolio.springboot.dto.ItemEdDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -39,6 +40,20 @@ public class ItemEntity {
     private LocalDateTime itemUpdateDatetime;
 
     public static ItemEntity toEntity(ItemDto dto){
+        return ItemEntity.builder()
+                .itemNo(dto.getItemNo())
+                .itemCode(dto.getItemCode())
+                .itemName(dto.getItemName())
+                .itemCate(dto.getItemCate())
+                .itemRecommend(dto.getItemRecommend())
+                .itemPrice(dto.getItemPrice())
+                .itemImageUrl(dto.getItemImageUrl())
+                .itemExplanation(dto.getItemExplanation())
+                .itemUpdateDatetime(dto.getItemUpdateDatetime())
+                .build();
+    }
+
+    public static ItemEntity toItemEntity(ItemEdDto dto){
         return ItemEntity.builder()
                 .itemNo(dto.getItemNo())
                 .itemCode(dto.getItemCode())

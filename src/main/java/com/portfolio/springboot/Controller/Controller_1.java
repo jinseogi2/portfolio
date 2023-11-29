@@ -98,6 +98,8 @@ public class Controller_1 {
         return resultDto;
     }
 
+
+    ///admin_member(관리자 페이지 회원목록 출력)
     @GetMapping("/admin_member")
     public String admin_member(Model model){
 
@@ -115,6 +117,7 @@ public class Controller_1 {
         return "admin_member";
     }
 
+    //관리자 페이지 회원목록 에서 회원정보 수정
     @GetMapping("/admin_member_ed")
     public String adminMemberUpdate(@RequestParam String memberNo, Model model){
 

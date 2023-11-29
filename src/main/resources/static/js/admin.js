@@ -20,6 +20,9 @@ function click_order() {
 function func_member_ed(memberNo) {
   window.location.href = "/admin_member_ed?memberNo=" + memberNo;
 }
+function func_menu_ed(itemNo) {
+  window.location.href = "/admin_menu_ed?itemNo=" + itemNo;
+}
 
 function func_member_updateAction() {
   // MemberEdDto에 속해있는 변수에 1:1 매칭할것들을 받아온다.
@@ -164,3 +167,52 @@ function func_notice_updateAtion() {
   // 업로드한 이미지의 src 를 가져온다
   var uploadimg = document.querySelector(".uploadImage").src;
 }
+
+const inputItemNo = document.getElementById("inputItemNo").value;
+const inputItemName = document.getElementById("inputItemName").value;
+const inputItemCode = document.getElementById("inputItemCode").value;
+const inputItemCate = document.getElementById("inputItemCate").value;
+const inputItemRecommend = document.getElementById("inputItemRecommend").value;
+const inputItemPrice = document.getElementById("inputItemPrice").value;
+const inputItemImageUrl = document.getElementById("inputItemImageUrl").value;
+
+const inputItemExplanation = document.getElementById(
+  "inputItemExplanation"
+).value;
+
+// 오브젝트로 포장해서 보내기위해 오브젝트화를 한다.
+// 이때 MemberEdDto에 들어가있는 변수랑 이름이 같아야한다.
+let params = {
+  itemNo: inputItemNo,
+  itemName: inputItemName,
+  itemCode: inputItemCode,
+  itemCate: inputItemCate,
+  itemRecommend: inputItemRecommend,
+  itemPrice: inputItemPrice,
+  itemImageUrl: inputItemImageUrl,
+  itemExplanation: inputItemExplanation,
+};
+
+console.log("params : " + params);
+
+// memberUpdateAction으로 POST한다(보낸다)
+// 컨트롤러에서 PostMapping("/memberUpdateAction") 을 해야한다.
+fetch("/menuUpdateAction", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(params),
+})
+  .then((response) => {
+    console.log("response:" + response);
+    return response.json();
+  }) // 컨트롤러에서 보낸것을 받는다.
+  // json에는 ResultDto가 받아진다.
+  .then((json) => {
+    //{ status: "ok", result: 5 }
+    console.log("json:" + json);
+    //원래페이지로 이동
+    window.location.href = "/admin_menu";
+  }) //실제 데이타
+  .catch((error) => {
+    console.log(error);
+  });

@@ -151,43 +151,43 @@ INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a123-556642440015', '(ICE)티�
 
 -- 디카페인 카테고리
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440001', '(HOT)디카페인아메리카노',
-        '디카페인', 0, 2500, '/img/menu/decaf/coffee_1.jpg',
+        '디카페인', 0, 2500, '/img/menu/decaf/decoffee_1.jpg',
 		  '향과 풍미 그대로 카페인만을 낮춰 민감한 분들도 안심하고 매일매일 즐길 수 있는 디카페인 커피',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440002', '(HOT)디카페인꿀아메리카노',
-        '디카페인', 0, 3700, '/img/menu/decaf/coffee_2.jpg',
+        '디카페인', 0, 3700, '/img/menu/decaf/decoffee_2.jpg',
 		  '디카페인 아메리카노의 묵직한 바디감에 달콤한 사양벌꿀이 소프트하게 어우러진 커피',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440003', '(HOT)디카페인헤이즐넛아메리카노',
-        '디카페인', 0, 3700, '/img/menu/decaf/coffee_3.jpg',
+        '디카페인', 0, 3700, '/img/menu/decaf/decoffee_3.jpg',
 		  '디카페인 아메리카노에 헤이즐넛의 풍성한 향과 달콤함을 담아 향긋하고 부드럽게 즐기는 커피',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440004', '(HOT)디카페인바닐라아메리카노',
-        '디카페인', 0, 3700, '/img/menu/decaf/coffee_4.jpg',
+        '디카페인', 0, 3700, '/img/menu/decaf/decoffee_4.jpg',
 		  '디카페인 아메리카노에 바닐라의 부드러운 향과 달콤함을 조화롭게 담아낸 커피',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440005', '(HOT)디카페인카페라떼',
-        '디카페인', 0, 3900, '/img/menu/decaf/coffee_5.jpg',
+        '디카페인', 0, 3900, '/img/menu/decaf/decoffee_5.jpg',
 		  '디카페인 에스프레소와 부드러운 우유가 어우러져 고소한 풍미를 완성한 라떼',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440006', '(HOT)디카페인바닐라라떼',
-        '디카페인', 0, 4400, '/img/menu/decaf/coffee_6.jpg',
+        '디카페인', 0, 4400, '/img/menu/decaf/decoffee_6.jpg',
 		  '디카페인으로 즐기는 바닐라의 짙은 향과 풍부한 폼 밀크의 조화가 인상적인 달콤한 라떼',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440007', '(HOT)디카페인연유라떼',
-        '디카페인', 0, 4900, '/img/menu/decaf/coffee_7.jpg',
+        '디카페인', 0, 4900, '/img/menu/decaf/decoffee_7.jpg',
 		  '디카페인 에스프레소 샷,부드러운 우유 그리고 달콤한 연유가 조화롭게 어우러진 라떼',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440008', '(HOT)디카페인카라멜마끼아또',
-        '디카페인', 0, 4700, '/img/menu/decaf/coffee_8.jpg',
+        '디카페인', 0, 4700, '/img/menu/decaf/decoffee_8.jpg',
 		  '폼 밀크 속에 진한 디카페인 에스프레소와 달콤한 카라멜을 가미해 부드럽게 즐기는 커피',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440009', '(HOT)디카페인카페모카',
-        '디카페인', 0, 4900, '/img/menu/decaf/coffee_9.jpg',
+        '디카페인', 0, 4900, '/img/menu/decaf/decoffee_9.jpg',
 		  '초코를 만나 풍부해진 디카페인 에스프레소와 고소한 우유, 부드러운 휘핑크림까지 더해 달콤하게 즐기는 커피',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440010', '(HOT)디카페인카푸치노',
-        '디카페인', 0, 3900, '/img/menu/decaf/coffee_10.jpg',
+        '디카페인', 0, 3900, '/img/menu/decaf/decoffee_10.jpg',
 		  '디카페인 에스프레소와 부드러운 우유가 어우러져 고소한 풍미를 완성한 라떼',
 		   DEFAULT);
 
