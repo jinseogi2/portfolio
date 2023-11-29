@@ -183,16 +183,7 @@ public class Controller_1 {
     @Autowired
     private NoticeRepository noticeRepository;
 
-    @GetMapping("/admin_notice")
-    public String admin_notice(Model model){
 
-        List<NoticeEntity> noticeEntity = noticeRepository.findAll();
-
-        model.addAttribute("count",noticeEntity.size());
-        model.addAttribute("list",noticeEntity);
-
-        return "admin_notice";
-    }
 
     @PostMapping("/noticeDeleteAction")
     @ResponseBody

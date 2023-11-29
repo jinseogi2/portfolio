@@ -169,3 +169,40 @@ function openNewWindow(url, width, height) {
     var options = 'width=' + width + ',height=' + height;
     window.open(url, '_blank', options);
   }
+
+function func_notice_addAtion(){
+  const noticeType = document.getElementById("noticeType").value;
+  const floatingName = document.getElementById("floatingName").value;
+  const floatingInfo = document.getElementById("floatingInfo").value;
+  var noticeImg = document.getElementById("input-image").value;
+  noticeImg ="/img/notice/"+noticeImg;
+
+console.log("noticeImg = "+noticeImg);
+
+  let params = {
+    noticeType : noticeType,
+    noticeTitle: floatingName,
+    noticeContent : floatingInfo,
+    noticeImageUrl : noticeImg
+  };
+
+fetch("/admin_notice2", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params),
+  })
+    .then((response) => {
+      console.log("response:" + response);
+      return response.json();
+    }) //HTTP 응답
+    .then((json) => {
+      //{ status: "ok", result: 5 }
+      console.log("json:" + json);
+
+      //다음페이지로 이동
+     // window.location.href = "/admin_notice";
+    }) //실제 데이타
+    .catch((error) => {
+      console.log(error);
+    });
+}
