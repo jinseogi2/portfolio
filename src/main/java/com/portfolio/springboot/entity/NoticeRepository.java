@@ -12,4 +12,5 @@ public interface NoticeRepository extends JpaRepository<NoticeEntity, Long> {
     // select * form member where member_id = ?
     List<NoticeEntity> findByNoticeType(String noticeType);
 
+
 }

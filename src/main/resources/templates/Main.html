@@ -10,6 +10,7 @@
 
     <div style="display:none;">
       <input type="hidden" id="eIndex" value="0"/>
+      <input type="hidden" id="bIndex" value="0"/>
       <table>
         <tr th:each="event, status:${event}">
           <td><input type="hidden" class="eImg-list" th:value="${event.noticeImageUrl}"/></td>
@@ -68,27 +69,10 @@
         <!-- Swiper -->
         <div class="swiper mySwiper" id="asswiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" id="asslide">
-              <img src="/img/main/menu1.jpg" alt="" />
+            <div class="swiper-slide" id="asslide"  th:each ="item,status:${ilist}">
+              <img th:src="${item.itemImageUrl}" alt="" />
+              <div th:text="${item.itemName}"></div>
             </div>
-            <div class="swiper-slide" id="asslide">
-              <img src="/img/main/menu2.jpg" alt="" />
-            </div>
-            <div class="swiper-slide" id="asslide">
-              <img src="/img/main/menu3.jpg" alt="" />
-            </div>
-            <div class="swiper-slide" id="asslide">
-              <img src="/img/main/menu4.jpg" alt="" />
-            </div>
-            <div class="swiper-slide" id="asslide">
-              <img src="/img/main/menu5.jpg" alt="" />
-            </div>
-            <div class="swiper-slide" id="asslide">
-              <img src="/img/main/menu6.jpg" alt="" />
-            </div>
-            <div class="swiper-slide" id="asslide">Slide 7</div>
-            <div class="swiper-slide" id="asslide">Slide 8</div>
-            <div class="swiper-slide" id="asslide">Slide 9</div>
           </div>
           <!-- <div class="swiper-pagination"></div> -->
         </div>
@@ -101,23 +85,9 @@
         <!-- Swiper -->
         <div class="swiper mySwiper2" id="noswiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" id="noslide">
-              <img src="/img/main/menu1.jpg" alt="" />
-            </div>
-            <div class="swiper-slide" id="noslide">
-              <img src="/img/main/menu2.jpg" alt="" />
-            </div>
-            <div class="swiper-slide" id="noslide">
-              <img src="/img/main/menu3.jpg" alt="" />
-            </div>
-            <div class="swiper-slide" id="noslide">
-              <img src="/img/main/menu4.jpg" alt="" />
-            </div>
-            <div class="swiper-slide" id="noslide">
-              <img src="/img/main/menu5.jpg" alt="" />
-            </div>
-            <div class="swiper-slide" id="noslide">
-              <img src="/img/main/menu6.jpg" alt="" />
+            <div class="swiper-slide" id="noslide" th:each="notice, status:${notice}">
+              <img th:src="${notice.noticeImageUrl}" />
+              <div th:text="${notice.noticeTitle}"></div>
             </div>
           </div>
           <!-- <div class="swiper-pagination"></div> -->

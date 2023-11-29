@@ -1,10 +1,7 @@
 package com.portfolio.springboot.Controller;
 
 import com.portfolio.springboot.dto.*;
-import com.portfolio.springboot.entity.MemberEntity;
-import com.portfolio.springboot.entity.MemberRepository;
-import com.portfolio.springboot.entity.NoticeEntity;
-import com.portfolio.springboot.entity.NoticeRepository;
+import com.portfolio.springboot.entity.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +21,9 @@ public class Controller_1 {
     @Autowired
     private NoticeRepository noticeRepository;
 
+    @Autowired
+    private ItemRepository itemRepository;
+
     @GetMapping("/main")
     public String main(Model model, HttpServletRequest request){
 
@@ -37,19 +37,39 @@ public class Controller_1 {
         // 유저의 정보를 html 에 넘겨줌
         model.addAttribute("user",user);
 
+        List<NoticeEntity> ntlist = noticeRepository.findAll();
         // 이벤트 배너로 분류돼있는 것을 찾아옴.
-        List<NoticeEntity> nElist = noticeRepository.findByNoticeType("EVENT");
-        List<NoticeEntity> nBlist = noticeRepository.findByNoticeType("BASIC");
+        List<NoticeEntity> ntElist = noticeRepository.findByNoticeType("EVENT");
+        List<NoticeEntity> ntBlist = noticeRepository.findByNoticeType("BASIC");
 
-        System.out.println("eventImg-1" + nBlist.get(0).getNoticeImageUrl());
-        System.out.println("eventImg-2" + nBlist.get(1).getNoticeImageUrl());
+        if (!ntlist.isEmpty()) {
+            model.addAttribute("notice",ntlist);
+        }
+        if (!ntElist.isEmpty()) {
+            model.addAttribute("event",ntElist);
+        }
+        if (!ntBlist.isEmpty()) {
+            model.addAttribute("basic", ntBlist);
+        }
 
-        if (!nElist.isEmpty()) {
-            model.addAttribute("event",nElist);
+        //
+        // 공지사항쪽
+        List<ItemEntity> ilist = itemRepository.findAll();
+        List<ItemEntity> rlist = itemRepository.findByItemRecommend(1);
+        List<ItemEntity> nlist = itemRepository.findByItemRecommend(2);
+
+
+        if (!ilist.isEmpty()) {
+            model.addAttribute("ilist",ilist);
         }
-        if (!nBlist.isEmpty()) {
-            model.addAttribute("basic", nBlist);
+        if (!rlist.isEmpty()) {
+            model.addAttribute("rlist",rlist);
         }
+        if (!nlist.isEmpty()) {
+            model.addAttribute("nlist",nlist);
+        }
+
+
 
 
         return "Main";
