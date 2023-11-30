@@ -24,59 +24,6 @@ public class Controller_1 {
     @Autowired
     private ItemRepository itemRepository;
 
-    @GetMapping("/main")
-    public String main(Model model, HttpServletRequest request){
-
-        //저장돼있는 곳 정보를 불러와서 로그인해있는 유저의 정보를 불러옴
-        String loginId = (String)request.getSession().getAttribute("loginId");
-        String loginPw = (String)request.getSession().getAttribute("loginPw");
-        List<MemberEntity> mlist = memberRepository.findByMemberIdAndMemberPw(
-                loginId,loginPw );
-        MemberEntity user = mlist.get(0);
-
-        // 유저의 정보를 html 에 넘겨줌
-        model.addAttribute("user",user);
-
-        List<NoticeEntity> ntlist = noticeRepository.findAll();
-        // 이벤트 배너로 분류돼있는 것을 찾아옴.
-        List<NoticeEntity> ntElist = noticeRepository.findByNoticeType("EVENT");
-        List<NoticeEntity> ntBlist = noticeRepository.findByNoticeType("BASIC");
-
-        if (!ntlist.isEmpty()) {
-            model.addAttribute("notice",ntlist);
-        }
-        if (!ntElist.isEmpty()) {
-            model.addAttribute("event",ntElist);
-        }
-        if (!ntBlist.isEmpty()) {
-            model.addAttribute("basic", ntBlist);
-        }
-
-        //
-        // 공지사항쪽
-        List<ItemEntity> ilist = itemRepository.findAll();
-        List<ItemEntity> rlist = itemRepository.findByItemRecommend(1);
-        List<ItemEntity> nlist = itemRepository.findByItemRecommend(2);
-
-
-        if (!ilist.isEmpty()) {
-            model.addAttribute("ilist",ilist);
-        }
-        if (!rlist.isEmpty()) {
-            model.addAttribute("rlist",rlist);
-        }
-        if (!nlist.isEmpty()) {
-            model.addAttribute("nlist",nlist);
-        }
-
-
-
-
-        return "Main";
-    }
-
-
-
     @PostMapping("/join")
     public String join2(
                         @RequestParam("inputId") String id,

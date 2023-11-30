@@ -1,6 +1,6 @@
 window.onload = function () {
-  mainrollimg();
-  eventrollimg();
+  event_rollimg();
+  basic_rollimg();
 };
 
 function seeMore(){
@@ -16,7 +16,7 @@ function mainPage(){
 window.location.href="/main";
 }
 // 이미지 롤링을 처리하는 함수
-function mainrollimg() {
+function event_rollimg() {
   // 이미지 목록 요소들을 가져옴
   let eImgList = document.getElementsByClassName("eImg-list");
 
@@ -51,7 +51,7 @@ function mainrollimg() {
 }
 
 // 이미지 롤링을 처리하는 함수
-function eventrollimg() {
+function basic_rollimg() {
   // 이미지 목록 요소들을 가져옴
   let bImgList = document.getElementsByClassName("bImg-list");
 

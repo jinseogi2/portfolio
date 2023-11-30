@@ -8,19 +8,6 @@
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/Main.js"></script>
 
-    <div style="display:none;">
-      <input type="hidden" id="eIndex" value="0"/>
-      <input type="hidden" id="bIndex" value="0"/>
-      <table>
-        <tr th:each="event, status:${event}">
-          <td><input type="hidden" class="eImg-list" th:value="${event.noticeImageUrl}"/></td>
-        </tr>
-        <tr th:each="basic, status:${basic}">
-          <td><input type="hidden" class="bImg-list" th:value="${basic.noticeImageUrl}"/></td>
-        </tr>
-      </table>
-    </div>
-
     <!-- Link Swiper's CSS -->
     <link
       rel="stylesheet"
@@ -28,7 +15,23 @@
     />
   </head>
   <body>
-    <div class="wrap">
+
+  <!--  DB에 있는 정보들을 가져오기 위해 -->
+  <div style="display:none;">
+    <input type="hidden" id="eIndex" value="0"/>
+    <input type="hidden" id="bIndex" value="0"/>
+    <table>
+      <tr th:each="event, status:${event}">
+        <td><input type="hidden" class="eImg-list" th:value="${event.noticeImageUrl}"/></td>
+      </tr>
+      <tr th:each="basic, status:${basic}">
+        <td><input type="hidden" class="bImg-list" th:value="${basic.noticeImageUrl}"/></td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div class="wrap">
       <div id="mainimg">
         <img id="roll" src="/img/notice/notice1.jpg" alt="롤이미지" />
       </div>

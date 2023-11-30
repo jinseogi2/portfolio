@@ -25,10 +25,7 @@ public class MainController {
         return "join";
     }
 
-    @GetMapping("/lastPage")
-    public String lastPage(){
-        return "Lastpage";
-    }
+
     @GetMapping("/payCard")
     public String payCard(){
         return "PayCard";
