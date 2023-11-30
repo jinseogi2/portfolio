@@ -9,9 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class Controller_3 {
@@ -32,7 +36,9 @@ public class Controller_3 {
     }
     @PostMapping("/admin_notice2")
     @ResponseBody
+
     public ResultDto addNotice(@RequestBody NoticeAddDto noticeAddDto) {
+        System.out.println(noticeAddDto.toString());
 
         NoticeEntity noticeEntity = new NoticeEntity();
         noticeEntity.setNoticeContent(noticeAddDto.getNoticeContent());

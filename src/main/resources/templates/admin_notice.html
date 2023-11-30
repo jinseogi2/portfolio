@@ -125,7 +125,7 @@
                 <th scope="col">수정/삭제</th>
               </tr>
             </thead>
-            <tbody style="border: 1px solid red; height: 20%">
+            <tbody style="height: 20%">
               <tr th:if="${#lists.isEmpty(list)}">
                 <td colspan="5">공지가 없습니다.</td>
               </tr>
@@ -140,10 +140,10 @@
                 <td style="width: 40%">
                   <img th:src="${notice.noticeImageUrl}" />
                 </td>
-                <td style="width: 40%">
+                <td style="width: 35%">
                   <span th:text="${notice.noticeContent}"></span>
                 </td>
-                <td style="width: 5%">
+                <td style="width: 10%">
                   <button
                     class="btn btn-primary"
                     th:onclick="|func_notice_ed(${notice.noticeNo}) |"

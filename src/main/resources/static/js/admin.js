@@ -144,22 +144,29 @@ function func_notice_delete(noticeNo) {
 
 // 파일올리고 그 이미지를 화면에 띄우기
 function fileUpLoad() {
-  let selectFile = document.querySelector("#input-image").files[0];
+        // 파일 입력 엘리먼트 가져오기
+        var fileInput = document.getElementById('noticeImageUrl');
+        // 이미지 엘리먼트 가져오기
+        var imageElement = document.getElementById('noticeImg');
 
-  // 오류처리
-  if (selectFile) {
-    const file = URL.createObjectURL(selectFile);
-    document.querySelector(".uploadImage").src = file;
-  } else {
-    // Handle the case where no file is selected
-    console.error("No file selected");
-  }
-  // src 가 잘 셋팅되나 확인
-  const upload = document.querySelector(".uploadImage").src;
-  console.log(upload);
+        // 오류처리
+        if (fileInput.files.length > 0) {
+            // 선택된 파일의 URL을 읽어와서 이미지 엘리먼트의 src 속성에 설정
+            var fileReader = new FileReader();
+            fileReader.onload = function (e) {
+                imageElement.src = e.target.result;
+            };
+            fileReader.readAsDataURL(fileInput.files[0]);
+        } else {
+            // 파일이 선택되지 않았을 때 기존 이미지로 복원하거나 다른 처리를 수행
+            // 예: imageElement.src = "기존 이미지 URL";
+            console.error("No file selected");
+        }
 
-  document.querySelector(".uploadImage").src = file;
-}
+        // src 가 잘 셋팅되나 확인
+        const upload = imageElement.src;
+        console.log(upload);
+    }
 function func_notice_updateAtion() {
   // 업로드한 이미지의 src 를 가져온다
   var uploadimg = document.querySelector(".uploadImage").src;
@@ -170,12 +177,12 @@ function openNewWindow(url, width, height) {
     window.open(url, '_blank', options);
   }
 
+//공지사항 추가 함수
 function func_notice_addAtion(){
   const noticeType = document.getElementById("noticeType").value;
   const floatingName = document.getElementById("floatingName").value;
   const floatingInfo = document.getElementById("floatingInfo").value;
-  var noticeImg = document.getElementById("input-image").value;
-  noticeImg ="/img/notice/"+noticeImg;
+  const noticeImg = document.getElementById("noticeImageUrl")
 
 console.log("noticeImg = "+noticeImg);
 
