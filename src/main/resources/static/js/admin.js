@@ -22,6 +22,7 @@ function func_member_ed(memberNo) {
 }
 
 function func_member_updateAction() {
+
   // MemberEdDto에 속해있는 변수에 1:1 매칭할것들을 받아온다.
 
   const inputMemberNo = document.getElementById("inputMemberNo").value;
@@ -143,24 +144,77 @@ function func_notice_delete(noticeNo) {
 }
 
 // 파일올리고 그 이미지를 화면에 띄우기
-function fileUpLoad() {
-  let selectFile = document.querySelector("#input-image").files[0];
+ function noticeDtoToJson(noticeDto) {
+        return {
+            noticeNo: noticeDto.noticeNo,
+            noticeTitle: noticeDto.noticeTitle,
+            noticeContent: noticeDto.noticeContent,
+            noticeImageUrl: noticeDto.noticeImageUrl,
+            noticeDatetime: noticeDto.noticeDatetime,
+            noticeType: noticeDto.noticeType
+        };
+    }
 
-  // 오류처리
-  if (selectFile) {
-    const file = URL.createObjectURL(selectFile);
-    document.querySelector(".uploadImage").src = file;
-  } else {
-    // Handle the case where no file is selected
-    console.error("No file selected");
-  }
-  // src 가 잘 셋팅되나 확인
-  const upload = document.querySelector(".uploadImage").src;
-  console.log(upload);
+    function fileUpLoad() {
+        // 파일 입력 엘리먼트 가져오기
+        var fileInput = document.getElementById('noticeImageUrl');
+        // 이미지 엘리먼트 가져오기
+        var imageElement = document.getElementById('uploadImage');
 
-  document.querySelector(".uploadImage").src = file;
-}
-function func_notice_updateAtion() {
-  // 업로드한 이미지의 src 를 가져온다
-  var uploadimg = document.querySelector(".uploadImage").src;
-}
+        // 오류처리
+        if (fileInput.files.length > 0) {
+            // 선택된 파일의 URL을 읽어와서 이미지 엘리먼트의 src 속성에 설정
+            var fileReader = new FileReader();
+            fileReader.onload = function (e) {
+                imageElement.src = e.target.result;
+            };
+            fileReader.readAsDataURL(fileInput.files[0]);
+        } else {
+            // 파일이 선택되지 않았을 때 기존 이미지로 복원하거나 다른 처리를 수행
+            // 예: imageElement.src = "기존 이미지 URL";
+            console.error("No file selected");
+        }
+
+        // src 가 잘 셋팅되나 확인
+        const upload = imageElement.src;
+        console.log(upload);
+    }
+
+    function func_notice_updateAction() {
+        // 변수 이름 수정 및 새로운 변수 추가
+        var uploadimg = document.querySelector(".uploadImage").src;
+        var inputNoticeNo = document.getElementById("noticeNo").value;
+        var inputNoticeTitle = document.getElementById("noticeTitle").value;
+        var inputNoticeContent = document.getElementById("noticeContent").value;
+        var inputDatetime = document.getElementById("noticeDatetime").value;
+        var inputType = document.getElementById("noticeType").value;
+
+        // NoticeEdDto 객체 생성
+        var noticeDto = {
+            noticeNo: inputNoticeNo,
+            noticeTitle: inputNoticeTitle,
+            noticeContent: inputNoticeContent,
+            noticeImageUrl: uploadimg,
+            noticeDatetime: inputDatetime,
+            noticeType: inputType
+        };
+
+        // NoticeEdDto 객체를 JSON 형식으로 변환
+        var params = noticeDtoToJson(noticeDto);
+
+        fetch("/noticeUpdateAction", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(params),
+        })
+            .then((response) => response.json())
+            .then((json) => {
+                console.log("json: ", json);
+                window.location.href = "/admin_notice";
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+
