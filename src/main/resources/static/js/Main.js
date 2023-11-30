@@ -3,6 +3,18 @@ window.onload = function () {
   eventrollimg();
 };
 
+function seeMore(){
+window.location.href="/lastPage";
+}
+function megaOrder(){
+//window.location.href="/orderpage";
+}
+function payCard(){
+window.location.href="/payCard";
+}
+function mainPage(){
+window.location.href="/main";
+}
 // 이미지 롤링을 처리하는 함수
 function mainrollimg() {
   // 이미지 목록 요소들을 가져옴
@@ -34,7 +46,6 @@ function mainrollimg() {
         eIndexValue = 0;
         eIndex.value = 0;
       }
-
     }, 2000); // 2초(2000밀리초) 간격으로 실행
   }
 }
@@ -64,7 +75,8 @@ function eventrollimg() {
 
         // 배경 이미지를 변경
         // 주의: 해당 요소의 ID가 'secimg'여야 함
-        document.getElementById("secimg").style.backgroundImage = "url('" + bImageName + "')";
+        document.getElementById("secimg").style.backgroundImage =
+          "url('" + bImageName + "')";
       } else {
         // 인덱스가 유효 범위를 벗어나면 첫 번째 이미지로 되돌림
         bIndexValue = 0;
