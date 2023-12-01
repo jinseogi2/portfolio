@@ -32,8 +32,6 @@ public class MainController {
     }
 
 
-
-
     @GetMapping("/admin_order")
     public String admin_order(){   return "admin_order";  }
 
@@ -48,6 +46,7 @@ public class MainController {
     public String admin_notice_add(){
         return "admin_notice_add";
     }
+
     @GetMapping("/admin_notice_ed")
     public String admin_notice_ed(){
         return "admin_notice_ed";

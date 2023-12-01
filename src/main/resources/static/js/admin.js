@@ -145,53 +145,13 @@ function func_notice_delete(noticeNo) {
       console.log(error);
     });
 }
-
-//  function fileUpLoad() {
-//            // 파일 입력 엘리먼트 가져오기
-//            var fileInput = document.getElementById('itemImageUrl');
-//            // 이미지 엘리먼트 가져오기
-//            var imageElement = document.getElementById('uploadImage');
-
-//            // 오류처리
-//            if (fileInput.files.length > 0) {
-//                // 선택된 파일의 URL을 읽어와서 이미지 엘리먼트의 src 속성에 설정
-//                var fileReader = new FileReader();
-//                fileReader.onload = function (e) {
-//                    imageElement.src = e.target.result;
-//                };
-//                fileReader.readAsDataURL(fileInput.files[0]);
-//            } else {
-//                // 파일이 선택되지 않았을 때 기존 이미지로 복원하거나 다른 처리를 수행
-//                // 예: imageElement.src = "기존 이미지 URL";
-//                console.error("No file selected");
-//            }
-
-//            // src 가 잘 셋팅되나 확인
-//            const upload = imageElement.src;
-//            console.log(upload);
-//        }
-
-//
-//function fileUpLoad() {
-//  var fileInput = document.getElementById("itemImageUrl");
-//  var imageElement = document.getElementById("uploadImage");
-//
-//  if (fileInput.files.length > 0) {
-//    var fileReader = new FileReader();
-//    fileReader.onload = function (e) {
-//      imageElement.src = e.target.result;
-//    };
-//    fileReader.readAsDataURL(fileInput.files[0]);
-//  } else {
-//    console.error("No file selected");
-//  }
-//}
-
+// 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
 function onClickUpload() {
   let inputItemImageUrl = document.getElementById("inputItemImageUrl");
   inputItemImageUrl.click();
 }
 
+// 파일이 선택되면 선택한 이미지 미리보기를 표시하는 함수
 function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -208,51 +168,56 @@ function readURL(input) {
   console.log("files:" + inputItemImageUrl.files[0]);
 }
 
+// 메뉴 업데이트 작업이 트리거될 때 호출되는 함수
 function func_menu_updateAction() {
-  image_upload();
+  image_upload(); // image_upload 함수 호출
 }
 
+// fetch API를 사용하여 이미지 업로드를 처리하는 함수
 function image_upload() {
   let inputItemImageUrl = document.getElementById("inputItemImageUrl");
   console.log(inputItemImageUrl);
 
-  let fileUrl = inputItemImageUrl.value; //C:\fakepath\cosmos.jpg
+  let fileUrl = inputItemImageUrl.value; // 파일 경로 가져오기
   console.log(fileUrl);
   let index = fileUrl.lastIndexOf("\\");
-  let fileName = fileUrl.substr(index + 1); //cosmos.jpg
+  let fileName = fileUrl.substr(index + 1); // 경로에서 파일 이름 추출
   console.log("fileName:" + fileName);
 
+  // 파일을 multipart/form-data 요청으로 보내기 위한 FormData 객체 생성
   let form = new FormData();
   form.enctype = "multipart/form-data";
   form.append("file", inputItemImageUrl.files[0], fileName);
 
+  // "/upload" 엔드포인트로 POST 요청 보내기
   fetch("/upload", {
     method: "POST",
     headers: {
-      //"Content-Type": "multipart/form-data"
+      //"Content-Type": "multipart/form-data" // 이 줄은 주석 처리되어 있으며, 브라우저가 자동으로 FormData에 대한 콘텐츠 타입을 설정합니다.
     },
-    body: form,
+    body: form, // 요청 본문에 FormData 객체 포함
   })
     .then((response) => {
       console.log("response:" + response);
       console.log("response:" + JSON.stringify(response));
 
-      return response.json();
-    }) //HTTP 응답
+      return response.json(); // JSON 응답 파싱
+    })
     .then((json) => {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
       console.log("json:" + JSON.stringify(json));
       console.log("uploadFileName:" + json.uploadFileName);
 
-      func_menu_updateAction_json(json.uploadFileName);
-    }) //실제 데이타
+      func_menu_updateAction_json(json.uploadFileName); // 얻은 uploadFileName을 사용하여 함수 호출
+    })
     .catch((error) => {
-      console.log(error);
+      console.log(error); // fetch 요청 중에 발생한 오류 기록
     });
 }
-
+// JSON 형식의 아이템 이미지 URL을 받아와서 관련된 폼 데이터를 서버로 전송하는 함수
 function func_menu_updateAction_json(itemImageUrl) {
+  // 입력 요소들의 값을 가져오기
   const inputItemNo = document.getElementById("inputItemNo").value;
   const inputItemName = document.getElementById("inputItemName").value;
   const inputItemCode = document.getElementById("inputItemCode").value;
@@ -268,9 +233,7 @@ function func_menu_updateAction_json(itemImageUrl) {
     "inputItemExplanation"
   ).value;
 
-  // 파일올리고 그 이미지를 화면에 띄우기
-
-  // 오브젝트로 포장해서 보내기위해 오브젝트화를 한다.
+  // 서버에 전송할 파라미터 객체 생성
   // 이때 MemberEdDto에 들어가있는 변수랑 이름이 같아야한다.
   let params = {
     itemNo: inputItemNo,
@@ -283,10 +246,7 @@ function func_menu_updateAction_json(itemImageUrl) {
     itemExplanation: inputItemExplanation,
   };
 
-  // console.log("params : " + params);
-
-  // memberUpdateAction으로 POST한다(보낸다)
-  // 컨트롤러에서 PostMapping("/memberUpdateAction") 을 해야한다.
+  // 서버로 POST 요청 보내기
   fetch("/menuUpdateAction", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -295,29 +255,32 @@ function func_menu_updateAction_json(itemImageUrl) {
     .then((response) => {
       console.log("response:" + response);
       return response.json();
-    }) // 컨트롤러에서 보낸것을 받는다.
-    // json에는 ResultDto가 받아진다.
+    }) // 서버 응답
     .then((json) => {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
-      //원래페이지로 이동
+      // 원래 페이지로 이동
       window.location.href = "/admin_menu";
-    }) //실제 데이타
+    }) // 실제 데이터
     .catch((error) => {
       console.log(error);
     });
 }
 
+// 아이템을 삭제하는 함수
 function func_item_delete(itemNo) {
+  // 사용자에게 삭제 여부를 확인하는 창 띄우기
   const result = confirm("삭제할까요?");
   if (result == false) {
     return;
   }
 
+  // 서버로 전송할 파라미터 객체 생성
   let params = {
     itemNo: itemNo,
   };
 
+  // 서버로 POST 요청 보내기
   fetch("/itemDeleteAction", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -326,14 +289,14 @@ function func_item_delete(itemNo) {
     .then((response) => {
       console.log("response:" + response);
       return response.json();
-    }) //HTTP 응답
+    }) // 서버 응답
     .then((json) => {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
 
-      //다음페이지로 이동
+      // 다음 페이지로 이동
       window.location.href = "/admin_menu";
-    }) //실제 데이타
+    }) // 실제 데이터
     .catch((error) => {
       console.log(error);
     });

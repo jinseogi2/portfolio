@@ -19,18 +19,6 @@
         class="image-container"
         style="border: 1px solid lightgray; width: 30%; height: 350px"
       >
-        <!-- <img
-          style="width: 100%; height: 100%"
-          id="uploadImage"
-          th:src="${item.itemImageUrl}"
-          class="uploadImage"
-        />
-        <input
-          style="display: block"
-          type="file"
-          id="itemImageUrl"
-          onchange="fileUpLoad();"
-        /> -->
         <img
           style="width: 100%; height: 100%"
           class="admin_item_img"
@@ -52,19 +40,6 @@
           th:value="${item.itemImageUrl}"
           onchange="readURL(this);"
         />
-
-        <!--        <img-->
-        <!--                id="uploadImage"-->
-        <!--                th:src="${notice.noticeImageUrl}"-->
-        <!--                style="width: 50%; height: 50%"-->
-        <!--                class="uploadImage"-->
-        <!--        />-->
-        <!--        <input-->
-        <!--                style="display: block"-->
-        <!--                type="file"-->
-        <!--                id="noticeImageUrl"-->
-        <!--                onchange="fileUpLoad();"-->
-        <!--        />-->
       </div>
       <!-- 수정하는 곳 -->
       <input type="hidden" id="inputItemNo" th:value="${item.itemNo}" />
@@ -84,7 +59,7 @@
             placeholder="메뉴이름"
           />
 
-          <label for="floatingInput">메뉴이름</label>
+          <label for="inputItemName">메뉴이름</label>
         </div>
         <div class="form-floating d-flex m-3">
           <input
@@ -94,7 +69,7 @@
             th:value="${item.itemPrice}"
             placeholder="가격"
           />
-          <label for="floatingPrice">가격</label>
+          <label for="inputItemPrice">가격</label>
         </div>
         <div class="kategorie d-flex justify-content-start">
           <select
@@ -120,7 +95,7 @@
               th:text="${item.itemExplanation}"
               style="height: 100px"
             ></textarea>
-            <label for="floatingInfo">상세정보</label>
+            <label for="inputItemExplanation">상세정보</label>
           </div>
         </div>
         <div class="m-3" style="padding-bottom: 20px">
@@ -144,27 +119,7 @@
       </div>
     </div>
     <script>
-      // function readImage(input) {
-      //   // 인풋 태그에 파일이 있는 경우
-      //   if (input.files && input.files[0]) {
-      //     // 이미지 파일인지 검사 (생략)
-      //     // FileReader 인스턴스 생성
-      //     const reader = new FileReader();
-      //     // 이미지가 로드가 된 경우
-      //     reader.onload = (e) => {
-      //       const previewImage = document.getElementById("preview-image");
-      //       previewImage.src = e.target.result;
-      //     };
-      //     // reader가 이미지 읽도록 하기
-      //     reader.readAsDataURL(input.files[0]);
-      //   }
-      // }
-      // const inputImage = document.getElementById("input-image");
-      // inputImage.addEventListener("change", (e) => {
-      //   readImage(e.target);
-      // });
     </script>
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
