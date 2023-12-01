@@ -193,7 +193,6 @@ function image_upload() {
   fetch("/upload", {
     method: "POST",
     headers: {
-      //"Content-Type": "multipart/form-data" // 이 줄은 주석 처리되어 있으며, 브라우저가 자동으로 FormData에 대한 콘텐츠 타입을 설정합니다.
     },
     body: form, // 요청 본문에 FormData 객체 포함
   })
