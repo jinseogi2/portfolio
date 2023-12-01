@@ -10,7 +10,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <script src="js/admin.js"></script>
+    <script src="/js/admin.js"></script>
     <link rel="stylesheet" href="/css/admin_ed.css" />
   </head>
   <body>
@@ -19,35 +19,87 @@
         class="image-container"
         style="border: 1px solid lightgray; width: 30%; height: 350px"
       >
+        <!-- <img
+          style="width: 100%; height: 100%"
+          id="uploadImage"
+          th:src="${item.itemImageUrl}"
+          class="uploadImage"
+        />
+        <input
+          style="display: block"
+          type="file"
+          id="itemImageUrl"
+          onchange="fileUpLoad();"
+        /> -->
         <img
           style="width: 100%; height: 100%"
-          id="preview-image"
-          src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"
+          class="admin_item_img"
+          id="imgItemImageUrl"
+          th:src="${item.itemImageUrl}"
         />
-        <input style="display: block" type="file" id="input-image" />
+        &nbsp;&nbsp;<button
+          type="file"
+          class="btn btn-primary"
+          onclick="onClickUpload();"
+        >
+          변경
+        </button>
+        <!--  -->
+        <input
+          type="file"
+          style="visibility: hidden"
+          id="inputItemImageUrl"
+          th:value="${item.itemImageUrl}"
+          onchange="readURL(this);"
+        />
+
+        <!--        <img-->
+        <!--                id="uploadImage"-->
+        <!--                th:src="${notice.noticeImageUrl}"-->
+        <!--                style="width: 50%; height: 50%"-->
+        <!--                class="uploadImage"-->
+        <!--        />-->
+        <!--        <input-->
+        <!--                style="display: block"-->
+        <!--                type="file"-->
+        <!--                id="noticeImageUrl"-->
+        <!--                onchange="fileUpLoad();"-->
+        <!--        />-->
       </div>
       <!-- 수정하는 곳 -->
+      <input type="hidden" id="inputItemNo" th:value="${item.itemNo}" />
+      <input type="hidden" id="inputItemCode" th:value="${item.itemCode}" />
+      <input
+        type="hidden"
+        id="inputItemRecommend"
+        th:value="${item.itemRecommend}"
+      />
       <div class="edScreen m-3" style="width: 70%; height: 100%">
         <div class="form-floating d-flex m-3">
           <input
             type="text"
             class="form-control"
-            id="floatingInput"
+            id="inputItemName"
+            th:value="${item.itemName}"
             placeholder="메뉴이름"
           />
+
           <label for="floatingInput">메뉴이름</label>
         </div>
         <div class="form-floating d-flex m-3">
           <input
             type="text"
             class="form-control"
-            id="floatingPrice"
+            id="inputItemPrice"
+            th:value="${item.itemPrice}"
             placeholder="가격"
           />
           <label for="floatingPrice">가격</label>
         </div>
         <div class="kategorie d-flex justify-content-start">
           <select
+            id="inputItemCate"
+            th:value="${item.itemCate}"
             class="form-select"
             style="width: 25%; height: 100%; margin-left: 15px"
           >
@@ -64,7 +116,8 @@
             <textarea
               class="form-control"
               placeholder="Leave a comment here"
-              id="floatingInfo"
+              id="inputItemExplanation"
+              th:text="${item.itemExplanation}"
               style="height: 100px"
             ></textarea>
             <label for="floatingInfo">상세정보</label>
@@ -73,34 +126,45 @@
         <div class="m-3" style="padding-bottom: 20px">
           <tr>
             <td class="p-3">
-              <a class="btn btn-primary" href="" role="button">수정하기</a>
-              <a class="btn btn-danger" href="" role="button">삭제</a>
+              <button
+                class="btn btn-primary"
+                onclick="func_menu_updateAction();"
+              >
+                수정하기
+              </button>
+              <button
+                class="btn btn-danger"
+                onclick="window.history.back();"
+              >
+                취소하기
+              </button>
             </td>
           </tr>
         </div>
       </div>
     </div>
     <script>
-      function readImage(input) {
-        // 인풋 태그에 파일이 있는 경우
-        if (input.files && input.files[0]) {
-          // 이미지 파일인지 검사 (생략)
-          // FileReader 인스턴스 생성
-          const reader = new FileReader();
-          // 이미지가 로드가 된 경우
-          reader.onload = (e) => {
-            const previewImage = document.getElementById("preview-image");
-            previewImage.src = e.target.result;
-          };
-          // reader가 이미지 읽도록 하기
-          reader.readAsDataURL(input.files[0]);
-        }
-      }
-      const inputImage = document.getElementById("input-image");
-      inputImage.addEventListener("change", (e) => {
-        readImage(e.target);
-      });
+      // function readImage(input) {
+      //   // 인풋 태그에 파일이 있는 경우
+      //   if (input.files && input.files[0]) {
+      //     // 이미지 파일인지 검사 (생략)
+      //     // FileReader 인스턴스 생성
+      //     const reader = new FileReader();
+      //     // 이미지가 로드가 된 경우
+      //     reader.onload = (e) => {
+      //       const previewImage = document.getElementById("preview-image");
+      //       previewImage.src = e.target.result;
+      //     };
+      //     // reader가 이미지 읽도록 하기
+      //     reader.readAsDataURL(input.files[0]);
+      //   }
+      // }
+      // const inputImage = document.getElementById("input-image");
+      // inputImage.addEventListener("change", (e) => {
+      //   readImage(e.target);
+      // });
     </script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

@@ -1,7 +1,9 @@
 package com.portfolio.springboot.entity;
 
 
+import com.portfolio.springboot.dto.ItemAddDto;
 import com.portfolio.springboot.dto.ItemDto;
+import com.portfolio.springboot.dto.ItemEdDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -49,6 +51,31 @@ public class ItemEntity {
                 .itemImageUrl(dto.getItemImageUrl())
                 .itemExplanation(dto.getItemExplanation())
                 .itemUpdateDatetime(dto.getItemUpdateDatetime())
+                .build();
+    }
+
+    public static ItemEntity toEntity(ItemEdDto dto){
+        return ItemEntity.builder()
+                .itemNo(dto.getItemNo())
+                .itemCode(dto.getItemCode())
+                .itemName(dto.getItemName())
+                .itemCate(dto.getItemCate())
+                .itemRecommend(dto.getItemRecommend())
+                .itemPrice(dto.getItemPrice())
+                .itemImageUrl(dto.getItemImageUrl())
+                .itemExplanation(dto.getItemExplanation())
+                .build();
+    }
+    public static ItemEntity itemEntity(ItemAddDto dto){
+        return ItemEntity.builder()
+                .itemNo(dto.getItemNo())
+                .itemCode(dto.getItemCode())
+                .itemName(dto.getItemName())
+                .itemCate(dto.getItemCate())
+                .itemRecommend(dto.getItemRecommend())
+                .itemPrice(dto.getItemPrice())
+                .itemImageUrl(dto.getItemImageUrl())
+                .itemExplanation(dto.getItemExplanation())
                 .build();
     }
 }
