@@ -2,18 +2,15 @@ package com.portfolio.springboot.dto;
 
 
 import com.portfolio.springboot.entity.ItemEntity;
-import com.portfolio.springboot.entity.MemberEntity;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.time.LocalDateTime;
 
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemEdDto {
+public class ItemAddDto {
+
     private Long itemNo;
     private String itemCode;
     private String itemName;
@@ -24,9 +21,8 @@ public class ItemEdDto {
     private String itemExplanation;
 
 
-
-    public static ItemEdDto toDto(ItemEntity entity){
-        return ItemEdDto.builder()
+    public static ItemAddDto toDto(ItemEntity entity){
+        return ItemAddDto.builder()
                 .itemNo(entity.getItemNo())
                 .itemCode(entity.getItemCode())
                 .itemName(entity.getItemName())

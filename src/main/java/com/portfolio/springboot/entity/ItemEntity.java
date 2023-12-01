@@ -1,6 +1,7 @@
 package com.portfolio.springboot.entity;
 
 
+import com.portfolio.springboot.dto.ItemAddDto;
 import com.portfolio.springboot.dto.ItemDto;
 import com.portfolio.springboot.dto.ItemEdDto;
 import jakarta.persistence.*;
@@ -53,7 +54,7 @@ public class ItemEntity {
                 .build();
     }
 
-    public static ItemEntity toItemEntity(ItemEdDto dto){
+    public static ItemEntity toEntity(ItemEdDto dto){
         return ItemEntity.builder()
                 .itemNo(dto.getItemNo())
                 .itemCode(dto.getItemCode())
@@ -63,7 +64,18 @@ public class ItemEntity {
                 .itemPrice(dto.getItemPrice())
                 .itemImageUrl(dto.getItemImageUrl())
                 .itemExplanation(dto.getItemExplanation())
-                .itemUpdateDatetime(dto.getItemUpdateDatetime())
+                .build();
+    }
+    public static ItemEntity itemEntity(ItemAddDto dto){
+        return ItemEntity.builder()
+                .itemNo(dto.getItemNo())
+                .itemCode(dto.getItemCode())
+                .itemName(dto.getItemName())
+                .itemCate(dto.getItemCate())
+                .itemRecommend(dto.getItemRecommend())
+                .itemPrice(dto.getItemPrice())
+                .itemImageUrl(dto.getItemImageUrl())
+                .itemExplanation(dto.getItemExplanation())
                 .build();
     }
 }

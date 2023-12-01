@@ -8,11 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Controller
@@ -103,34 +107,63 @@ public class Controller_2 {
         return "admin_menu_ed";
     }
 
+//    @PostMapping("/menuUpdateAction")
+//    @ResponseBody
+//    public ResultDto menuEdAction(@RequestBody ItemEdDto itemEdDto){
+//
+//        //Itemeddto 가져온걸 Entity로 바꿔준다.
+//        ItemEntity itemEntity = ItemEntity.toItemEntity(itemEdDto);
+//
+//        // ItemrNo를 레파지토리에 넣어서 그 DB 를 찾아서 iEntity에 가져옴
+//        ItemEntity tEntity = itemRepository.findById(itemEdDto.getItemNo()).get();
+//
+////         ItemEdDto에는 시간을 담고있는 변수가 없어서
+////         생성시간을 다시 넣어주기 위해서
+//        LocalDateTime time = tEntity.getItemUpdateDatetime();
+//        itemEntity.setItemUpdateDatetime(time);
+//
+//        // 업데이트
+//        ItemEntity itEntity = itemRepository.save(itemEntity);
+//
+//        ResultDto resultDto = null;
+//
+//        if( itEntity != null  ) {
+//            //포인트 수정 성공
+//            resultDto = ResultDto.builder()
+//                    .status("ok")
+//                    .result(1)
+//                    .build();
+//        }else{
+//            //포인트 수정 실패
+//            resultDto = ResultDto.builder()
+//                    .status("ok")
+//                    .result(0)
+//                    .build();
+//        }
+//
+//        return resultDto;
+//    }
+
     @PostMapping("/menuUpdateAction")
     @ResponseBody
-    public ResultDto menuEdAction(@RequestBody ItemEdDto itemEdDto){
+    public ResultDto menuUpdateAction(@RequestBody ItemEdDto itemEdDto) {
 
-        //Itemeddto 가져온걸 Entity로 바꿔준다.
-        ItemEntity itemEntity = ItemEntity.toItemEntity(itemEdDto);
+        itemEdDto.setItemImageUrl("./upload/"+itemEdDto.getItemImageUrl());
 
-        // ItemrNo를 레파지토리에 넣어서 그 DB 를 찾아서 iEntity에 가져옴
-        ItemEntity tEntity = itemRepository.findById(itemEdDto.getItemNo()).get();
+        ItemEntity itemEntity = ItemEntity.toEntity(itemEdDto);
 
-        // ItemEdDto에는 시간을 담고있는 변수가 없어서
-        // 생성시간을 다시 넣어주기 위해서
-//        LocalDateTime time = tEntity.getMemberJoinDatetime();
-//        memberEntity.setMemberJoinDatetime(time);
-
-        // 업데이트
-        ItemEntity itEntity = itemRepository.save(itemEntity);
+        ItemEntity newEntity = itemRepository.save(itemEntity);
 
         ResultDto resultDto = null;
 
-        if( itEntity != null  ) {
-            //포인트 수정 성공
+        if( newEntity != null  ) {
+            //수정 성공
             resultDto = ResultDto.builder()
                     .status("ok")
                     .result(1)
                     .build();
         }else{
-            //포인트 수정 실패
+            //수정 실패
             resultDto = ResultDto.builder()
                     .status("ok")
                     .result(0)
@@ -139,6 +172,56 @@ public class Controller_2 {
 
         return resultDto;
     }
+
+
+
+
+    @PostMapping("/itemDeleteAction")
+    @ResponseBody
+    public ResultDto itemDeleteAction(@RequestBody ItemDeleteDto itemDeleteDto) {
+
+        ItemEntity itemEntity = itemRepository.findById(Long.valueOf(itemDeleteDto.getItemNo())).get();
+
+        itemRepository.delete(itemEntity);
+
+        ResultDto resultDto = null;
+
+        resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .build();
+
+        return resultDto;
+    }
+
+
+    @PostMapping("/upload")
+    @ResponseBody
+    public ResultDto upload(@RequestParam MultipartFile file) throws IOException {
+
+        String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+
+        if( !file.isEmpty() ){
+            File newFile = new File(newFileName);
+            file.transferTo( newFile );
+        }else {
+            ResultDto resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(0)
+                    .build();
+
+            return resultDto;
+        }
+
+        ResultDto resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .uploadFileName(newFileName)
+                .build();
+
+        return resultDto;
+    }
+
 
 
 }
