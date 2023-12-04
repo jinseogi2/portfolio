@@ -347,7 +347,7 @@ function image_upload() {
   form.append("file", inputNoticeImgUrl.files[0], fileName);
 
   // "/upload" 엔드포인트로 POST 요청 보내기
-  fetch("/upload", {
+  fetch("/upload2", {
     method: "POST",
     headers: {
     },

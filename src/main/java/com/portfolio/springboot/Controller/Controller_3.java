@@ -23,16 +23,7 @@ public class Controller_3 {
     @Autowired
     private NoticeRepository noticeRepository;
 
-    @GetMapping("/admin_notice")
-    public String admin_notice(Model model){
 
-        List<NoticeEntity> noticeEntity = noticeRepository.findAll();
-
-        model.addAttribute("count",noticeEntity.size());
-        model.addAttribute("list",noticeEntity);
-
-        return "admin_notice";
-    }
     @PostMapping("/admin_notice2")
     @ResponseBody
 
@@ -58,7 +49,7 @@ public class Controller_3 {
 
         return resultDto;
     }
-    @PostMapping("/upload")
+    @PostMapping("/upload2")
     public ResultDto upload(@RequestParam MultipartFile file) throws IOException {
 
         String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
