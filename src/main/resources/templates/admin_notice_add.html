@@ -26,16 +26,23 @@
       >
         <img
           style="width: 100%; height: 100%"
+          id="notice_add_img"
           class="uploadImage"
           src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"
+          th:src="${notice.noticeImgUrl}"
         />
-        <input style="display: block" type="file" id="input-image" />
-        <button
-                id="sendButton"
-                type="button"
-                class="btn btn-danger"
-                onclick="fileUpLoad();"
-        > 올리기
+        &nbsp;&nbsp;<button
+      type="file"
+      class="btn btn-primary"
+      onclick="onClickNoticeAdd();">
+      파일선택
+      </button>
+        <input
+        type="file"
+        style="visibility: hidden"
+        id="inputNoticeImgUrl"
+        th:value="${notice.noticeImgUrl}"
+        onchange="readURL(this);"/>
       </div>
       <!-- 수정하는 곳 -->
       <div class="edScreen m-3" style="width: 50%; height: 100%">
