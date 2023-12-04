@@ -1,7 +1,7 @@
 package com.portfolio.springboot.entity;
 
 
-import com.portfolio.springboot.dto.MemberDto;
+import com.portfolio.springboot.dto.NoticeAddDto;
 import com.portfolio.springboot.dto.NoticeDto;
 import jakarta.persistence.*;
 import lombok.*;
@@ -51,6 +51,15 @@ public class NoticeEntity {
                 .noticeContent(dto.getNoticeContent())
                 .noticeImageUrl(dto.getNoticeImageUrl())
                 .noticeDatetime(dto.getNoticeDatetime())
+                .build();
+    }
+    public static NoticeEntity toNoticeEntity(NoticeAddDto dto){
+        return NoticeEntity.builder()
+                .noticeNo(dto.getNoticeNo())
+                .noticeType(dto.getNoticeType())
+                .noticeTitle(dto.getNoticeTitle())
+                .noticeContent(dto.getNoticeContent())
+                .noticeImageUrl(dto.getNoticeImageUrl())
                 .build();
     }
 }

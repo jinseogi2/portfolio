@@ -1,19 +1,17 @@
 package com.portfolio.springboot.Controller;
 
-import com.portfolio.springboot.dto.NoticeDto;
-import com.portfolio.springboot.dto.ResultDto;
+import com.portfolio.springboot.dto.*;
+import com.portfolio.springboot.entity.MemberEntity;
 import com.portfolio.springboot.entity.NoticeEntity;
 import com.portfolio.springboot.entity.NoticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -23,6 +21,13 @@ public class Controller_3 {
     @Autowired
     private NoticeRepository noticeRepository;
 
+
+    @GetMapping("/admin_notice_add")
+    public String adminNoticeAdd(){
+
+
+        return "admin_notice_add";
+        }
 
     @PostMapping("/admin_notice2")
     @ResponseBody
@@ -49,8 +54,9 @@ public class Controller_3 {
 
         return resultDto;
     }
-    @PostMapping("/upload2")
-    public ResultDto upload(@RequestParam MultipartFile file) throws IOException {
+    @PostMapping("/noticeUpload")
+    @ResponseBody
+    public ResultDto noticeUpload(@RequestParam MultipartFile file) throws IOException {
 
         String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 
@@ -74,6 +80,33 @@ public class Controller_3 {
 
         return resultDto;
     }
+
+    @PostMapping("/func_notice_addAction")
+    public ResultDto func_notice_addAction(@RequestBody NoticeAddDto noticeAddDto){
+
+        // NoticeEdDto 가져온걸 Entity로 바꿔준다.
+        NoticeEntity noticeEntity = NoticeEntity.toNoticeEntity(noticeAddDto);
+
+
+        // 생성시간을 다시 넣어주기 위해서
+        noticeEntity.setNoticeDatetime(LocalDateTime.now());
+
+
+        // 업데이트
+       noticeRepository.save(noticeEntity);
+
+        ResultDto resultDto = null;
+
+        //포인트 수정 성공
+            resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(1)
+                    .build();
+
+
+        return resultDto;
+    }
+
 
 
 }

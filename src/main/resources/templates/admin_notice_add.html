@@ -29,7 +29,6 @@
           id="notice_add_img"
           class="uploadImage"
           src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"
-          th:src="${notice.noticeImgUrl}"
         />
         &nbsp;&nbsp;<button
       type="file"
@@ -41,11 +40,9 @@
         type="file"
         style="visibility: hidden"
         id="inputNoticeImgUrl"
-        th:value="${notice.noticeImgUrl}"
         onchange="readURL(this);"/>
       </div>
       <!-- 수정하는 곳 -->
-<!--      <input type="hidden" id="inputNoticemNo" th:value="${item.itemNo}" />-->
 
       <div class="edScreen m-3" style="width: 50%; height: 100%">
         <div class="kategorie d-flex justify-content-start">

@@ -301,9 +301,9 @@ function func_item_delete(itemNo) {
     });
 }
 
-
+//공지 사항 추가 함수
 // 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
-function onClickUpload() {
+function onClickNoticeAdd() {
   let inputItemImageUrl = document.getElementById("inputNoticeImgUrl");
   inputItemImageUrl.click();
 }
@@ -326,7 +326,7 @@ function readURL(input) {
 }
 
 // 메뉴 업데이트 작업이 트리거될 때 호출되는 함수
-function func_menu_updateAction() {
+function func_menu_updateAction_json() {
   image_upload(); // image_upload 함수 호출
 }
 
@@ -347,7 +347,7 @@ function image_upload() {
   form.append("file", inputNoticeImgUrl.files[0], fileName);
 
   // "/upload" 엔드포인트로 POST 요청 보내기
-  fetch("/upload2", {
+  fetch("/noticeUpload", {
     method: "POST",
     headers: {
     },
@@ -365,36 +365,28 @@ function image_upload() {
       console.log("json:" + JSON.stringify(json));
       console.log("uploadFileName:" + json.uploadFileName);
 
-      func_menu_updateAction_json(json.uploadFileName); // 얻은 uploadFileName을 사용하여 함수 호출
+      func_notice_addAction_json(json.uploadFileName); // 얻은 uploadFileName을 사용하여 함수 호출
     })
     .catch((error) => {
       console.log(error); // fetch 요청 중에 발생한 오류 기록
     });
 }
 // JSON 형식의 아이템 이미지 URL을 받아와서 관련된 폼 데이터를 서버로 전송하는 함수
-function func_notice_addAction_json(itemImageUrl) {
+function func_notice_addAction(inputNoticeImgUrl) {
   // 입력 요소들의 값을 가져오기
   const noticeTitle = document.getElementById("floatingName").value;
   const noticeContent = document.getElementById("floatingInfo").value;
   const noticeImageUrl = document.getElementById("inputNoticeImgUrl").value
 
   var noticeType = document.getElementById("noticeType");
-  const inputItemCate = itemCate.options[itemCate.selectedIndex].value;
-
-//  const inputItemRecommend =
-//    document.getElementById("inputItemRecommend").value;
-//  const inputItemPrice = document.getElementById("inputItemPrice").value;
-//  //const itemImageUrl = document.getElementById("imgItemImageUrl").src;
-//  const inputItemExplanation = document.getElementById(
-//    "inputItemExplanation"
-//  ).value;
+  var inputNoticeCate = noticeType.options[noticeType.selectedIndex].value;
 
   // 서버에 전송할 파라미터 객체 생성
-  // 이때 MemberEdDto에 들어가있는 변수랑 이름이 같아야한다.
+  // 이때 NoticeAddDto에 들어가있는 변수랑 이름이 같아야한다.
   let params = {
     noticeTitle : noticeTitle,
     noticeContent : noticeContent,
-    noticeType: noticeType,
+    noticeType: inputNoticeCate,
     noticeImageUrl : noticeImageUrl,
   };
 

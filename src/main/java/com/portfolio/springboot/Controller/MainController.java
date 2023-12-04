@@ -1,7 +1,11 @@
 package com.portfolio.springboot.Controller;
 
+import com.portfolio.springboot.dto.ItemDto;
+import com.portfolio.springboot.entity.ItemEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -42,10 +46,7 @@ public class MainController {
     }
 
 
-    @GetMapping("/admin_notice_add")
-    public String admin_notice_add(){
-        return "admin_notice_add";
-    }
+
 
     @GetMapping("/admin_notice_ed")
     public String admin_notice_ed(){
