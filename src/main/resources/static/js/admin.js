@@ -374,36 +374,32 @@ function image_upload() {
 // JSON 형식의 아이템 이미지 URL을 받아와서 관련된 폼 데이터를 서버로 전송하는 함수
 function func_notice_addAction_json(itemImageUrl) {
   // 입력 요소들의 값을 가져오기
-  const inputItemNo = document.getElementById("inputItemNo").value;
-  const inputItemName = document.getElementById("inputItemName").value;
-  const inputItemCode = document.getElementById("inputItemCode").value;
+  const noticeTitle = document.getElementById("floatingName").value;
+  const noticeContent = document.getElementById("floatingInfo").value;
+  const noticeImageUrl = document.getElementById("inputNoticeImgUrl").value
 
-  var itemCate = document.getElementById("inputItemCate");
+  var noticeType = document.getElementById("noticeType");
   const inputItemCate = itemCate.options[itemCate.selectedIndex].value;
 
-  const inputItemRecommend =
-    document.getElementById("inputItemRecommend").value;
-  const inputItemPrice = document.getElementById("inputItemPrice").value;
-  //const itemImageUrl = document.getElementById("imgItemImageUrl").src;
-  const inputItemExplanation = document.getElementById(
-    "inputItemExplanation"
-  ).value;
+//  const inputItemRecommend =
+//    document.getElementById("inputItemRecommend").value;
+//  const inputItemPrice = document.getElementById("inputItemPrice").value;
+//  //const itemImageUrl = document.getElementById("imgItemImageUrl").src;
+//  const inputItemExplanation = document.getElementById(
+//    "inputItemExplanation"
+//  ).value;
 
   // 서버에 전송할 파라미터 객체 생성
   // 이때 MemberEdDto에 들어가있는 변수랑 이름이 같아야한다.
   let params = {
-    itemNo: inputItemNo,
-    itemName: inputItemName,
-    itemCode: inputItemCode,
-    itemCate: inputItemCate,
-    itemRecommend: inputItemRecommend,
-    itemPrice: inputItemPrice,
-    itemImageUrl: itemImageUrl,
-    itemExplanation: inputItemExplanation,
+    noticeTitle : noticeTitle,
+    noticeContent : noticeContent,
+    noticeType: noticeType,
+    noticeImageUrl : noticeImageUrl,
   };
 
   // 서버로 POST 요청 보내기
-  fetch("/menuUpdateAction", {
+  fetch("/admin_notice2", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(params),
@@ -416,7 +412,7 @@ function func_notice_addAction_json(itemImageUrl) {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
       // 원래 페이지로 이동
-      window.location.href = "/admin_menu";
+      window.location.href = "/admin_notice";
     }) // 실제 데이터
     .catch((error) => {
       console.log(error);

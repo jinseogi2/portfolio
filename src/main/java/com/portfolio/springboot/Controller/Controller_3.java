@@ -23,7 +23,6 @@ public class Controller_3 {
     @Autowired
     private NoticeRepository noticeRepository;
 
-
     @GetMapping("/admin_notice")
     public String admin_notice(Model model){
 

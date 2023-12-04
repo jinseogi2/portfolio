@@ -45,6 +45,8 @@
         onchange="readURL(this);"/>
       </div>
       <!-- 수정하는 곳 -->
+<!--      <input type="hidden" id="inputNoticemNo" th:value="${item.itemNo}" />-->
+
       <div class="edScreen m-3" style="width: 50%; height: 100%">
         <div class="kategorie d-flex justify-content-start">
           <select
@@ -78,12 +80,9 @@
           </div>
         </div>
         <div class="m-3" style="padding-bottom: 20px">
-
           <button type="button" class="btn btn-danger" onclick="func_notice_addAction();">추가하기</button>
           <button type="button" class="btn btn-light">취소</button>
-
         </div>
-
       </div>
     </div>
     <script>
