@@ -196,7 +196,7 @@ public class ApiController {
     }
 
 
-    @PostMapping("/upload")
+    @PostMapping("/item_upload")
     public ResultDto upload(@RequestParam MultipartFile file) throws IOException {
 
         String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();

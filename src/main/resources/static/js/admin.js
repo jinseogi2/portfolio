@@ -146,13 +146,13 @@ function func_notice_delete(noticeNo) {
     });
 }
 // 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
-function onClickUpload() {
+function item_Update_onClickUpload() {
   let inputItemImageUrl = document.getElementById("inputItemImageUrl");
   inputItemImageUrl.click();
 }
 
 // 파일이 선택되면 선택한 이미지 미리보기를 표시하는 함수
-function readURL(input) {
+function item_Update_readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     reader.onload = function (e) {
@@ -170,11 +170,11 @@ function readURL(input) {
 
 // 메뉴 업데이트 작업이 트리거될 때 호출되는 함수
 function func_menu_updateAction() {
-  image_upload(); // image_upload 함수 호출
+  item_update_image_upload(); // image_upload 함수 호출
 }
 
 // fetch API를 사용하여 이미지 업로드를 처리하는 함수
-function image_upload() {
+function item_update_image_upload() {
   let inputItemImageUrl = document.getElementById("inputItemImageUrl");
   console.log(inputItemImageUrl);
 
@@ -190,7 +190,7 @@ function image_upload() {
   form.append("file", inputItemImageUrl.files[0], fileName);
 
   // "/upload" 엔드포인트로 POST 요청 보내기
-  fetch("/upload", {
+  fetch("/item_upload", {
     method: "POST",
     headers: {
     },
