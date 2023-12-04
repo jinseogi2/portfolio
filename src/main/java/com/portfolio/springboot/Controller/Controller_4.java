@@ -1,19 +1,21 @@
 package com.portfolio.springboot.Controller;
 
 import com.portfolio.springboot.dto.*;
-import com.portfolio.springboot.entity.MemberEntity;
-import com.portfolio.springboot.entity.MemberRepository;
-import com.portfolio.springboot.entity.NoticeEntity;
-import com.portfolio.springboot.entity.NoticeRepository;
+import com.portfolio.springboot.entity.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Controller
@@ -23,7 +25,8 @@ public class Controller_4 {
     private MemberRepository memberRepository;
     @Autowired
     private NoticeRepository noticeRepository;
-
+    @Autowired
+    private ItemRepository itemRepository;
 
 
     @PostMapping("/join")
@@ -33,7 +36,7 @@ public class Controller_4 {
             @RequestParam("inputPw") String pw,
             @RequestParam("inputPw2") String pw2,
             @RequestParam("inputEmail") String email
-    ){
+    ) {
 
         System.out.println("id : " + id);
         System.out.println("name : " + name);
@@ -61,8 +64,8 @@ public class Controller_4 {
     @PostMapping("/loginAction")
     @ResponseBody
     public ResultDto loginAction(@RequestBody LoginDto loginDto, HttpServletRequest request) {
-        System.out.println("loginId:"+loginDto.getLoginId());
-        System.out.println("loginPw:"+loginDto.getLoginPw());
+        System.out.println("loginId:" + loginDto.getLoginId());
+        System.out.println("loginPw:" + loginDto.getLoginPw());
 
         //로그인 액션 : 아이디, 암호가 DB에 있으면 로그인 성공, 아니면 실패
         List<MemberEntity> list = memberRepository.findByMemberIdAndMemberPw(
@@ -72,15 +75,15 @@ public class Controller_4 {
 
         ResultDto resultDto = null;
 
-        if( list.size() > 0 ) {
+        if (list.size() > 0) {
             //로그인 성공
             //관리자로 로그인하면
-            if( loginDto.getLoginId().equals("admin") ){
+            if (loginDto.getLoginId().equals("admin")) {
                 resultDto = ResultDto.builder()
                         .status("ok")
                         .result(2)
                         .build();
-            }else{
+            } else {
                 resultDto = ResultDto.builder()
                         .status("ok")
                         .result(1)
@@ -89,7 +92,7 @@ public class Controller_4 {
 
             request.getSession().setAttribute("loginId", loginDto.getLoginId());
             //request.getSession().invalidate(); //로그아웃처리
-        }else{
+        } else {
             //로그인 실패
             resultDto = ResultDto.builder()
                     .status("ok")
@@ -102,7 +105,7 @@ public class Controller_4 {
     }
 
     @GetMapping("/admin_member")
-    public String admin_member(Model model){
+    public String admin_member(Model model) {
 
         List<MemberEntity> listEntity = memberRepository.findAll();
 
@@ -119,7 +122,7 @@ public class Controller_4 {
     }
 
     @GetMapping("/admin_member_ed")
-    public String adminMemberUpdate(@RequestParam String memberNo, Model model){
+    public String adminMemberUpdate(@RequestParam String memberNo, Model model) {
 
         MemberEntity memberEntity = memberRepository.findById(Long.valueOf(memberNo)).get();
 
@@ -131,7 +134,7 @@ public class Controller_4 {
 
     @PostMapping("/memberUpdateAction")
     @ResponseBody
-    public ResultDto memberEdAction(@RequestBody MemberEdDto memberEdDto){
+    public ResultDto memberEdAction(@RequestBody MemberEdDto memberEdDto) {
 
         // MemberEdDto 가져온걸 Entity로 바꿔준다.
         MemberEntity memberEntity = MemberEntity.toMemberEntity(memberEdDto);
@@ -149,13 +152,13 @@ public class Controller_4 {
 
         ResultDto resultDto = null;
 
-        if( newEntity != null  ) {
+        if (newEntity != null) {
             //포인트 수정 성공
             resultDto = ResultDto.builder()
                     .status("ok")
                     .result(1)
                     .build();
-        }else{
+        } else {
             //포인트 수정 실패
             resultDto = ResultDto.builder()
                     .status("ok")
@@ -165,6 +168,7 @@ public class Controller_4 {
 
         return resultDto;
     }
+
     @PostMapping("/memberDeleteAction")
     @ResponseBody
     public ResultDto memberDeleteAction(@RequestBody MemberDeleteDto memberDeleteDto) {
@@ -209,6 +213,7 @@ public class Controller_4 {
         // 템플릿의 경로 반환
         return "admin_notice";
     }
+
     @GetMapping("/admin_notice_ed")
     public String adminNoticeUpdate(@RequestParam String noticeNo, Model model) {
         NoticeEntity noticeEntity = noticeRepository.findById(Long.valueOf(noticeNo)).get();
@@ -263,6 +268,7 @@ public class Controller_4 {
                     .build();
         }
     }
+
     @PostMapping("/noticeDeleteAction")
     @ResponseBody
     public ResultDto noticeDeleteAction(@RequestBody NoticeDeleteDto noticeDeleteDto) {
@@ -281,5 +287,46 @@ public class Controller_4 {
         return resultDto;
     }
 
+    @GetMapping("/admin_menu")
+    public String showMenu(Model model) {
+        List<ItemEntity> itemEntities = itemRepository.findAll();
+        model.addAttribute("count", itemEntities.size());
+        model.addAttribute("list", itemEntities);
+        return "admin_menu";
+    }
 
+    @GetMapping("/admin_menu_add")
+    public String adminMenuAdd() {
+        return "admin_menu_add";
+    }
+
+    @PostMapping("/admin_menu_add2")
+    @ResponseBody
+    public ResultDto menuAddAction(@RequestBody ItemAddDto itemAddDto) {
+
+        try {
+            ItemEntity newItemEntity = ItemEntity.toEntity(itemAddDto);
+
+
+            newItemEntity.setItemCode(UUID.randomUUID().toString());
+            newItemEntity.setItemUpdateDatetime(LocalDateTime.now());
+
+            itemRepository.save(newItemEntity);
+
+
+            ResultDto resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(1)
+                    .build();
+            return resultDto;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            ResultDto resultDto = ResultDto.builder()
+                    .status("error")
+                    .result(0)
+                    .build();
+            return resultDto;
+        }
+    }
 }

@@ -19,7 +19,7 @@ public class ItemDto {
     private String itemName;
     private String itemCate;
     private Integer itemRecommend;
-    private Integer itemPrice;
+    private String itemPrice;
     private String itemImageUrl;
     private String itemExplanation;
     @DateTimeFormat(pattern = "yyyy-MM-ddTHH:mm:ss")

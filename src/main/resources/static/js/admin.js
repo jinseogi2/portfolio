@@ -218,3 +218,7 @@ function func_notice_delete(noticeNo) {
     }
 
 
+
+
+
+

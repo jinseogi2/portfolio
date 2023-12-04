@@ -178,15 +178,9 @@
               class="d-flex"
               style="width: 100%; height: 45%; margin-top: 40px;"
               >
-              <div class="addBtn d-flex justify-content-start" style="width: 100%;">
-                <a
-                  class="btn " style="margin-left: 160px;"
-                  th:href="@{admin_menu_add}"
-                  onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                  role="button"
-                  >메뉴 추가</a
-                >
-              </div>
+                <div class="addBtn d-flex justify-content-start" style="width: 100%;">
+                  <a th:href="@{admin_menu_add}" target="_blank" class="btn btn-primary" style="margin-left: 160px;">메뉴 추가</a>
+                </div>
               <div class="d-flex justify-content-end " style="width: 100%; margin-right: 160px;">
 
                   <select class="form-select" style="width: 15%; height: 100%">
@@ -196,20 +190,12 @@
                   <div>
                     <input type="text" style="height: 100%" />
                   </div>
-                  <a
-                    href="#"
-                    type="button"
-                    style="
+                  <a href="#" type="button" style="
                       width: 5%;
                       border: 1px solid black;
                       background-color: rgb(221, 219, 219);
-                    "
-                  >
-                    <img
-                      style="width: 100%; height: 100%"
-                      src="/img/admin/검색아이콘.png"
-                    />
-                  </a>
+                    ">
+                    <img style="width: 100%; height: 100%" src="/img/admin/검색아이콘.png"/></a>
                 </div>
               </div>
             </div>
@@ -227,194 +213,6 @@
                   <p class="card-text">까만커피1</p>
                   <a
                     th:href="@{admin_menu_ed}"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-
-              <!-- 이하 동일하게 반복 -->
-            </div>
-
-            <!-- 두번째 줄 -->
-            <div class="d-flex justify-content-center">
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
                     onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
                     class="btn"
                     style="width: 100px; background-color: gold"
@@ -446,7 +244,7 @@
         </div>
       </div>
     </div>
-
+    </div>
     <!-- 부트스트랩 스크립트 추가 -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
