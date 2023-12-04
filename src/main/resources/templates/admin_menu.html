@@ -1,457 +1,526 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>관리자페이지</title>
-    <!-- jQuery 라이브러리 추가 -->
-    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!-- Google Fonts 추가 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Source+Code+Pro&family=Sunflower:wght@300&display=swap"
-      rel="stylesheet"
-    />
-    <script src="js/admin.js"></script>
-    <!-- 관리자 페이지 스타일시트 추가 -->
-    <link rel="stylesheet" href="/css/admin.css" />
-    <!-- 부트스트랩 추가 -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-  </head>
+<head>
+  <title>관리자페이지</title>
+  <!-- jQuery 라이브러리 추가 -->
+  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- Google Fonts 추가 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Source+Code+Pro&family=Sunflower:wght@300&display=swap"
+          rel="stylesheet"
+  />
+  <script src="./js/admin.js"></script>
+  <!-- 관리자 페이지 스타일시트 추가 -->
+  <link rel="stylesheet" href="/css/admin.css" />
+  <!-- 부트스트랩 추가 -->
+  <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous"
+  />
+</head>
 
-  <body>
-    <!-- 관리자 페이지 컨테이너 -->
-    <div class="myContainer">
-      <!-- 헤더 영역 -->
-      <div class="myHeader">
-        <!-- 헤더 로고 -->
-        <div class="headerLogo">
-          <img
-            src="/img/admin/blackYellowLogo.png"
-            onclick="click_main();"
-            alt=""
-          />
+<body>
+<!-- 관리자 페이지 컨테이너 -->
+<div class="myContainer">
+  <!-- 헤더 영역 -->
+  <div class="myHeader">
+    <!-- 헤더 로고 -->
+    <div class="headerLogo">
+      <img
+              src="/img/admin/blackYellowLogo.png"
+              onclick="click_main();"
+              alt=""
+      />
+    </div>
+    <!-- 헤더 가운데 현재 페이지 이름 -->
+    <div class="headerCenter">
+      <h1>메가커피 관리자 페이지</h1>
+    </div>
+    <!-- 헤더 오른쪽 관리자의 프로필 사진, 아이디 -->
+    <div class="admin">
+      <button class="adminBtn">
+        <img src="/img/admin/쌀밥.PNG" alt="" />
+        <div class="adminName">
+          <h3>admind</h3>
         </div>
-        <!-- 헤더 가운데 현재 페이지 이름 -->
-        <div class="headerCenter">
-          <h1>메가커피 관리자 페이지</h1>
-        </div>
-        <!-- 헤더 오른쪽 관리자의 프로필 사진, 아이디 -->
-        <div class="admin">
-          <button class="adminBtn">
-            <img src="/img/admin/쌀밥.PNG" alt="" />
-            <div class="adminName">
-              <h3>admind</h3>
-            </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- 왼쪽 카테고리 메뉴 -->
+  <div class="myMain">
+    <div class="kategorie">
+      <!-- 왼쪽 카테고리 버튼 - 공지사항 -->
+      <div class="btnGroup" onclick="click_notice();">
+        <div id="btnBox">
+          <button type="button" class="myBtn">
+            <img src="/img/admin/공지사항.png" alt="" />
+            <div id="kategorieText">공지사항</div>
           </button>
         </div>
       </div>
-
-      <!-- 왼쪽 카테고리 메뉴 -->
-      <div class="myMain">
-        <div class="kategorie">
-          <!-- 왼쪽 카테고리 버튼 - 공지사항 -->
-          <div class="btnGroup" onclick="click_notice();">
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/공지사항.png" alt="" />
-                <div id="kategorieText">공지사항</div>
-              </button>
-            </div>
-          </div>
-          <!-- 왼쪽 카테고리 버튼 - 회원정보 -->
-          <div class="btnGroup" onclick="click_member();">
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/회원정보.png" alt="" />
-                <div id="kategorieText">회원정보</div>
-              </button>
-            </div>
-          </div>
-          <!-- 왼쪽 카테고리 버튼 - 상품정보 -->
-          <div
-            class="btnGroup"
-            style="background-color: gold"
-            onclick="click_menu();"
-          >
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/상품정보.png" alt="" />
-                <div id="kategorieText">상품정보</div>
-              </button>
-            </div>
-          </div>
-          <!-- 왼쪽 카테고리 버튼 - 주문정보 -->
-          <div
-            class="btnGroup"
-            id="btnid"
-            onclick="click_order();"
-          >
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/주문정보.png" alt="" />
-                <div id="kategorieText">주문정보</div>
-              </button>
-            </div>
-          </div>
+      <!-- 왼쪽 카테고리 버튼 - 회원정보 -->
+      <div class="btnGroup" onclick="click_member();">
+        <div id="btnBox">
+          <button type="button" class="myBtn">
+            <img src="/img/admin/회원정보.png" alt="" />
+            <div id="kategorieText">회원정보</div>
+          </button>
         </div>
-
-        <!-- 메인 화면 -->
-        <div class="screen">
-          <!-- 메인스크린 헤더 -->
-          <div class="screenHeader">
-            <p style="margin-top: 20px">상품 정보 관리 페이지</p>
-          </div>
-
-          <!-- 메인스크린 화면 -->
-          <div class="scrrenMain d-flex flex-wrap row" style="height: 80%">
-            <!-- 상품 카테고리 선택창 및 메뉴 추가 버튼 -->
-            <div class="d-flex justify-content-start" style="width: 100%">
-              <!-- 상품 카테고리(드롭다운) -->
-              <!-- <div
-                class="dropdown d-flex"
-                style="
-                  justify-content: center;
-                  align-items: center;
-                  margin-left: 30px;
-                "
-              >
-                <button
-                  class="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  메뉴 선택
-                </button>
-                <ul class="dropdown-menu"> -->
-                <!-- 각 상품 카테고리 목록 -->
-                <!-- <li><a class="dropdown-item" href="#">신메뉴</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">세트메뉴</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">커피(Hot)</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">커피(ICE)</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">디카페인</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">스무디&프라페</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">에이드&주스</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">병음료</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Tea</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">커피(콜드브루)</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">BEVERAGE</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">디저트</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">MD상품</a>
-                  </li>
-                </ul>
-
-              </div>
-            </div> -->
-            <!-- 메뉴 추가 버튼 -->
-            <!-- 검색 기능 -->
-            <div style="width: 100%">
-              <div
-              class="d-flex"
-              style="width: 100%; height: 45%; margin-top: 40px;"
-              >
-              <div class="addBtn d-flex justify-content-start" style="width: 100%;">
-                <a
-                  class="btn " style="margin-left: 160px;"
-                  th:href="@{admin_menu_add}"
-                  onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                  role="button"
-                  >메뉴 추가</a
-                >
-              </div>
-              <div class="d-flex justify-content-end " style="width: 100%; margin-right: 160px;">
-
-                  <select class="form-select" style="width: 15%; height: 100%">
-                    <option value="1">음료이름</option>
-                    <option value="2">카테고리</option>
-                  </select>
-                  <div>
-                    <input type="text" style="height: 100%" />
-                  </div>
-                  <a
-                    href="#"
-                    type="button"
-                    style="
-                      width: 5%;
-                      border: 1px solid black;
-                      background-color: rgb(221, 219, 219);
-                    "
-                  >
-                    <img
-                      style="width: 100%; height: 100%"
-                      src="/img/admin/검색아이콘.png"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 메뉴 목록 -->
-          <div style="overflow: auto">
-            <!-- 첫번째 줄 -->
-            <div class="d-flex justify-content-center">
-              <!-- 카드(상품)-->
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    th:href="@{admin_menu_ed}"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-
-              <!-- 이하 동일하게 반복 -->
-            </div>
-
-            <!-- 두번째 줄 -->
-            <div class="d-flex justify-content-center">
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-              <div class="card col-md-3 col-lg-2" style="width: 10rem">
-                <img src="http://placehold.it/150X150" />
-                <div class="card-body">
-                  <p class="card-title" style="font-size: 20px">아메리카노</p>
-                  <p class="card-text">까만커피1</p>
-                  <a
-                    href="/admin_menu_ed.html"
-                    onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
-                    class="btn"
-                    style="width: 100px; background-color: gold"
-                    >상세보기</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 페이지네이션 -->
-          <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+      </div>
+      <!-- 왼쪽 카테고리 버튼 - 상품정보 -->
+      <div
+              class="btnGroup"
+              style="background-color: gold"
+              onclick="click_menu();"
+      >
+        <div id="btnBox">
+          <button type="button" class="myBtn">
+            <img src="/img/admin/상품정보.png" alt="" />
+            <div id="kategorieText">상품정보</div>
+          </button>
+        </div>
+      </div>
+      <!-- 왼쪽 카테고리 버튼 - 주문정보 -->
+      <div class="btnGroup" id="btnid" onclick="click_order();">
+        <div id="btnBox">
+          <button type="button" class="myBtn">
+            <img src="/img/admin/주문정보.png" alt="" />
+            <div id="kategorieText">주문정보</div>
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- 부트스트랩 스크립트 추가 -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <!-- 메인 화면 -->
+    <div class="screen">
+      <!-- 메인스크린 헤더 -->
+      <div class="screenHeader">
+        <p style="margin-top: 20px">상품 정보 관리 페이지</p>
+      </div>
+
+      <!-- 메인스크린 화면 -->
+      <div class="scrrenMain d-flex flex-wrap row" style="height: 80%">
+        <!-- 상품 카테고리 선택창 및 메뉴 추가 버튼 -->
+        <div class="d-flex justify-content-start" style="width: 100%">
+          <!-- 상품 카테고리(드롭다운) -->
+          <!-- <div
+            class="dropdown d-flex"
+            style="
+              justify-content: center;
+              align-items: center;
+              margin-left: 30px;
+            "
+          >
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              메뉴 선택
+            </button>
+            <ul class="dropdown-menu"> -->
+          <!-- 각 상품 카테고리 목록 -->
+          <!-- <li><a class="dropdown-item" href="#">신메뉴</a></li>
+              <li>
+                <a class="dropdown-item" href="#">세트메뉴</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">커피(Hot)</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">커피(ICE)</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">디카페인</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">스무디&프라페</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">에이드&주스</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">병음료</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Tea</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">커피(콜드브루)</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">BEVERAGE</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">디저트</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">MD상품</a>
+              </li>
+            </ul>
+
+          </div>
+        </div> -->
+          <!-- 메뉴 추가 버튼 -->
+          <!-- 검색 기능 -->
+          <div style="width: 100%">
+            <div
+                    class="d-flex"
+                    style="width: 100%; height: 45%; margin-top: 40px"
+            >
+              <div
+                      class="addBtn d-flex justify-content-start"
+                      style="width: 100%"
+              >
+                <a
+                        class="btn"
+                        style="margin-left: 160px"
+                        th:href="@{admin_menu_add}"
+                        onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                        role="button"
+                >메뉴 추가</a
+                >
+              </div>
+              <div
+                      class="d-flex justify-content-end"
+                      style="width: 100%; margin-right: 160px"
+              >
+                <select
+                        class="form-select"
+                        style="width: 15%; height: 100%"
+                >
+                  <option value="1">음료이름</option>
+                  <option value="2">카테고리</option>
+                </select>
+                <div>
+                  <input type="text" style="height: 100%" />
+                </div>
+                <a
+                        href="#"
+                        type="button"
+                        style="
+                        width: 5%;
+                        border: 1px solid black;
+                        background-color: rgb(221, 219, 219);
+                      "
+                >
+                  <img
+                          style="width: 100%; height: 100%"
+                          src="/img/admin/검색아이콘.png"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 메뉴 목록 -->
+        <div style="overflow: auto">
+          <!-- 첫번째 줄 -->
+          <div class="d-flex justify-content-center">
+            <div class="col-10 admin_main">
+              <h3 class="flex_center">상품목록</h3>
+              <span
+                      id="member_count"
+                      th:text="|총 ${count}개의 상품이 있습니다.|"
+              >총 3개의 상품이 있습니다.</span
+              >
+              <table class="table table-striped">
+                <tr class="table_title">
+                  <td>번호</td>
+                  <td>이름</td>
+                  <td>이미지</td>
+                  <td>카테고리</td>
+                  <td>가격</td>
+                  <td>추천</td>
+                  <td>수정</td>
+                  <td>삭제</td>
+                </tr>
+                <tr th:each="item, status:${ list }">
+                  <td><span th:text="${status.count}"></span></td>
+                  <td><span th:text="${item.itemName}"></span></td>
+                  <td>
+                    <img
+                            class="admin_item_img"
+                            th:src="${item.itemImageUrl}"
+                    />
+                  </td>
+                  <td><span th:text="${item.itemCate}"></span></td>
+                  <td><span th:text="${item.itemPrice}"></span></td>
+                  <td><span th:text="${item.itemRecommend}"></span></td>
+                  <td>
+                    <button
+                            class="btn btn-primary"
+                            th:onclick="|func_menu_ed(${item.itemNo});|"
+                    >
+                      수정
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                            class="btn btn-danger"
+                            th:onclick="|func_item_delete(${item.itemNo});|"
+                    >
+                      삭제
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- 카드(상품)-->
+            <!-- <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                th:href="@{admin_menu_ed}"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+
+          이하 동일하게 반복
+
+
+
+    </div>
+
+
+
+
+
+        < 두번째 줄 -->
+            <!-- <div class="d-flex justify-content-center">
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div>
+          <div class="card col-md-3 col-lg-2" style="width: 10rem">
+            <img src="http://placehold.it/150X150" />
+            <div class="card-body">
+              <p class="card-title" style="font-size: 20px">아메리카노</p>
+              <p class="card-text">까만커피1</p>
+              <a
+                href="/admin_menu_ed.html"
+                onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                class="btn"
+                style="width: 100px; background-color: gold"
+                >상세보기</a
+              >
+            </div>
+          </div> -->
+
+            <!-- 페이지네이션 -->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 부트스트랩 스크립트 추가 -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"
+></script>
+</body>
 </html>

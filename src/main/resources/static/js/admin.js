@@ -155,6 +155,7 @@ function fileUpLoad() {
             var fileReader = new FileReader();
             fileReader.onload = function (e) {
                 imageElement.src = e.target.result;
+
             };
             fileReader.readAsDataURL(fileInput.files[0]);
         } else {
@@ -178,11 +179,12 @@ function openNewWindow(url, width, height) {
   }
 
 //공지사항 추가 함수
-function func_notice_addAtion(){
+function func_notice_addAction(){
   const noticeType = document.getElementById("noticeType").value;
   const floatingName = document.getElementById("floatingName").value;
   const floatingInfo = document.getElementById("floatingInfo").value;
-  const noticeImg = document.getElementById("noticeImageUrl")
+  //const noticeImg = document.getElementById("noticeImageUrl").src;
+  const notice_input_img = document.getElementById("notice_input_img").src;
 
 console.log("noticeImg = "+noticeImg);
 
@@ -190,7 +192,7 @@ console.log("noticeImg = "+noticeImg);
     noticeType : noticeType,
     noticeTitle: floatingName,
     noticeContent : floatingInfo,
-    noticeImageUrl : noticeImg
+    noticeImageUrl : notice_input_img
   };
 
 fetch("/admin_notice2", {
@@ -213,3 +215,127 @@ fetch("/admin_notice2", {
       console.log(error);
     });
 }
+
+
+//메뉴 수정 스크립트
+// 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
+function item_Update_onClickUpload() {
+  let inputItemImageUrl = document.getElementById("inputItemImageUrl");
+  inputItemImageUrl.click();
+}
+
+// 파일이 선택되면 선택한 이미지 미리보기를 표시하는 함수
+function item_Update_readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      document.getElementById("imgItemImageUrl").src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById("imgItemImageUrl").src = "";
+  }
+
+  let inputItemImageUrl = document.getElementById("inputItemImageUrl");
+  console.log("input:file value:" + inputItemImageUrl.value);
+  console.log("files:" + inputItemImageUrl.files[0]);
+}
+
+// 메뉴 업데이트 작업이 트리거될 때 호출되는 함수
+function func_menu_updateAction() {
+  item_update_image_upload(); // image_upload 함수 호출
+}
+
+// fetch API를 사용하여 이미지 업로드를 처리하는 함수
+function item_update_image_upload() {
+  let inputItemImageUrl = document.getElementById("inputItemImageUrl");
+  console.log(inputItemImageUrl);
+
+  let fileUrl = inputItemImageUrl.value; // 파일 경로 가져오기
+  console.log(fileUrl);
+  let index = fileUrl.lastIndexOf("\\");
+  let fileName = fileUrl.substr(index + 1); // 경로에서 파일 이름 추출
+  console.log("fileName:" + fileName);
+
+  // 파일을 multipart/form-data 요청으로 보내기 위한 FormData 객체 생성
+  let form = new FormData();
+  form.enctype = "multipart/form-data";
+  form.append("file", inputItemImageUrl.files[0], fileName);
+
+  // "/upload" 엔드포인트로 POST 요청 보내기
+  fetch("/upload", {
+    method: "POST",
+    headers: {
+    },
+    body: form, // 요청 본문에 FormData 객체 포함
+  })
+    .then((response) => {
+      console.log("response:" + response);
+      console.log("response:" + JSON.stringify(response));
+
+      return response.json(); // JSON 응답 파싱
+    })
+    .then((json) => {
+      //{ status: "ok", result: 5 }
+      console.log("json:" + json);
+      console.log("json:" + JSON.stringify(json));
+      console.log("uploadFileName:" + json.uploadFileName);
+
+      func_menu_updateAction_json(json.uploadFileName); // 얻은 uploadFileName을 사용하여 함수 호출
+    })
+    .catch((error) => {
+      console.log(error); // fetch 요청 중에 발생한 오류 기록
+    });
+}
+// JSON 형식의 아이템 이미지 URL을 받아와서 관련된 폼 데이터를 서버로 전송하는 함수
+function func_menu_updateAction_json(itemImageUrl) {
+  // 입력 요소들의 값을 가져오기
+  const inputItemNo = document.getElementById("inputItemNo").value;
+  const inputItemName = document.getElementById("inputItemName").value;
+  const inputItemCode = document.getElementById("inputItemCode").value;
+
+  var itemCate = document.getElementById("inputItemCate");
+  const inputItemCate = itemCate.options[itemCate.selectedIndex].value;
+
+  const inputItemRecommend =
+    document.getElementById("inputItemRecommend").value;
+  const inputItemPrice = document.getElementById("inputItemPrice").value;
+  //const itemImageUrl = document.getElementById("imgItemImageUrl").src;
+  const inputItemExplanation = document.getElementById(
+    "inputItemExplanation"
+  ).value;
+
+  // 서버에 전송할 파라미터 객체 생성
+  // 이때 MemberEdDto에 들어가있는 변수랑 이름이 같아야한다.
+  let params = {
+    itemNo: inputItemNo,
+    itemName: inputItemName,
+    itemCode: inputItemCode,
+    itemCate: inputItemCate,
+    itemRecommend: inputItemRecommend,
+    itemPrice: inputItemPrice,
+    itemImageUrl: itemImageUrl,
+    itemExplanation: inputItemExplanation,
+  };
+
+  // 서버로 POST 요청 보내기
+  fetch("/menuUpdateAction", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params),
+  })
+    .then((response) => {
+      console.log("response:" + response);
+      return response.json();
+    }) // 서버 응답
+    .then((json) => {
+      //{ status: "ok", result: 5 }
+      console.log("json:" + json);
+      // 원래 페이지로 이동
+      window.location.href = "/admin_menu";
+    }) // 실제 데이터
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
