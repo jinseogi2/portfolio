@@ -51,4 +51,5 @@ public class MainController {
     public String admin_notice_ed(){
         return "admin_notice_ed";
     }
+
 }

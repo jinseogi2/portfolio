@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 // 조진석
 @Controller
 public class Controller_1 {
-
     @Autowired
     private MemberRepository memberRepository;
 
@@ -26,5 +25,5 @@ public class Controller_1 {
     @Autowired
     private ItemRepository itemRepository;
 
-
 }
+
