@@ -57,6 +57,7 @@ public class Controller_3 {
     }
 
     @PostMapping("/func_notice_addAction")
+    @ResponseBody
     public ResultDto func_notice_addAction(@RequestBody NoticeAddDto noticeAddDto){
 
         // NoticeEdDto 가져온걸 Entity로 바꿔준다.

@@ -327,9 +327,9 @@ function readURL(input) {
 }
 
 // 메뉴 업데이트 작업이 트리거될 때 호출되는 함수
-//function func_notice_addAction() {
-//  image_upload(); // image_upload 함수 호출
-//}
+function func_notice_addAction() {
+  noticeUpload(); // image_upload 함수 호출
+}
 
 // fetch API를 사용하여 이미지 업로드를 처리하는 함수
 function noticeUpload() {
@@ -391,7 +391,7 @@ function func_notice_addAction_json(inputNoticeImgUrl) {
     noticeTitle : noticeTitle,
     noticeContent : noticeContent,
     noticeType: inputNoticeCate,
-    noticeImageUrl : fileName,
+    noticeImageUrl : inputNoticeImgUrl,
   };
 
   // 서버로 POST 요청 보내기
@@ -408,6 +408,7 @@ function func_notice_addAction_json(inputNoticeImgUrl) {
       //{ status: "ok", result: 5 }
       console.log("json:"+ json);
       // 원래 페이지로 이동
+
      // window.location.href = "/admin_notice";
     }) // 실제 데이터
     .catch((error) => {
