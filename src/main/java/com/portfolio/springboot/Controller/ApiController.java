@@ -131,6 +131,10 @@ public class ApiController {
         return resultDto;
     }
 
+    ////// 매뉴 추가
+    ////// 매뉴 추가
+    ////// 매뉴 추가
+    ////// 매뉴 추가
 
     @PostMapping("/menu_Add_upload")
     public ResultDto m_a_upload(@RequestParam MultipartFile file) throws IOException {
@@ -184,8 +188,36 @@ public class ApiController {
         return resultDto;
     }
 
+    //////// 매뉴 업데이트
+    //////// 매뉴 업데이트
+    //////// 매뉴 업데이트
+    //////// 매뉴 업데이트
 
+    @PostMapping("/menu_Update_upload")
+    public ResultDto m_upload(@RequestParam MultipartFile file) throws IOException {
 
+        String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+
+        if( !file.isEmpty() ){
+            File newFile = new File(newFileName);
+            file.transferTo( newFile );
+        }else {
+            ResultDto resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(0)
+                    .build();
+
+            return resultDto;
+        }
+
+        ResultDto resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .uploadFileName(newFileName)
+                .build();
+
+        return resultDto;
+    }
     @PostMapping("/menuUpdateAction")
     public ResultDto menuUpdateAction(@RequestBody ItemEdDto itemEdDto) {
 
@@ -236,8 +268,15 @@ public class ApiController {
 
 
 
-    @PostMapping("/menu_Update_upload")
-    public ResultDto m_upload(@RequestParam MultipartFile file) throws IOException {
+
+
+    ////// 공지사항 올리기
+    ////// 공지사항 올리기
+    ////// 공지사항 올리기
+    ////// 공지사항 올리기
+
+    @PostMapping("/notice_Add_upload")
+    public ResultDto n_a_pload(@RequestParam MultipartFile file) throws IOException {
 
         String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 
@@ -261,9 +300,31 @@ public class ApiController {
 
         return resultDto;
     }
+    @PostMapping("/noticeAddAction")
+    public ResultDto noticeAddAction(@RequestBody NoticeAddDto noticeAddDto) {
 
-    @PostMapping("/notice_upload")
-    public ResultDto n_upload(@RequestParam MultipartFile file) throws IOException {
+        noticeAddDto.setNoticeImageUrl("./upload/"+noticeAddDto.getNoticeImageUrl());
+
+        NoticeEntity noticeEntity = NoticeEntity.toEntity(noticeAddDto);
+
+        noticeRepository.save(noticeEntity);
+
+        ResultDto resultDto = null;
+
+        resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .build();
+
+        return resultDto;
+    }
+
+    ///// 공지사항 업데이트
+    ///// 공지사항 업데이트
+    ///// 공지사항 업데이트
+
+    @PostMapping("/notice_Update_upload")
+    public ResultDto n_u_pload(@RequestParam MultipartFile file) throws IOException {
 
         String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 

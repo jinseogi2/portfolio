@@ -1,5 +1,6 @@
 package com.portfolio.springboot.entity;
 
+import com.portfolio.springboot.dto.NoticeAddDto;
 import com.portfolio.springboot.dto.NoticeEdDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -40,6 +41,15 @@ public class NoticeEntity {
     public static NoticeEntity toEntity(NoticeEdDto dto) {
         return NoticeEntity.builder()
                 .noticeNo(dto.getNoticeNo())
+                .noticeType(dto.getNoticeType())
+                .noticeTitle(dto.getNoticeTitle())
+                .noticeContent(dto.getNoticeContent())
+                .noticeImageUrl(dto.getNoticeImageUrl())
+                .noticeDatetime(dto.getNoticeDatetime() != null ? dto.getNoticeDatetime() : LocalDateTime.now())
+                .build();
+    }
+    public static NoticeEntity toEntity(NoticeAddDto dto) {
+        return NoticeEntity.builder()
                 .noticeType(dto.getNoticeType())
                 .noticeTitle(dto.getNoticeTitle())
                 .noticeContent(dto.getNoticeContent())

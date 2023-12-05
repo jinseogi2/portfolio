@@ -25,45 +25,63 @@
         "
       >
         <img
-          style="width: 100%; height: 100%"
-          class="uploadImage"
-          src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"
+                id="imgNoticeImageUrl"
+                src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"
+                style="width: 50%; height: 50%"
+                class="uploadImage"
         />
-        <input style="display: block" type="file" id="input-image" />
         <button
-                id="sendButton"
-                type="button"
-                class="btn btn-danger"
-                onclick="fileUpLoad();"
-        > 올리기
+                type="file"
+                class="btn btn-primary"
+                onclick="notice_Add_onClickUpload();"
+        >
+          변경
+        </button>
+        <!--    저장할공간    -->
+        <input
+                type="file"
+                style="visibility: hidden"
+                id="inputNoticeImageUrl"
+                onchange="notice_Add_readURL(this);"
+        />
       </div>
       <!-- 수정하는 곳 -->
+      <select
+              id="inputNoticeType"
+              class="form-select"
+              style="width: 25%; height: 100%; margin-left: 15px"
+              name="inputNoticeType"
+      >
+        <option value="bagic">BAGIC</option>
+        <option value="event">EVENT</option>
+<!--        <option value="2">신상</option>-->
+      </select>
       <div class="edScreen m-3" style="width: 50%; height: 100%">
         <div class="form-floating d-flex m-3">
           <input
             type="text"
             class="form-control"
-            id="floatingName"
+            id="inputNoticeTitle"
             placeholder="제목"
           />
-          <label for="floatingName">제목</label>
+          <label for="inputNoticeTitle">제목</label>
         </div>
         <div class="noticeText m-3">
           <div class="form-floating">
             <textarea
               class="form-control"
               placeholder="Leave a comment here"
-              id="floatingInfo"
+              id="inputNoticeContent"
               style="height: 100px"
             ></textarea>
-            <label for="floatingInfo">상세정보</label>
+            <label for="inputNoticeContent">상세정보</label>
           </div>
         </div>
         <div class="m-3" style="padding-bottom: 20px">
           <tr>
             <td class="p-3">
-              <button type="button" class="btn btn-danger">추가하기</button>
-              <button type="button" class="btn btn-light">삭제</button>
+              <button type="button" class="btn btn-danger" onclick="func_notice_AddAction();">추가하기</button>
+              <button type="button" class="btn btn-light" onclick="window.history.back();">취소</button>
             </td>
           </tr>
         </div>

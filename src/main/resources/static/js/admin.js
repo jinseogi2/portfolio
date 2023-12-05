@@ -479,7 +479,7 @@ function notice_update_image_upload() {
   form.append("file", inputNoticeImageUrl.files[0], fileName);
 
   // "/upload" 엔드포인트로 POST 요청 보내기
-  fetch("/notice_upload", {
+  fetch("/notice_Update_upload", {
     method: "POST",
     headers: {},
     body: form, // 요청 본문에 FormData 객체 포함
@@ -525,6 +525,121 @@ function func_notice_updateAction_json(noticeImageUrl) {
 
   // 서버로 POST 요청 보내기
   fetch("/noticeUpdateAction", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params),
+  })
+    .then((response) => {
+      console.log("response:" + response);
+      return response.json();
+    }) // 서버 응답
+    .then((json) => {
+      //{ status: "ok", result: 5 }
+      console.log("json:" + json);
+      // 원래 페이지로 이동
+      window.location.href = "/admin_notice";
+    }) // 실제 데이터
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+
+
+//////////
+//////////   공지사항
+//////////   추가하기
+//////////
+
+// 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
+function notice_Add_onClickUpload() {
+  let inputNoticeImageUrl = document.getElementById("inputNoticeImageUrl");
+  inputNoticeImageUrl.click();
+}
+
+// 파일이 선택되면 선택한 이미지 미리보기를 표시하는 함수
+function notice_Add_readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      document.getElementById("imgNoticeImageUrl").src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById("imgNoticeImageUrl").src = "";
+  }
+
+  let inputItemImageUrl = document.getElementById("inputNoticeImageUrl");
+  console.log("input:file value:" + inputNoticeImageUrl.value);
+  console.log("files:" + inputNoticeImageUrl.files[0]);
+}
+
+// 메뉴 업데이트 작업이 트리거될 때 호출되는 함수
+function func_notice_AddAction() {
+  notice_Add_image_upload(); // image_upload 함수 호출
+}
+
+// fetch API를 사용하여 이미지 업로드를 처리하는 함수
+function notice_Add_image_upload() {
+  let inputNoticeImageUrl = document.getElementById("inputNoticeImageUrl");
+  console.log(inputNoticeImageUrl);
+
+  let fileUrl = inputNoticeImageUrl.value; // 파일 경로 가져오기
+  console.log(fileUrl);
+  let index = fileUrl.lastIndexOf("\\");
+  let fileName = fileUrl.substr(index + 1); // 경로에서 파일 이름 추출
+  console.log("fileName:" + fileName);
+
+  // 파일을 multipart/form-data 요청으로 보내기 위한 FormData 객체 생성
+  let form = new FormData();
+  form.enctype = "multipart/form-data";
+  form.append("file", inputNoticeImageUrl.files[0], fileName);
+
+  // "/upload" 엔드포인트로 POST 요청 보내기
+  fetch("/notice_Add_upload", {
+    method: "POST",
+    headers: {},
+    body: form, // 요청 본문에 FormData 객체 포함
+  })
+    .then((response) => {
+      console.log("response:" + response);
+      console.log("response:" + JSON.stringify(response));
+
+      return response.json(); // JSON 응답 파싱
+    })
+    .then((json) => {
+      //{ status: "ok", result: 5 }
+      console.log("json:" + json);
+      console.log("json:" + JSON.stringify(json));
+      console.log("uploadFileName:" + json.uploadFileName);
+
+      func_notice_AddAction_json(json.uploadFileName); // 얻은 uploadFileName을 사용하여 함수 호출
+    })
+    .catch((error) => {
+      console.log(error); // fetch 요청 중에 발생한 오류 기록
+    });
+}
+// JSON 형식의 아이템 이미지 URL을 받아와서 관련된 폼 데이터를 서버로 전송하는 함수
+function func_notice_AddAction_json(noticeImageUrl) {
+  // 입력 요소들의 값을 가져오기
+  var noticeType = document.getElementById("inputNoticeType");
+  const inputNoticeType = noticeType.options[noticeType.selectedIndex].value;
+
+  const inputNoticeTitle = document.getElementById("inputNoticeTitle").value;
+  const inputNoticeContent = document.getElementById("inputNoticeContent").value;
+
+
+  // 서버에 전송할 파라미터 객체 생성
+  // 이때 MemberEdDto에 들어가있는 변수랑 이름이 같아야한다.
+  let params = {
+    noticeType: inputNoticeType,
+    noticeTitle: inputNoticeTitle,
+    noticeContent: inputNoticeContent,
+    noticeImageUrl: noticeImageUrl,
+  };
+
+  // 서버로 POST 요청 보내기
+  fetch("/noticeAddAction", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(params),
