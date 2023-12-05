@@ -224,12 +224,15 @@ function menu_Add_image_upload() {
 function func_menu_AddAction_json(itemImageUrl) {
   // 입력 요소들의 값을 가져오기
    const inputItemName = document.getElementById("inputItemName").value;
+
   var itemCate = document.getElementById("inputItemCate");
   const inputItemCate = itemCate.options[itemCate.selectedIndex].value;
 
   const inputItemPrice = document.getElementById("inputItemPrice").value;
+
   var itemRecommend = document.getElementById("inputItemRecommend");
   const inputItemRecommend = itemRecommend.options[itemRecommend.selectedIndex].value;
+
   const inputItemExplanation = document.getElementById(
     "inputItemExplanation"
   ).value;
@@ -241,8 +244,8 @@ function func_menu_AddAction_json(itemImageUrl) {
     itemCate: inputItemCate,
     itemPrice: inputItemPrice,
     itemImageUrl: itemImageUrl,
-    itemRecommend,inputItemRecommend,
-    itemExplanation: inputItemExplanation
+    itemRecommend : inputItemRecommend,
+    itemExplanation : inputItemExplanation,
   };
 
   // 서버로 POST 요청 보내기
@@ -259,8 +262,7 @@ function func_menu_AddAction_json(itemImageUrl) {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
       // 원래 페이지로 이동
-       window.close();
-      //window.location.href = "/admin_menu";
+      // window.close();
     }) // 실제 데이터
     .catch((error) => {
       console.log(error);

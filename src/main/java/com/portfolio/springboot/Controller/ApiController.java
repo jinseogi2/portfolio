@@ -132,12 +132,42 @@ public class ApiController {
     }
 
 
-    @PostMapping("/noticeDeleteAction")
-    public ResultDto noticeDeleteAction(@RequestBody NoticeDeleteDto noticeDeleteDto) {
+    @PostMapping("/menu_Add_upload")
+    public ResultDto m_a_upload(@RequestParam MultipartFile file) throws IOException {
 
-        NoticeEntity noticeEntity = noticeRepository.findById(Long.valueOf(noticeDeleteDto.getNoticeNo())).get();
+        String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 
-        noticeRepository.delete(noticeEntity);
+        if( !file.isEmpty() ){
+            File newFile = new File(newFileName);
+            file.transferTo( newFile );
+        }else {
+            ResultDto resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(0)
+                    .build();
+
+            return resultDto;
+        }
+
+        ResultDto resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .uploadFileName(newFileName)
+                .build();
+
+        return resultDto;
+    }
+    @PostMapping("/menuAddAction")
+    public ResultDto menuAddAction(@RequestBody ItemAddDto itemAddDto){
+
+        ItemEntity newEntity = ItemEntity.toAddEntity(itemAddDto);
+
+        newEntity.setItemCode(UUID.randomUUID().toString());
+        System.out.println("itemCode : : " + newEntity.getItemCode());
+        newEntity.setItemUpdateDatetime(LocalDateTime.now());
+        System.out.println("dateTime : : " + newEntity.getItemUpdateDatetime());
+
+        itemRepository.save(newEntity);
 
         ResultDto resultDto = null;
 
@@ -148,6 +178,7 @@ public class ApiController {
 
         return resultDto;
     }
+
 
 
     @PostMapping("/menuUpdateAction")
@@ -199,50 +230,6 @@ public class ApiController {
     }
 
 
-    @PostMapping("/menu_Add_upload")
-    public ResultDto m_a_upload(@RequestParam MultipartFile file) throws IOException {
-
-        String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-
-        if( !file.isEmpty() ){
-            File newFile = new File(newFileName);
-            file.transferTo( newFile );
-        }else {
-            ResultDto resultDto = ResultDto.builder()
-                    .status("ok")
-                    .result(0)
-                    .build();
-
-            return resultDto;
-        }
-
-        ResultDto resultDto = ResultDto.builder()
-                .status("ok")
-                .result(1)
-                .uploadFileName(newFileName)
-                .build();
-
-        return resultDto;
-    }
-    @PostMapping("/menuAddAction")
-    public ResultDto menuAddAction(@RequestBody ItemAddDto itemAddDto){
-
-        ItemEntity itemEntity = ItemEntity.toEntity(itemAddDto);
-
-        itemEntity.setItemCode(UUID.randomUUID().toString());
-        itemEntity.setItemUpdateDatetime(LocalDateTime.now());
-
-        itemRepository.save(itemEntity);
-
-        ResultDto resultDto = null;
-
-        resultDto = ResultDto.builder()
-                .status("ok")
-                .result(1)
-                .build();
-
-        return resultDto;
-    }
 
     @PostMapping("/menu_Update_upload")
     public ResultDto m_upload(@RequestParam MultipartFile file) throws IOException {
@@ -322,6 +309,24 @@ public class ApiController {
 
         return resultDto;
     }
+
+    @PostMapping("/noticeDeleteAction")
+    public ResultDto noticeDeleteAction(@RequestBody NoticeDeleteDto noticeDeleteDto) {
+
+        NoticeEntity noticeEntity = noticeRepository.findById(Long.valueOf(noticeDeleteDto.getNoticeNo())).get();
+
+        noticeRepository.delete(noticeEntity);
+
+        ResultDto resultDto = null;
+
+        resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .build();
+
+        return resultDto;
+    }
+
 
 
 }

@@ -75,7 +75,7 @@ public class ItemEntity {
                 .itemExplanation(dto.getItemExplanation())
                 .build();
     }
-    public static ItemEntity toEntity(ItemAddDto dto){
+    public static ItemEntity toAddEntity(ItemAddDto dto){
         return ItemEntity.builder()
                 .itemName(dto.getItemName())
                 .itemCate(dto.getItemCate())

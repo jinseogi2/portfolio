@@ -31,6 +31,13 @@
   >
     변경
   </button>
+
+    <input
+            type="file"
+            style="visibility: hidden"
+            id="inputItemImageUrl"
+            onchange="menu_Add_readURL(this);"
+    />
   </div>
   <!--  -->
 
@@ -44,12 +51,7 @@
     <option value="1">추천</option>
     <option value="2">신상</option>
   </select>
-  <input
-          type="file"
-          style="visibility: hidden"
-          id="inputItemImageUrl"
-          onchange="menu_Add_readURL(this);"
-  />
+
 
   <!-- 메뉴 정보 입력 부분 -->
   <div class="form-floating d-flex m-3">
