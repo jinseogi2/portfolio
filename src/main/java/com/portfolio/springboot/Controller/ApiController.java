@@ -160,7 +160,12 @@ public class ApiController {
     @PostMapping("/menuAddAction")
     public ResultDto menuAddAction(@RequestBody ItemAddDto itemAddDto){
 
+
+
+        itemAddDto.setItemImageUrl("./upload/"+itemAddDto.getItemImageUrl());
+        
         ItemEntity newEntity = ItemEntity.toAddEntity(itemAddDto);
+
 
         newEntity.setItemCode(UUID.randomUUID().toString());
         System.out.println("itemCode : : " + newEntity.getItemCode());
