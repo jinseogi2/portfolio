@@ -37,7 +37,7 @@ public class ItemEntity {
     private Integer itemRecommend;
 
     @Column(name = "item_price", nullable = false)
-    private String itemPrice;
+    private Integer itemPrice;
 
     @Column(name = "item_image_url", nullable = false)
     private String itemImageUrl;
@@ -75,13 +75,12 @@ public class ItemEntity {
                 .itemExplanation(dto.getItemExplanation())
                 .build();
     }
-    public static ItemEntity itemEntity(ItemAddDto dto){
+    public static ItemEntity toEntity(ItemAddDto dto){
         return ItemEntity.builder()
-                .itemNo(dto.getItemNo())
                 .itemName(dto.getItemName())
                 .itemCate(dto.getItemCate())
-                .itemRecommend(dto.getItemRecommend())
                 .itemPrice(dto.getItemPrice())
+                .itemRecommend(dto.getItemRecommend())
                 .itemImageUrl(dto.getItemImageUrl())
                 .itemExplanation(dto.getItemExplanation())
                 .build();

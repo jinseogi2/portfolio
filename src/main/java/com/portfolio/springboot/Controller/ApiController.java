@@ -5,6 +5,7 @@ import com.portfolio.springboot.entity.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -129,6 +131,7 @@ public class ApiController {
         return resultDto;
     }
 
+
     @PostMapping("/noticeDeleteAction")
     public ResultDto noticeDeleteAction(@RequestBody NoticeDeleteDto noticeDeleteDto) {
 
@@ -178,8 +181,8 @@ public class ApiController {
 
 
 
-    @PostMapping("/itemDeleteAction")
-    public ResultDto itemDeleteAction(@RequestBody ItemDeleteDto itemDeleteDto) {
+    @PostMapping("/menuDeleteAction")
+    public ResultDto menuDeleteAction(@RequestBody ItemDeleteDto itemDeleteDto) {
 
         ItemEntity itemEntity = itemRepository.findById(Long.valueOf(itemDeleteDto.getItemNo())).get();
 
@@ -196,8 +199,8 @@ public class ApiController {
     }
 
 
-    @PostMapping("/item_upload")
-    public ResultDto upload(@RequestParam MultipartFile file) throws IOException {
+    @PostMapping("/menu_Add_upload")
+    public ResultDto m_a_upload(@RequestParam MultipartFile file) throws IOException {
 
         String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 
@@ -218,6 +221,104 @@ public class ApiController {
                 .result(1)
                 .uploadFileName(newFileName)
                 .build();
+
+        return resultDto;
+    }
+    @PostMapping("/menuAddAction")
+    public ResultDto menuAddAction(@RequestBody ItemAddDto itemAddDto){
+
+        ItemEntity itemEntity = ItemEntity.toEntity(itemAddDto);
+
+        itemEntity.setItemCode(UUID.randomUUID().toString());
+        itemEntity.setItemUpdateDatetime(LocalDateTime.now());
+
+        itemRepository.save(itemEntity);
+
+        ResultDto resultDto = null;
+
+        resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .build();
+
+        return resultDto;
+    }
+
+    @PostMapping("/menu_Update_upload")
+    public ResultDto m_upload(@RequestParam MultipartFile file) throws IOException {
+
+        String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+
+        if( !file.isEmpty() ){
+            File newFile = new File(newFileName);
+            file.transferTo( newFile );
+        }else {
+            ResultDto resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(0)
+                    .build();
+
+            return resultDto;
+        }
+
+        ResultDto resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .uploadFileName(newFileName)
+                .build();
+
+        return resultDto;
+    }
+
+    @PostMapping("/notice_upload")
+    public ResultDto n_upload(@RequestParam MultipartFile file) throws IOException {
+
+        String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+
+        if( !file.isEmpty() ){
+            File newFile = new File(newFileName);
+            file.transferTo( newFile );
+        }else {
+            ResultDto resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(0)
+                    .build();
+
+            return resultDto;
+        }
+
+        ResultDto resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .uploadFileName(newFileName)
+                .build();
+
+        return resultDto;
+    }
+    @PostMapping("/noticeUpdateAction")
+    public ResultDto noticeUpdateAction(@RequestBody NoticeEdDto noticeEdDto) {
+
+        noticeEdDto.setNoticeImageUrl("./upload/"+noticeEdDto.getNoticeImageUrl());
+
+        NoticeEntity noticeEntity = NoticeEntity.toEntity(noticeEdDto);
+
+        NoticeEntity newEntity = noticeRepository.save(noticeEntity);
+
+        ResultDto resultDto = null;
+
+        if( newEntity != null  ) {
+            //수정 성공
+            resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(1)
+                    .build();
+        }else{
+            //수정 실패
+            resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(0)
+                    .build();
+        }
 
         return resultDto;
     }

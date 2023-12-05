@@ -28,7 +28,7 @@
         &nbsp;&nbsp;<button
           type="file"
           class="btn btn-primary"
-          onclick="item_Update_onClickUpload();"
+          onclick="menu_Update_onClickUpload();"
         >
           변경
         </button>
@@ -38,7 +38,7 @@
           style="visibility: hidden"
           id="inputItemImageUrl"
           th:value="${item.itemImageUrl}"
-          onchange="item_Update_readURL(this);"
+          onchange="menu_Update_readURL(this);"
         />
       </div>
       <!-- 수정하는 곳 -->

@@ -11,19 +11,17 @@ import lombok.*;
 public class ItemAddDto {
     private String itemName;
     private String itemCate;
-    private String itemPrice;
+    private Integer itemPrice;
     private String itemImageUrl;
     private String itemExplanation;
-
-    // itemUpdateDatetime은 추가할 때는 자동으로 현재 시간으로 설정하도록 하면 됩니다.
-    // setter가 없으므로, 자동으로 현재 시간으로 설정됩니다.
-
+    private Integer itemRecommend;
     public static ItemAddDto toDto(ItemEntity entity) {
         return ItemAddDto.builder()
 
                 .itemName(entity.getItemName())
                 .itemCate(entity.getItemCate())
                 .itemPrice(entity.getItemPrice())
+                .itemRecommend(entity.getItemRecommend())
                 .itemImageUrl(entity.getItemImageUrl())
                 .itemExplanation(entity.getItemExplanation())
                 .build();

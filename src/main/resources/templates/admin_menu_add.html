@@ -20,22 +20,47 @@
   <div class="image-container" style="border: 1px solid lightgray; width: 30%; height: 350px">
     <img
             style="width: 100%; height: 100%"
-            id="ImageUrl"
+            class="ImageUrl"
+            id="imgItemImageUrl"
             src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"
     />
-    <input style="display: block" type="file" id="itemImageUrl" onchange="previewImage()" />
+    &nbsp;&nbsp;<button
+          type="file"
+          class="btn btn-primary"
+          onclick="menu_Add_onClickUpload();"
+  >
+    변경
+  </button>
   </div>
+  <!--  -->
+
+  <select
+          id="inputItemRecommend"
+          class="form-select"
+          style="width: 25%; height: 100%; margin-left: 15px"
+          name="itemRecommend"
+  >
+    <option value="0">일반</option>
+    <option value="1">추천</option>
+    <option value="2">신상</option>
+  </select>
+  <input
+          type="file"
+          style="visibility: hidden"
+          id="inputItemImageUrl"
+          onchange="menu_Add_readURL(this);"
+  />
 
   <!-- 메뉴 정보 입력 부분 -->
   <div class="form-floating d-flex m-3">
     <input
             type="text"
             class="form-control"
-            id="floatingInput"
+            id="inputItemName"
             placeholder="메뉴이름"
             name="itemName"
     />
-    <label for="floatingInput">메뉴이름</label>
+    <label for="inputItemName">메뉴이름</label>
   </div>
 
   <!-- 가격 입력 부분 -->
@@ -43,17 +68,17 @@
     <input
             type="text"
             class="form-control"
-            id="Price"
+            id="inputItemPrice"
             placeholder="가격"
             name="itemPrice"
     />
-    <label for="Price">가격</label>
+    <label for="inputItemPrice">가격</label>
   </div>
 
   <!-- 카테고리 선택 부분 -->
   <div class="kategorie d-flex justify-content-start">
     <select
-            id="Cate"
+            id="inputItemCate"
             class="form-select"
             style="width: 25%; height: 100%; margin-left: 15px"
             name="itemCate"
@@ -73,11 +98,11 @@
       <input
               class="form-control"
               placeholder="Leave a comment here"
-              id="Explanation"
+              id="inputItemExplanation"
               style="height: 100px"
               name="itemExplanation"
       >
-      <label for="Explanation">상세정보</label>
+      <label for="inputItemExplanation">상세정보</label>
     </div>
   </div>
 
@@ -86,7 +111,7 @@
     <table>
       <tr>
         <td class="p-3">
-          <a class="btn btn-primary" role="button" onclick="menuAddAction();">추가하기</a>
+          <a class="btn btn-primary" role="button" onclick="func_menu_AddAction();">추가하기</a>
           <a class="btn btn-danger" role="button">취소</a>
         </td>
       </tr>
@@ -98,63 +123,5 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"
 ></script>
-
-<script>
-  // 이미지 미리보기 함수
-  function previewImage() {
-    var preview = document.getElementById("ImageUrl");
-    var fileInput = document.getElementById("itemImageUrl");
-
-    var file = fileInput.files[0];
-
-    if (file) {
-      var reader = new FileReader();
-
-      reader.addEventListener("load", function () {
-        preview.src = reader.result;
-      });
-
-      reader.readAsDataURL(file);
-    }
-  }
-
-  // 메뉴 추가 액션 함수
-  function menuAddAction() {
-  let itemName = document.getElementById("floatingInput").value;
-  let itemPrice = document.getElementById("Price").value;
-  let itemCate = document.getElementById("Cate").value;
-  let itemExplanation = document.getElementById("Explanation").value;
-  let itemImageUrl = document.getElementById("itemImageUrl").value;
-
-  let params = {
-   itemName : itemName,
-   itemCate : itemCate,
-   itemPrice : itemPrice,
-   itemExplanation : itemExplanation,
-   itemImageUrl : itemImageUrl
-   }
-
-  // 서버로 데이터 전송
-  fetch('/admin_menu_add2', {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(params),
-  })
-    .then((response) => {
-      console.log("response:" + response);
-      return response.json();
-    }) //HTTP 응답
-    .then((json) => {
-      //{ status: "ok", result: 5 }
-      console.log("json:" + json);
-
-      //다음페이지로 이동
-<!--      window.location.href = "/admin_menu";-->
-    }) //실제 데이타
-    .catch((error) => {
-      console.log(error);
-    });
-}
-</script>
 </body>
 </html>

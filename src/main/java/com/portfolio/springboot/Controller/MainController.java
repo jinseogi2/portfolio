@@ -47,9 +47,4 @@ public class MainController {
         return "admin_notice_add";
     }
 
-    @GetMapping("/admin_notice_ed")
-    public String admin_notice_ed(){
-        return "admin_notice_ed";
-    }
-
 }

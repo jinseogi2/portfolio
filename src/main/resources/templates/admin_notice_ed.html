@@ -26,54 +26,63 @@
       >
         <!-- 서버에서 받아온 NoticeEdDto 객체의 이미지 URL을 표시하는 이미지 엘리먼트 -->
         <img
-          id="uploadImage"
+          id="imgNoticeImageUrl"
           th:src="${notice.noticeImageUrl}"
           style="width: 50%; height: 50%"
           class="uploadImage"
         />
+        <button
+                type="file"
+                class="btn btn-primary"
+                onclick="notice_Update_onClickUpload();"
+        >
+          변경
+        </button>
+      <!--    저장할공간    -->
         <input
-          style="display: block"
-          type="file"
-          id="noticeImageUrl"
-          onchange="fileUpLoad();"
+                type="file"
+                style="visibility: hidden"
+                id="inputNoticeImageUrl"
+                th:value="${notice.noticeImageUrl}"
+                onchange="notice_Update_readURL(this);"
         />
         <!--        <button id="sendButton" type="button" class="btn btn-danger" onclick="func_notice_updateAction();">확인</button>-->
       </div>
       <!-- 수정하는 곳 -->
       <div class="edScreen m-3" style="width: 50%; height: 100%">
-        <form id="updateForm">
+
           <!-- Hidden input for noticeNo -->
           <input
             type="hidden"
-            id="noticeDatetime"
+            id="inputNoticeDatetime"
             th:value="${notice.noticeDatetime}"
           />
           <input
             type="hidden"
-            id="noticeType"
+            id="inputNoticeType"
             th:value="${notice.noticeType}"
           />
-          <input type="hidden" id="noticeNo" th:value="${notice.noticeNo}" />
+          <input type="hidden" id="inputNoticeNo" th:value="${notice.noticeNo}" />
           <div class="form-floating d-flex m-3">
             <input
               type="text"
               class="form-control"
-              id="noticeTitle"
+              id="inputNoticeTitle"
               th:value="${notice.noticeTitle}"
               placeholder="제목"
             />
-            <label for="noticeTitle">제목</label>
+            <label for="inputNoticeTitle">제목</label>
           </div>
           <div class="noticeText m-3">
             <div class="form-floating">
               <textarea
                 class="form-control"
-                id="noticeContent"
+                id="inputNoticeContent"
                 style="height: 100px"
                 placeholder="Leave a comment here"
                 th:text="${notice.noticeContent}"
               ></textarea>
-              <label for="noticeContent">상세정보</label>
+              <label for="inputNoticeContent">상세정보</label>
             </div>
           </div>
           <div class="m-3" style="padding-bottom: 20px">
@@ -86,7 +95,6 @@
             </button>
             <a th:href="@{/admin_notice}" class="btn btn-light">취소</a>
           </div>
-        </form>
       </div>
     </div>
     <script

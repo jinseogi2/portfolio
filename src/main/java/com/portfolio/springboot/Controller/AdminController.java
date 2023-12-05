@@ -2,6 +2,7 @@ package com.portfolio.springboot.Controller;
 
 import com.portfolio.springboot.dto.ItemDto;
 import com.portfolio.springboot.dto.MemberDto;
+import com.portfolio.springboot.dto.NoticeDto;
 import com.portfolio.springboot.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,6 +69,19 @@ public class AdminController {
         return "admin_notice";
     }
 
+    @GetMapping("/admin_notice_ed")
+    public String adminNoticeUpdate(@RequestParam String noticeNo, Model model) {
+        NoticeEntity noticeEntity = noticeRepository.findById(Long.valueOf(noticeNo)).get();
+
+        if (noticeEntity != null) {
+            NoticeDto noticeDto = NoticeDto.toDto(noticeEntity);
+            model.addAttribute("notice", noticeDto);
+            return "admin_notice_ed";
+        } else {
+            // 공지사항이 없을 경우에 대한 처리
+            return "redirect:/admin_notice";
+        }
+    }
     @GetMapping("/admin_menu")
     public String admin_menu(Model model) {
         List<ItemEntity> listentity = itemRepository.findAll();
@@ -81,6 +95,7 @@ public class AdminController {
 
         return "admin_menu";
     }
+
 
     @GetMapping("/admin_menu_ed")
     public String adminmenuUpdate(@RequestParam String itemNo, Model model){
