@@ -108,7 +108,7 @@ function func_member_delete(memberNo) {
 }
 
 function func_admin_notice_add() {
-  window.location.href = "/admin_notice_add";
+ openNewWindow('admin_notice_add', 1000, 700);
 }
 
 function func_notice_ed(noticeNo) {
@@ -559,6 +559,7 @@ function func_notice_updateAction_json(noticeImageUrl) {
 
 // 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
 function notice_Add_onClickUpload() {
+
   let inputNoticeImageUrl = document.getElementById("inputNoticeImageUrl");
   inputNoticeImageUrl.click();
 }
