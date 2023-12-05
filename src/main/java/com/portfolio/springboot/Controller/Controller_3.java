@@ -4,6 +4,7 @@ import com.portfolio.springboot.dto.*;
 import com.portfolio.springboot.entity.MemberEntity;
 import com.portfolio.springboot.entity.NoticeEntity;
 import com.portfolio.springboot.entity.NoticeRepository;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class Controller_3 {
         return "admin_notice_add";
         }
 
-    @PostMapping("/admin_notice2")
+    @PostMapping("/admin_noticeAdd")
     @ResponseBody
 
     public ResultDto addNotice(@RequestBody NoticeDto noticeAddDto) {
@@ -54,9 +55,38 @@ public class Controller_3 {
 
         return resultDto;
     }
+
+    @PostMapping("/func_notice_addAction")
+    public ResultDto func_notice_addAction(@RequestBody NoticeAddDto noticeAddDto){
+
+        // NoticeEdDto 가져온걸 Entity로 바꿔준다.
+        NoticeEntity noticeEntity = NoticeEntity.toNoticeEntity(noticeAddDto);
+
+        noticeAddDto.setNoticeImageUrl("./upload/"+noticeAddDto.getNoticeImageUrl());
+
+
+        // 생성시간을 다시 넣어주기 위해서
+        noticeEntity.setNoticeDatetime(LocalDateTime.now());
+
+
+        // 업데이트
+       noticeRepository.save(noticeEntity);
+
+        ResultDto resultDto = null;
+
+        //포인트 수정 성공
+            resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(1)
+                    .build();
+
+
+        return resultDto;
+    }
+
     @PostMapping("/noticeUpload")
     @ResponseBody
-    public ResultDto noticeUpload(@RequestParam MultipartFile file) throws IOException {
+    public ResultDto upload(@RequestParam MultipartFile file) throws IOException {
 
         String newFileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 
@@ -81,33 +111,34 @@ public class Controller_3 {
         return resultDto;
     }
 
-    @PostMapping("/func_notice_addAction")
-    public ResultDto func_notice_addAction(@RequestBody NoticeAddDto noticeAddDto){
-
-        // NoticeEdDto 가져온걸 Entity로 바꿔준다.
-        NoticeEntity noticeEntity = NoticeEntity.toNoticeEntity(noticeAddDto);
-
-
-        // 생성시간을 다시 넣어주기 위해서
-        noticeEntity.setNoticeDatetime(LocalDateTime.now());
-
-
-        // 업데이트
-       noticeRepository.save(noticeEntity);
-
-        ResultDto resultDto = null;
-
-        //포인트 수정 성공
-            resultDto = ResultDto.builder()
-                    .status("ok")
-                    .result(1)
-                    .build();
-
-
-        return resultDto;
-    }
-
-
+//    @PostMapping("/NoticeAddAction")
+//    @ResponseBody
+//    public ResultDto NoticeAddAction(@RequestBody NoticeAddDto noticeAddDto) {
+//
+//        noticeAddDto.setNoticeImageUrl("./upload/"+noticeAddDto.getNoticeImageUrl());
+//
+//        NoticeEntity noticeEntity = NoticeEntity.toNoticeEntity(noticeAddDto);
+//
+//        NoticeEntity newEntity1 = noticeRepository.save(noticeEntity);
+//
+//        ResultDto resultDto = null;
+//
+//        if( newEntity1 != null  ) {
+//            //수정 성공
+//            resultDto = ResultDto.builder()
+//                    .status("ok")
+//                    .result(1)
+//                    .build();
+//        }else{
+//            //수정 실패
+//            resultDto = ResultDto.builder()
+//                    .status("ok")
+//                    .result(0)
+//                    .build();
+//        }
+//
+//        return resultDto;
+//    }
 
 }
 

@@ -302,10 +302,11 @@ function func_item_delete(itemNo) {
 }
 
 //공지 사항 추가 함수
+let inputNoticeImageUrl = document.getElementById("inputNoticeImgUrl");
 // 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
 function onClickNoticeAdd() {
-  let inputItemImageUrl = document.getElementById("inputNoticeImgUrl");
-  inputItemImageUrl.click();
+  let inputNoticeImageUrl = document.getElementById("inputNoticeImgUrl");
+  inputNoticeImgUrl.click();
 }
 
 // 파일이 선택되면 선택한 이미지 미리보기를 표시하는 함수
@@ -320,19 +321,19 @@ function readURL(input) {
     document.getElementById("notice_add_img").src = "";
   }
 
-  let inputItemImageUrl = document.getElementById("inputNoticeImgUrl");
+  let inputNoticeImageUrl = document.getElementById("inputNoticeImgUrl");
   console.log("input:file value:" + inputNoticeImgUrl.value);
   console.log("files:" + inputNoticeImgUrl.files[0]);
 }
 
 // 메뉴 업데이트 작업이 트리거될 때 호출되는 함수
-function func_menu_updateAction_json() {
-  image_upload(); // image_upload 함수 호출
-}
+//function func_notice_addAction() {
+//  image_upload(); // image_upload 함수 호출
+//}
 
 // fetch API를 사용하여 이미지 업로드를 처리하는 함수
-function image_upload() {
-  let inputItemImageUrl = document.getElementById("inputNoticeImgUrl");
+function noticeUpload() {
+  let inputNoticeImgUrl = document.getElementById("inputNoticeImgUrl");
   console.log(inputNoticeImgUrl);
 
   let fileUrl = inputNoticeImgUrl.value; // 파일 경로 가져오기
@@ -372,11 +373,14 @@ function image_upload() {
     });
 }
 // JSON 형식의 아이템 이미지 URL을 받아와서 관련된 폼 데이터를 서버로 전송하는 함수
-function func_notice_addAction(inputNoticeImgUrl) {
+function func_notice_addAction_json(inputNoticeImgUrl) {
   // 입력 요소들의 값을 가져오기
-  const noticeTitle = document.getElementById("floatingName").value;
-  const noticeContent = document.getElementById("floatingInfo").value;
+  const noticeTitle = document.getElementById("inputNoticeName").value;
+  const noticeContent = document.getElementById("inputNoticeInfo").value;
   const noticeImageUrl = document.getElementById("inputNoticeImgUrl").value
+  let index = noticeImageUrl.lastIndexOf("\\");
+    let fileName = noticeImageUrl.substr(index + 1); // 경로에서 파일 이름 추출
+    console.log("fileName:" + fileName);
 
   var noticeType = document.getElementById("noticeType");
   var inputNoticeCate = noticeType.options[noticeType.selectedIndex].value;
@@ -387,11 +391,11 @@ function func_notice_addAction(inputNoticeImgUrl) {
     noticeTitle : noticeTitle,
     noticeContent : noticeContent,
     noticeType: inputNoticeCate,
-    noticeImageUrl : noticeImageUrl,
+    noticeImageUrl : fileName,
   };
 
   // 서버로 POST 요청 보내기
-  fetch("/admin_notice2", {
+  fetch("/admin_noticeAdd", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(params),
@@ -402,9 +406,9 @@ function func_notice_addAction(inputNoticeImgUrl) {
     }) // 서버 응답
     .then((json) => {
       //{ status: "ok", result: 5 }
-      console.log("json:" + json);
+      console.log("json:"+ json);
       // 원래 페이지로 이동
-      window.location.href = "/admin_notice";
+     // window.location.href = "/admin_notice";
     }) // 실제 데이터
     .catch((error) => {
       console.log(error);
