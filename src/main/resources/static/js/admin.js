@@ -434,6 +434,12 @@ function func_menu_delete(itemNo) {
 //업데이트//
 //////////
 
+//공지사항 새창 띄우는 함수
+function openNewWindow(url, width, height) {
+    var options = 'width=' + width + ',height=' + height;
+    window.open(url, '_blank', options);
+  }
+
 // 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
 function notice_Update_onClickUpload() {
   let inputNoticeImageUrl = document.getElementById("inputNoticeImageUrl");
