@@ -22,7 +22,6 @@
       crossorigin="anonymous"
     />
   </head>
-
   <body>
     <!-- 관리자 페이지 컨테이너 -->
     <div class="myContainer">
@@ -106,9 +105,8 @@
           <!-- 추가 버튼 -->
           <div class="addBtn d-flex justify-content-end">
             <button
-              class="text-white bg-dark m-3"
-              onclick="func_admin_notice_add();
-                             "
+              class="btn btn-primary m-3"
+              onclick="func_admin_notice_add();"
             >
               게시물 추가
             </button>
@@ -116,6 +114,7 @@
 
           <!-- 공지사항 목록 테이블 -->
           <table class="table">
+            <!-- 공지사항 헤더 -->
             <thead>
               <tr>
                 <th scope="col">번호</th>
@@ -126,32 +125,48 @@
               </tr>
             </thead>
             <tbody>
+              <!-- 공지사항이 없을시 출력되는 문구 -->
               <tr th:if="${#lists.isEmpty(list)}">
                 <td colspan="5">공지가 없습니다.</td>
               </tr>
 
-              <tr class="noticeBox w-100" th:each="notice, status:${list}">
-                <th class="p-4 w-10" scope="row" style="width: 5%">
+              <tr
+                class="noticeBox"
+                style="width: 100%"
+                th:each="notice, status:${list}"
+              >
+                <!-- 공지사항 갯수 카운트 -->
+                <th class="p-4" scope="row" style="width: 5%">
                   <span th:text="${status.count}"></span>
                 </th>
-
-                <td class="p-4 w-20">
+                <!-- 공지사항 배너 -->
+                <td class="p-4" style="width: 30%">
+                  <!-- 이미지 -->
                   <img
-                    style="width: 20%; height: 20%"
+                    style="width: 50%; height: 40%"
                     th:src="${notice.noticeImageUrl}"
                   />
                 </td>
-                <td class="p-4 w-30" style="width: 10%">
+                <!-- 공지사항 제목 -->
+                <td class="p-4" style="width: 20%">
                   <span th:text="${notice.noticeTitle}"></span>
                 </td>
-                <td class="w-10">
+                <!-- 공지사항 내용 -->
+                <td style="width: 25%">
                   <span th:text="${notice.noticeContent}"></span>
                 </td>
-                <td class="p-4 w-20" style="width: 20%">
-                  <button th:onclick="|func_notice_ed(${notice.noticeNo});|">
+                <!-- 공지사항 수정/삭제 버튼 -->
+                <td class="p-4" style="width: 20%">
+                  <!-- 수정 -->
+                  <button
+                    class="btn btn-primary"
+                    th:onclick="|func_notice_ed(${notice.noticeNo});|"
+                  >
                     수정
                   </button>
+                  <!-- 삭제 -->
                   <button
+                    class="btn btn-danger"
                     th:onclick="|func_notice_delete(${notice.noticeNo});|"
                   >
                     삭제

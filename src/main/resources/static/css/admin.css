@@ -149,15 +149,6 @@
   height: 20%;
 }
 
-/* 추가 버튼 설정 */
-.addBtn > a {
-  background-color: black;
-  color: white;
-}
-.addBtn > a:hover {
-  background-color: black;
-  color: white;
-}
 td > img {
   width: 40%;
   height: 80%;
