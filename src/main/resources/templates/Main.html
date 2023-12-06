@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>메인화면</title>
     <link rel="stylesheet" href="/css/Main.css" />
+    <script src="/js/Main.js"></script>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="js/Main.js"></script>
+
 
     <!-- Link Swiper's CSS -->
     <link
@@ -48,11 +49,11 @@
       <div class="nav">
         <div id="username" th:text="|${user.memberName} 님|">사용자이름</div>
         <div id="navbtn">
-          <div id="navbtn-1">
+          <div id="navbtn-1" onclick="stampPage();">
             <div id="navbtnimg">
               <img src="/img/main/stamp.png" alt="" />
             </div>
-            <div id="navbtntext" th:text="|스탬프 ${user.memberStamp}개|">스탬프갯수</div>
+            <div id="navbtntext" th:text="|스탬프 ${user.memberStamp}|">스탬프갯수</div>
           </div>
           <div id="navbtn-1">
             <div id="navbtnimg">
@@ -73,8 +74,10 @@
         <div class="swiper mySwiper" id="asswiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide" id="asslide"  th:each ="item,status:${ilist}">
-              <img th:src="${item.itemImageUrl}" alt="" />
-              <div th:text="${item.itemName}"></div>
+              <div id="asslide_imgbox">
+                <img th:src="${item.itemImageUrl}" alt="" />
+              </div>
+              <div id="asslide_textbox" th:text="${item.itemName}"></div>
             </div>
           </div>
           <!-- <div class="swiper-pagination"></div> -->
@@ -89,8 +92,10 @@
         <div class="swiper mySwiper2" id="noswiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide" id="noslide" th:each="notice, status:${notice}">
-              <img th:src="${notice.noticeImageUrl}" />
-              <div th:text="${notice.noticeTitle}"></div>
+              <div id="noslide_imgbox">
+                <img th:src="${notice.noticeImageUrl}" />
+              </div>
+              <div id="noslide_textbox" th:text="${notice.noticeTitle}"></div>
             </div>
           </div>
           <!-- <div class="swiper-pagination"></div> -->

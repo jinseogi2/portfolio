@@ -15,6 +15,10 @@ window.location.href="/payCard";
 function mainPage(){
 window.location.href="/main";
 }
+function stampPage(){
+window.location.href="/stampPage";
+}
+
 // 이미지 롤링을 처리하는 함수
 function event_rollimg() {
   // 이미지 목록 요소들을 가져옴

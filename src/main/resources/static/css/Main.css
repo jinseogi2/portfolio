@@ -88,13 +88,12 @@ body {
   margin-left: 15px;
 }
 #navbtn-1 {
-  width: 25%;
+  width: 30%;
   height: 100%;
   display: flex;
 }
 #navbtnimg,
 #navbtntext {
-  width: 35%;
   height: 100%;
 }
 
@@ -102,10 +101,11 @@ body {
 #navbtntext {
   line-height: 50px;
   margin-left: 5px;
-  width: 40%;
+  width: 50%;
 }
 /* 스탬프,쿠폰이미지 div */
 #navbtnimg {
+ width: 27%;
   margin-left: 20px;
 }
 #navbtnimg > img {
@@ -161,14 +161,18 @@ body {
 
 #asslide {
   text-align: center;
-  font-size: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-
-#asslide img {
+#asslide_imgbox{
+    height: 80%;
+}
+#asslide_textbox{
+    height: 20%;
+}
+#asslide_imgbox img {
   width: 100%;
   height: 100%;
 }
@@ -195,49 +199,31 @@ body {
 
 #noslide {
   text-align: center;
-  font-size: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-
-#noslide img {
+#noslide_imgbox{
+height : 80%;
+}
+#noslide_textbox{
+height : 20%;
+}
+#noslide_imgbox img {
   width: 100%;
   height: 100%;
 }
 
-/* 모달 스타일링을 위한 CSS 추가 */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.9);
+#notext1{
+    font-weight : 800;
+    margin-left: 20px;
 }
-
-.modal-content {
-  position: relative;
-  margin: 5% auto;
-  padding: 20px;
-  width: 80%;
-  max-width: 700px;
+#notext2{
+    color : blue;
+    font-size : 14px;
+    margin-right: 20px;
 }
-
-.close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 30px;
-  color: #fff;
-  cursor: pointer;
-}
-
 /* 푸터 하단메뉴*/
 .footer {
   z-index: 1;

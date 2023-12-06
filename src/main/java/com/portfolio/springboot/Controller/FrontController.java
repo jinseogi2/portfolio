@@ -146,5 +146,22 @@ public class FrontController {
 
         return "Lastpage";
     }
+
+    @GetMapping("/stampPage")
+    public String stampPage(Model model, HttpServletRequest request){
+        // 세션에서 로그인한 사용자의 아이디와 비밀번호를 가져옵니다.
+        String loginId = (String) request.getSession().getAttribute("loginId");
+        String loginPw = (String) request.getSession().getAttribute("loginPw");
+
+        // 로그인한 사용자의 아이디와 비밀번호로 회원 정보를 데이터베이스에서 조회합니다.
+        List<MemberEntity> mlist = memberRepository.findByMemberIdAndMemberPw(loginId, loginPw);
+
+        // 조회된 회원 정보 중 첫 번째 회원을 가져옵니다.
+        MemberEntity user = mlist.get(0);
+
+        model.addAttribute("user",user);
+
+        return "stamp";
+    }
 }
 
