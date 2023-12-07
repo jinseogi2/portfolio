@@ -117,6 +117,36 @@ function modal_item_on(element) {
 }
 
 function modal_item_off(){
-  var modal = document.querySelector('.modal_item');
-  modal.style.display = 'none';
+    var modal = document.querySelector('.modal_item');
+    modal.style.display = 'none';
+}
+
+
+function modal_barcode_on() {
+    var modal = document.querySelector('.modal_barcode');
+    var overlay = document.getElementById('modalOverlay');
+
+    modal.style.display = 'block';
+    overlay.style.display = 'block';
+
+    // 모달 외부를 클릭할 때 closeModal 함수 호출
+    function clickHandler(event) {
+        event.stopPropagation(); // 이벤트 전파 중지
+        if (!modal.contains(event.target)) {
+            // 모달 외부를 클릭한 경우에만 closeModal 함수 호출
+            closeModal();
+        }
+    }
+
+    // 모달 외부 클릭 이벤트 등록
+    window.addEventListener('click', clickHandler, true);
+
+    // 모달을 닫는 함수
+    function closeModal() {
+        modal.style.display = 'none';
+        overlay.style.display = 'none';
+
+        // 모달 외부 클릭 이벤트 제거
+        window.removeEventListener('click', clickHandler, true);
+    }
 }

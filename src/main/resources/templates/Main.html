@@ -31,7 +31,28 @@
     </table>
   </div>
 
-  <!--  모달창 띄우기 -->
+
+  <!-- 모달 오버레이 요소 -->
+  <div class="modal_overlay" id="modalOverlay"></div>
+
+  <!--  바코드 모달창 띄우기 -->
+  <div class="modal_barcode">
+    <div class="barcode_box row">
+      <div class="barcode_main">
+        <div class="barcode_logo">
+          <img src="/img/main/blacklogo.png" alt="">
+        </div>
+        <div class="barcode_text">
+          맴버십 바코드
+        </div>
+      </div>
+      <div class="barcode_img">
+        <img src="/img/main/barcode.png" alt="">
+      </div>
+      <div class="barcode_footer">흔들면 맴버십 바코드가 나와요!</div>
+    </div>
+  </div>
+  <!--  아이탬 모달창 띄우기 -->
   <div class="modal_item">
     <div class="row item_box">
       <div class="item_img col">
@@ -52,14 +73,17 @@
       <div class="item_cancel" onclick="modal_item_off();">닫기</div>
     </div> 
   </div>
-
+  <!-- 본내용 -->
+  <!-- ************ -->
+  <!-- ************ -->
+  <!-- ************ -->
   <div class="wrap">
       <div id="mainimg">
         <img id="roll" src="/img/notice/notice1.jpg" alt="롤이미지" />
       </div>
       <div class="header">
         <div id="himg">
-          <div id="himg-1">
+          <div id="himg-1" onclick="modal_barcode_on();">
             <img src="/img/main/m1.png" alt="바코드" />
           </div>
           <div id="himg-2">
