@@ -17,11 +17,20 @@ function click_order() {
   window.location.href = "/admin_order";
 }
 
-function func_member_ed(memberNo) {
-  window.location.href = "/admin_member_ed?memberNo=" + memberNo;
-}
+// function func_member_ed(memberNo) {
+//   window.location.href = "/admin_member_ed?memberNo=" + memberNo;
+// }
 function func_menu_ed(itemNo) {
   window.location.href = "/admin_menu_ed?itemNo=" + itemNo;
+}
+
+//멤버 수정 페이지를 새창으로 여는함수
+function func_member_ed(memberNo) {
+  window.open(
+    "/admin_member_ed?memberNo=" + memberNo,
+    "_blank",
+    "width=502, height=575"
+  );
 }
 
 function func_member_updateAction() {
@@ -107,13 +116,6 @@ function func_member_delete(memberNo) {
     });
 }
 
-function func_admin_notice_add() {
- openNewWindow('admin_notice_add', 1000, 700);
-}
-
-
-
-
 function func_notice_delete(noticeNo) {
   const result = confirm("삭제할까요?");
   if (result == false) {
@@ -145,12 +147,10 @@ function func_notice_delete(noticeNo) {
     });
 }
 
-
 //////////
 ////////// 상품 추가하기
 //////////
 //////////
-
 
 function menu_Add_onClickUpload() {
   let inputItemImageUrl = document.getElementById("inputItemImageUrl");
@@ -222,7 +222,7 @@ function menu_Add_image_upload() {
 // JSON 형식의 아이템 이미지 URL을 받아와서 관련된 폼 데이터를 서버로 전송하는 함수
 function func_menu_AddAction_json(itemImageUrl) {
   // 입력 요소들의 값을 가져오기
-   const inputItemName = document.getElementById("inputItemName").value;
+  const inputItemName = document.getElementById("inputItemName").value;
 
   var itemCate = document.getElementById("inputItemCate");
   const inputItemCate = itemCate.options[itemCate.selectedIndex].value;
@@ -230,7 +230,8 @@ function func_menu_AddAction_json(itemImageUrl) {
   const inputItemPrice = document.getElementById("inputItemPrice").value;
 
   var itemRecommend = document.getElementById("inputItemRecommend");
-  const inputItemRecommend = itemRecommend.options[itemRecommend.selectedIndex].value;
+  const inputItemRecommend =
+    itemRecommend.options[itemRecommend.selectedIndex].value;
 
   const inputItemExplanation = document.getElementById(
     "inputItemExplanation"
@@ -243,8 +244,8 @@ function func_menu_AddAction_json(itemImageUrl) {
     itemCate: inputItemCate,
     itemPrice: inputItemPrice,
     itemImageUrl: itemImageUrl,
-    itemRecommend : inputItemRecommend,
-    itemExplanation : inputItemExplanation,
+    itemRecommend: inputItemRecommend,
+    itemExplanation: inputItemExplanation,
   };
 
   // 서버로 POST 요청 보내기
@@ -267,7 +268,6 @@ function func_menu_AddAction_json(itemImageUrl) {
       console.log(error);
     });
 }
-
 
 ///////////
 /////////// 상품 변경하기
@@ -439,12 +439,12 @@ function func_menu_delete(itemNo) {
 //}
 function func_notice_ed(noticeNo) {
   // 새 창을 열어서 페이지 이동
-  openNewWindow('/admin_notice_ed?noticeNo=' + noticeNo, 1135, 390);
+  openNewWindow("/admin_notice_ed?noticeNo=" + noticeNo, 1135, 390);
 }
 
 // openNewWindow 함수 정의
 function openNewWindow(url, width, height) {
-  window.open(url, '_blank', 'width=' + width + ', height=' + height);
+  window.open(url, "_blank", "width=" + width + ", height=" + height);
 }
 
 // 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
@@ -520,10 +520,12 @@ function func_notice_updateAction_json(noticeImageUrl) {
   // 입력 요소들의 값을 가져오기
   const inputNoticeNo = document.getElementById("inputNoticeNo").value;
   const inputNoticeTitle = document.getElementById("inputNoticeTitle").value;
-  const inputNoticeDatetime = document.getElementById("inputNoticeDatetime").value;
+  const inputNoticeDatetime = document.getElementById(
+    "inputNoticeDatetime"
+  ).value;
   const inputNoticeType = document.getElementById("inputNoticeType").value;
-  const inputNoticeContent = document.getElementById("inputNoticeContent").value;
-
+  const inputNoticeContent =
+    document.getElementById("inputNoticeContent").value;
 
   // 서버에 전송할 파라미터 객체 생성
   // 이때 MemberEdDto에 들어가있는 변수랑 이름이 같아야한다.
@@ -557,16 +559,18 @@ function func_notice_updateAction_json(noticeImageUrl) {
     });
 }
 
-
-
 //////////
 //////////   공지사항
 //////////   추가하기
 //////////
 
+// 공지사항 추가하기를 새창으로 여는 함수
+function func_admin_notice_add() {
+  openNewWindow("admin_notice_add", 1135, 450);
+}
+
 // 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
 function notice_Add_onClickUpload() {
-
   let inputNoticeImageUrl = document.getElementById("inputNoticeImageUrl");
   inputNoticeImageUrl.click();
 }
@@ -640,8 +644,8 @@ function func_notice_AddAction_json(noticeImageUrl) {
   const inputNoticeType = noticeType.options[noticeType.selectedIndex].value;
 
   const inputNoticeTitle = document.getElementById("inputNoticeTitle").value;
-  const inputNoticeContent = document.getElementById("inputNoticeContent").value;
-
+  const inputNoticeContent =
+    document.getElementById("inputNoticeContent").value;
 
   // 서버에 전송할 파라미터 객체 생성
   // 이때 MemberEdDto에 들어가있는 변수랑 이름이 같아야한다.
@@ -672,4 +676,3 @@ function func_notice_AddAction_json(noticeImageUrl) {
       console.log(error);
     });
 }
-

@@ -107,7 +107,7 @@
             <button
               class="btn btn-primary"
               onclick="func_admin_notice_add();"
-              style="margin: 10px 110px 10px 0"
+              style="margin: 10px 95px 10px 0"
             >
               게시물 추가
             </button>
@@ -144,6 +144,7 @@
                 <td class="p-4" style="width: 30%">
                   <!-- 이미지 -->
                   <img
+                    class="admin_notice_img"
                     style="width: 50%; height: 40%"
                     th:src="${notice.noticeImageUrl}"
                   />
@@ -161,7 +162,6 @@
                   <!-- 수정 -->
                   <button
                     class="btn btn-primary"
-
                     th:onclick="|func_notice_ed(${notice.noticeNo});|"
                   >
                     수정
