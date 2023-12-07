@@ -27,6 +27,93 @@ body {
   padding-bottom: 50px;
 }
 
+/* ---------- */
+/* ---------- */
+/* 모달 아이탬 */
+/* ---------- */
+/* ---------- */
+
+.modal_item{
+  position: absolute;
+  display: none;
+  top: 90%;
+  width: 350px;
+  height: 600px;
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgb(34, 36, 38, 0.15);
+  transform: translateY(-50%);
+  z-index: 3;
+}
+.item_box{
+  width: 100%;
+  height: 100%;
+}
+.item_img{
+  width: 100%;
+  height: 40%;
+}
+.item_img img {
+  width: 100%;
+  height: 100%;
+}
+.item_name{
+  width: 100%;
+  height: 5%;
+}
+.item_text{
+  width: 100%;
+  height: 15%;
+}
+.item_btn{
+  width: 100%;
+  height: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.itembtn{
+  width: 40%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: rgb(129, 27, 27);
+}
+.item_cancel{ 
+    width: 100%;
+    height: 60px; /* 높이를 원하는 값으로 조정하세요 */
+    padding: 10px 20px; /* 패딩을 .modal_item의 값과 동일하게 조정 */
+    box-sizing: border-box; /* 패딩을 높이에 포함시키기 위해 box-sizing 추가 */
+    background-color: rgb(172, 170, 170);
+    line-height: 40px; /* 센터 정렬을 위한 line-height 값 조정 */
+}
+.itembtnimg{
+  margin-top: 20px;
+  width: 50%;
+  height: 50%;
+}
+.itembtnimg img{
+filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) contrast(100%);
+  width: 70%;
+  height: 80%;
+}
+.itembtntext{
+  width: 50%;
+  height: 50%;
+  color: white;
+}
+
+
+/* ******************** */
+/* ******************** */
+/* ******************** */
+/* ******************** */
+/* ******************** */
+
 /* 해더 메인해더*/
 .header {
   width: 100%;
