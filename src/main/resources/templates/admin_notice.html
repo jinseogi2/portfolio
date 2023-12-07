@@ -105,8 +105,9 @@
           <!-- 추가 버튼 -->
           <div class="addBtn d-flex justify-content-end">
             <button
-              class="btn btn-primary m-3"
+              class="btn btn-primary"
               onclick="func_admin_notice_add();"
+              style="margin: 10px 110px 10px 0"
             >
               게시물 추가
             </button>
@@ -148,11 +149,11 @@
                   />
                 </td>
                 <!-- 공지사항 제목 -->
-                <td class="p-4" style="width: 20%">
+                <td class="p-4" style="width: 15%">
                   <span th:text="${notice.noticeTitle}"></span>
                 </td>
                 <!-- 공지사항 내용 -->
-                <td style="width: 25%">
+                <td style="width: 30%">
                   <span th:text="${notice.noticeContent}"></span>
                 </td>
                 <!-- 공지사항 수정/삭제 버튼 -->
@@ -160,6 +161,7 @@
                   <!-- 수정 -->
                   <button
                     class="btn btn-primary"
+
                     th:onclick="|func_notice_ed(${notice.noticeNo});|"
                   >
                     수정

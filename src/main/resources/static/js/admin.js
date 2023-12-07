@@ -111,9 +111,8 @@ function func_admin_notice_add() {
  openNewWindow('admin_notice_add', 1000, 700);
 }
 
-function func_notice_ed(noticeNo) {
-  window.location.href = "/admin_notice_ed?noticeNo=" + noticeNo;
-}
+
+
 
 function func_notice_delete(noticeNo) {
   const result = confirm("삭제할까요?");
@@ -435,10 +434,18 @@ function func_menu_delete(itemNo) {
 //////////
 
 //공지사항 새창 띄우는 함수
+//function func_notice_ed(noticeNo) {
+//  window.location.href = "/admin_notice_ed?noticeNo=" + noticeNo;
+//}
+function func_notice_ed(noticeNo) {
+  // 새 창을 열어서 페이지 이동
+  openNewWindow('/admin_notice_ed?noticeNo=' + noticeNo, 1135, 390);
+}
+
+// openNewWindow 함수 정의
 function openNewWindow(url, width, height) {
-    var options = 'width=' + width + ',height=' + height;
-    window.open(url, '_blank', options);
-  }
+  window.open(url, '_blank', 'width=' + width + ', height=' + height);
+}
 
 // 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
 function notice_Update_onClickUpload() {

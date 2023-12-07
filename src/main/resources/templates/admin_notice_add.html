@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>메뉴 수정/삭제</title>
+    <title>메뉴 추가</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -11,35 +11,34 @@
       crossorigin="anonymous"
     />
     <script src="js/admin.js"></script>
-    <link
-      rel="stylesheet"
-      href="/portfolio/src/main/resources/static/css/admin_ed.css"
-    />
+    <link rel="stylesheet" href="/css/admin_ed.css" />
   </head>
   <body>
-    <div class="myContainer d-flex justify-content-start">
+    <!-- 전체 컨테이너 -->
+    <div class="myContainer">
+      <!-- 왼쪽 컨테이너 -->
       <div
         class="image-container"
-        style="
-          border-right: 1px solid black;
-          width: 100%;
-          height: 100%;
-          padding-bottom: 30px;
-        "
+        style="border-right: 1px solid lightgray; width: 50%; height: 100%"
       >
-        <img
-          id="imgNoticeImageUrl"
-          src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"
-          style="width: 50%; height: 50%"
-          class="uploadImage"
-        />
-        <button
-          type="file"
-          class="btn btn-primary"
-          onclick="notice_Add_onClickUpload();"
-        >
-          변경
-        </button>
+        <div class="addImg m-3">
+          <img
+            id="imgNoticeImageUrl"
+            src="https://dummyimage.com/480x270/ffffff/000000.png&text=preview+image"
+            style="width: 90%; height: 100%; margin-top: 50px"
+            class="uploadImage"
+          />
+        </div>
+        <div id="addImgBtn">
+          <button
+            type="file"
+            class="btn btn-primary"
+            onclick="notice_Add_onClickUpload();"
+            style="margin-top: 10px"
+          >
+            변경
+          </button>
+        </div>
         <!--    저장할공간    -->
         <input
           type="file"
@@ -48,57 +47,56 @@
           onchange="notice_Add_readURL(this);"
         />
       </div>
-      <!-- 수정하는 곳 -->
-      <select
-        id="inputNoticeType"
-        class="form-select"
-        style="width: 25%; height: 100%; margin-left: 15px"
-        name="inputNoticeType"
-      >
-        <option value="bagic">BAGIC</option>
-        <option value="event">EVENT</option>
-        <!--        <option value="2">신상</option>-->
-      </select>
-      <div class="edScreen m-3" style="width: 50%; height: 100%">
-        <div class="form-floating d-flex m-3">
+      <!-- 오른쪽 컨테이너 -->
+      <div class="addBox" style="width: 50%; height: 100%">
+        <div class="noticeInfo" style="height: 20%">
+          <select
+            id="inputNoticeType"
+            class="form-select"
+            style="width: 25%"
+            name="inputNoticeType"
+          >
+            <option value="bagic">BAGIC</option>
+            <option value="event">EVENT</option>
+          </select>
+        </div>
+
+        <div class="form-floating" style="height: 20%">
           <input
             type="text"
             class="form-control"
             id="inputNoticeTitle"
             placeholder="제목"
+            style="width: 80%; height: 100%"
           />
           <label for="inputNoticeTitle">제목</label>
         </div>
-        <div class="noticeText m-3">
-          <div class="form-floating">
-            <textarea
-              class="form-control"
-              placeholder="Leave a comment here"
-              id="inputNoticeContent"
-              style="height: 100px"
-            ></textarea>
-            <label for="inputNoticeContent">상세정보</label>
-          </div>
+
+        <div class="form-floating" style="height: 40%">
+          <textarea
+            class="form-control"
+            placeholder="Leave a comment here"
+            id="inputNoticeContent"
+            style="width: 80%; height: 100%"
+          ></textarea>
+          <label for="inputNoticeContent">상세정보</label>
         </div>
-        <div class="m-3" style="padding-bottom: 20px">
-          <tr>
-            <td class="p-3">
-              <button
-                type="button"
-                class="btn btn-danger"
-                onclick="func_notice_AddAction();"
-              >
-                추가하기
-              </button>
-              <button
-                type="button"
-                class="btn btn-light"
-                onclick="window.history.back();"
-              >
-                취소
-              </button>
-            </td>
-          </tr>
+
+        <div class="addBtn" style="height: 20%">
+          <button
+            type="button"
+            class="btn btn-danger"
+            onclick="func_notice_AddAction();"
+          >
+            추가하기
+          </button>
+          <button
+            type="button"
+            class="btn btn-light"
+            onclick="window.history.back();"
+          >
+            취소
+          </button>
         </div>
       </div>
     </div>
