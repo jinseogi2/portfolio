@@ -1,0 +1,226 @@
+html {
+  overflow: auto;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+}
+body {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+.wrap {
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #d3d3d3;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 550px;
+  height: auto;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+/* 해더부분 */
+.header {
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  top: 0;
+
+  z-index: 100;
+  min-width: 545px;
+  height: 50px;
+
+  display: flex;
+  justify-content: space-around;
+}
+.hicon,
+.hicon_2,
+.htext {
+  margin-top: 7px;
+  width: 30%;
+  height: 90%;
+}
+.hicon_2 {
+  opacity: 0.7;
+}
+.hicon {
+  display: flex;
+  justify-self: start;
+}
+.hicon_1 {
+  width: 50px;
+  height: 80%;
+}
+.hicon_1 > img {
+  width: 100%;
+  height: 100%;
+}
+.hicon_2 {
+  display: flex;
+  justify-content: end;
+}
+.hicon_2-1,
+.hicon_2-2 {
+  width: 50px;
+  height: 100%;
+  margin-left: 10px;
+}
+.hicon_2-1 > img,
+.hicon_2-2 > img {
+  width: 100%;
+  height: 80%;
+}
+.htext {
+  text-align: center;
+}
+.htext > p {
+  font-size: 22px;
+}
+
+/* nav 영역 슬라이드 */
+.nav {
+  margin-top: 60px;
+  margin-left: 10px;
+  min-width: 550px;
+  height: 90px;
+}
+.navslide_button {
+  width: 20%;
+  height: 100%;
+}
+.navslide_button button {
+  width: 88%;
+  height: 100%;
+  border-radius: 30px;
+}
+.nav_text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+#nav_right_text {
+  margin-right: 30px;
+}
+
+/* item_list */
+.item_list {
+  width: 100%;
+  height: auto;
+}
+
+/* 3줄로 볼때 */
+.item_box {
+  height: 190px;
+}
+.item_img {
+  height: 70%;
+}
+.item_img img {
+  height: 100%;
+  width: 100%;
+}
+.item_text {
+  height: 30%;
+  text-align: center;
+  height: auto;
+}
+.item_name {
+  text-align: center;
+  height: auto;
+}
+.item_price {
+  text-align: center;
+  height: auto;
+}
+
+/* 1줄로 볼때  */
+.item_box_one {
+  height: 150px;
+}
+.item_box_one .item_img {
+  height: 100%;
+}
+.item_box_one .item_img img {
+  height: 100%;
+  width: 100%;
+}
+.item_box_one .item_text {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.item_box_one .item_text .item_name {
+  width: 100%;
+  text-align: start;
+}
+.item_box_one .item_text .item_price {
+  text-align: start;
+  width: 100%;
+}
+
+/* 공지사항 탭 */
+.information {
+  width: 100%;
+  height: 220px;
+  background-color: #d8d8d8;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-bottom: 30px;
+}
+#information-name {
+  margin: 10px;
+}
+
+#information-p {
+  font-size: 13px;
+  margin: 10px;
+}
+#information-a {
+  font-size: 13px;
+  color: #000000;
+  text-decoration: none;
+  margin: 10px;
+}
+
+/* 푸터 */
+.footer {
+  width: 547px;
+  height: 52px;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  background-color: #080808;
+  justify-content: space-between;
+}
+.ftext {
+  width: auto;
+  height: 100%;
+  font-size: 22px;
+  line-height: 50px;
+  font-weight: 700;
+  margin-left: 20px;
+  color: white;
+}
+.fimg {
+  width: 8%;
+  height: 80%;
+  line-height: 52px;
+  margin-right: 10px;
+}
+.fimg img {
+  width: 100%;
+  height: 100%;
+  filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%)
+    contrast(100%);
+}

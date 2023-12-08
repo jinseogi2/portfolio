@@ -39,11 +39,11 @@ CREATE TABLE megacoffee.item( -- 'item' 테이블 생성
 
 -- 커피HOT 카테고리
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a456-556642440001', '(HOT)아메리카노',
-        '커피HOT', 0, 1500, '/img/menu/coffee_hot/coffee_1.png',
+        '커피HOT', 1, 1500, '/img/menu/coffee_hot/coffee_1.png',
 		  '[기본2샷]메가MGC커피 블렌드 원두로 추출한 에스프레소에 물을 더해, 풍부한 바디감을 느낄 수 있는 스탠다드커피',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a456-556642440002', '(HOT)꿀아메리카노',
-        '커피HOT', 0, 2700, '/img/menu/coffee_hot/coffee_2.png',
+        '커피HOT', 1, 2700, '/img/menu/coffee_hot/coffee_2.png',
 		  '아메리카노의 묵직한 바디감에 달콤한 사양벌꿀이 소프트하게 어우러진 커피',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a456-556642440003', '(HOT)헤이즐넛아메리카노',
@@ -90,19 +90,19 @@ INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a456-556642440012', '(HOT)티�
 
 -- 커피ICE 카테고리
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a123-556642440003', '(ICE)메가리카노',
-        '커피ICE', 0, 3000, '/img/menu/coffee_ice/coffee_3.png',
+        '커피ICE', 1, 3000, '/img/menu/coffee_ice/coffee_3.png',
 		  '1L 메가 급 아메리카노',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a123-556642440004', '(ICE)아메리카노',
-        '커피ICE', 0, 2000, '/img/menu/coffee_ice/coffee_3.png',
+        '커피ICE', 1, 2000, '/img/menu/coffee_ice/coffee_3.png',
 		  '[기본 2샷]메가MGC커피 블렌드 원두로 추출한 에스프레소에 물을 더해, 풍부한 바디감을 느낄 수 있는 스탠다드 커피',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a123-556642440001', '(ICE)할메가커피',
-        '커피ICE', 0, 1900, '/img/menu/coffee_ice/coffee_1.png',
+        '커피ICE', 1, 1900, '/img/menu/coffee_ice/coffee_1.png',
 		  '우리 할머니께서 즐겨드시던 달달한 믹스 커피 스타일로 만든 메가MGC커피만의 시원한 커피 음료',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a123-556642440002', '(ICE)왕할메가커피',
-        '커피ICE', 0, 2900, '/img/menu/coffee_ice/coffee_2.png',
+        '커피ICE', 1, 2900, '/img/menu/coffee_ice/coffee_2.png',
 		  '우리 할머니께서 즐겨드시던 달달한 믹스 커피 스타일로 만든 메가MGC커피만의 메가사이즈 커피 음료',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a123-556642440005', '(ICE)꿀아메리카노',
@@ -152,15 +152,15 @@ INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a123-556642440015', '(ICE)티�
 
 -- 디카페인 카테고리
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440001', '(HOT)디카페인아메리카노',
-        '디카페인', 0, 2500, '/img/menu/decaf/decoffee_1.png',
+        '디카페인', 1, 2500, '/img/menu/decaf/decoffee_1.png',
 		  '향과 풍미 그대로 카페인만을 낮춰 민감한 분들도 안심하고 매일매일 즐길 수 있는 디카페인 커피',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440002', '(HOT)디카페인꿀아메리카노',
-        '디카페인', 0, 3700, '/img/menu/decaf/decoffee_2.png',
+        '디카페인', 1, 3700, '/img/menu/decaf/decoffee_2.png',
 		  '디카페인 아메리카노의 묵직한 바디감에 달콤한 사양벌꿀이 소프트하게 어우러진 커피',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440003', '(HOT)디카페인헤이즐넛아메리카노',
-        '디카페인', 0, 3700, '/img/menu/decaf/decoffee_3.png',
+        '디카페인', 1, 3700, '/img/menu/decaf/decoffee_3.png',
 		  '디카페인 아메리카노에 헤이즐넛의 풍성한 향과 달콤함을 담아 향긋하고 부드럽게 즐기는 커피',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440004', '(HOT)디카페인바닐라아메리카노',
@@ -194,11 +194,11 @@ INSERT INTO item VALUES(null, '123e4567-e89b-12d3-a789-556642440010', '(HOT)디�
 
 -- 에이드 카테고리
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a123-556642440001', '스노우 샹그리아 에이드',
-        '에이드&주스', 0, 3900, '/img/menu/ade/ade_1.png',
+        '에이드&주스', 1, 3900, '/img/menu/ade/ade_1.png',
 		  '레몬, 자몽, 석류, 백포도, 사과 등 다양한 과일로 맛을 낸 새하얀 스노우를 표현한 겨울한정 샹그리아 에이드',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a123-556642440002', '레드오렌지자몽주스',
-        '에이드&주스', 0, 4000, '/img/menu/ade/ade_2.png',
+        '에이드&주스', 1, 4000, '/img/menu/ade/ade_2.png',
 		  '엄성된 시칠리아 레드오렌지와 자몽이 만난 상큼한 주스에 프로바이오틱스를 더해 건강한 블렌딩 주스',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a123-556642440003', '샤인머스캣그린주스',
@@ -226,17 +226,17 @@ INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a123-556642440008', '블루레
 		  '레몬의 상큼한 맛과 블루큐라소의 진한향 그리고 탄산의 청량감을 높여주는 음료',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a123-556642440009', '자몽에이드',
-        '에이드&주스', 0, 3500, '/img/menu/ade/ade_9.png',
+        '에이드&주스', 1, 3500, '/img/menu/ade/ade_9.png',
 		  '자몽의 쌉싸름한 맛과 상큼함을 동시에 느낄 수 있는 음료',
 		   DEFAULT);
 
 -- tea 카테고리
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440001', '화이트뱅쇼',
-        'tea', 0, 3900, '/img/menu/tea/tea_2.png',
+        'tea', 1, 3900, '/img/menu/tea/tea_2.png',
 		  '레몬, 자몽, 석류, 백포도, 사과 등 다양한 과일로 맛을 낸 겨울한정 화이트 뱅쇼',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440002', '복숭아아이스티',
-        'tea', 0, 3000, '/img/menu/tea/tea_5.png',
+        'tea', 1, 3000, '/img/menu/tea/tea_5.png',
 		  '홍차의 깊은 맛과 풍부한 복숭아 향이 어우러진 달콤한 여름철 인기음료',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440003', '허니자몽블랙티',
@@ -248,7 +248,7 @@ INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440004', '사과유
 		  '애플티의 향긋함과 유자청의 상큼함이 어우러진 과일티',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440005', '유자차',
-        'tea', 0, 3300, '/img/menu/tea/tea_5.png',
+        'tea', 1, 3300, '/img/menu/tea/tea_5.png',
 		  '비타민이 가득 든 상큼달콤한 유자를 듬뿍 넣어 향긋한 즐거움을 전하는 과일티',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440006', '레몬차',
@@ -264,7 +264,7 @@ INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440008', '녹차',
 		  '고소한 감칠맛과 목 넘김이 부드러운 국내산 녹차',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440009', '페퍼민트',
-        'tea', 0, 2500, '/img/menu/tea/tea_4.png',
+        'tea', 1, 2500, '/img/menu/tea/tea_4.png',
 		  '입안 가득 깔끔한 청량감으로 기분까지 상쾌한 허브차',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440010', '캐모마일',
@@ -272,7 +272,7 @@ INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440010', '캐모마
 		  '특유의 풀내음을 통해 마음을 진정 시켜주는 마일드한 허브차',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440011', '얼그레이',
-        'tea', 0, 2500, '/img/menu/tea/tea_3.png',
+        'tea', 1, 2500, '/img/menu/tea/tea_3.png',
 		  '홍차의 진한 향과 본연의 부드러움을 느낄 수 있는 허브차',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440012', '허니자몽블랙티',
@@ -280,7 +280,7 @@ INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440012', '허니자
 		  '달콤한 꿀청에 재운 자몽에 홍차의 부드러움을 어우른 상큼한 과일티',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440013', '사과유자차',
-        'tea', 0, 3500, '/img/menu/tea/tea_8.png',
+        'tea', 1, 3500, '/img/menu/tea/tea_8.png',
 		  '애플티의 향긋함과 유자청의 상큼함이 어우러진 과일티',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440014', '유자차',
@@ -296,23 +296,23 @@ INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a456-556642440015', '레몬차
 
 -- 스무디&프라페 카테고리
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a789-556642440001', '스모어블랙쿠키 프라페',
-        '스무디&프라페', 0, 4400, '/img/menu/smoothie/smoothie_1.png',
+        '스무디&프라페', 1, 4400, '/img/menu/smoothie/smoothie_1.png',
 		  '진한 초코스무디에 바삭한 쿠키를 넣어 퐁신풍신한 마시멜로우 잼과 함께 달콤하게 즐기는 스무디',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a789-556642440002', '스모어카라멜쿠키 프라페',
-        '스무디&프라페', 0, 4400, '/img/menu/smoothie/smoothie_2.png',
+        '스무디&프라페', 1, 4400, '/img/menu/smoothie/smoothie_2.png',
 		  '로투스 쿠키와 함께 진한 카라멜 맛의 스무디를 쫀득 달콤한 마시멜로우 잼과 함께 즐기는 겨울 한정 프라페',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a789-556642440003', '코코넛커피 스무디',
-        '스무디&프라페', 0, 4800, '/img/menu/smoothie/smoothie_12.png',
+        '스무디&프라페', 1, 4800, '/img/menu/smoothie/smoothie_12.png',
 		  '바삭하고 고소한 코코넛 칩을 올리고 쌉싸름한 커피와 달콤한 코코넛이 조화로운 스무디',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a789-556642440004', '플레인퐁크러쉬',
-        '스무디&프라페', 0, 3900, '/img/menu/smoothie/smoothie_14.png',
+        '스무디&프라페', 1, 3900, '/img/menu/smoothie/smoothie_14.png',
 		  '우유와 퐁시리얼, 얼음을 함께 갈아 시원하게 즐기는 달달한 프라페 음료',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a789-556642440005', '초코허니퐁크러쉬',
-        '스무디&프라페', 0, 3900, '/img/menu/smoothie/smoothie_11.png',
+        '스무디&프라페', 1, 3900, '/img/menu/smoothie/smoothie_11.png',
 		  '리얼 벌꿀이 들어가 더 달콤한 허니퐁시리얼과 달콤한 초코가 만나 시원하게 즐기는 달달한 프라페',
 		   DEFAULT);
 INSERT INTO item VALUES(null, '123e4567-e89b-12d4-a789-556642440006', '슈크림허니퐁크러쉬',
