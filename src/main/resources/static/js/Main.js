@@ -7,7 +7,7 @@ function seeMore(){
 window.location.href="/lastPage";
 }
 function megaOrder(){
-//window.location.href="/orderpage";
+window.location.href="/order_recommand";
 }
 function payCard(){
 window.location.href="/payCard";
@@ -17,6 +17,10 @@ window.location.href="/main";
 }
 function stampPage(){
 window.location.href="/stampPage";
+}
+
+function goNotice(){
+window.location.href="/lastEvent";
 }
 
 // 이미지 롤링을 처리하는 함수

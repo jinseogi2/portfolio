@@ -118,7 +118,7 @@
         <!-- Swiper -->
         <div class="swiper mySwiper" id="asswiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" id="asslide"  th:each ="item,status:${ilist}">
+            <div class="swiper-slide" id="asslide"  th:each ="item,status:${rlist}">
               <div id="asslide_imgbox"  th:data-item-image-url="${item.itemImageUrl}" th:data-item-explanation="${item.itemExplanation}" th:data-item-name="${item.itemName}" onclick="modal_item_on(this);">
                 <!-- th:onclick="|modal_item_on(${item.itemImageUrl},${item.itemExplanation});|" -->
                 <img th:src="${item.itemImageUrl}" alt="" />
@@ -132,7 +132,7 @@
       <div class="notice">
         <div id="notext">
           <div id="notext1">새소식</div>
-          <div id="notext2">전체보기</div>
+          <div id="notext2" onclick="goNotice();">전체보기</div>
         </div>
         <!-- Swiper -->
         <div class="swiper mySwiper2" id="noswiper">

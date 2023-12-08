@@ -113,6 +113,92 @@ public class FrontController {
         // "Main"이라는 뷰를 반환합니다.
         return "Main";
     }
+
+    // *************
+    // 오더 페이지
+    // *************
+
+    //      카테고리별 조회
+//        List<ItemEntity> hotcoffeelist = itemRepository.findByItemCate("hotcoffee");
+//        List<ItemEntity> icecoffeelist = itemRepository.findByItemCate("icecoffee");
+//        List<ItemEntity> decaflist = itemRepository.findByItemCate("decaf");
+//        List<ItemEntity> adelist = itemRepository.findByItemCate("ade");
+//        List<ItemEntity> smoothielist = itemRepository.findByItemCate("smoothie");
+//        List<ItemEntity> tealist = itemRepository.findByItemCate("tea");
+//
+//        model.addAttribute("hotcoffeelist",hotcoffeelist);
+//        model.addAttribute("icecoffeelist",icecoffeelist);
+//        model.addAttribute("decaflist",decaflist);
+//        model.addAttribute("adelist",adelist);
+//        model.addAttribute("smoothielist",smoothielist);
+//        model.addAttribute("tealist",tealist);
+
+    @GetMapping("/order_recommand")
+    public String order_recommand(Model model){
+        //      추천항목
+        List<ItemEntity> list = itemRepository.findByItemRecommend(1);
+        model.addAttribute("count", list.size());
+        model.addAttribute("list",list);
+
+        return "order_recommand";
+    }
+    @GetMapping("/order_hotcoffee")
+    public String order_hotcoffee(Model model){
+        //      추천항목
+        List<ItemEntity> list = itemRepository.findByItemCate("hotcoffee");
+        model.addAttribute("count", list.size());
+        model.addAttribute("list",list);
+
+        return "order_hotcoffee";
+    }
+    @GetMapping("/order_icecoffee")
+    public String order_icecoffee(Model model){
+        //      추천항목
+        List<ItemEntity> list = itemRepository.findByItemCate("icecoffee");
+        model.addAttribute("count", list.size());
+        model.addAttribute("list",list);
+
+        return "order_icecoffee";
+    }
+
+    @GetMapping("/order_decaf")
+    public String order_decaf(Model model){
+        //      추천항목
+        List<ItemEntity> list = itemRepository.findByItemCate("decaf");
+        model.addAttribute("count", list.size());
+        model.addAttribute("list",list);
+
+        return "order_decaf";
+    }
+    @GetMapping("/order_smoothie")
+    public String order_smoothie(Model model){
+        //      추천항목
+        List<ItemEntity> list = itemRepository.findByItemCate("smoothie");
+        model.addAttribute("count", list.size());
+        model.addAttribute("list",list);
+
+        return "order_smoothie";
+    }
+    @GetMapping("/order_ade")
+    public String order_ade(Model model){
+        //      추천항목
+        List<ItemEntity> list = itemRepository.findByItemCate("ade");
+        model.addAttribute("count", list.size());
+        model.addAttribute("list",list);
+
+        return "order_ade";
+    }
+    @GetMapping("/order_tea")
+    public String order_tea(Model model){
+        //      추천항목
+        List<ItemEntity> list = itemRepository.findByItemCate("tea");
+        model.addAttribute("count", list.size());
+        model.addAttribute("list",list);
+        return "order_tea";
+    }
+
+
+
     // *************
     // 더보기 페이지
     // *************
@@ -162,6 +248,24 @@ public class FrontController {
         model.addAttribute("user",user);
 
         return "stamp";
+    }
+
+    @GetMapping("/lastEvent")
+    public String lastEvent(Model model){
+
+        // 이벤트 공지사항을 구분하여 가져옵니다.
+        List<NoticeEntity> ntElist = noticeRepository.findByNoticeType("EVENT");
+
+        model.addAttribute("notice",ntElist);
+        return "lastevent";
+    }
+    @GetMapping("/lastNotice")
+    public String lastNotice(Model model){
+        // 일반 공지사항을 구분하여 가져옵니다.
+        List<NoticeEntity> ntBlist = noticeRepository.findByNoticeType("BASIC");
+
+        model.addAttribute("notice",ntBlist);
+        return "lastnotice";
     }
 }
 
