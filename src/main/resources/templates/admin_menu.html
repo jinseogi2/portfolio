@@ -108,92 +108,39 @@
             <!-- 상품 카테고리 선택창 및 메뉴 추가 버튼 -->
             <div class="d-flex justify-content-start" style="width: 100%">
               <!-- 상품 카테고리(드롭다운) -->
-              <!-- <div
-                class="dropdown d-flex"
-                style="
-                  justify-content: center;
-                  align-items: center;
-                  margin-left: 30px;
-                "
-              >
-                <button
-                  class="btn btn-secondary dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  메뉴 선택
-                </button>
-                <ul class="dropdown-menu"> -->
-              <!-- 각 상품 카테고리 목록 -->
-              <!-- <li><a class="dropdown-item" href="#">신메뉴</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">세트메뉴</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">커피(Hot)</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">커피(ICE)</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">디카페인</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">스무디&프라페</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">에이드&주스</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">병음료</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Tea</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">커피(콜드브루)</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">BEVERAGE</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">디저트</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">MD상품</a>
-                  </li>
-                </ul>
 
-              </div>
-            </div> -->
               <!-- 메뉴 추가 버튼 -->
               <!-- 검색 기능 -->
-              <div style="width: 100%">
+              <div
+                class="d-flex justify-content-center"
+                style="width: 100%; height: 100%"
+              >
                 <div
-                  class="d-flex"
-                  style="width: 100%; height: 45%; margin-top: 40px"
+                  class="d-flex col-10"
+                  style="height: 45%; margin-top: 40px"
                 >
                   <div
-                    class="addBtn d-flex justify-content-start"
-                    style="width: 100%"
+                    class="AddMenuBtn d-flex justify-content-start"
+                    style="width: 33%"
                   >
-                    <a
-                      class="btn"
-                      style="margin-left: 160px"
-                      th:href="@{admin_menu_add}"
-                      onclick="window.open(this.href, '_blank', 'width=840, height=470'); return false;"
+                    <button
+                      class="btn btn-primary"
+                      onclick="func_admin_menu_add();"
                       role="button"
-                      >메뉴 추가</a
                     >
+                      메뉴 추가
+                    </button>
+                  </div>
+                  <div id="centerText" style="width: 33%">
+                    <h3>상품 목록</h3>
                   </div>
                   <div
-                    class="d-flex justify-content-end"
-                    style="width: 100%; margin-right: 160px"
+                    class="searchBar d-flex justify-content-end"
+                    style="width: 34%"
                   >
                     <select
                       class="form-select"
-                      style="width: 15%; height: 100%"
+                      style="width: 25%; height: 100%; margin-right: 20px"
                     >
                       <option value="1">음료이름</option>
                       <option value="2">카테고리</option>
@@ -201,20 +148,19 @@
                     <div>
                       <input type="text" style="height: 100%" />
                     </div>
-                    <a
-                      href="#"
-                      type="button"
+                    <button
                       style="
                         width: 5%;
                         border: 1px solid black;
                         background-color: rgb(221, 219, 219);
                       "
+                      onclick="openSearchWindow();"
                     >
                       <img
-                        style="width: 100%; height: 100%"
+                        style="width: 90%; height: 70%"
                         src="/img/admin/검색아이콘.png"
                       />
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -225,7 +171,6 @@
               <!-- 첫번째 줄 -->
               <div class="d-flex justify-content-center">
                 <div class="col-10 admin_main">
-                  <h3 class="flex_center">상품목록</h3>
                   <span
                     id="member_count"
                     th:text="|총 ${count}개의 상품이 있습니다.|"
@@ -233,36 +178,53 @@
                   >
                   <table class="table table-striped">
                     <tr class="table_title">
-                      <td>번호</td>
-                      <td>이름</td>
-                      <td>이미지</td>
-                      <td>카테고리</td>
-                      <td>가격</td>
-                      <td>추천</td>
-                      <td>수정</td>
-                      <td>삭제</td>
+                      <td scope="col">번호</td>
+                      <td scope="col">이미지</td>
+                      <td scope="col">이름</td>
+                      <td scope="col">카테고리</td>
+                      <td scope="col">가격</td>
+                      <td scope="col">추천</td>
+                      <td scope="col">수정/삭제</td>
                     </tr>
-                    <tr th:each="item, status:${ list }">
-                      <td><span th:text="${status.count}"></span></td>
-                      <td><span th:text="${item.itemName}"></span></td>
-                      <td>
+                    <tr class="menuBox" th:each="item, status:${ list }">
+                      <!-- 메뉴 카운트 -->
+
+                      <td class="p-4" scope="row" style="width: 5%">
+                        <span th:text="${status.count}"></span>
+                      </td>
+                      <!-- 메뉴 이미지 -->
+                      <td class="p-1" style="width: 20%">
                         <img
                           class="admin_item_img"
+                          style="width: 25%; height: 100%"
                           th:src="${item.itemImageUrl}"
                         />
                       </td>
-                      <td><span th:text="${item.itemCate}"></span></td>
-                      <td><span th:text="${item.itemPrice}"></span></td>
-                      <td><span th:text="${item.itemRecommend}"></span></td>
-                      <td>
+                      <!-- 메뉴 이름  -->
+                      <td class="p-4" style="width: 25%">
+                        <span th:text="${item.itemName}"></span>
+                      </td>
+                      <!-- 메뉴 카테고리 -->
+                      <td class="p-4" style="width: 15%">
+                        <span th:text="${item.itemCate}"></span>
+                      </td>
+                      <!-- 메뉴 가격 -->
+                      <td class="p-4" style="width: 5%">
+                        <span th:text="${item.itemPrice}"></span>
+                      </td>
+                      <!-- 메뉴 추천 숫자 -->
+                      <td class="p-4" style="width: 5%">
+                        <span th:text="${item.itemRecommend}"></span>
+                      </td>
+                      <!-- 메뉴 수정/삭제 버튼 -->
+                      <td class="p-3" style="width: 20%">
                         <button
                           class="btn btn-primary"
                           th:onclick="|func_menu_ed(${item.itemNo});|"
                         >
                           수정
                         </button>
-                      </td>
-                      <td>
+
                         <button
                           class="btn btn-danger"
                           th:onclick="|func_menu_delete(${item.itemNo});|"

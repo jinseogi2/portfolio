@@ -15,54 +15,57 @@
   </head>
   <body>
     <div class="myContainer d-flex justify-content-start">
+      <!-- 왼쪽 이미지 박스 -->
       <div
         class="image-container"
-        style="
-          border-right: 1px solid lightgrey;
-          width: 50%;
-          height: 50%;
-          padding-bottom: 30px;
-        "
+        style="border-right: 1px solid lightgrey; width: 50%; height: 100%"
       >
         <!-- 서버에서 받아온 NoticeEdDto 객체의 이미지 URL을 표시하는 이미지 엘리먼트 -->
-        <img
-          id="imgNoticeImageUrl"
-          th:src="${notice.noticeImageUrl}"
-          style="width: 50%; height: 50%"
-          class="uploadImage"
-        />
-        <button
-                type="file"
-                class="btn btn-primary"
-                onclick="notice_Update_onClickUpload();"
-        >
-          변경
-        </button>
-      <!--    저장할공간    -->
-        <input
-                type="file"
-                style="visibility: hidden"
-                id="inputNoticeImageUrl"
-                th:value="${notice.noticeImageUrl}"
-                onchange="notice_Update_readURL(this);"
-        />
-        <!--        <button id="sendButton" type="button" class="btn btn-danger" onclick="func_notice_updateAction();">확인</button>-->
-      </div>
-      <!-- 수정하는 곳 -->
-      <div class="edScreen m-3" style="width: 50%; height: 100%">
 
-          <!-- Hidden input for noticeNo -->
-          <input
-            type="hidden"
-            id="inputNoticeDatetime"
-            th:value="${notice.noticeDatetime}"
+        <div id="edImg ">
+          <img
+            id="imgNoticeImageUrl"
+            th:src="${notice.noticeImageUrl}"
+            style="width: 90%; height: 100%; margin-top: 30px"
+            class="uploadImage"
           />
-          <input
-            type="hidden"
-            id="inputNoticeType"
-            th:value="${notice.noticeType}"
-          />
-          <input type="hidden" id="inputNoticeNo" th:value="${notice.noticeNo}" />
+        </div>
+        <div id="chBtn">
+          <button
+            type="file"
+            class="btn btn-primary"
+            onclick="notice_Update_onClickUpload();"
+            style="margin-top: 10px"
+          >
+            변경
+          </button>
+        </div>
+
+        <!--    저장할공간    -->
+        <input
+          type="file"
+          style="visibility: hidden"
+          id="inputNoticeImageUrl"
+          th:value="${notice.noticeImageUrl}"
+          onchange="notice_Update_readURL(this);"
+        />
+      </div>
+      <!-- 오른쪽 수정하는 박스 -->
+      <div class="edScreen m-3" style="width: 50%; height: 100%">
+        <!-- Hidden input for noticeNo -->
+        <input
+          type="hidden"
+          id="inputNoticeDatetime"
+          th:value="${notice.noticeDatetime}"
+        />
+        <input
+          type="hidden"
+          id="inputNoticeType"
+          th:value="${notice.noticeType}"
+        />
+        <input type="hidden" id="inputNoticeNo" th:value="${notice.noticeNo}" />
+
+        <div id="edBox" style="height: 100%">
           <div class="form-floating d-flex m-3">
             <input
               type="text"
@@ -85,16 +88,22 @@
               <label for="inputNoticeContent">상세정보</label>
             </div>
           </div>
-          <div class="m-3" style="padding-bottom: 20px">
-            <button
-              type="button"
-              class="btn btn-danger"
-              onclick="func_notice_updateAction();"
-            >
-              수정하기
-            </button>
-            <a th:href="@{/admin_notice}" class="btn btn-light" onclick="window.history.back();">취소</a>
-          </div>
+        </div>
+        <div class="m-3" style="padding-bottom: 20px">
+          <button
+            type="button"
+            class="btn btn-danger"
+            onclick="func_notice_updateAction();"
+          >
+            수정하기
+          </button>
+          <a
+            th:href="@{/admin_notice}"
+            class="btn btn-light"
+            onclick="window.history.back();"
+            >취소</a
+          >
+        </div>
       </div>
     </div>
     <script

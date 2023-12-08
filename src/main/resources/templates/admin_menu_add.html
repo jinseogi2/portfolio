@@ -1,129 +1,154 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>메뉴 추가</title>
-  <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-          crossorigin="anonymous"
-  />
-  <script src="js/admin.js"></script>
-  <link rel="stylesheet" href="/css/admin_ed.css" />
-</head>
-<body>
-
-<div class="myContainer d-flex justify-content-start">
-  <!-- 이미지 업로드를 위한 부분 -->
-  <div class="image-container" style="border: 1px solid lightgray; width: 30%; height: 350px">
-    <img
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메뉴 추가</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/admin_ed.css" />
+    <script src="js/admin.js"></script>
+  </head>
+  <body>
+    <div class="myContainer d-flex justify-content-start">
+      <!-- 이미지 업로드를 위한 부분 -->
+      <div class="menuAddImgCh m-3" style="width: 40%; height: 100%">
+        <div
+          class="image-container"
+          style="border: 1px solid lightgray; width: 100%; height: 100%"
+        >
+          <img
             style="width: 100%; height: 100%"
             class="ImageUrl"
             id="imgItemImageUrl"
-            src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image"
-    />
-    &nbsp;&nbsp;<button
-          type="file"
-          class="btn btn-primary"
-          onclick="menu_Add_onClickUpload();"
-  >
-    변경
-  </button>
-
-    <input
+            src="https://dummyimage.com/301x301/ffffff/000000&text=preview+img"
+          />
+        </div>
+        <div class="menuImgChBtn d-flex" style="flex-direction: column">
+          <button
+            type="file"
+            class="btn btn-primary mt-4"
+            onclick="menu_Add_onClickUpload();"
+          >
+            이미지 찾기
+          </button>
+          <input
             type="file"
             style="visibility: hidden"
             id="inputItemImageUrl"
             onchange="menu_Add_readURL(this);"
-    />
-  </div>
-  <!--  -->
+          />
+        </div>
+      </div>
 
-  <select
-          id="inputItemRecommend"
-          class="form-select"
-          style="width: 25%; height: 100%; margin-left: 15px"
-          name="itemRecommend"
-  >
-    <option value="0">일반</option>
-    <option value="1">추천</option>
-    <option value="2">신상</option>
-  </select>
+      <!-- 오른쪽 박스 -->
+      <div class="menuAddBox m-3" style="width: 60%; height: 100%">
+        <!-- 벨류 설정 -->
+        <div
+          class="menuValueKate d-flex"
+          style="width: 100%; margin-left: 10px"
+        >
+          <div class="AddValue m-2" style="width: 25%">
+            <select
+              id="inputItemRecommend"
+              class="form-select"
+              style="width: 100%; height: 100%"
+              name="itemRecommend"
+            >
+              <option value="0">일반</option>
+              <option value="1">추천</option>
+              <option value="2">신상</option>
+            </select>
+          </div>
+          <!-- 카테고리 선택 부분 -->
+          <div
+            class="kategorie d-flex justify-content-start m-2"
+            style="width: 75%"
+          >
+            <select
+              id="inputItemCate"
+              class="form-select"
+              style="width: 94.5%; height: 100%"
+              name="itemCate"
+            >
+              <option value="커피(HOT)">커피(HOT)</option>
+              <option value="커피(ICE)">커피(ICE)</option>
+              <option value="디카페인">디카페인</option>
+              <option value="에이드">에이드</option>
+              <option value="TEA">TEA</option>
+              <option value="스무디&프라페">스무디&프라페</option>
+            </select>
+          </div>
+        </div>
 
-
-  <!-- 메뉴 정보 입력 부분 -->
-  <div class="form-floating d-flex m-3">
-    <input
+        <!-- 메뉴 정보 입력 부분 -->
+        <div class="form-floating d-flex m-3">
+          <input
             type="text"
             class="form-control"
             id="inputItemName"
             placeholder="메뉴이름"
             name="itemName"
-    />
-    <label for="inputItemName">메뉴이름</label>
-  </div>
+          />
+          <label for="inputItemName">메뉴이름</label>
+        </div>
 
-  <!-- 가격 입력 부분 -->
-  <div class="form-floating d-flex m-3">
-    <input
+        <!-- 가격 입력 부분 -->
+        <div class="form-floating d-flex m-3">
+          <input
             type="text"
             class="form-control"
             id="inputItemPrice"
             placeholder="가격"
             name="itemPrice"
-    />
-    <label for="inputItemPrice">가격</label>
-  </div>
+          />
+          <label for="inputItemPrice">가격</label>
+        </div>
 
-  <!-- 카테고리 선택 부분 -->
-  <div class="kategorie d-flex justify-content-start">
-    <select
-            id="inputItemCate"
-            class="form-select"
-            style="width: 25%; height: 100%; margin-left: 15px"
-            name="itemCate"
-    >
-      <option value="커피(HOT)">커피(HOT)</option>
-      <option value="커피(ICE)">커피(ICE)</option>
-      <option value="디카페인">디카페인</option>
-      <option value="에이드">에이드</option>
-      <option value="TEA">TEA</option>
-      <option value="스무디&프라페">스무디&프라페</option>
-    </select>
-  </div>
-
-  <!-- 상세 정보 입력 부분 -->
-  <div class="noticeText m-3">
-    <div class="form-floating">
-      <input
+        <!-- 상세 정보 입력 부분 -->
+        <div class="noticeText m-3">
+          <div class="form-floating">
+            <input
               class="form-control"
               placeholder="Leave a comment here"
               id="inputItemExplanation"
               style="height: 100px"
               name="itemExplanation"
-      >
-      <label for="inputItemExplanation">상세정보</label>
+            />
+            <label for="inputItemExplanation">상세정보</label>
+          </div>
+        </div>
+
+        <!-- 버튼 부분 -->
+        <div class="m-3" style="padding-bottom: 20px">
+          <tr>
+            <td class="p-3">
+              <a
+                class="btn btn-primary"
+                role="button"
+                onclick="func_menu_AddAction();"
+                >추가하기</a
+              >
+              <a
+                class="btn btn-danger"
+                role="button"
+                onclick="window.history.back();"
+                >취소</a
+              >
+            </td>
+          </tr>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- 버튼 부분 -->
-  <div class="m-3" style="padding-bottom: 20px">
-    <table>
-      <tr>
-        <td class="p-3">
-          <a class="btn btn-primary" role="button" onclick="func_menu_AddAction();">추가하기</a>
-          <a class="btn btn-danger" role="button" onclick="window.history.back();">취소</a>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"
-></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
