@@ -17,13 +17,9 @@ function click_order() {
   window.location.href = "/admin_order";
 }
 
-// function func_member_ed(memberNo) {
-//   window.location.href = "/admin_member_ed?memberNo=" + memberNo;
-// }
-function func_menu_ed(itemNo) {
-  window.location.href = "/admin_menu_ed?itemNo=" + itemNo;
-}
-
+//////////////////////
+///////멤버 수정//////
+//////////////////////
 //멤버 수정 페이지를 새창으로 여는함수
 function func_member_ed(memberNo) {
   window.open(
@@ -147,10 +143,15 @@ function func_notice_delete(noticeNo) {
     });
 }
 
-//////////
-////////// 상품 추가하기
-//////////
-//////////
+/////////////////
+//상품 추가하기//
+/////////////////
+
+//메뉴 추가 페이지를 새창으로 여는 함수
+
+function func_admin_menu_add() {
+  window.open("/admin_menu_add", "_blank", "width=845, height=445");
+}
 
 function menu_Add_onClickUpload() {
   let inputItemImageUrl = document.getElementById("inputItemImageUrl");
@@ -269,10 +270,18 @@ function func_menu_AddAction_json(itemImageUrl) {
     });
 }
 
-///////////
-/////////// 상품 변경하기
-///////////
-///////////
+///////////////
+// 상품 변경 //
+//////////////
+
+//메뉴 수정 버튼을 새창으로 여는 함수
+function func_menu_ed(itemNo) {
+  window.open(
+    "/admin_menu_ed?itemNo=" + itemNo,
+    "_blank",
+    "width=824, height=430"
+  );
+}
 // 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
 function menu_Update_onClickUpload() {
   let inputItemImageUrl = document.getElementById("inputItemImageUrl");
@@ -428,23 +437,18 @@ function func_menu_delete(itemNo) {
     });
 }
 
-//////////
+////////////
 //공지사항//
 //업데이트//
-//////////
+////////////
 
-//공지사항 새창 띄우는 함수
-//function func_notice_ed(noticeNo) {
-//  window.location.href = "/admin_notice_ed?noticeNo=" + noticeNo;
-//}
+//공지사항 수정 새창 띄우는 함수
 function func_notice_ed(noticeNo) {
-  // 새 창을 열어서 페이지 이동
-  openNewWindow("/admin_notice_ed?noticeNo=" + noticeNo, 1135, 390);
-}
-
-// openNewWindow 함수 정의
-function openNewWindow(url, width, height) {
-  window.open(url, "_blank", "width=" + width + ", height=" + height);
+  window.open(
+    "/admin_notice_ed?noticeNo=" + noticeNo,
+    "_blank",
+    "width=1135, height=390"
+  );
 }
 
 // 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수
@@ -559,14 +563,14 @@ function func_notice_updateAction_json(noticeImageUrl) {
     });
 }
 
-//////////
-//////////   공지사항
-//////////   추가하기
-//////////
+////////////////////
+//////공지사항//////
+//////추가하기//////
+////////////////////
 
 // 공지사항 추가하기를 새창으로 여는 함수
 function func_admin_notice_add() {
-  openNewWindow("admin_notice_add", 1135, 450);
+  window.open("/admin_notice_add", "_blank", "width=1135,height=450");
 }
 
 // 버튼 클릭 시 숨겨진 파일 입력란을 클릭하는 함수

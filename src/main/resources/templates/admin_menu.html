@@ -157,7 +157,7 @@
                       onclick="openSearchWindow();"
                     >
                       <img
-                        style="width: 100%; height: 100%"
+                        style="width: 90%; height: 70%"
                         src="/img/admin/검색아이콘.png"
                       />
                     </button>
@@ -188,51 +188,50 @@
                     </tr>
                     <tr class="menuBox" th:each="item, status:${ list }">
                       <!-- 메뉴 카운트 -->
-                      <div>
-                        <td class="p-4" scope="row" style="width: 5%">
-                          <span th:text="${status.count}"></span>
-                        </td>
-                        <!-- 메뉴 이미지 -->
-                        <td class="p-1" style="width: 35%">
-                          <img
-                            class="admin_item_img"
-                            style="width: 15%; height: 100%"
-                            th:src="${item.itemImageUrl}"
-                          />
-                        </td>
-                        <!-- 메뉴 이름  -->
-                        <td class="p-4" style="width: 15%">
-                          <span th:text="${item.itemName}"></span>
-                        </td>
-                        <!-- 메뉴 카테고리 -->
-                        <td class="p-4" style="width: 10%">
-                          <span th:text="${item.itemCate}"></span>
-                        </td>
-                        <!-- 메뉴 가격 -->
-                        <td class="p-4" style="width: 10%">
-                          <span th:text="${item.itemPrice}"></span>
-                        </td>
-                        <!-- 메뉴 추천 숫자 -->
-                        <td class="p-4" style="width: 5%">
-                          <span th:text="${item.itemRecommend}"></span>
-                        </td>
-                        <!-- 메뉴 수정/삭제 버튼 -->
-                        <td class="p-3" style="width: 20%">
-                          <button
-                            class="btn btn-primary"
-                            th:onclick="|func_menu_ed(${item.itemNo});|"
-                          >
-                            수정
-                          </button>
 
-                          <button
-                            class="btn btn-danger"
-                            th:onclick="|func_menu_delete(${item.itemNo});|"
-                          >
-                            삭제
-                          </button>
-                        </td>
-                      </div>
+                      <td class="p-4" scope="row" style="width: 5%">
+                        <span th:text="${status.count}"></span>
+                      </td>
+                      <!-- 메뉴 이미지 -->
+                      <td class="p-1" style="width: 20%">
+                        <img
+                          class="admin_item_img"
+                          style="width: 25%; height: 100%"
+                          th:src="${item.itemImageUrl}"
+                        />
+                      </td>
+                      <!-- 메뉴 이름  -->
+                      <td class="p-4" style="width: 25%">
+                        <span th:text="${item.itemName}"></span>
+                      </td>
+                      <!-- 메뉴 카테고리 -->
+                      <td class="p-4" style="width: 15%">
+                        <span th:text="${item.itemCate}"></span>
+                      </td>
+                      <!-- 메뉴 가격 -->
+                      <td class="p-4" style="width: 5%">
+                        <span th:text="${item.itemPrice}"></span>
+                      </td>
+                      <!-- 메뉴 추천 숫자 -->
+                      <td class="p-4" style="width: 5%">
+                        <span th:text="${item.itemRecommend}"></span>
+                      </td>
+                      <!-- 메뉴 수정/삭제 버튼 -->
+                      <td class="p-3" style="width: 20%">
+                        <button
+                          class="btn btn-primary"
+                          th:onclick="|func_menu_ed(${item.itemNo});|"
+                        >
+                          수정
+                        </button>
+
+                        <button
+                          class="btn btn-danger"
+                          th:onclick="|func_menu_delete(${item.itemNo});|"
+                        >
+                          삭제
+                        </button>
+                      </td>
                     </tr>
                   </table>
                 </div>
