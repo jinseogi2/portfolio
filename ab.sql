@@ -407,6 +407,7 @@ SELECT * FROM notice;
 DROP TABLE if EXISTS megacoffee.cart;
 CREATE TABLE megacoffee.cart (
 	cart_no INT AUTO_INCREMENT NOT NULL PRIMARY KEY, -- 카트 번호
+	cart_name VARCHAR(255) NOT NULL,
 	cart_image_url_1 TEXT NULL, -- 카트에 들어오는 이미지 url ( 아이탬 )
 	cart_price INT NOT NULL, -- 상품 금액
    cart_option_price_1 INT NULL, -- 옵션 금액
