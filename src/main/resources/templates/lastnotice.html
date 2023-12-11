@@ -14,27 +14,16 @@
     <link rel="stylesheet" href="./css/lastnotice.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="main">
-        <div id="rt">
-          <a href="javascript:history.back();">
-            <img
-              src="./img/lastnotice/back_stamp.png"
-              alt="백"
-              style="max-width: 100%; max-height: 100%"
-            />
-          </a>
-        </div>
-        <div id="title"><h3>새소식</h3></div>
+  <div class="wrap">
+    <div class="header">
+      <div class="himg" onclick="goMain();">
+        <img src="img/lastevent/back_stamp.png" alt="" />
       </div>
-      <div class="sector">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-          <div class="container-fluid justify-content-start">
-            <a class="navbar-brand active" th:href="@{lastEvent}">이벤트</a>
-            <a class="navbar-brand active" href="#">공지사항</a>
-          </div>
-        </nav>
+      <div class="hbtn">
+        <div class="hbtn_event" onclick="goLastevent();">이벤트</div>
+        <div class="hbtn_notice">공지사항</div>
       </div>
+    </div>
       <div class="section" th:each="notice, status:${notice}">
         <div id="nt1">
           <div id="nt1-1">
@@ -50,4 +39,12 @@
       crossorigin="anonymous"
     ></script>
   </body>
+<script>
+  function goLastevent(){
+  window.location.href="/lastEvent";
+  }
+  function goMain(){
+window.location.href="/main";
+}
+</script>
 </html>
