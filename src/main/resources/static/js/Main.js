@@ -154,3 +154,11 @@ function modal_barcode_on() {
         window.removeEventListener('click', clickHandler, true);
     }
 }
+
+function func_event(noticeNo) {
+  window.location.href = "/event?noticeNo=" + noticeNo;
+}
+function back() {
+    history.back();
+  }
+

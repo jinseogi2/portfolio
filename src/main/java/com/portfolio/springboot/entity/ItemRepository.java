@@ -3,6 +3,7 @@ package com.portfolio.springboot.entity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.stream.LongStream;
 
 public interface ItemRepository extends JpaRepository<ItemEntity, Long> {
     //기본함수 : findAll, findById, count, save, update
@@ -11,5 +12,9 @@ public interface ItemRepository extends JpaRepository<ItemEntity, Long> {
     List<ItemEntity> findByItemRecommend(int recommend);
     // select * from item where item_cate = ?
     List<ItemEntity> findByItemCate(String category);
+
     List<ItemEntity> findByItemImageUrl(String itemImageUrl);
+
+
+
 }

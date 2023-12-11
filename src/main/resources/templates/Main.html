@@ -109,7 +109,7 @@
         </div>
       </div>
       <div class="section">
-        <div id="secimg">
+        <div id="secimg" >
           <div id="sectext"></div>
         </div>
       </div>
@@ -138,7 +138,8 @@
         <div class="swiper mySwiper2" id="noswiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide" id="noslide" th:each="notice, status:${notice}">
-              <div id="noslide_imgbox">
+              <div id="noslide_imgbox" th:onclick="|func_event(${notice.noticeNo});|">
+
                 <img th:src="${notice.noticeImageUrl}" />
               </div>
               <div id="noslide_textbox" th:text="${notice.noticeTitle}"></div>
