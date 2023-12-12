@@ -28,7 +28,19 @@ public class Controller_4 {
     @Autowired
     private ItemRepository itemRepository;
     @GetMapping("/basket")
-    public String Basket() {
-        return "basket";
+    public String carts(Model model){
+        List<BasketEntity> listEntity = BasketRepository.findAll();
+
+        List<BasketDto> listDto = listEntity
+                .stream()
+                .map(BasketDto::toCartDto)
+                .collect(Collectors.toList());
+
+
+
+        model.addAttribute("count", listDto.size());
+        model.addAttribute("list", listDto);
+
+        return "/basket";
     }
 }
