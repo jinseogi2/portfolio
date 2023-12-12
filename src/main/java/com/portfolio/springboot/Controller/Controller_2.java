@@ -27,6 +27,30 @@ public class Controller_2 {
     @Autowired
     private ItemRepository itemRepository;
 
+    @GetMapping("/select")
+    public String order(@RequestParam String itemNo, Model model) {
 
+        System.out.println("itemNo ::: " + itemNo);
 
+        ItemEntity itemEntity = itemRepository.findById(Long.valueOf(itemNo)).get();
+
+        model.addAttribute("item", itemEntity);
+        return "select";
+    }
 }
+
+
+
+/*
+    @GetMapping("/select1")
+    public String select()
+    {
+        return "select";
+    }
+*/
+
+
+
+
+
+
