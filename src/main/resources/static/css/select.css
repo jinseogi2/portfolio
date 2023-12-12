@@ -114,6 +114,7 @@ body {
 }
 #optionTitle1 {
   font-size: 20px;
+  display: flex;
 }
 #optionTitle2 {
   font-size: 20px;
