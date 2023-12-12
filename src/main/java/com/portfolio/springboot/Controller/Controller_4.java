@@ -27,6 +27,7 @@ public class Controller_4 {
     private NoticeRepository noticeRepository;
     @Autowired
     private ItemRepository itemRepository;
+<<<<<<< Updated upstream
 
 
     @PostMapping("/join")
@@ -329,4 +330,10 @@ public class Controller_4 {
             return resultDto;
         }
     }
+=======
+@GetMapping("/basket")
+    public String basket(){
+    return "basket";
+}
+>>>>>>> Stashed changes
 }
