@@ -45,3 +45,7 @@ window.location.href="/order_tea";
 function goMain(){
 window.location.href="/main";
 }
+
+function menu_select_onClickorder(itemNo) {
+  window.location.href = "select?itemNo=" + itemNo;
+}

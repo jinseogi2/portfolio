@@ -95,7 +95,7 @@
     </div>
     <div class="item_list row m-1" id="itemListContainer">
 
-        <div class="col-4 item_box" th:each="item, status:${list}">
+        <div class="col-4 item_box" th:each="item, status:${list}" th:onclick="|menu_select_onClickorder(${item.itemNo});|">
             <div class="item_img"><img th:src="${item.itemImageUrl}" alt="" /></div>
             <div class="item_text">
                 <div class="item_name" th:text="${item.itemName}">빵이름</div>

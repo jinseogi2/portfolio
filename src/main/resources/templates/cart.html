@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/cart.css" />
+    <script src="/js/cart.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="hicon" onclick="goMain();">
+                <img src="img/cart/back.png" alt="" />
+            </div>
+            <div class="htext">주문하기</div>
+            <div class="blankbox"></div>
+        </div>
+        <div class="nav">
+            <div class="ntext">
+                이젠컴퓨터학원
+            </div>
+        </div>
+        <div class="section" th:each="cart, status:${cart}">
+            <!-- 히든으로 카드에 대한 정보를 가지고 있음. -->
+            <input type="hidden" class="cartinfo_no" th:value="${cart.cartNo}">
+            <input type="hidden" class="cartinfo_price" th:value="${cart.cartPrice}">
+            <input type="hidden" class="cartinfo_count" th:value="${cart.cartCount}">
+            <input type="hidden" class="cartinfo_option1Name" th:value="${cart.cartOption1Name}">
+            <input type="hidden" class="cartinfo_option2Name" th:value="${cart.cartOption2Name}">
+            <input type="hidden" class="cartinfo_option3Name" th:value="${cart.cartOption3Name}">
+            <input type="hidden" class="cartinfo_option1Price" th:value="${cart.cartOption1Price}">
+            <input type="hidden" class="cartinfo_option2Price" th:value="${cart.cartOption2Price}">
+            <input type="hidden" class="cartinfo_option3Price" th:value="${cart.cartOption3Price}">
+            <!-- 경계선 -->
+            <div class="stext">주문 상품</div>
+            <div class="sec_inner">
+                <div class="inner_img"><img th:src="${cart.cartImageUrl}" alt=""></div>
+                <div class="inner_text">
+                    <div class="inner_text_1" th:text="${cart.cartName}">상품이름 </div>
+
+                    <div class="inner_text_2" th:if="${cart.cartOption1Name == null}">선택안함x1</div>
+                    <div class="inner_text_2" th:if="${cart.cartOption1Name != null}" th:text="${cart.cartOption1Name + 'x1'}"></div>
+
+                    <div class="inner_text_2" th:if="${cart.cartOption2Name == null}">선택안함x1</div>
+                    <div class="inner_text_2" th:if="${cart.cartOption2Name != null}" th:text="${cart.cartOption2Name + 'x1'}"></div>
+
+                    <div class="inner_text_2" th:if="${cart.cartOption3Name == null}">선택안함x1</div>
+                    <div class="inner_text_2" th:if="${cart.cartOption3Name != null}" th:text="${cart.cartOption3Name + 'x1'}"></div>
+                </div>
+                <div class="inner_cancle" onclick="func_cart_delete()">X</div>
+            </div>
+            <div class="sbtn">
+                <div class="btn">
+                    <button onclick='count("minus");' value="-" id="minusbtn">―</button>
+                </div>
+                <div id="result">1</div>
+                <div class="btn">
+                   <button onclick='count("plus");' value="+" id="plusbtn">╂</button>
+                </div>
+                <div class="price" id="totalPrice">금액</div>
+            </div>
+        </div>
+        <div class="aside">
+            장바구니에 담은 상품은 최대 30일간 보관됩니다.
+        </div>
+        <div class="footer">
+            <div class="ftext">
+                <div class="footer_inner_text">상품금액</div>
+                <div class="footer_inner_price">금액</div>
+            </div>
+            <div class="fbtn">
+                <button>주문하기</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -139,10 +139,13 @@ function func_cart() {
     }) // 서버 응답
     .then((json) => {
       //{ status: "ok", result: 5 }
-      console.log("json:" + json);
-      //window.location.href = "/admin_menu";
+      //window.location.href = "/cart";
+      alert("장바구니에 등록됐습니다.");
     }) // 실제 데이터
     .catch((error) => {
       console.log(error);
     });
+}
+function goCart(){
+window.location.href = "/cart";
 }

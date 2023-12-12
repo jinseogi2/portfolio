@@ -1,5 +1,6 @@
 package com.portfolio.springboot.Controller;
 
+import com.portfolio.springboot.dto.NoticeDto;
 import com.portfolio.springboot.entity.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,8 @@ public class FrontController {
     @Autowired
     private ItemRepository itemRepository;
 
-
+    @Autowired
+    private CartRepository cartRepository;
 
     // *************
     // 회원가입 관련
@@ -117,21 +119,6 @@ public class FrontController {
     // *************
     // 오더 페이지
     // *************
-
-    //      카테고리별 조회
-//        List<ItemEntity> hotcoffeelist = itemRepository.findByItemCate("hotcoffee");
-//        List<ItemEntity> icecoffeelist = itemRepository.findByItemCate("icecoffee");
-//        List<ItemEntity> decaflist = itemRepository.findByItemCate("decaf");
-//        List<ItemEntity> adelist = itemRepository.findByItemCate("ade");
-//        List<ItemEntity> smoothielist = itemRepository.findByItemCate("smoothie");
-//        List<ItemEntity> tealist = itemRepository.findByItemCate("tea");
-//
-//        model.addAttribute("hotcoffeelist",hotcoffeelist);
-//        model.addAttribute("icecoffeelist",icecoffeelist);
-//        model.addAttribute("decaflist",decaflist);
-//        model.addAttribute("adelist",adelist);
-//        model.addAttribute("smoothielist",smoothielist);
-//        model.addAttribute("tealist",tealist);
 
     @GetMapping("/order_recommand")
     public String order_recommand(Model model){
@@ -266,6 +253,21 @@ public class FrontController {
 
         model.addAttribute("notice",ntBlist);
         return "lastnotice";
+    }
+
+    @GetMapping("/cart")
+    public String cart(Model model){
+        List<CartEntity> cartEntityList = cartRepository.findAll();
+
+        model.addAttribute("cart",cartEntityList);
+        return "cart";
+    }
+    @GetMapping("/cartRe")
+    public String adminNoticeUpdate(@RequestParam String cartNo, Model model) {
+        CartEntity cartEntity = cartRepository.findById(Long.valueOf(cartNo)).get();
+        cartRepository.delete(cartEntity);
+
+            return "redirect:/cart";
     }
 }
 
