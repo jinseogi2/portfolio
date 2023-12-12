@@ -28,12 +28,7 @@ public class Controller_4 {
     @Autowired
     private ItemRepository itemRepository;
     @GetMapping("/basket")
-    public String getBasket(Model model) {
-        // 여기서 필요한 데이터를 가져와 BasketDto로 변환하여 모델에 추가합니다.
-        List<BasketDto> basketItems = // 서비스 호출이나 다른 방법으로 데이터를 가져와서 BasketDto로 변환
-
-                model.addAttribute("basketItems", basketItems);
-
+    public String Basket() {
         return "basket";
     }
 }
