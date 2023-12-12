@@ -416,3 +416,9 @@ CREATE TABLE megacoffee.cart (
 	cart_count TINYINT NOT NULL, -- 상품 개수
 	cart_datetime DATETIME DEFAULT NOW() -- 작성시간
 );
+INSERT INTO megacoffee.cart (cart_name, cart_image_url_1, cart_price, cart_option_price_1, cart_option_price_2, cart_option_price_3, cart_count)
+VALUES
+('Coffee Product 1', 'http://example.com/image1.jpg', 5000, 200, NULL, 50, 2),
+('Coffee Product 2', 'http://example.com/image2.jpg', 6000, NULL, 100, 30, 1),
+('Coffee Product 3', 'http://example.com/image3.jpg', 4500, 150, 50, NULL, 3);
+SELECT * FROM megacoffee.cart;
