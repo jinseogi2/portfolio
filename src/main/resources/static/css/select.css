@@ -148,11 +148,12 @@ input {
   font-size: 20px; /* 변경 가능한 폰트 크기 */
   text-align: center;
   line-height: 10px; /* 버튼 높이와 동일하게 설정 */
-  margin-right: 25px;
+  margin-left: 5px;
 }
 #result {
   font-weight: bold;
   font-size: 20px;
+  margin-left : 5px;
 }
 #minusbtn {
   width: 25px; /* 변경 가능한 크기 */
@@ -163,7 +164,7 @@ input {
   font-size: 20px; /* 변경 가능한 폰트 크기 */
   text-align: center;
   line-height: 10px; /* 버튼 높이와 동일하게 설정 */
-  margin-left: 25px;
+  margin-left: 5px;
 }
 #priceforadd {
   margin-top: 15px;
@@ -251,6 +252,7 @@ input {
   height: 100px;
   margin-top: 20px;
   display: flex;
+  justify-content: space-between;
 }
 #bt1-1 {
   width: 250px;

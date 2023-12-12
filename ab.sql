@@ -404,15 +404,21 @@ INSERT INTO notice VALUES(NULL,'EVENT','이벤트공지 예제4',
 SELECT * FROM notice;
 
 
-DROP TABLE if EXISTS megacoffee.cart;
 CREATE TABLE megacoffee.cart (
 	cart_no INT AUTO_INCREMENT NOT NULL PRIMARY KEY, -- 카트 번호
-	cart_name VARCHAR(255) NOT NULL,
-	cart_image_url_1 TEXT NULL, -- 카트에 들어오는 이미지 url ( 아이탬 )
+	cart_name VARCHAR(255) NOT NULL, -- 상품 이름
+	cart_image_url TEXT NULL, -- 카트에 들어오는 이미지 url ( 아이탬 )
 	cart_price INT NOT NULL, -- 상품 금액
-   cart_option_price_1 INT NULL, -- 옵션 금액
-   cart_option_price_2 INT NULL, -- 옵션 금액
-   cart_option_price_3 INT NULL, -- 옵션 금액
 	cart_count TINYINT NOT NULL, -- 상품 개수
+
+   cart_option1_name VARCHAR(255) NULL, -- 옵션1 이름
+   cart_option1_price INT NULL, -- 옵션1 금액
+   cart_option2_name VARCHAR(255) NULL, -- 옵션2 이름
+   cart_option2_price INT NULL, -- 옵션2 금액
+   cart_option3_name VARCHAR(255) NULL, -- 옵션3 이름
+   cart_option3_price INT NULL, -- 옵션3 금액
+
 	cart_datetime DATETIME DEFAULT NOW() -- 작성시간
 );
+
+SELECT * FROM cart;

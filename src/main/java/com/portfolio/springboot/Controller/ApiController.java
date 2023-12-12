@@ -28,6 +28,8 @@ public class ApiController {
     @Autowired
     private ItemRepository itemRepository;
 
+    @Autowired
+    private CartRepository cartRepository;
     // 접속한 사용자를 담아놓기 위해서
     @PostMapping("/loginAction")
     public ResultDto loginAction(@RequestBody LoginDto loginDto, HttpServletRequest request) {
@@ -393,6 +395,22 @@ public class ApiController {
         return resultDto;
     }
 
+    @PostMapping("/cartAddAction")
+    public ResultDto cartAdd_Action(@RequestBody CartAddDto cartAddDto){
+
+        CartEntity cartEntity = CartEntity.toEntity(cartAddDto);
+        cartEntity.setCartDatetime(LocalDateTime.now());
+
+        cartRepository.save(cartEntity);
+
+        ResultDto resultDto = null;
+
+        resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .build();
+        return resultDto;
+    }
 
 
 }

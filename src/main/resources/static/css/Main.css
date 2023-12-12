@@ -374,7 +374,7 @@ filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) co
   flex-direction: column;
 }
 #noslide_imgbox{
-height : 80%;
+height : 90%;
 }
 #noslide_textbox{
 height : 20%;
