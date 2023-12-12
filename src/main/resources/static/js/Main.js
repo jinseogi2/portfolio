@@ -3,24 +3,24 @@ window.onload = function () {
   basic_rollimg();
 };
 
-function seeMore(){
-window.location.href="/lastPage";
+function seeMore() {
+  window.location.href = "/lastPage";
 }
-function megaOrder(){
-window.location.href="/order_recommand";
+function megaOrder() {
+  window.location.href = "/order_recommand";
 }
-function payCard(){
-window.location.href="/payCard";
+function payCard() {
+  window.location.href = "/payCard";
 }
-function mainPage(){
-window.location.href="/main";
+function mainPage() {
+  window.location.href = "/main";
 }
-function stampPage(){
-window.location.href="/stampPage";
+function stampPage() {
+  window.location.href = "/stampPage";
 }
 
-function goNotice(){
-window.location.href="/lastEvent";
+function goNotice() {
+  window.location.href = "/lastEvent";
 }
 
 // 이미지 롤링을 처리하는 함수
@@ -94,63 +94,76 @@ function basic_rollimg() {
   }
 }
 
+var modalItemNo = 0;
+
 function modal_item_on(element) {
   // 모달 엘리먼트 가져오기
-  var modal = document.querySelector('.modal_item');
+  var modal = document.querySelector(".modal_item");
 
   // 모달 내 이미지 엘리먼트 가져오기
-  var imgElement = modal.querySelector('.item_img img');
+  var imgElement = modal.querySelector(".item_img img");
 
   // 모달 내 텍스트 엘리먼트 가져오기
-  var textElement = modal.querySelector('.item_box .item_text');
+  var textElement = modal.querySelector(".item_box .item_text");
 
   // 모달 내 아이템 이름 엘리먼트 가져오기
-  var itemNameElement = modal.querySelector('.item_box .item_name');
+  var itemNameElement = modal.querySelector(".item_box .item_name");
 
   // 이미지 소스 설정
-  imgElement.src = element.getAttribute('data-item-image-url');
+  imgElement.src = element.getAttribute("data-item-image-url");
 
   // 텍스트 설정
-  textElement.textContent = element.getAttribute('data-item-explanation');
+  textElement.textContent = element.getAttribute("data-item-explanation");
 
   // 아이템 이름 설정
-  itemNameElement.textContent = element.getAttribute('data-item-name');
+  itemNameElement.textContent = element.getAttribute("data-item-name");
+
+   //   모달창에 들어가는 아이탬 PK 코드
+   modalItemNo = element.getAttribute("data-item-no");
 
   // 모달 창 보이기
-  modal.style.display = 'block';
+  modal.style.display = "block";
 }
 
-function modal_item_off(){
-    var modal = document.querySelector('.modal_item');
-    modal.style.display = 'none';
+function modal_item_off() {
+  var modal = document.querySelector(".modal_item");
+  modal.style.display = "none";
 }
-
 
 function modal_barcode_on() {
-    var modal = document.querySelector('.modal_barcode');
-    var overlay = document.getElementById('modalOverlay');
+  var modal = document.querySelector(".modal_barcode");
+  var overlay = document.getElementById("modalOverlay");
 
-    modal.style.display = 'block';
-    overlay.style.display = 'block';
+  modal.style.display = "block";
+  overlay.style.display = "block";
 
-    // 모달 외부를 클릭할 때 closeModal 함수 호출
-    function clickHandler(event) {
-        event.stopPropagation(); // 이벤트 전파 중지
-        if (!modal.contains(event.target)) {
-            // 모달 외부를 클릭한 경우에만 closeModal 함수 호출
-            closeModal();
-        }
+  // 모달 외부를 클릭할 때 closeModal 함수 호출
+  function clickHandler(event) {
+    event.stopPropagation(); // 이벤트 전파 중지
+    if (!modal.contains(event.target)) {
+      // 모달 외부를 클릭한 경우에만 closeModal 함수 호출
+      closeModal();
     }
+  }
 
-    // 모달 외부 클릭 이벤트 등록
-    window.addEventListener('click', clickHandler, true);
+  // 모달 외부 클릭 이벤트 등록
+  window.addEventListener("click", clickHandler, true);
 
-    // 모달을 닫는 함수
-    function closeModal() {
-        modal.style.display = 'none';
-        overlay.style.display = 'none';
+  // 모달을 닫는 함수
+  function closeModal() {
+    modal.style.display = "none";
+    overlay.style.display = "none";
 
-        // 모달 외부 클릭 이벤트 제거
-        window.removeEventListener('click', clickHandler, true);
-    }
+    // 모달 외부 클릭 이벤트 제거
+    window.removeEventListener("click", clickHandler, true);
+  }
+}
+function menu_Update_onClickUpload() {
+  let inputItemImageUrl = document.getElementById("inputItemImageUrl");
+  inputItemImageUrl.click();
+}
+
+// 파일이 선택되면 선택한 이미지 미리보기를 표시하는 함수
+function menu_select_onClickorder() {
+  window.location.href = "select?itemNo=" + modalItemNo;
 }

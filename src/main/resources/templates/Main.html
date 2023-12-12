@@ -8,7 +8,6 @@
     <script src="/js/Main.js"></script>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
-
     <!-- Link Swiper's CSS -->
     <link
       rel="stylesheet"
@@ -16,68 +15,82 @@
     />
   </head>
   <body>
-
-  <!--  DB에 있는 정보들을 가져오기 위해 -->
-  <div style="display:none;">
-    <input type="hidden" id="eIndex" value="0"/>
-    <input type="hidden" id="bIndex" value="0"/>
-    <table>
-      <tr th:each="event, status:${event}">
-        <td><input type="hidden" class="eImg-list" th:value="${event.noticeImageUrl}"/></td>
-      </tr>
-      <tr th:each="basic, status:${basic}">
-        <td><input type="hidden" class="bImg-list" th:value="${basic.noticeImageUrl}"/></td>
-      </tr>
-    </table>
-  </div>
-
-
-  <!-- 모달 오버레이 요소 -->
-  <div class="modal_overlay" id="modalOverlay"></div>
-
-  <!--  바코드 모달창 띄우기 -->
-  <div class="modal_barcode">
-    <div class="barcode_box row">
-      <div class="barcode_main">
-        <div class="barcode_logo">
-          <img src="/img/main/blacklogo.png" alt="">
-        </div>
-        <div class="barcode_text">
-          맴버십 바코드
-        </div>
-      </div>
-      <div class="barcode_img">
-        <img src="/img/main/barcode.png" alt="">
-      </div>
-      <div class="barcode_footer">흔들면 맴버십 바코드가 나와요!</div>
+    <!--  DB에 있는 정보들을 가져오기 위해 -->
+    <div style="display: none">
+      <input type="hidden" id="eIndex" value="0" />
+      <input type="hidden" id="bIndex" value="0" />
+      <table>
+        <tr th:each="event, status:${event}">
+          <td>
+            <input
+              type="hidden"
+              class="eImg-list"
+              th:value="${event.noticeImageUrl}"
+            />
+          </td>
+        </tr>
+        <tr th:each="basic, status:${basic}">
+          <td>
+            <input
+              type="hidden"
+              class="bImg-list"
+              th:value="${basic.noticeImageUrl}"
+            />
+          </td>
+        </tr>
+      </table>
     </div>
-  </div>
-  <!--  아이탬 모달창 띄우기 -->
-  <div class="modal_item">
-    <div class="row item_box">
-      <div class="item_img col">
-        <img src="" alt="">
-      </div>
-      <div class="item_name col"></div>
-      <div class="item_text col"></div>
-      <div class="item_btn">
-        <div class="itembtn">
-          <div class="itembtnimg"><img src="/img/paycard/c3.png" alt=""></div>
-          <div class="itembtntext">주문하기</div>
+
+    <!-- 모달 오버레이 요소 -->
+    <div class="modal_overlay" id="modalOverlay"></div>
+
+    <!--  바코드 모달창 띄우기 -->
+    <div class="modal_barcode">
+      <div class="barcode_box row">
+        <div class="barcode_main">
+          <div class="barcode_logo">
+            <img src="/img/main/blacklogo.png" alt="" />
+          </div>
+          <div class="barcode_text">맴버십 바코드</div>
         </div>
-        <div class="itembtn">
-          <div class="itembtnimg"><img src="/img/paycard/c3.png" alt=""></div>
-          <div class="itembtntext">선물하기</div>
+        <div class="barcode_img">
+          <img src="/img/main/barcode.png" alt="" />
         </div>
+        <div class="barcode_footer">흔들면 맴버십 바코드가 나와요!</div>
       </div>
-      <div class="item_cancel" onclick="modal_item_off();">닫기</div>
-    </div> 
-  </div>
-  <!-- 본내용 -->
-  <!-- ************ -->
-  <!-- ************ -->
-  <!-- ************ -->
-  <div class="wrap">
+    </div>
+    <!--  아이탬 모달창 띄우기 -->
+    <div class="modal_item">
+      <div class="row item_box">
+        <div class="item_img col">
+          <img id="selectImg" src="" alt="" />
+        </div>
+        <div class="item_name col"></div>
+        <div class="item_text col"></div>
+        <div class="item_btn">
+          <div class="itembtn">
+            <div class="itembtnimg">
+              <img src="/img/paycard/c3.png" alt="" />
+            </div>
+            <div class="itembtntext" onclick="menu_select_onClickorder();">
+              주문하기
+            </div>
+          </div>
+          <div class="itembtn">
+            <div class="itembtnimg">
+              <img src="/img/paycard/c3.png" alt="" />
+            </div>
+            <div class="itembtntext">선물하기</div>
+          </div>
+        </div>
+        <div class="item_cancel" onclick="modal_item_off();">닫기</div>
+      </div>
+    </div>
+    <!-- 본내용 -->
+    <!-- ************ -->
+    <!-- ************ -->
+    <!-- ************ -->
+    <div class="wrap">
       <div id="mainimg">
         <img id="roll" src="/img/notice/notice1.jpg" alt="롤이미지" />
       </div>
@@ -98,7 +111,9 @@
             <div id="navbtnimg">
               <img src="/img/main/stamp.png" alt="" />
             </div>
-            <div id="navbtntext" th:text="|스탬프 ${user.memberStamp}|">스탬프갯수</div>
+            <div id="navbtntext" th:text="|스탬프 ${user.memberStamp}|">
+              스탬프갯수
+            </div>
           </div>
           <div id="navbtn-1">
             <div id="navbtnimg">
@@ -114,12 +129,25 @@
         </div>
       </div>
       <div class="aside">
-        <div id="astext" th:text="|${user.memberName} 님을 위한 추천 메뉴|">~ 님을 위한 추천 메뉴</div>
+        <div id="astext" th:text="|${user.memberName} 님을 위한 추천 메뉴|">
+          ~ 님을 위한 추천 메뉴
+        </div>
         <!-- Swiper -->
         <div class="swiper mySwiper" id="asswiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" id="asslide"  th:each ="item,status:${rlist}">
-              <div id="asslide_imgbox"  th:data-item-image-url="${item.itemImageUrl}" th:data-item-explanation="${item.itemExplanation}" th:data-item-name="${item.itemName}" onclick="modal_item_on(this);">
+            <div
+              class="swiper-slide"
+              id="asslide"
+              th:each="item,status:${rlist}"
+            >
+              <div
+                id="asslide_imgbox"
+                th:data-item-image-url="${item.itemImageUrl}"
+                th:data-item-explanation="${item.itemExplanation}"
+                th:data-item-name="${item.itemName}"
+                th:data-item-no="${item.itemNo}"
+                onclick="modal_item_on(this);"
+              >
                 <!-- th:onclick="|modal_item_on(${item.itemImageUrl},${item.itemExplanation});|" -->
                 <img th:src="${item.itemImageUrl}" alt="" />
               </div>
@@ -137,7 +165,11 @@
         <!-- Swiper -->
         <div class="swiper mySwiper2" id="noswiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" id="noslide" th:each="notice, status:${notice}">
+            <div
+              class="swiper-slide"
+              id="noslide"
+              th:each="notice, status:${notice}"
+            >
               <div id="noslide_imgbox">
                 <img th:src="${notice.noticeImageUrl}" />
               </div>
