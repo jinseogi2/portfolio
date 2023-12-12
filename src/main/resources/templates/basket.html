@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메인화면</title>
+<!--    <link rel="stylesheet" href="/css/Main.css" />-->
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<!--    <script src="js/Main.js"></script>-->
+
+    <style>
+      html {
+        overflow: auto;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+      }
+      .wrap {
+        background-color: rgb(248, 249, 251);
+        border: 2px solid #d3d3d3;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        width: 550px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      /* 해더 메인해더*/
+      .header {
+        width: 100%;
+        height: 70px;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center; /* 가운데 정렬 및 여백 추가 */
+      }
+      #header-container {
+        width: 90%;
+        display: flex;
+        align-items: center;
+      }
+      #header-button-box {
+        width: 20%;
+        display: flex;
+        justify-content: start;
+      }
+      #header-text-box {
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #header-button {
+        display: flex;
+        background-color: #ffffff;
+        border: none;
+      }
+      #header-button-img {
+        width: 35px;
+        height: 35px;
+      }
+
+      /* nav 스탬프,쿠폰*/
+      .nav {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        background-color: rgb(0, 0, 0);
+        justify-content: center;
+        align-items: center;
+      }
+      #nav-text-box {
+        width: 90%;
+        height: auto;
+      }
+      #nav-text {
+        color: #ffffff;
+      }
+
+      /* 섹션 중앙이벤트배너*/
+      .main {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #ffffff;
+        padding-bottom: 30px;
+      }
+      #order {
+        width: 90%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+      }
+      #menubox {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        padding-bottom: 20px;
+      }
+      #menu {
+        width: 90%;
+
+        display: flex;
+        flex-direction: row;
+      }
+      #menu-img-box {
+        width: 25%;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #menu-img {
+        width: 80%;
+        height: 130px;
+      }
+
+      #menu-info-box {
+        width: 55%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #menu-name {
+        padding: 5px;
+      }
+      #menu-option {
+        padding: 4px 5px;
+        color: #8a8a8a;
+        font-size: 14px;
+      }
+      #menu-cancel-box {
+        width: 20%;
+        display: flex;
+        justify-content: end;
+      }
+      #cancel-button-box {
+        padding: 5px;
+      }
+      #cancel-button {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background-color: #ffffff;
+      }
+      #cancel-img {
+        width: 100%;
+        height: 100%;
+      }
+      #option {
+        width: 85%;
+        height: 50px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #menu-number-box {
+        width: 50%;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 85px;
+      }
+      #minus-button,
+      #plus-button {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        border: none;
+      }
+      #pm-img {
+        width: 100%;
+        height: 100%;
+      }
+      #number {
+        padding: 40px;
+        font-size: large;
+      }
+      #menu-price-box {
+        width: 40%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        padding-left: 25px;
+      }
+      #menu-price {
+        font-size: 30px;
+      }
+
+      /* 공지사항 탭 */
+      .section {
+        width: 100%;
+        height: 60px;
+        background-color: #f2f3fc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #section-text-box {
+        width: 90%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+      }
+      #section-text {
+        font-size: 13px;
+      }
+
+      /* 푸터 하단메뉴*/
+      .footer {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        background-color: #fffdfd;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 100%;
+      }
+      #price-box {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px;
+      }
+      #price-text {
+        font-size: large;
+      }
+      #price {
+        font-size: 23px;
+        color: red;
+      }
+      #order-box {
+        width: 90%;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #order-button {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background-color: #523434;
+        color: #ffffff;
+      }
+      #header-button:hover {
+        background-color: #ffffff;
+        cursor: pointer;
+      }
+
+      /* 취소 버튼 */
+      #cancel-button:hover {
+        background-color: #ffffff;
+        cursor: pointer;
+      }
+
+      /* 플러스/마이너스 버튼 */
+      #pm-button:hover {
+        background-color: #ffffff;
+        cursor: pointer;
+      }
+
+      /* 주문하기 버튼 */
+      #order-button:hover {
+        background-color: #401f1f;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="header">
+        <div id="header-container">
+          <div id="header-button-box">
+            <button id="header-button">
+              <img
+                src="/img/basket/back.png"
+                id="header-button-img"
+                role="button"
+                onclick="click_notice();"
+              />
+            </button>
+          </div>
+          <div id="header-text-box"><h3 id="header-text">주문하기</h3></div>
+        </div>
+      </div>
+
+      <div class="nav">
+        <div id="nav-text-box"><p id="nav-text">의정부역점</p></div>
+      </div>
+      <div class="main">
+        <div id="order"><h4 id="order-text">주문 상품</h4></div>
+        <div id="menubox" th:each="menuInfo : ${menuList}">
+          <div id="menu">
+            <div id="menu-img-box"><img th:src="${menuInfo.imagePath}" id="menu-img" /></div>
+            <div id="menu-info-box">
+              <div id="menu-name"><h4 th:text="${menuInfo.name}"></h4></div>
+              <div id="menu-option" th:each="option : ${menuInfo.options}">
+                <p th:text="${option}"></p>
+              </div>
+            </div>
+            <div id="menu-cancel-box">
+              <div id="cancel-button-box">
+                <button id="cancel-button" onclick="cancelMenu(this);">
+                  <img src="/img/basket/cancel.png" id="cancel-img" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div id="option">
+            <div id="menu-number-box">
+              <button id="minus-button">
+                <img src="/img/basket/minus.png" id="pm-img" />
+              </button>
+              <p id="number">1</p>
+              <button id="plus-button">
+                <img src="/img/basket/plus.png" id="pm-img" />
+              </button>
+            </div>
+            <div id="menu-price-box" class="menu-price-box">
+              <h1 id="menu-price">3,000원</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div id="section-text-box">
+          <p id="section-text">
+            장바구니에 담은 상품은 최대 30일간 보관됩니다.
+          </p>
+        </div>
+      </div>
+      <div class="footer">
+        <div id="price-box">
+          <p id="price-text">상품금액</p>
+          <h4 id="price">3,000원</h4>
+        </div>
+        <div id="order-box">
+          <button id="order-button" onclick="click_order();">
+            <h3>주문하기</h3>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var numberElement = document.getElementById("number");
+      var minusButton = document.getElementById("minus-button");
+      var plusButton = document.getElementById("plus-button");
+      var menuPriceElement = document.getElementById("menu-price");
+      var totalPriceElement = document.getElementById("price");
+
+      // 메뉴의 기본 가격 (초기값)
+      var baseMenuPrice = 3000;
+
+      // 초기화 함수
+      function initialize() {
+        updatePrice(); // 초기화 시 가격 업데이트
+      }
+
+      // 가격을 업데이트하는 함수
+      function updatePrice() {
+        var currentNumber = parseInt(numberElement.textContent);
+
+        // 메뉴의 가격을 가져와서 총 가격 계산
+        var menuPrice = parseInt(menuPriceElement.dataset.basePrice);
+        var totalMenuPrice = menuPrice * currentNumber;
+
+        // 푸터의 총 가격 업데이트
+        var totalPrice = baseMenuPrice * currentNumber + totalMenuPrice;
+        totalPriceElement.textContent = totalPrice.toLocaleString() + "원";
+      }
+
+      // minus 버튼 클릭 시
+      minusButton.addEventListener("click", function () {
+        var currentNumber = parseInt(numberElement.textContent);
+        if (currentNumber > 1) {
+          // 숫자가 1보다 큰 경우에만 감소
+          numberElement.textContent = currentNumber - 1;
+          updatePrice(); // 가격 업데이트
+        }
+      });
+
+      // plus 버튼 클릭 시
+      plusButton.addEventListener("click", function () {
+        var currentNumber = parseInt(numberElement.textContent);
+        // 숫자를 증가시킴
+        numberElement.textContent = currentNumber + 1;
+        updatePrice(); // 가격 업데이트
+
+        // 메뉴 가격 업데이트
+        updateMenuPrice();
+      });
+
+      // 플러스 버튼 클릭 시 메뉴 가격 업데이트하는 함수
+      function updateMenuPrice() {
+        var menuPrice = parseInt(menuPriceElement.dataset.basePrice);
+        var currentNumber = parseInt(numberElement.textContent);
+        var updatedMenuPrice = menuPrice * currentNumber;
+
+        menuPriceElement.textContent = updatedMenuPrice.toLocaleString() + "원";
+      }
+
+      // 취소 버튼 클릭 시
+      function cancelMenu(button) {
+        // 해당 취소 버튼이 속한 메뉴박스를 찾아서 제거
+        var menuBox = button.closest("#menubox");
+        if (menuBox) {
+          menuBox.remove();
+          updatePrice(); // 메뉴박스가 제거되면 가격 업데이트
+        }
+      }
+
+      // 취소 버튼 클릭 이벤트 처리
+      var cancelButtons = document.querySelectorAll("#cancel-button");
+      cancelButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          cancelMenu(button);
+        });
+      });
+
+      // 플러스 버튼 클릭 시
+      plusButton.addEventListener("click", function () {
+        var menuPrice = parseInt(menuPriceElement.dataset.basePrice);
+        var currentNumber = parseInt(numberElement.textContent);
+        var updatedMenuPrice = menuPrice * currentNumber;
+
+        menuPriceElement.textContent = updatedMenuPrice.toLocaleString() + "원";
+      });
+
+      // 초기화 함수 호출
+      initialize();
+    });
+  </script>
+</html>
