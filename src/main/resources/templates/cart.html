@@ -55,7 +55,7 @@
                 <div class="btn">
                     <button onclick='count("minus");' value="-" id="minusbtn">―</button>
                 </div>
-                <div id="result">1</div>
+                <div id="result" th:text="${cart.cartCount}">1</div>
                 <div class="btn">
                    <button onclick='count("plus");' value="+" id="plusbtn">╂</button>
                 </div>
@@ -71,7 +71,7 @@
                 <div class="footer_inner_price">금액</div>
             </div>
             <div class="fbtn">
-                <button>주문하기</button>
+                <button onclick="goOrder();">주문하기</button>
             </div>
         </div>
     </div>

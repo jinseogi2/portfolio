@@ -12,6 +12,7 @@ function func_cart_delete() {
 }
 
 var indexCount = 1;
+
 // 수량 조절 함수
 function count(action) {
     // 현재 수량 가져오기
@@ -23,7 +24,7 @@ function count(action) {
     } else if (action === "minus" && index > 1) {
         index--;
     }
-    indexCount=index;
+    indexCount = index;
 
     // 조절된 수량을 HTML에 반영
     document.getElementById('result').innerText = index;
@@ -63,21 +64,22 @@ function updateTotalPrice() {
             var price = parseInt(priceElements[i].value);
             var count = parseInt(countElements[i].value);
 
-// 옵션 가격 값 가져오기
-var optionPrice1 = 0;
-if (optionPrice1Elements[i] && optionPrice1Elements[i].value !== "") {
-    optionPrice1 = parseFloat(optionPrice1Elements[i].value);
-}
+            // 옵션 가격 값 가져오기
+            var optionPrice1 = 0;
+            if (optionPrice1Elements[i] && optionPrice1Elements[i].value !== "") {
+                optionPrice1 = parseFloat(optionPrice1Elements[i].value);
+            }
 
-var optionPrice2 = 0;
-if (optionPrice2Elements[i] && optionPrice2Elements[i].value !== "") {
-    optionPrice2 = parseFloat(optionPrice2Elements[i].value);
-}
+            var optionPrice2 = 0;
+            if (optionPrice2Elements[i] && optionPrice2Elements[i].value !== "") {
+                optionPrice2 = parseFloat(optionPrice2Elements[i].value);
+            }
 
-var optionPrice3 = 0;
-if (optionPrice3Elements[i] && optionPrice3Elements[i].value !== "") {
-    optionPrice3 = parseFloat(optionPrice3Elements[i].value);
-}
+            var optionPrice3 = 0;
+            if (optionPrice3Elements[i] && optionPrice3Elements[i].value !== "") {
+                optionPrice3 = parseFloat(optionPrice3Elements[i].value);
+            }
+
             // 총 가격 계산 및 총합에 더하기
             var totalPrice = indexCount * price * count + optionPrice1 + optionPrice2 + optionPrice3;
             totalSum += totalPrice;
@@ -102,6 +104,10 @@ if (optionPrice3Elements[i] && optionPrice3Elements[i].value !== "") {
     }
 }
 
-function goMain(){
-window.location.href="/main";
+function goMain() {
+    window.location.href = "/main";
+}
+
+function goOrder() {
+    window.location.href = "/lastorderpage";
 }

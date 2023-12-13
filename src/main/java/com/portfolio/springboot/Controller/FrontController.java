@@ -269,5 +269,35 @@ public class FrontController {
 
             return "redirect:/cart";
     }
+
+    @GetMapping("/lastorderpage")
+    public String lastorderpage(Model model, HttpServletRequest request){
+
+//        기존 회원가져오기 위해서 (스탬프 저장해주려고)
+        String loginId = (String) request.getSession().getAttribute("loginId");
+        String loginPw = (String) request.getSession().getAttribute("loginPw");
+
+        // 로그인한 사용자의 아이디와 비밀번호로 회원 정보를 데이터베이스에서 조회합니다.
+        List<MemberEntity> mlist = memberRepository.findByMemberIdAndMemberPw(loginId, loginPw);
+
+        // 조회된 회원 정보 중 첫 번째 회원을 가져옵니다.
+        MemberEntity user = mlist.get(0);
+
+
+
+        List<CartEntity> cart = cartRepository.findAll();
+
+//      장바구니에 들어있는 상품의 갯수를 더해야합니다.
+        int totalCartCount = 0;
+        for (CartEntity cartItem : cart) {
+            totalCartCount += cartItem.getCartCount();
+        }
+        user.setMemberStamp(user.getMemberStamp()+totalCartCount);
+//        업데이트해줍니다.
+        MemberEntity newEntity = memberRepository.save(user);
+
+        model.addAttribute("cart",cart);
+        return "lastorderpage";
+    }
 }
 

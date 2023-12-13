@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>결제완료</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="/css/lastorderpage.css" />
+    <script src="/js/lastorderpage.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div id="toptitle">주문확인</div>
+      </div>
+      <div class="top">
+        <div id="topinner">
+          1시간 이내에 찾아가지 않으실 경우 품질 및 보관<br />
+          문제로 폐기 될 수 있습니다.
+        </div>
+      </div>
+      <div class="section">
+        <div id="imgcont"><img src="./img/lastorderpage/logo.png" alt="로고" /></div>
+        <div id="ordernum">주문번호 : 0000</div>
+        <div id="ordertime">2023. 12. 13. 00:00</div>
+      </div>
+      <div class="footer" th:each="cart, status:${cart}">
+        <!--  html에 금액을 뛰울려면 금액을 계산해야하기때문에 들고옴 -->
+        <input type="hidden" class="cartinfo_price" th:value="${cart.cartPrice}">
+        <input type="hidden" class="cartinfo_count" th:value="${cart.cartCount}">
+        <input type="hidden" class="cartinfo_option1Price" th:value="${cart.cartOption1Price}">
+        <input type="hidden" class="cartinfo_option2Price" th:value="${cart.cartOption2Price}">
+        <input type="hidden" class="cartinfo_option3Price" th:value="${cart.cartOption3Price}">
+        <div id="order1"><img th:src="${cart.cartImageUrl}" alt="주문1" /></div>
+        <div id="orderbox">
+          <div id="order2" th:text="|수량 : ${cart.cartCount}개|">수량</div>
+          <div class="price">금액 : 0000원</div>
+        </div>
+      </div>
+      <div class="end">
+        <div id="endbox">
+          <div id="payment">총 결제금액</div>
+          <div class="payment1">0000원</div>
+        </div>
+        <div id="endbox2">
+          <div id="stamp">누적 스탬프 적립</div>
+          <div id="stamp1">00</div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
