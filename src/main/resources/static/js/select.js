@@ -12,22 +12,26 @@ function downpage() {
   }
 }
 
-var itemPrice = 0;
-var check = 0;
+
 function count(type) {
   // 결과를 표시할 element
+
+  const basePrice = document.getElementById("inputPrice");
+
   const resultElement = document.getElementById("result");
+
   const priceElement = document.getElementById("priceforadd");
+  // 처음 합계표기
   const inputItemElement = document.getElementById("inputItemPrice");
+  // 마지막 합계 표기
 
   // 현재 화면에 표시된 값
   let result = parseInt(resultElement.innerText); // 갯수
 
-  if (itemPrice == 0 && check == 0) {
-    // 아이템의 가격
-    itemPrice = parseInt(priceElement.innerText);
-    check = 1;
-  }
+
+   // 아이템의 가격
+   itemPrice = parseInt(basePrice.value);
+
 
   // 더하기/빼기
   if (type === "plus") {
@@ -44,7 +48,6 @@ function count(type) {
   inputItemElement.innerText = itemPrice * result + servePrice;
 }
 
-var radioCheck = 0;
 var servePrice = 0;
 
 // 라디오박스 요소 참조
@@ -52,37 +55,21 @@ const radioNone = document.getElementById("none");
 const radioOption = document.getElementById("option");
 
 radioOption.addEventListener("change", function () {
-  const priceElement = document.getElementById("priceforadd");
-  const inputItemElement = document.getElementById("inputItemPrice");
   if (radioOption.checked) {
     console.log("스모어 잼 추가가 체크되었습니다.");
     // 스모어 잼 추가가 체크되었을 때의 동작 추가
-    if (radioCheck == 0) {
-      radioCheck = 1;
       servePrice = 700;
-      priceElement.innerText = parseInt(priceElement.innerText) + servePrice;
-      inputItemElement.innerText =
-        parseInt(inputItemElement.innerText) + servePrice;
+      count("check");
     }
-  }
 });
 
 // 라디오박스 상태 변화 이벤트 처리
 radioNone.addEventListener("change", function () {
-  const priceElement = document.getElementById("priceforadd");
-  const inputItemElement = document.getElementById("inputItemPrice");
-
   if (radioNone.checked) {
     console.log("선택안함이 체크되었습니다.");
     // 선택안함이 체크되었을 때의 동작 추가
-    if (radioCheck == 1) {
-      radioCheck = 0;
-      priceElement.innerText = parseInt(priceElement.innerText) - servePrice;
-      inputItemElement.innerText =
-        parseInt(inputItemElement.innerText) - servePrice;
-
       servePrice = 0;
-    }
+      count("uncheck");
   }
 });
 
@@ -108,8 +95,8 @@ function func_cart() {
   let cartImageUrl = document.getElementById("inputcartImageUrl").src;
   let cartPrice = document.getElementById("inputPrice").value;
   let cartCount = document.getElementById("result").innerText;
-  let cart_option1_name = "스모어잼";
-  let cart_option1_price = 700;
+  let cart_option1_name = document.getElementById("option_name").innerText;
+  let cart_option1_price = document.getElementById("option_price").value;
 
   console.log("cartName :: " + cartName);
   console.log("cartImageUrl :: " + cartImageUrl);
