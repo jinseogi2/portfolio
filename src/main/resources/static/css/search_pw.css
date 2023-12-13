@@ -3,6 +3,7 @@
   margin: 0;
   /* overflow: hidden; */
   overflow: auto;
+  font-family: 'NanumGothicCoding';
 }
 body {
   display: flex;

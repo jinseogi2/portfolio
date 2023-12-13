@@ -4,6 +4,7 @@
   /* overflow: hidden; */
   overflow: auto;
   overflow-x: hidden;
+  font-family: 'NanumGothicCoding';
 }
 body {
   display: flex;

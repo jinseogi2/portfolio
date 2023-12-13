@@ -5,12 +5,7 @@
     <!-- jQuery 라이브러리 추가 -->
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- Google Fonts 추가 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Source+Code+Pro&family=Sunflower:wght@300&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css" rel="stylesheet">
     <script src="js/admin.js"></script>
     <!-- 관리자 페이지 스타일시트 추가 -->
     <link rel="stylesheet" href="/css/admin.css" />
@@ -154,7 +149,7 @@
                   <span th:text="${notice.noticeTitle}"></span>
                 </td>
                 <!-- 공지사항 내용 -->
-                <td style="width: 30%">
+                <td class="p-4" style="width: 30%">
                   <span th:text="${notice.noticeContent}"></span>
                 </td>
                 <!-- 공지사항 수정/삭제 버튼 -->

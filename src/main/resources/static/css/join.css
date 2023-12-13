@@ -7,6 +7,7 @@
   /* overflow: hidden; */
   /* overflow: auto; */
   overflow: hidden;
+  font-family: 'NanumGothicCoding';
 }
 body {
   display: flex;
