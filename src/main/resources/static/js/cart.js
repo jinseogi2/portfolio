@@ -1,9 +1,5 @@
 // 삭제 함수
-function func_cart_delete() {
-    // 장바구니 번호 가져오기
-    var itemNo = document.getElementsByClassName("cartinfo_no");
-    const cartNo = itemNo[0].value;
-
+function func_cart_delete(cartNo) {
     // 삭제 여부 확인
     if (confirm("정말로 삭제하시겠습니까?")) {
         // 확인 시 해당 카트 번호로 페이지 이동

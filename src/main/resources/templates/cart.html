@@ -49,7 +49,7 @@
                     <div class="inner_text_2" th:if="${cart.cartOption3Name == null}">선택안함x1</div>
                     <div class="inner_text_2" th:if="${cart.cartOption3Name != null}" th:text="${cart.cartOption3Name + 'x1'}"></div>
                 </div>
-                <div class="inner_cancle" onclick="func_cart_delete()">X</div>
+                <div class="inner_cancle" th:onclick="|func_cart_delete(${cart.cartNo});|">X</div>
             </div>
             <div class="sbtn">
                 <div class="btn">
