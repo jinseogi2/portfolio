@@ -73,8 +73,12 @@ function func_member_updateAction() {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
 
-      //원래페이지로 이동
-      window.location.href = "/admin_member";
+      // 부모 창 새로고침
+      window.opener.location.reload();
+      // 현재 창(팝업) 닫기
+      window.close();
+      // 부모 창에서 "/admin_member" 페이지로 이동
+      window.opener.location.href = "/admin_member";
     }) //실제 데이타
     .catch((error) => {
       console.log(error);
@@ -183,42 +187,37 @@ function func_menu_AddAction() {
 // fetch API를 사용하여 이미지 업로드를 처리하는 함수
 function menu_Add_image_upload() {
   let inputItemImageUrl = document.getElementById("inputItemImageUrl");
-  console.log(inputItemImageUrl);
 
-  let fileUrl = inputItemImageUrl.value; // 파일 경로 가져오기
-  console.log(fileUrl);
-  let index = fileUrl.lastIndexOf("\\");
-  let fileName = fileUrl.substr(index + 1); // 경로에서 파일 이름 추출
-  console.log("fileName:" + fileName);
+  // 파일이 선택되었는지 확인
+  if (inputItemImageUrl.files && inputItemImageUrl.files.length > 0) {
+    // 파일이 선택되었을 때만 아래 코드가 실행됨
+    let fileUrl = inputItemImageUrl.value;
+    let index = fileUrl.lastIndexOf("\\");
+    let fileName = fileUrl.substr(index + 1);
 
-  // 파일을 multipart/form-data 요청으로 보내기 위한 FormData 객체 생성
-  let form = new FormData();
-  form.enctype = "multipart/form-data";
-  form.append("file", inputItemImageUrl.files[0], fileName);
+    let form = new FormData();
+    form.append("file", inputItemImageUrl.files[0], fileName);
 
-  // "/upload" 엔드포인트로 POST 요청 보내기
-  fetch("/menu_Add_upload", {
-    method: "POST",
-    headers: {},
-    body: form, // 요청 본문에 FormData 객체 포함
-  })
-    .then((response) => {
-      console.log("response:" + response);
-      console.log("response:" + JSON.stringify(response));
-
-      return response.json(); // JSON 응답 파싱
+    fetch("/menu_Add_upload", {
+      method: "POST",
+      headers: {},
+      body: form,
     })
-    .then((json) => {
-      //{ status: "ok", result: 5 }
-      console.log("json:" + json);
-      console.log("json:" + JSON.stringify(json));
-      console.log("uploadFileName:" + json.uploadFileName);
-
-      func_menu_AddAction_json(json.uploadFileName); // 얻은 uploadFileName을 사용하여 함수 호출
-    })
-    .catch((error) => {
-      console.log(error); // fetch 요청 중에 발생한 오류 기록
-    });
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        console.log("json:" + JSON.stringify(json));
+        func_menu_AddAction_json(json.uploadFileName);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } else {
+    // 파일이 선택되지 않았을 때는 여기로 진입함
+    console.log("파일이 선택되지 않았습니다.");
+    alert("사진이 등록돼지 않았습니다.");
+  }
 }
 // JSON 형식의 아이템 이미지 URL을 받아와서 관련된 폼 데이터를 서버로 전송하는 함수
 function func_menu_AddAction_json(itemImageUrl) {
@@ -262,8 +261,13 @@ function func_menu_AddAction_json(itemImageUrl) {
     .then((json) => {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
-      // 원래 페이지로 이동
-      // window.close();
+
+      // 부모 창 새로고침
+      window.opener.location.reload();
+      // 현재 창(팝업) 닫기
+      window.close();
+      // 부모 창에서 "/admin_member" 페이지로 이동
+      window.opener.location.href = "/admin_menu";
     }) // 실제 데이터
     .catch((error) => {
       console.log(error);
@@ -313,41 +317,99 @@ function func_menu_updateAction() {
 // fetch API를 사용하여 이미지 업로드를 처리하는 함수
 function menu_update_image_upload() {
   let inputItemImageUrl = document.getElementById("inputItemImageUrl");
-  console.log(inputItemImageUrl);
 
-  let fileUrl = inputItemImageUrl.value; // 파일 경로 가져오기
-  console.log(fileUrl);
-  let index = fileUrl.lastIndexOf("\\");
-  let fileName = fileUrl.substr(index + 1); // 경로에서 파일 이름 추출
-  console.log("fileName:" + fileName);
+  // 파일이 선택되었는지 확인
+  if (inputItemImageUrl.files && inputItemImageUrl.files.length > 0) {
+    let fileUrl = inputItemImageUrl.value; // 파일 경로 가져오기
+    let index = fileUrl.lastIndexOf("\\");
+    let fileName = fileUrl.substr(index + 1); // 경로에서 파일 이름 추출
 
-  // 파일을 multipart/form-data 요청으로 보내기 위한 FormData 객체 생성
-  let form = new FormData();
-  form.enctype = "multipart/form-data";
-  form.append("file", inputItemImageUrl.files[0], fileName);
+    // 파일을 multipart/form-data 요청으로 보내기 위한 FormData 객체 생성
+    let form = new FormData();
+    form.enctype = "multipart/form-data";
+    form.append("file", inputItemImageUrl.files[0], fileName);
 
-  // "/upload" 엔드포인트로 POST 요청 보내기
-  fetch("/menu_Update_upload", {
+    // "/upload" 엔드포인트로 POST 요청 보내기
+    fetch("/menu_Update_upload", {
+      method: "POST",
+      headers: {},
+      body: form, // 요청 본문에 FormData 객체 포함
+    })
+      .then((response) => {
+        return response.json(); // JSON 응답 파싱
+      })
+      .then((json) => {
+        console.log("json:" + JSON.stringify(json));
+        console.log("uploadFileName:" + json.uploadFileName);
+
+        func_menu_updateAction_json(json.uploadFileName); // 얻은 uploadFileName을 사용하여 함수 호출
+      })
+      .catch((error) => {
+        console.log(error); // fetch 요청 중에 발생한 오류 기록
+      });
+  } else {
+    // 파일이 선택되지 않았을 때 실행할 코드
+    console.log("파일이 선택되지 않았습니다.");
+
+    // 파일이 선택되지 않았을 때 실행할 다른 fetch 요청 추가 가능
+    func_menu_updateAction_none();
+  }
+}
+
+// 이미지를 업데이트 안할때
+function func_menu_updateAction_none(){
+  const inputItemNo = document.getElementById("inputItemNo").value;
+  const inputItemName = document.getElementById("inputItemName").value;
+  const inputItemCode = document.getElementById("inputItemCode").value;
+  const itemImageUrl = document.getElementById("imgItemImageUrl").src;
+
+  console.log("itemImageUrl:: " + itemImageUrl);
+  var itemCate = document.getElementById("inputItemCate");
+  const inputItemCate = itemCate.options[itemCate.selectedIndex].value;
+
+  const inputItemRecommend =
+    document.getElementById("inputItemRecommend").value;
+  const inputItemPrice = document.getElementById("inputItemPrice").value;
+  //const itemImageUrl = document.getElementById("imgItemImageUrl").src;
+  const inputItemExplanation = document.getElementById(
+    "inputItemExplanation"
+  ).value;
+
+  // 서버에 전송할 파라미터 객체 생성
+  // 이때 MemberEdDto에 들어가있는 변수랑 이름이 같아야한다.
+  let params = {
+    itemNo: inputItemNo,
+    itemName: inputItemName,
+    itemCode: inputItemCode,
+    itemCate: inputItemCate,
+    itemRecommend: inputItemRecommend,
+    itemPrice: inputItemPrice,
+    itemImageUrl: itemImageUrl,
+    itemExplanation: inputItemExplanation,
+  };
+
+  // 서버로 POST 요청 보내기
+  fetch("/menuUpdateAction_none", {
     method: "POST",
-    headers: {},
-    body: form, // 요청 본문에 FormData 객체 포함
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params),
   })
     .then((response) => {
       console.log("response:" + response);
-      console.log("response:" + JSON.stringify(response));
-
-      return response.json(); // JSON 응답 파싱
-    })
+      return response.json();
+    }) // 서버 응답
     .then((json) => {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
-      console.log("json:" + JSON.stringify(json));
-      console.log("uploadFileName:" + json.uploadFileName);
-
-      func_menu_updateAction_json(json.uploadFileName); // 얻은 uploadFileName을 사용하여 함수 호출
-    })
+      // 부모 창 새로고침
+      window.opener.location.reload();
+      // 현재 창(팝업) 닫기
+      window.close();
+      // 부모 창에서 "/admin_member" 페이지로 이동
+      window.opener.location.href = "/admin_menu";
+    }) // 실제 데이터
     .catch((error) => {
-      console.log(error); // fetch 요청 중에 발생한 오류 기록
+      console.log(error);
     });
 }
 // JSON 형식의 아이템 이미지 URL을 받아와서 관련된 폼 데이터를 서버로 전송하는 함수
@@ -394,8 +456,12 @@ function func_menu_updateAction_json(itemImageUrl) {
     .then((json) => {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
-      // 원래 페이지로 이동
-      window.location.href = "/admin_menu";
+      // 부모 창 새로고침
+      window.opener.location.reload();
+      // 현재 창(팝업) 닫기
+      window.close();
+      // 부모 창에서 "/admin_member" 페이지로 이동
+      window.opener.location.href = "/admin_menu";
     }) // 실제 데이터
     .catch((error) => {
       console.log(error);
@@ -479,44 +545,93 @@ function func_notice_updateAction() {
   notice_update_image_upload(); // image_upload 함수 호출
 }
 
+
+
 // fetch API를 사용하여 이미지 업로드를 처리하는 함수
 function notice_update_image_upload() {
   let inputNoticeImageUrl = document.getElementById("inputNoticeImageUrl");
-  console.log(inputNoticeImageUrl);
 
-  let fileUrl = inputNoticeImageUrl.value; // 파일 경로 가져오기
-  console.log(fileUrl);
-  let index = fileUrl.lastIndexOf("\\");
-  let fileName = fileUrl.substr(index + 1); // 경로에서 파일 이름 추출
-  console.log("fileName:" + fileName);
+  // 파일이 선택되었는지 확인
+  if (inputNoticeImageUrl.files && inputNoticeImageUrl.files.length > 0) {
+    let fileUrl = inputNoticeImageUrl.value; // 파일 경로 가져오기
+    let index = fileUrl.lastIndexOf("\\");
+    let fileName = fileUrl.substr(index + 1); // 경로에서 파일 이름 추출
 
-  // 파일을 multipart/form-data 요청으로 보내기 위한 FormData 객체 생성
-  let form = new FormData();
-  form.enctype = "multipart/form-data";
-  form.append("file", inputNoticeImageUrl.files[0], fileName);
+    // 파일을 multipart/form-data 요청으로 보내기 위한 FormData 객체 생성
+    let form = new FormData();
+    form.append("file", inputNoticeImageUrl.files[0], fileName);
 
-  // "/upload" 엔드포인트로 POST 요청 보내기
-  fetch("/notice_Update_upload", {
+    // "/upload" 엔드포인트로 POST 요청 보내기
+    fetch("/notice_Update_upload", {
+      method: "POST",
+      headers: {},
+      body: form, // 요청 본문에 FormData 객체 포함
+    })
+      .then((response) => {
+        return response.json(); // JSON 응답 파싱
+      })
+      .then((json) => {
+        console.log("json:" + JSON.stringify(json));
+        console.log("uploadFileName:" + json.uploadFileName);
+
+        func_notice_updateAction_json(json.uploadFileName); // 얻은 uploadFileName을 사용하여 함수 호출
+      })
+      .catch((error) => {
+        console.log(error); // fetch 요청 중에 발생한 오류 기록
+      });
+  } else {
+    // 파일이 선택되지 않았을 때 실행할 코드
+    console.log("파일이 선택되지 않았습니다.");
+
+    // 파일이 선택되지 않았을 때
+    func_notice_updateAction_none();
+  }
+}
+function func_notice_updateAction_none(){
+ // 입력 요소들의 값을 가져오기
+  const inputNoticeNo = document.getElementById("inputNoticeNo").value;
+  const inputNoticeTitle = document.getElementById("inputNoticeTitle").value;
+  const inputNoticeDatetime = document.getElementById(
+    "inputNoticeDatetime"
+  ).value;
+  const noticeImageUrl = document.getElementById("imgNoticeImageUrl").src;
+  const inputNoticeType = document.getElementById("inputNoticeType").value;
+  const inputNoticeContent =
+    document.getElementById("inputNoticeContent").value;
+
+  // 서버에 전송할 파라미터 객체 생성
+  // 이때 MemberEdDto에 들어가있는 변수랑 이름이 같아야한다.
+  let params = {
+    noticeNo: inputNoticeNo,
+    noticeType: inputNoticeType,
+    noticeTitle: inputNoticeTitle,
+    noticeContent: inputNoticeContent,
+    noticeImageUrl: noticeImageUrl,
+    noticeDatetime: inputNoticeDatetime,
+  };
+
+  // 서버로 POST 요청 보내기
+  fetch("/noticeUpdateAction_none", {
     method: "POST",
-    headers: {},
-    body: form, // 요청 본문에 FormData 객체 포함
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params),
   })
     .then((response) => {
       console.log("response:" + response);
-      console.log("response:" + JSON.stringify(response));
-
-      return response.json(); // JSON 응답 파싱
-    })
+      return response.json();
+    }) // 서버 응답
     .then((json) => {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
-      console.log("json:" + JSON.stringify(json));
-      console.log("uploadFileName:" + json.uploadFileName);
-
-      func_notice_updateAction_json(json.uploadFileName); // 얻은 uploadFileName을 사용하여 함수 호출
-    })
+      // 부모 창 새로고침
+      window.opener.location.reload();
+      // 현재 창(팝업) 닫기
+      window.close();
+      // 부모 창에서 "/admin_member" 페이지로 이동
+      window.opener.location.href = "/admin_notice";
+    }) // 실제 데이터
     .catch((error) => {
-      console.log(error); // fetch 요청 중에 발생한 오류 기록
+      console.log(error);
     });
 }
 // JSON 형식의 아이템 이미지 URL을 받아와서 관련된 폼 데이터를 서버로 전송하는 함수
@@ -555,8 +670,12 @@ function func_notice_updateAction_json(noticeImageUrl) {
     .then((json) => {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
-      // 원래 페이지로 이동
-      window.location.href = "/admin_notice";
+      // 부모 창 새로고침
+      window.opener.location.reload();
+      // 현재 창(팝업) 닫기
+      window.close();
+      // 부모 창에서 "/admin_member" 페이지로 이동
+      window.opener.location.href = "/admin_notice";
     }) // 실제 데이터
     .catch((error) => {
       console.log(error);
@@ -673,8 +792,12 @@ function func_notice_AddAction_json(noticeImageUrl) {
     .then((json) => {
       //{ status: "ok", result: 5 }
       console.log("json:" + json);
-      // 원래 페이지로 이동
-      window.location.href = "/admin_notice";
+      // 부모 창 새로고침
+      window.opener.location.reload();
+      // 현재 창(팝업) 닫기
+      window.close();
+      // 부모 창에서 "/admin_member" 페이지로 이동
+      window.opener.location.href = "/admin_notice";
     }) // 실제 데이터
     .catch((error) => {
       console.log(error);

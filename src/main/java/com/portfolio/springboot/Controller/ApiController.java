@@ -248,6 +248,31 @@ public class ApiController {
         return resultDto;
     }
 
+    @PostMapping("/menuUpdateAction_none")
+    public ResultDto menuUpdateAction2(@RequestBody ItemEdDto itemEdDto) {
+
+        ItemEntity itemEntity = ItemEntity.toEntity(itemEdDto);
+
+        ItemEntity newEntity = itemRepository.save(itemEntity);
+
+        ResultDto resultDto = null;
+
+        if( newEntity != null  ) {
+            //수정 성공
+            resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(1)
+                    .build();
+        }else{
+            //수정 실패
+            resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(0)
+                    .build();
+        }
+
+        return resultDto;
+    }
 
 
 
@@ -347,6 +372,31 @@ public class ApiController {
                 .result(1)
                 .uploadFileName(newFileName)
                 .build();
+
+        return resultDto;
+    }
+    @PostMapping("/noticeUpdateAction_none")
+    public ResultDto noticeUpdateAction2(@RequestBody NoticeEdDto noticeEdDto) {
+
+        NoticeEntity noticeEntity = NoticeEntity.toEntity(noticeEdDto);
+
+        NoticeEntity newEntity = noticeRepository.save(noticeEntity);
+
+        ResultDto resultDto = null;
+
+        if( newEntity != null  ) {
+            //수정 성공
+            resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(1)
+                    .build();
+        }else{
+            //수정 실패
+            resultDto = ResultDto.builder()
+                    .status("ok")
+                    .result(0)
+                    .build();
+        }
 
         return resultDto;
     }
