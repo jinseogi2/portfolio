@@ -27,7 +27,7 @@ body {
 }
 .header {
   position: fixed;
-  width: 510px;
+  width: 530px;
   height: 80px;
   display: flex;
   background-color: white;
@@ -155,7 +155,8 @@ input {
 #result {
   font-weight: bold;
   font-size: 20px;
-  margin-left : 5px;
+  margin-left : 10px;
+  margin-right: 5px;
 }
 #minusbtn {
   width: 25px; /* 변경 가능한 크기 */

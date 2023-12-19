@@ -177,7 +177,7 @@ body {
 .itembtnimg{
   margin-top: 20px;
   width: 50%;
-  height: 50%;
+  height: 70%;
 }
 .itembtnimg img{
 filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) contrast(100%);
@@ -186,7 +186,7 @@ filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) co
 }
 .itembtntext{
   width: 50%;
-  height: 50%;
+  height: 40%;
   color: white;
 }
 

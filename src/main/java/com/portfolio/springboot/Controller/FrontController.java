@@ -299,5 +299,19 @@ public class FrontController {
         model.addAttribute("cart",cart);
         return "lastorderpage";
     }
+
+    @GetMapping("/")
+    public String loginpage(HttpServletRequest request){
+
+
+        // 로그아웃 시켜주기
+        request.getSession().invalidate();
+
+        // 장바구니 초기화
+        cartRepository.deleteAll();
+
+        return "loginpage";
+    }
+
 }
 

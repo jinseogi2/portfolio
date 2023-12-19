@@ -36,9 +36,28 @@ function count(type) {
 
   // 새로운 수량 및 가격 표시
   resultElement.innerText = result;
-  priceElement.innerText = itemPrice * result + servePrice;
-  inputItemElement.innerText = itemPrice * result + servePrice;
+  priceElement.innerText = addCommas(itemPrice * result + servePrice) +" 원";
+  inputItemElement.innerText = addCommas(itemPrice * result + servePrice) +" 원";
 }
+
+ document.addEventListener("DOMContentLoaded", function() {
+        var priceElement = document.getElementById("priceforadd");
+        var itemPrice1 = priceElement.innerText;
+        var formattedPrice1 = addCommas(itemPrice1);
+        priceElement.innerText = formattedPrice1 + ' 원';
+
+        // inputItemPrice 엘리먼트 처리
+        var itemPriceElement = document.getElementById("inputItemPrice");
+        var itemPrice2 = itemPriceElement.innerText;
+        var formattedPrice2 = addCommas(itemPrice2);
+        itemPriceElement.innerText = formattedPrice2 + ' 원';
+ });
+
+// 콤마찍어주는 함수
+function addCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 
 var servePrice = 0;
 

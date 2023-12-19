@@ -53,7 +53,7 @@
           <div class="sec1_hd">
             <div class="sec1_1">퍼스널 옵션</div>
             <div class="sec1_2">
-              <button onclick="downpage();">
+              <button onclick="downpage();" style="border:none;background-color:white;">
                 <img id="btnimg" src="/img/select/down.png" alt="" />
               </button>
             </div>
@@ -99,7 +99,7 @@
           </div>
         </div>
         <input type="hidden" id="inputPrice" th:value="${item.itemPrice}" />
-        <div id="priceforadd" th:text="${item.itemPrice}">0000원</div>
+        <div id="priceforadd" th:text="${item.itemPrice}">금액</div>
       </div>
       <div class="footer">
         <div id="recommend">추천메뉴</div>
@@ -119,7 +119,7 @@
         <div class="end">
           <div id="final">
             <div id="prd">상품금액</div>
-            <div id="inputItemPrice" th:text="${item.itemPrice}">0000</div>
+            <div id="inputItemPrice" th:text="${item.itemPrice}">금액</div>
           </div>
         </div>
         <div class="realend">

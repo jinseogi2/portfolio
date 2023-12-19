@@ -20,6 +20,11 @@ function html_Start_Set() {
     ordertime.textContent = getCurrentDateTime();
 }
 
+// 콤마찍어주는 함수
+function addCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 // 주문번호 랜덤으로 출력하기 위해서
 function getRandomNumber() {
     return Math.floor(Math.random() * 9999) + 1;
@@ -77,7 +82,7 @@ function updateTotalPrice() {
 
             // 각 totalPrice 엘리먼트의 innerText 업데이트
             if (totalPriceElements[i]) {
-                totalPriceElements[i].innerText = totalPrice + "원";
+                totalPriceElements[i].innerText = addCommas(totalPrice) + " 원";
             }
         } else {
             console.error("One or more elements not found.");
@@ -89,7 +94,7 @@ function updateTotalPrice() {
 
     // 전체 총합을 업데이트
     if (totalSumElement) {
-        totalSumElement.innerText = totalSum + "원";
+        totalSumElement.innerText = addCommas(totalSum) + " 원";
     } else {
         console.error("Total sum element not found.");
     }
