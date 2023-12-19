@@ -1,7 +1,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: 'NanumGothicCodingBold';
+  font-family: "NanumGothicCodingBold";
 }
 html {
   overflow: auto;
@@ -58,23 +58,23 @@ body {
   height: 80%;
 }
 .hicon_1 > img {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
 }
 .hicon_2 {
   display: flex;
   justify-content: end;
 }
-.hicon_2-1,
+/* .hicon_2-1, */
 .hicon_2-2 {
   width: 50px;
-  height: 100%;
-  margin-left: 20px;
-  margin-right: 20px;
+  height: 80%;
+  /* margin-left: 20px;
+  margin-right: 20px; */
 }
-.hicon_2-1 > img,
+/* .hicon_2-1 > img, */
 .hicon_2-2 > img {
-  width: 100%;
+  width: 80%;
   height: 80%;
 }
 .htext {
