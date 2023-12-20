@@ -22,12 +22,11 @@
   </head>
   <body>
     <!-- 관리자 페이지 컨테이너 -->
-    <div class="myContainer">
-     <!-- 헤더 영역 -->
-     <div class="myHeader">
-      <div class="headerBox">
+    <div class="container myContainer">
+      <!-- 헤더 영역 -->
+      <div class="myHeader">
         <!-- 헤더 로고 -->
-        <div class="headerLogo m-3">
+        <div class="headerLogo">
           <img
             src="/img/admin/blackYellowLogo.png"
             onclick="click_main();"
@@ -35,128 +34,137 @@
           />
         </div>
         <!-- 헤더 가운데 현재 페이지 이름 -->
-        <div class="headerCenter m-3">
-          <h2>메가커피 관리자 페이지</h2>
+        <div class="headerCenter fs-4 fw-bold">
+          <p class="m-0">메가커피 관리자 페이지</p>
         </div>
       </div>
-    </div>
 
-    <div class="myMain">
-      <!-- 메인 화면 -->
-      <div class="screen">
-        <!-- 메인스크린 내용이 들어갈 부분 -->
-        <div class="screenHeader">
-          <div class="screenSelect">
-            <button class="selectBtn">공지사항</button>
-          </div>
-          <div class="screenSelect">
-            <button class="selectBtn">회원정보</button>
-          </div>
-          <div class="screenSelect">
-            <button class="selectBtn">상품정보</button>
-          </div>
-          <div class="screenSelect">
-            <button class="selectBtn">주문정보</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-          <!-- 추가 버튼 -->
-          <div class="addBtn d-flex justify-content-end">
-            <button
-              class="btn btn-primary"
-              onclick="func_admin_notice_add();"
-              style="margin: 10px 95px 10px 0"
-            >
-              게시물 추가
-            </button>
-          </div>
-
-          <!-- 공지사항 목록 테이블 -->
-          <table class="table">
-            <!-- 공지사항 헤더 -->
-            <thead>
-              <tr>
-                <th scope="col">번호</th>
-                <th scope="col">배너</th>
-                <th scope="col">제목</th>
-                <th scope="col">설명</th>
-                <th scope="col">수정/삭제</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 공지사항이 없을시 출력되는 문구 -->
-              <tr th:if="${#lists.isEmpty(list)}">
-                <td colspan="5">공지가 없습니다.</td>
-              </tr>
-
-              <tr
-                class="noticeBox"
-                style="width: 100%"
-                th:each="notice, status:${list}"
+      <div class="myMain">
+        <!-- 메인 화면 -->
+        <div class="screenHd">
+          <!-- 메인스크린 내용이 들어갈 부분 -->
+          <div class="screenHeader m-3">
+            <div class="screenSelect">
+              <button
+                class="selectBtn"
+                onclick="click_notice();"
+                style="border-bottom: 4px solid gold"
               >
-                <!-- 공지사항 갯수 카운트 -->
-                <th class="p-4" scope="row" style="width: 5%">
-                  <span th:text="${status.count}"></span>
-                </th>
-                <!-- 공지사항 배너 -->
-                <td class="p-4" style="width: 30%">
-                  <!-- 이미지 -->
-                  <img
-                    class="admin_notice_img"
-                    style="width: 50%; height: 40%"
-                    th:src="${notice.noticeImageUrl}"
-                  />
-                </td>
-                <!-- 공지사항 제목 -->
-                <td class="p-4" style="width: 15%">
-                  <span th:text="${notice.noticeTitle}"></span>
-                </td>
-                <!-- 공지사항 내용 -->
-                <td class="p-4" style="width: 30%">
-                  <span th:text="${notice.noticeContent}"></span>
-                </td>
-                <!-- 공지사항 수정/삭제 버튼 -->
-                <td class="p-4" style="width: 20%">
-                  <!-- 수정 -->
-                  <button
-                    class="btn btn-primary"
-                    th:onclick="|func_notice_ed(${notice.noticeNo});|"
-                  >
-                    수정
-                  </button>
-                  <!-- 삭제 -->
-                  <button
-                    class="btn btn-danger"
-                    th:onclick="|func_notice_delete(${notice.noticeNo});|"
-                  >
-                    삭제
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- 페이지네이션 -->
-          <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+                공지사항
+              </button>
+            </div>
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_member();">
+                회원정보
+              </button>
+            </div>
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_menu();">
+                상품정보
+              </button>
+            </div>
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_order();">
+                주문정보
+              </button>
+            </div>
+          </div>
         </div>
+
+        <!-- 추가 버튼 -->
+        <div class="addBtn d-flex justify-content-end m-3">
+          <button
+            class="btn btn-primary"
+            onclick="func_admin_notice_add();"
+            style="margin-right: 50px"
+          >
+            게시물 추가
+          </button>
+        </div>
+
+        <!-- 공지사항 목록 테이블 -->
+        <table class="table">
+          <!-- 공지사항 헤더 -->
+          <thead>
+            <tr>
+              <th scope="col">번호</th>
+              <th scope="col">배너</th>
+              <th scope="col">제목</th>
+              <th scope="col">설명</th>
+              <th scope="col">수정/삭제</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 공지사항이 없을시 출력되는 문구 -->
+            <tr th:if="${#lists.isEmpty(list)}">
+              <td colspan="5">공지가 없습니다.</td>
+            </tr>
+
+            <tr
+              class="noticeBox"
+              style="width: 100%"
+              th:each="notice, status:${list}"
+            >
+              <!-- 공지사항 갯수 카운트 -->
+              <th class="p-4" scope="row" style="width: 5%">
+                <span th:text="${status.count}"></span>
+              </th>
+              <!-- 공지사항 배너 -->
+              <td class="p-4" style="width: 30%">
+                <!-- 이미지 -->
+                <img
+                  class="admin_notice_img"
+                  style="width: 50%; height: 40%"
+                  th:src="${notice.noticeImageUrl}"
+                />
+              </td>
+              <!-- 공지사항 제목 -->
+              <td class="p-4" style="width: 15%">
+                <span th:text="${notice.noticeTitle}"></span>
+              </td>
+              <!-- 공지사항 내용 -->
+              <td class="p-4" style="width: 30%">
+                <span th:text="${notice.noticeContent}"></span>
+              </td>
+              <!-- 공지사항 수정/삭제 버튼 -->
+              <td class="p-4" style="width: 20%">
+                <!-- 수정 -->
+                <button
+                  class="btn btn-primary"
+                  th:onclick="|func_notice_ed(${notice.noticeNo});|"
+                >
+                  수정
+                </button>
+                <!-- 삭제 -->
+                <button
+                  class="btn btn-danger"
+                  th:onclick="|func_notice_delete(${notice.noticeNo});|"
+                >
+                  삭제
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- 페이지네이션 -->
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
 
       <!-- 부트스트랩 스크립트 추가 -->

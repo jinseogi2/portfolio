@@ -23,45 +23,55 @@
 
   <body>
     <!-- 관리자 페이지 컨테이너 -->
-    <div class="myContainer">
+    <div class="container myContainer">
       <!-- 헤더 영역 -->
       <div class="myHeader">
-        <div class="headerBox">
-          <!-- 헤더 로고 -->
-          <div class="headerLogo m-3">
-            <img
-              src="/img/admin/blackYellowLogo.png"
-              onclick="click_main();"
-              alt=""
-            />
-          </div>
-          <!-- 헤더 가운데 현재 페이지 이름 -->
-          <div class="headerCenter m-3">
-            <h2>메가커피 관리자 페이지</h2>
-          </div>
+        <!-- 헤더 로고 -->
+        <div class="headerLogo">
+          <img
+            src="/img/admin/blackYellowLogo.png"
+            onclick="click_main();"
+            alt=""
+          />
+        </div>
+        <!-- 헤더 가운데 현재 페이지 이름 -->
+        <div class="headerCenter fs-4 fw-bold">
+          <p class="m-0">메가커피 관리자 페이지</p>
         </div>
       </div>
 
       <div class="myMain">
         <!-- 메인 화면 -->
-        <div class="screen">
+        <div class="screenHd">
           <!-- 메인스크린 내용이 들어갈 부분 -->
-          <div class="screenHeader">
+          <div class="screenHeader m-3">
             <div class="screenSelect">
-              <button class="selectBtn">공지사항</button>
+              <button class="selectBtn" onclick="click_notice();">
+                공지사항
+              </button>
             </div>
-            <div class="screenSelect">
+            <div class="screenSelect" onclick="click_member();">
               <button class="selectBtn">회원정보</button>
             </div>
-            <div class="screenSelect">
+            <div class="screenSelect" onclick="click_menu();">
               <button class="selectBtn">상품정보</button>
             </div>
             <div class="screenSelect">
-              <button class="selectBtn">주문정보</button>
+              <button
+                class="selectBtn"
+                onclick="click_order();"
+                style="border-bottom: 4px solid gold"
+              >
+                주문정보
+              </button>
             </div>
           </div>
         </div>
-      </div>
+        <!-- 메인 화면 -->
+        <div class="screenHd">
+          <div class="screenHeader">
+            <p style="margin-top: 20px">주문 정보 관리 페이지</p>
+          </div>
           <!-- 메인 스크린 화면 -->
           <div class="scrrenMain" style="height: 80%">
             <!-- 검색 창 -->

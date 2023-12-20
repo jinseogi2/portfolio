@@ -22,22 +22,20 @@
   </head>
   <body>
     <!-- 관리자 페이지 컨테이너 -->
-    <div class="myContainer">
+    <div class="container myContainer">
       <!-- 헤더 영역 -->
       <div class="myHeader">
-        <div class="headerBox">
-          <!-- 헤더 로고 -->
-          <div class="headerLogo m-3">
-            <img
-              src="/img/admin/blackYellowLogo.png"
-              onclick="click_main();"
-              alt=""
-            />
-          </div>
-          <!-- 헤더 가운데 현재 페이지 이름 -->
-          <div class="headerCenter m-3">
-            <h2>메가커피 관리자 페이지</h2>
-          </div>
+        <!-- 헤더 로고 -->
+        <div class="headerLogo">
+          <img
+            src="/img/admin/blackYellowLogo.png"
+            onclick="click_main();"
+            alt=""
+          />
+        </div>
+        <!-- 헤더 가운데 현재 페이지 이름 -->
+        <div class="headerCenter fs-4 fw-bold">
+          <p class="m-0">메가커피 관리자 페이지</p>
         </div>
       </div>
 
@@ -45,7 +43,7 @@
         <!-- 메인 화면 -->
         <div class="screen">
           <!-- 메인스크린 내용이 들어갈 부분 -->
-          <div class="screenHeader">
+          <div class="screenHeader m-3">
             <div class="screenSelect">
               <button class="selectBtn" onclick="click_notice();">
                 공지사항

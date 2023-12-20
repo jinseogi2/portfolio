@@ -23,12 +23,11 @@
 
   <body>
     <!-- 관리자 페이지 컨테이너 -->
-    <div class="myContainer">
-     <!-- 헤더 영역 -->
-     <div class="myHeader">
-      <div class="headerBox">
+    <div class="container myContainer">
+      <!-- 헤더 영역 -->
+      <div class="myHeader">
         <!-- 헤더 로고 -->
-        <div class="headerLogo m-3">
+        <div class="headerLogo">
           <img
             src="/img/admin/blackYellowLogo.png"
             onclick="click_main();"
@@ -36,155 +35,165 @@
           />
         </div>
         <!-- 헤더 가운데 현재 페이지 이름 -->
-        <div class="headerCenter m-3">
-          <h2>메가커피 관리자 페이지</h2>
+        <div class="headerCenter fs-4 fw-bold">
+          <p class="m-0">메가커피 관리자 페이지</p>
         </div>
       </div>
-    </div>
 
-    <div class="myMain">
-      <!-- 메인 화면 -->
-      <div class="screen">
-        <!-- 메인스크린 내용이 들어갈 부분 -->
-        <div class="screenHeader">
-          <div class="screenSelect">
-            <button class="selectBtn">공지사항</button>
-          </div>
-          <div class="screenSelect">
-            <button class="selectBtn">회원정보</button>
-          </div>
-          <div class="screenSelect">
-            <button class="selectBtn">상품정보</button>
-          </div>
-          <div class="screenSelect">
-            <button class="selectBtn">주문정보</button>
+      <div class="myMain">
+        <!-- 메인 화면 -->
+        <div class="screenHd">
+          <!-- 메인스크린 내용이 들어갈 부분 -->
+          <div class="screenHeader m-3">
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_notice();">
+                공지사항
+              </button>
+            </div>
+            <div class="screenSelect">
+              <button
+                class="selectBtn"
+                onclick="click_member();"
+                style="border-bottom: 4px solid gold"
+              >
+                회원정보
+              </button>
+            </div>
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_menu();">
+                상품정보
+              </button>
+            </div>
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_order();">
+                주문정보
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-          <!-- 메인스크린 화면 -->
-          <div class="scrrenMain" style="height: 80%">
-            <!-- 선택창 및 검색 기능 -->
+        <!-- 메인스크린 화면 -->
+        <div class="scrrenMain" style="height: 80%">
+          <!-- 선택창 및 검색 기능 -->
+          <div
+            class="d-flex justify-content-end"
+            style="width: 100%; height: 30%"
+          >
             <div
-              class="d-flex justify-content-end"
-              style="width: 100%; height: 30%"
+              id="memberCount"
+              style="width: 30%"
+              th:text="|총 ${count}명의 회원이 있습니다.|"
             >
-              <div
-                id="memberCount"
-                th:text="|총 ${count}명의 회원이 있습니다.|"
-              >
-                몇명의 회원이 있는지 나타내는 곳.
+              몇명의 회원이 있는지 나타내는 곳.
+            </div>
+            <!-- 선택창 -->
+            <div
+              class="search d-flex justify-content-end"
+              style="margin-right: 30px; width: 95%; height: 100%"
+            >
+              <select class="form-select" style="width: 15%">
+                <option selected>선택</option>
+                <option value="1">이름</option>
+                <option value="2">이메일</option>
+              </select>
+              <div>
+                <input type="text" style="height: 100%" />
               </div>
-              <!-- 선택창 -->
-              <div
-                class="search d-flex justify-content-end"
-                style="margin-right: 30px; height: 100%"
+              <a
+                href="#"
+                type="button"
+                style="
+                  width: 5%;
+                  border: 1px solid black;
+                  background-color: rgb(221, 219, 219);
+                "
               >
-                <select class="form-select" style="width: 15%">
-                  <option selected>선택</option>
-                  <option value="1">이름</option>
-                  <option value="2">이메일</option>
-                </select>
-                <div>
-                  <input type="text" style="height: 100%" />
-                </div>
-                <a
-                  href="#"
-                  type="button"
-                  style="
-                    width: 5%;
-                    border: 1px solid black;
-                    background-color: rgb(221, 219, 219);
-                  "
+                <img
+                  style="width: 70%; height: 70%"
+                  src="/img/admin/검색아이콘.png"
+                  alt=""
+                />
+              </a>
+            </div>
+          </div>
+
+          <!-- 회원 정보 테이블 -->
+          <div style="height: 60%">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">이름</th>
+                  <th scope="col">이메일</th>
+                  <th scope="col">생성시간</th>
+                  <th scope="col">수정/삭제</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:if="${#lists.isEmpty(list)}">
+                  <td colspan="5">회원 정보가 없습니다.</td>
+                </tr>
+
+                <tr
+                  class="memberBox"
+                  style="width: 100%"
+                  th:each="member, status:${list}"
                 >
-                  <img
-                    style="width: 70%; height: 70%"
-                    src="/img/admin/검색아이콘.png"
-                    alt=""
-                  />
-                </a>
-              </div>
-            </div>
+                  <!-- 회원 카운트 -->
+                  <th class="p-4" scope="row" style="width: 10%">
+                    <span th:text="${status.count}"></span>
+                  </th>
 
-            <!-- 회원 정보 테이블 -->
-            <div style="height: 60%">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">이름</th>
-                    <th scope="col">이메일</th>
-                    <th scope="col">생성시간</th>
-                    <th scope="col">수정/삭제</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr th:if="${#lists.isEmpty(list)}">
-                    <td colspan="5">회원 정보가 없습니다.</td>
-                  </tr>
+                  <!-- 회원 이름 -->
+                  <td class="p-4" style="width: 20%">
+                    <span th:text="${member.memberName}"></span>
+                  </td>
 
-                  <tr
-                    class="memberBox"
-                    style="width: 100%"
-                    th:each="member, status:${list}"
-                  >
-                    <!-- 회원 카운트 -->
-                    <th class="p-4" scope="row" style="width: 10%">
-                      <span th:text="${status.count}"></span>
-                    </th>
+                  <td class="p-4" style="width: 25%">
+                    <span th:text="${member.memberEmail}"></span>
+                  </td>
 
-                    <!-- 회원 이름 -->
-                    <td class="p-4" style="width: 20%">
-                      <span th:text="${member.memberName}"></span>
-                    </td>
+                  <td class="p-4" style="width: 25%">
+                    <span th:text="${member.memberJoinDatetime}"></span>
+                  </td>
 
-                    <td class="p-4" style="width: 25%">
-                      <span th:text="${member.memberEmail}"></span>
-                    </td>
+                  <td class="p-4" style="width: 20%">
+                    <button
+                      class="btn btn-primary"
+                      th:onclick="|func_member_ed(${member.memberNo});|"
+                    >
+                      수정
+                    </button>
 
-                    <td class="p-4" style="width: 25%">
-                      <span th:text="${member.memberJoinDatetime}"></span>
-                    </td>
+                    <button
+                      class="btn btn-danger"
+                      th:onclick="|func_member_delete(${member.memberNo});|"
+                    >
+                      삭제
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
-                    <td class="p-4" style="width: 20%">
-                      <button
-                        class="btn btn-primary"
-                        th:onclick="|func_member_ed(${member.memberNo});|"
-                      >
-                        수정
-                      </button>
-
-                      <button
-                        class="btn btn-danger"
-                        th:onclick="|func_member_delete(${member.memberNo});|"
-                      >
-                        삭제
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <!-- 페이지네이션 -->
-              <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+            <!-- 페이지네이션 -->
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>
