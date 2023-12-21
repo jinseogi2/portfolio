@@ -5,6 +5,7 @@
     <!-- jQuery 라이브러리 추가 -->
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- Google Fonts 추가 -->
+
     <link
       href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css"
       rel="stylesheet"
@@ -97,11 +98,52 @@
                     "
                     onclick="func_admin_menu_add();"
                   >
+
                     메뉴 추가
                   </button>
                 </div>
                 <div id="centerText" style="width: 33%">
                   <h3>상품 목록</h3>
+
+                    <button
+                      class="btn btn-primary"
+                      onclick="func_admin_menu_add();"
+                      role="button"
+                    >
+                      메뉴 추가
+                    </button>
+                  </div>
+                  <div id="centerText" style="width: 33%">
+                    <h3>상품 목록</h3>
+                  </div>
+                  <div
+                    class="searchBar d-flex justify-content-end"
+                    style="width: 34%"
+                  >
+                    <select
+                      class="form-select"
+                      style="width: 25%; height: 100%; margin-right: 20px"
+                    >
+                      <option value="1">음료이름</option>
+                      <option value="2">카테고리</option>
+                    </select>
+                    <div>
+                      <input type="text" style="height: 100%" />
+                    </div>
+                    <button
+                      href="#"
+                      type="button"
+                      style="width: 30px; border: none; background-color: white"
+                    >
+                      <img
+                        id="searchimg"
+                        style="width: 100%; height: 100%"
+                        src="/img/admin/검색아이콘.png"
+                        alt=""
+                      />
+                    </button>
+                  </div>
+
                 </div>
               </div>
             </div>

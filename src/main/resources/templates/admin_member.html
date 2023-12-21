@@ -110,6 +110,52 @@
                     <span th:text="${status.count}"></span>
                   </th>
 
+          <!-- 메인스크린 화면 -->
+          <div class="scrrenMain" style="height: 80%">
+            <!-- 선택창 및 검색 기능 -->
+            <div
+              class="d-flex justify-content-end"
+              style="width: 100%; height: 30%"
+            >
+              <div
+                id="memberCount"
+                th:text="|총 ${count}명의 회원이 있습니다.|"
+              >
+                몇명의 회원이 있는지 나타내는 곳.
+              </div>
+              <!-- 선택창 -->
+              <div
+                class="search d-flex justify-content-end"
+                style="margin-right: 30px; height: 100%"
+              >
+                <select class="form-select" style="width: 15%">
+                  <option selected>선택</option>
+                  <option value="1">이름</option>
+                  <option value="2">이메일</option>
+                </select>
+                <div>
+                  <input type="text" style="height: 100%" />
+                </div>
+                <a
+                  href="#"
+                  type="button"
+                  style="
+                    width: 30px;
+
+                    background-color: white;
+                  "
+                >
+                  <img
+                    id="searchimg"
+                    style="width: 100%; height: 100%"
+                    src="/img/admin/검색아이콘.png"
+                    alt=""
+                  />
+                </a>
+              </div>
+            </div>
+
+
                   <!-- 회원 이름 -->
                   <td class="p-4" style="width: 20%">
                     <span th:text="${member.memberName}"></span>
