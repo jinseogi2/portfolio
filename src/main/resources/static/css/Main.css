@@ -25,7 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  padding-bottom: 50px;
+  padding-bottom: 100px;
 }
 
 /* ---------- */
@@ -200,8 +200,10 @@ filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) co
 /* 해더 메인해더*/
 .header {
   width: 100%;
-  height: 350px;
-  position: relative;
+      height: 350px;
+      position: relative;
+      display: flex;
+      justify-content: center;
 }
 #mainimg {
   position: absolute;
@@ -214,19 +216,22 @@ filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) co
 }
 #himg {
   display: flex;
-  justify-content: end;
+      justify-content: end;
+      width: 90%;
+      height: 80%;
+      margin-top: 10px;
 }
 #himg-1,
 #himg-2 {
-  height: 8%;
-  width: 5%;
-  margin-top: 5px;
+ height: 10%;
+     width: 6%;
+     padding: 10px;
 }
 #himg-1 {
-  margin-right: 10px;
+
 }
 #himg-2 {
-  margin-right: 10px;
+
 }
 #himg-1 > img,
 #himg-2 > img {
@@ -237,30 +242,36 @@ filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) co
 /* nav 스탬프,쿠폰*/
 .nav {
   width: 100%;
-  height: 120px;
-  display: flex;
-  flex-direction: column;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 }
 #username {
-  width: 100%;
-  height: 40%;
-
-  line-height: 50px;
-  margin-left: 10px;
+  width: 90%;
+      height: 30%;
+      line-height: 50px;
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+          font-size: 25px;
 }
 #navbtn {
-  width: 95%;
-  height: 50%;
-  display: flex;
-  border: 1px solid skyblue;
-  background-color: skyblue;
-  border-radius: 10px;
-  margin-left: 15px;
+      width: 90%;
+      height: 40%;
+      display: flex;
+      border: none;
+      background-color: #e8f0f4;
+      border-radius: 10px;
+      align-items: center;
 }
 #navbtn-1 {
-  width: 30%;
-  height: 100%;
-  display: flex;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #navbtnimg,
 #navbtntext {
@@ -269,39 +280,41 @@ filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) co
 
 /* ~~ 님 */
 #navbtntext {
-  line-height: 50px;
-  margin-left: 5px;
-  width: 50%;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-items: center;
+     font-weight: 800;
+
 }
 /* 스탬프,쿠폰이미지 div */
 #navbtnimg {
- width: 27%;
-  margin-left: 20px;
+width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #navbtnimg > img {
-  width: 100%;
-  height: 100%;
+  width: 70%;
+      height: 70%;
 }
 
 /* 섹션 중앙이벤트배너*/
 .section {
   width: 100%;
   height: 300px;
-  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 #secimg {
-  width: 90%;
-  height: 100%;
-  border-radius: 10px;
-  background-image: url("/img/main/roll-2_1.jpg");
-  background-repeat: no-repeat;
-  background-size: 500px 300px;
-  display: flex;
-  justify-content: end;
-  align-items: end;
+      width: 90%;
+      height: 90%;
+      border-radius: 10px;
+      background-image: url(/img/main/roll-2_1.jpg);
+      background-repeat: no-repeat;
+      background-size: 500px 300px;
+      display: flex;
 }
 #sectext {
   margin-right: 10px;
@@ -310,18 +323,20 @@ filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) co
 
 /* aside 상품추천탭 */
 .aside {
-  margin-top: 30px;
-  width: 100%;
-  height: 250px;
+      width: 100%;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 }
 
 #astext {
-  width: 100%;
-  height: 20%;
-  font-size: 20px;
-  margin-left: 20px;
-  display: flex;
-  align-items: center;
+      width: 90%;
+      height: 20%;
+      font-size: 20px;
+      display: flex;
+      align-items: end;
+            font-weight: 800;
 }
 
 #asswiper {
@@ -338,67 +353,88 @@ filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) co
 }
 #asslide_imgbox{
     height: 80%;
+    display: flex;
+        align-items: center;
+        justify-content: center;
 }
 #asslide_textbox{
-    height: 20%;
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: start;
+              font-weight: 800;
 }
 #asslide_imgbox img {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
 }
 
 /* 공지사항 탭 */
 .notice {
   width: 100%;
-  height: 300px;
-
-  display: flex;
-  flex-direction: column;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 }
 #notext {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 20%;
+     display: flex;
+     justify-content: space-between;
+     align-items: end;
+     height: 20%;
+     width: 90%;
 }
 
 #noswiper {
-  width: 100%;
-  height: 80%;
+      width: 90%;
+      height: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 }
 
 #noslide {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
 }
 #noslide_imgbox{
-height : 90%;
+height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #noslide_textbox{
-height : 20%;
+height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 800;
+        font-size: 18px;
 }
 #noslide_imgbox img {
-  width: 100%;
-  height: 100%;
+      width: 100%;
+      height: 95%;
+
 }
 
 #notext1{
     font-weight : 800;
-    margin-left: 20px;
+    font-size:28px;
+
 }
 #notext2{
-    color : blue;
-    font-size : 14px;
-    margin-right: 20px;
+    color: #81b4f7;
+        font-size: 20px;
+        font-weight: 800;
+
 }
 /* 푸터 하단메뉴*/
 .footer {
   z-index: 1;
   width: 550px;
-  height: 50px;
+  height: 80px;
   display: flex;
   position: fixed;
   bottom: 0;
@@ -408,8 +444,10 @@ height : 20%;
 }
 .fmenu {
   width: 25%;
-  display: flex;
-  flex-direction: column;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 }
 .fimg {
   width: 100%;
@@ -419,10 +457,12 @@ height : 20%;
 }
 .ftext {
   width: 100%;
-  height: 25%;
-  text-align: center;
+      height: 25%;
+      text-align: center;
+      font-weight: 800;
+      font-size: 18px;
 }
 .fimg > img {
-  width: 20%;
-  height: 70%;
+      width: 30%;
+      height: 70%;
 }

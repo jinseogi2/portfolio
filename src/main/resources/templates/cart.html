@@ -49,18 +49,22 @@
                     <div class="inner_text_2" th:if="${cart.cartOption3Name == null}">선택안함x1</div>
                     <div class="inner_text_2" th:if="${cart.cartOption3Name != null}" th:text="${cart.cartOption3Name + 'x1'}"></div>
                 </div>
-                <div class="inner_cancle" th:onclick="|func_cart_delete(${cart.cartNo});|">X</div>
+                <div class="inner_cancle"  th:onclick="|func_cart_delete(${cart.cartNo});|"><img src="img/cart/x.png" id="cencelbutton">
+                </div>
             </div>
             <div class="sbtn">
-                <div class="btn">
-                    <button onclick='count("minus");' value="-" id="minusbtn">―</button>
+                <div id="btnbox1"></div>
+                <div id="btnbox2"><div class="btn">
+                    <button onclick='count("minus");' value="-" id="minusbtn"><img src="img/cart/minus.png" id="minusbotton"></button>
                 </div>
                 <div id="result" th:text="${cart.cartCount}">1</div>
                 <div class="btn">
-                   <button onclick='count("plus");' value="+" id="plusbtn">╂</button>
+                   <button onclick='count("plus");' value="+" id="plusbtn"><img src="img/cart/plus.png" id="plusbotton"></button>
+                </div>
                 </div>
                 <div class="price" id="totalPrice">금액</div>
             </div>
+
         </div>
         <div class="aside">
             장바구니에 담은 상품은 최대 30일간 보관됩니다.
