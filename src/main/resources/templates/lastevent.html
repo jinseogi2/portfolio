@@ -14,9 +14,11 @@
     <div class="himg" onclick="goMain();">
       <img src="img/lastevent/back_stamp.png" alt="" />
     </div>
+    <div class="header2">
     <div class="hbtn">
       <div class="hbtn_event">이벤트</div>
       <div class="hbtn_notice" onclick="goLastnotice();">공지사항</div>
+    </div>
     </div>
   </div>
   <div class="section1" th:each="notice, status:${notice}">
@@ -25,9 +27,9 @@
     </div>
     <div id="d1st-tx">
       <div id="tx-1" href="#">
-        <h2 th:text="|[이벤트] ${notice.noticeTitle}|">
+        <h3 th:text="|[이벤트] ${notice.noticeTitle}|">
           [이벤트]메가MGC커피X미니언즈 시즌 출시 기념 이벤트
-        </h2>
+        </h3>
         <p th:text="${notice.noticeDatetime}">2023.12.07 ~ 2024.01.31</p>
       </div>
     </div>

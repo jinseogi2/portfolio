@@ -20,19 +20,23 @@
       <div class="himg" onclick="goMain();">
         <img src="img/lastevent/back_stamp.png" alt="" />
       </div>
+      <div class="header2">
       <div class="hbtn">
         <div class="hbtn_event" onclick="goLastevent();">이벤트</div>
         <div class="hbtn_notice">공지사항</div>
       </div>
     </div>
+      </div>
+    <div class="section-box">
       <div class="section" th:each="notice, status:${notice}">
         <div id="nt1">
           <div id="nt1-1">
-            <h2 th:text="${notice.noticeTitle}">[공지]여름시즌2<올여름 구매왕을 찾아라>이벤트 담청자 발표</h2>
-            <p th:text="${notice.noticeDatetime}">2023.10.11</p>
+            <h2 style="margin:0;" th:text="${notice.noticeTitle}">[공지]여름시즌2<올여름 구매왕을 찾아라>이벤트 담청자 발표</h2>
+            <p style="margin:0;" th:text="${notice.noticeDatetime}">2023.10.11</p>
           </div>
         </div>
       </div>
+    </div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
