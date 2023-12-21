@@ -32,6 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
     updateTotalPrice(); // 초기 총 가격을 계산하고 표시합니다.
 });
 
+
+// 콤마찍어주는 함수
+function addCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function updateTotalPrice() {
     // 숨겨진 입력 필드에서 값 가져오기
     var priceElements = document.querySelectorAll(".cartinfo_price");
@@ -82,7 +88,7 @@ function updateTotalPrice() {
 
             // 각 totalPrice 엘리먼트의 innerText 업데이트
             if (totalPriceElements[i]) {
-                totalPriceElements[i].innerText = totalPrice + "원";
+                totalPriceElements[i].innerText = addCommas(totalPrice) + " 원";
             }
         } else {
             console.error("One or more elements not found.");
@@ -94,7 +100,7 @@ function updateTotalPrice() {
 
     // 전체 총합을 업데이트
     if (totalSumElement) {
-        totalSumElement.innerText = totalSum + "원";
+        totalSumElement.innerText = addCommas(totalSum) + " 원";
     } else {
         console.error("Total sum element not found.");
     }
