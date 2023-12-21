@@ -30,8 +30,6 @@ public class MainController {
     }
 
 
-    @GetMapping("/admin_order")
-    public String admin_order(){   return "admin_order";  }
 
 
     @GetMapping("/admin_menu_add")

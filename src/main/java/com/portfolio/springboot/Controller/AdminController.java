@@ -26,6 +26,8 @@ public class AdminController {
     @Autowired
     private ItemRepository itemRepository;
 
+    @Autowired
+    private  CartRepository cartRepository;
 
     ///admin_member(관리자 페이지 회원목록 출력)
     @GetMapping("/admin_member")
@@ -107,6 +109,17 @@ public class AdminController {
 
         return "admin_menu_ed";
     }
+
+    @GetMapping("/admin_order")
+    public String admin_order(Model model){
+        List<CartEntity> list = cartRepository.findAll();
+
+        model.addAttribute("count",list.size());
+        model.addAttribute("list",list);
+
+        return "admin_order";
+    }
+
 
 
 }

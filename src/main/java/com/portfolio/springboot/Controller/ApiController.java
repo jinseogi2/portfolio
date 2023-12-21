@@ -462,4 +462,21 @@ public class ApiController {
         return resultDto;
     }
 
+    @PostMapping("/cartDeleteAction")
+    public ResultDto cartDeleteAction(@RequestBody CartDeleteDto cartDeleteDto) {
+
+        CartEntity cartEntity = cartRepository.findById(Long.valueOf(cartDeleteDto.getCartNo())).get();
+
+        cartRepository.delete(cartEntity);
+
+        ResultDto resultDto = null;
+
+        resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .build();
+
+        return resultDto;
+    }
+
 }

@@ -803,3 +803,37 @@ function func_notice_AddAction_json(noticeImageUrl) {
       console.log(error);
     });
 }
+
+function func_cart_delete(cartNo){
+  // 사용자에게 삭제 여부를 확인하는 창 띄우기
+  const result = confirm("삭제할까요?");
+  if (result == false) {
+    return;
+  }
+
+  // 서버로 전송할 파라미터 객체 생성
+  let params = {
+    cartNo: cartNo,
+  };
+
+  // 서버로 POST 요청 보내기
+  fetch("/cartDeleteAction", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(params),
+  })
+    .then((response) => {
+      console.log("response:" + response);
+      return response.json();
+    }) // 서버 응답
+    .then((json) => {
+      //{ status: "ok", result: 5 }
+      console.log("json:" + json);
+
+      // 다음 페이지로 이동
+      window.location.href = "/admin_order";
+    }) // 실제 데이터
+    .catch((error) => {
+      console.log(error);
+    });
+}
