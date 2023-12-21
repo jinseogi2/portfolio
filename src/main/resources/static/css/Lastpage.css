@@ -158,21 +158,21 @@ body {
 /* ----- css --- */
 .footer {
   z-index: 1;
-  width: 530px;
-  height: 60px;
+  width: 550px;
+  height: 80px;
   display: flex;
   position: fixed;
   bottom: 0;
   background-color: #fff;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  /* left: 28%; */
 }
 .fmenu {
   width: 25%;
-  display: flex;
-  flex-direction: column;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 }
 .fimg {
   width: 100%;
@@ -182,12 +182,14 @@ body {
 }
 .ftext {
   width: 100%;
-  height: 25%;
-  text-align: center;
+      height: 25%;
+      text-align: center;
+      font-weight: 800;
+      font-size: 18px;
 }
 .fimg > img {
-  width: 20%;
-  height: 70%;
+      width: 30%;
+      height: 70%;
 }
 
 /* test */

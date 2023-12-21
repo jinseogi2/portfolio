@@ -15,23 +15,21 @@
   </head>
   <body>
     <div class="container">
-      <div class="header">
-        <img
-          src="./img/login/LoginLogo.png"
-          alt="로고"
-          style="max-width: 70%; max-height: 70%"
-        />
-      </div>
       <div class="main">
+        <div id="megaimg"><img
+                src="./img/login/LoginLogo.png"
+                alt="로고"
+                style="max-width: 70%; max-height: 70%"
+        /></div>
         <div id="inputBox">
-          <div class="input-form-box">
-            <span>이름 </span
-            ><input type="text" name="uid" class="form-control" />
-          </div>
-          <div class="input-form-box">
-            <span>이메일 </span
-            ><input type="password" name="upw" class="form-control" />
-          </div>
+          <div class="input-form-box1">
+            <div id="idbox"><span>아이디 </span
+            ></div> <div id="idbox2"> <input type="text" name="inputId"  id="inputId" class="form-control" />
+          </div></div>
+          <div class="input-form-box2">
+            <div id="pwbox"><span>이메일 </span
+            ></div><div id="pwbox2"><input type="email" name="inputEmail" id="inputEmail" class="form-control" />
+          </div></div>
           <div class="button-login-box">
             <button
               type="button"

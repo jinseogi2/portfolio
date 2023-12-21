@@ -35,14 +35,14 @@
 
         <!-- 아이디, 비번, 버튼 박스 -->
         <div id="inputBox">
-          <div class="input-form-box">
-            <span>아이디 </span
-            ><input type="text" name="inputId"  id="inputId" class="form-control" />
-          </div>
-          <div class="input-form-box">
-            <span>비밀번호 </span
-            ><input type="password" name="inputPw" id="inputPw" class="form-control" />
-          </div>
+          <div class="input-form-box1">
+            <div id="idbox"><span>아이디 </span
+            ></div> <div id="idbox2"> <input type="text" name="inputId"  id="inputId" class="form-control" />
+          </div></div>
+          <div class="input-form-box2">
+            <div id="pwbox"><span>비밀번호 </span
+            ></div><div id="pwbox2"><input type="password" name="inputPw" id="inputPw" class="form-control" />
+            </div></div>
           <ul class="nav">
             <li class="nav-item">
               <a
@@ -65,7 +65,7 @@
             <button
               type="button"
               class="btn btn-primary btn-xs"
-              style="width: 50%"
+              id="login-botton"
               onclick="loginAction();"
             >
               로그인
