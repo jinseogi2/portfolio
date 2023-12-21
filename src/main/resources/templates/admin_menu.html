@@ -5,8 +5,10 @@
     <!-- jQuery 라이브러리 추가 -->
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- Google Fonts 추가 -->
-
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css" rel="stylesheet">
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css"
+      rel="stylesheet"
+    />
     <script src="./js/admin.js"></script>
     <!-- 관리자 페이지 스타일시트 추가 -->
     <link rel="stylesheet" href="/css/admin.css" />
@@ -21,7 +23,7 @@
 
   <body>
     <!-- 관리자 페이지 컨테이너 -->
-    <div class="myContainer">
+    <div class="container myContainer">
       <!-- 헤더 영역 -->
       <div class="myHeader">
         <!-- 헤더 로고 -->
@@ -33,204 +35,158 @@
           />
         </div>
         <!-- 헤더 가운데 현재 페이지 이름 -->
-        <div class="headerCenter">
-          <h1>메가커피 관리자 페이지</h1>
-        </div>
-        <!-- 헤더 오른쪽 관리자의 프로필 사진, 아이디 -->
-        <div class="admin">
-          <button class="adminBtn">
-            <img src="/img/admin/쌀밥.PNG" alt="" />
-            <div class="adminName">
-              <h3>admind</h3>
-            </div>
-          </button>
+        <div class="headerCenter fs-4 fw-bold">
+          <p class="m-0">메가커피 관리자 페이지</p>
         </div>
       </div>
 
-      <!-- 왼쪽 카테고리 메뉴 -->
       <div class="myMain">
-        <div class="kategorie">
-          <!-- 왼쪽 카테고리 버튼 - 공지사항 -->
-          <div class="btnGroup" onclick="click_notice();">
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/공지사항.png" alt="" />
-                <div id="kategorieText">공지사항</div>
+        <!-- 메인 화면 -->
+        <div class="screenHd">
+          <!-- 메인스크린 내용이 들어갈 부분 -->
+          <div class="screenHeader m-3">
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_notice();">
+                공지사항
               </button>
             </div>
-          </div>
-          <!-- 왼쪽 카테고리 버튼 - 회원정보 -->
-          <div class="btnGroup" onclick="click_member();">
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/회원정보.png" alt="" />
-                <div id="kategorieText">회원정보</div>
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_member();">
+                회원정보
               </button>
             </div>
-          </div>
-          <!-- 왼쪽 카테고리 버튼 - 상품정보 -->
-          <div
-            class="btnGroup"
-            style="background-color: gold"
-            onclick="click_menu();"
-          >
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/상품정보.png" alt="" />
-                <div id="kategorieText">상품정보</div>
+            <div class="screenSelect">
+              <button
+                class="selectBtn"
+                onclick="click_menu();"
+                style="border-bottom: 4px solid gold"
+              >
+                상품정보
               </button>
             </div>
-          </div>
-          <!-- 왼쪽 카테고리 버튼 - 주문정보 -->
-          <div class="btnGroup" id="btnid" onclick="click_order();">
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/주문정보.png" alt="" />
-                <div id="kategorieText">주문정보</div>
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_order();">
+                주문정보
               </button>
             </div>
           </div>
         </div>
 
-        <!-- 메인 화면 -->
-        <div class="screen">
-          <!-- 메인스크린 헤더 -->
-          <div class="screenHeader">
-            <p style="margin-top: 20px">상품 정보 관리 페이지</p>
-          </div>
+        <!-- 메인스크린 화면 -->
+        <div class="screenMain" style="height: 80%">
+          <!-- 상품 카테고리 선택창 및 메뉴 추가 버튼 -->
+          <div class="d-flex justify-content-start" style="width: 100%">
+            <!-- 상품 카테고리(드롭다운) -->
 
-          <!-- 메인스크린 화면 -->
-          <div class="scrrenMain d-flex flex-wrap row" style="height: 80%">
-            <!-- 상품 카테고리 선택창 및 메뉴 추가 버튼 -->
-            <div class="d-flex justify-content-start" style="width: 100%">
-              <!-- 상품 카테고리(드롭다운) -->
-
-              <!-- 메뉴 추가 버튼 -->
-              <!-- 검색 기능 -->
-              <div
-                class="d-flex justify-content-center"
-                style="width: 100%; height: 100%"
-              >
+            <!-- 메뉴 추가 버튼 -->
+            <!-- 검색 기능 -->
+            <div style="width: 100%; height: 100%">
+              <div class="d-flex" style="margin-top: 40px">
                 <div
-                  class="d-flex col-10"
-                  style="height: 45%; margin-top: 40px"
+                  class="AddMenuBtn d-flex justify-content-start"
+                  style="width: 33%"
                 >
-                  <div
-                    class="AddMenuBtn d-flex justify-content-start"
-                    style="width: 33%"
+                  <button
+                    class="btn"
+                    style="
+                      margin-right: 58px;
+                      background-color: #cdcdcd;
+                      color: white;
+                      border: none;
+                      border-radius: 5px;
+                    "
+                    onclick="func_admin_menu_add();"
                   >
-                    <button
-                      class="btn btn-primary"
-                      onclick="func_admin_menu_add();"
-                      role="button"
-                    >
-                      메뉴 추가
-                    </button>
-                  </div>
-                  <div id="centerText" style="width: 33%">
-                    <h3>상품 목록</h3>
-                  </div>
-                  <div
-                    class="searchBar d-flex justify-content-end"
-                    style="width: 34%"
-                  >
-                    <select
-                      class="form-select"
-                      style="width: 25%; height: 100%; margin-right: 20px"
-                    >
-                      <option value="1">음료이름</option>
-                      <option value="2">카테고리</option>
-                    </select>
-                    <div>
-                      <input type="text" style="height: 100%" />
-                    </div>
-                    <button
-                      style="
-                        width: 5%;
-                        border: 1px solid black;
-                        background-color: rgb(221, 219, 219);
-                      "
-                      onclick="openSearchWindow();"
-                    >
-                      <img
-                        style="width: 90%; height: 70%"
-                        src="/img/admin/검색아이콘.png"
-                      />
-                    </button>
-                  </div>
+                    메뉴 추가
+                  </button>
+                </div>
+                <div id="centerText" style="width: 33%">
+                  <h3>상품 목록</h3>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- 메뉴 목록 -->
-            <div style="overflow: auto">
-              <!-- 첫번째 줄 -->
-              <div class="d-flex justify-content-center">
-                <div class="col-10 admin_main">
-                  <span
-                    id="member_count"
-                    th:text="|총 ${count}개의 상품이 있습니다.|"
-                    >총 3개의 상품이 있습니다.</span
-                  >
-                  <table class="table table-striped">
-                    <tr class="table_title">
-                      <td scope="col">번호</td>
-                      <td scope="col">이미지</td>
-                      <td scope="col">이름</td>
-                      <td scope="col">카테고리</td>
-                      <td scope="col">가격</td>
-                      <td scope="col">추천</td>
-                      <td scope="col">수정/삭제</td>
-                    </tr>
-                    <tr class="menuBox" th:each="item, status:${ list }">
-                      <!-- 메뉴 카운트 -->
+          <!-- 메뉴 목록 -->
+          <div style="overflow: auto">
+            <!-- 첫번째 줄 -->
+            <div class="d-flex justify-content-center">
+              <div class="admin_main">
+                <span
+                  id="member_count"
+                  th:text="|총 ${count}개의 상품이 있습니다.|"
+                  >총 3개의 상품이 있습니다.</span
+                >
+                <table class="table table-striped">
+                  <tr class="table_title">
+                    <td scope="col">번호</td>
+                    <td scope="col">이미지</td>
+                    <td scope="col">이름</td>
+                    <td scope="col">카테고리</td>
+                    <td scope="col">가격</td>
+                    <td scope="col">추천</td>
+                    <td scope="col">수정/삭제</td>
+                  </tr>
+                  <tr class="menuBox" th:each="item, status:${ list }">
+                    <!-- 메뉴 카운트 -->
 
-                      <td class="p-4" scope="row" style="width: 5%">
-                        <span th:text="${status.count}"></span>
-                      </td>
-                      <!-- 메뉴 이미지 -->
-                      <td class="p-1" style="width: 20%">
-                        <img
-                          class="admin_item_img"
-                          style="width: 25%; height: 100%"
-                          th:src="${item.itemImageUrl}"
-                        />
-                      </td>
-                      <!-- 메뉴 이름  -->
-                      <td class="p-4" style="width: 25%">
-                        <span th:text="${item.itemName}"></span>
-                      </td>
-                      <!-- 메뉴 카테고리 -->
-                      <td class="p-4" style="width: 15%">
-                        <span th:text="${item.itemCate}"></span>
-                      </td>
-                      <!-- 메뉴 가격 -->
-                      <td class="p-4" style="width: 5%">
-                        <span th:text="${item.itemPrice}"></span>
-                      </td>
-                      <!-- 메뉴 추천 숫자 -->
-                      <td class="p-4" style="width: 5%">
-                        <span th:text="${item.itemRecommend}"></span>
-                      </td>
-                      <!-- 메뉴 수정/삭제 버튼 -->
-                      <td class="p-3" style="width: 20%">
-                        <button
-                          class="btn btn-primary"
-                          th:onclick="|func_menu_ed(${item.itemNo});|"
-                        >
-                          수정
-                        </button>
+                    <td class="p-4" scope="row" style="width: 5%">
+                      <span th:text="${status.count}"></span>
+                    </td>
+                    <!-- 메뉴 이미지 -->
+                    <td class="p-1" style="width: 20%">
+                      <img
+                        class="admin_item_img"
+                        style="width: 25%; height: 100%"
+                        th:src="${item.itemImageUrl}"
+                      />
+                    </td>
+                    <!-- 메뉴 이름  -->
+                    <td class="p-4" style="width: 25%">
+                      <span th:text="${item.itemName}"></span>
+                    </td>
+                    <!-- 메뉴 카테고리 -->
+                    <td class="p-4" style="width: 15%">
+                      <span th:text="${item.itemCate}"></span>
+                    </td>
+                    <!-- 메뉴 가격 -->
+                    <td class="p-4" style="width: 5%">
+                      <span th:text="${item.itemPrice}"></span>
+                    </td>
+                    <!-- 메뉴 추천 숫자 -->
+                    <td class="p-4" style="width: 5%">
+                      <span th:text="${item.itemRecommend}"></span>
+                    </td>
+                    <!-- 메뉴 수정/삭제 버튼 -->
+                    <td class="p-3" style="width: 20%">
+                      <button
+                        class="btn"
+                        style="
+                          background-color: white;
+                          color: blue;
+                          border: 1px solid blue;
+                          border-radius: 5px;
+                        "
+                        th:onclick="|func_menu_ed(${item.itemNo});|"
+                      >
+                        수정
+                      </button>
 
-                        <button
-                          class="btn btn-danger"
-                          th:onclick="|func_menu_delete(${item.itemNo});|"
-                        >
-                          삭제
-                        </button>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
+                      <button
+                        class="btn"
+                        style="
+                          background-color: white;
+                          color: red;
+                          border: 1px solid red;
+                          border-radius: 5px;
+                        "
+                        th:onclick="|func_menu_delete(${item.itemNo});|"
+                      >
+                        삭제
+                      </button>
+                    </td>
+                  </tr>
+                </table>
               </div>
             </div>
           </div>

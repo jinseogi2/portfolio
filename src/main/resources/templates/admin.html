@@ -5,7 +5,10 @@
     <!-- jQuery 라이브러리 추가 -->
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- Google Fonts 추가 -->
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css" rel="stylesheet">
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css"
+      rel="stylesheet"
+    />
     <!-- 관리자 페이지 스타일시트 추가 -->
     <link rel="stylesheet" href="/css/admin.css" />
     <script src="/js/admin.js"></script>
@@ -19,7 +22,7 @@
   </head>
   <body>
     <!-- 관리자 페이지 컨테이너 -->
-    <div class="myContainer">
+    <div class="container myContainer">
       <!-- 헤더 영역 -->
       <div class="myHeader">
         <!-- 헤더 로고 -->
@@ -31,64 +34,31 @@
           />
         </div>
         <!-- 헤더 가운데 현재 페이지 이름 -->
-        <div class="headerCenter">
-          <h1>메가커피 관리자 페이지</h1>
-        </div>
-        <!-- 헤더 오른쪽 관리자의 프로필 사진, 아이디 -->
-        <div class="admin">
-          <button class="adminBtn">
-            <img src="/img/admin/쌀밥.PNG" alt="" />
-            <div class="adminName"><h3>admind</h3></div>
-          </button>
+        <div class="headerCenter fs-4 fw-bold">
+          <p class="m-0">메가커피 관리자 페이지</p>
         </div>
       </div>
-      <!-- 왼쪽 카테고리 -->
+
       <div class="myMain">
-        <div class="kategorie">
-          <!-- 왼쪽 카테고리 버튼 - 공지사항 -->
-          <div class="btnGroup" onclick="click_notice();">
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/공지사항.png" alt="" />
-                <div id="kategorieText">공지사항</div>
-              </button>
-            </div>
-          </div>
-          <!-- 왼쪽 카테고리 버튼 - 회원정보 -->
-          <div class="btnGroup" onclick="click_member();">
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/회원정보.png" alt="" />
-                <div id="kategorieText">회원정보</div>
-              </button>
-            </div>
-          </div>
-          <!-- 왼쪽 카테고리 버튼 - 상품정보 -->
-          <div class="btnGroup" onclick="click_menu();">
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/상품정보.png" alt="" />
-                <div id="kategorieText">상품정보</div>
-              </button>
-            </div>
-          </div>
-          <!-- 왼쪽 카테고리 버튼 - 주문정보 -->
-          <div
-            class="btnGroup"
-            id="btnid"
-            onclick="click_order();"
-          >
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/주문정보.png" alt="" />
-                <div id="kategorieText">주문정보</div>
-              </button>
-            </div>
-          </div>
-        </div>
         <!-- 메인 화면 -->
         <div class="screen">
           <!-- 메인스크린 내용이 들어갈 부분 -->
+          <div class="screenHeader m-3">
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_notice();">
+                공지사항
+              </button>
+            </div>
+            <div class="screenSelect" onclick="click_member();">
+              <button class="selectBtn">회원정보</button>
+            </div>
+            <div class="screenSelect" onclick="click_menu();">
+              <button class="selectBtn">상품정보</button>
+            </div>
+            <div class="screenSelect" onclick="click_order();">
+              <button class="selectBtn">주문정보</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -5,7 +5,10 @@
     <!-- jQuery 라이브러리 추가 -->
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- Google Fonts 추가 -->
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css" rel="stylesheet">
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css"
+      rel="stylesheet"
+    />
     <script src="js/admin.js"></script>
     <!-- 관리자 페이지 스타일시트 추가 -->
     <link rel="stylesheet" href="/css/admin.css" />
@@ -20,206 +23,136 @@
 
   <body>
     <!-- 관리자 페이지 컨테이너 -->
-    <div class="myContainer">
+    <div class="container myContainer">
       <!-- 헤더 영역 -->
       <div class="myHeader">
         <!-- 헤더 로고 -->
         <div class="headerLogo">
           <img
             src="/img/admin/blackYellowLogo.png"
-            onclick="click_main()"
+            onclick="click_main();"
             alt=""
           />
         </div>
         <!-- 헤더 가운데 현재 페이지 이름 -->
-        <div class="headerCenter">
-          <h1>메가커피 관리자 페이지</h1>
-        </div>
-        <!-- 헤더 오른쪽 관리자의 프로필 사진, 아이디 -->
-        <div class="admin">
-          <button class="adminBtn">
-            <img src="/img/admin/쌀밥.PNG" alt="" />
-            <div class="adminName">
-              <h3>admind</h3>
-            </div>
-          </button>
+        <div class="headerCenter fs-4 fw-bold">
+          <p class="m-0">메가커피 관리자 페이지</p>
         </div>
       </div>
 
-      <!-- 왼쪽 카테고리 메뉴 -->
       <div class="myMain">
-        <div class="kategorie">
-          <!-- 왼쪽 카테고리 버튼 - 공지사항 -->
-          <div class="btnGroup" onclick="click_notice();">
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/공지사항.png" alt="" />
-                <div id="kategorieText">공지사항</div>
+        <!-- 메인 화면 -->
+        <div class="screenHd">
+          <!-- 메인스크린 내용이 들어갈 부분 -->
+          <div class="screenHeader m-3">
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_notice();">
+                공지사항
               </button>
             </div>
-          </div>
-          <!-- 왼쪽 카테고리 버튼 - 회원정보 -->
-          <div
-            class="btnGroup"
-            style="background-color: gold"
-            onclick="click_member();"
-          >
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/회원정보.png" alt="" />
-                <div id="kategorieText">회원정보</div>
+            <div class="screenSelect">
+              <button
+                class="selectBtn"
+                onclick="click_member();"
+                style="border-bottom: 4px solid gold"
+              >
+                회원정보
               </button>
             </div>
-          </div>
-          <!-- 왼쪽 카테고리 버튼 - 상품정보 -->
-          <div class="btnGroup" onclick="click_menu();">
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/상품정보.png" alt="" />
-                <div id="kategorieText">상품정보</div>
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_menu();">
+                상품정보
               </button>
             </div>
-          </div>
-          <!-- 왼쪽 카테고리 버튼 - 주문정보 -->
-          <div class="btnGroup" id="btnid" onclick="click_order();">
-            <div id="btnBox">
-              <button type="button" class="myBtn">
-                <img src="/img/admin/주문정보.png" alt="" />
-                <div id="kategorieText">주문정보</div>
+            <div class="screenSelect">
+              <button class="selectBtn" onclick="click_order();">
+                주문정보
               </button>
             </div>
           </div>
         </div>
 
-        <!-- 메인 화면 -->
-        <div class="screen">
-          <!-- 메인스크린 헤더 -->
-          <div class="screenHeader">
-            <p style="margin-top: 20px">회원 정보 관리 페이지</p>
+        <!-- 메인스크린 화면 -->
+        <div class="scrrenMain" style="height: 80%">
+          <div
+            id="memberCount"
+            style="width: 30%"
+            th:text="|총 ${count}명의 회원이 있습니다.|"
+          >
+            몇명의 회원이 있는지 나타내는 곳.
           </div>
+          <!-- 선택창 -->
 
-          <!-- 메인스크린 화면 -->
-          <div class="scrrenMain" style="height: 80%">
-            <!-- 선택창 및 검색 기능 -->
-            <div
-              class="d-flex justify-content-end"
-              style="width: 100%; height: 30%"
-            >
-              <div
-                id="memberCount"
-                th:text="|총 ${count}명의 회원이 있습니다.|"
-              >
-                몇명의 회원이 있는지 나타내는 곳.
-              </div>
-              <!-- 선택창 -->
-              <div
-                class="search d-flex justify-content-end"
-                style="margin-right: 30px; height: 100%"
-              >
-                <select class="form-select" style="width: 15%">
-                  <option selected>선택</option>
-                  <option value="1">이름</option>
-                  <option value="2">이메일</option>
-                </select>
-                <div>
-                  <input type="text" style="height: 100%" />
-                </div>
-                <a
-                  href="#"
-                  type="button"
-                  style="
-                    width: 5%;
-                    border: 1px solid black;
-                    background-color: rgb(221, 219, 219);
-                  "
+          <!-- 회원 정보 테이블 -->
+          <div style="height: 60%">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">이름</th>
+                  <th scope="col">이메일</th>
+                  <th scope="col">생성시간</th>
+                  <th scope="col">수정/삭제</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:if="${#lists.isEmpty(list)}">
+                  <td colspan="5">회원 정보가 없습니다.</td>
+                </tr>
+
+                <tr
+                  class="memberBox"
+                  style="width: 100%"
+                  th:each="member, status:${list}"
                 >
-                  <img
-                    style="width: 70%; height: 70%"
-                    src="/img/admin/검색아이콘.png"
-                    alt=""
-                  />
-                </a>
-              </div>
-            </div>
+                  <!-- 회원 카운트 -->
+                  <th class="p-4" scope="row" style="width: 10%">
+                    <span th:text="${status.count}"></span>
+                  </th>
 
-            <!-- 회원 정보 테이블 -->
-            <div style="height: 60%">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">이름</th>
-                    <th scope="col">이메일</th>
-                    <th scope="col">생성시간</th>
-                    <th scope="col">수정/삭제</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr th:if="${#lists.isEmpty(list)}">
-                    <td colspan="5">회원 정보가 없습니다.</td>
-                  </tr>
+                  <!-- 회원 이름 -->
+                  <td class="p-4" style="width: 20%">
+                    <span th:text="${member.memberName}"></span>
+                  </td>
 
-                  <tr
-                    class="memberBox"
-                    style="width: 100%"
-                    th:each="member, status:${list}"
-                  >
-                    <!-- 회원 카운트 -->
-                    <th class="p-4" scope="row" style="width: 10%">
-                      <span th:text="${status.count}"></span>
-                    </th>
+                  <td class="p-4" style="width: 25%">
+                    <span th:text="${member.memberEmail}"></span>
+                  </td>
 
-                    <!-- 회원 이름 -->
-                    <td class="p-4" style="width: 20%">
-                      <span th:text="${member.memberName}"></span>
-                    </td>
+                  <td class="p-4" style="width: 25%">
+                    <span th:text="${member.memberJoinDatetime}"></span>
+                  </td>
 
-                    <td class="p-4" style="width: 25%">
-                      <span th:text="${member.memberEmail}"></span>
-                    </td>
+                  <td class="p-4" style="width: 20%">
+                    <button
+                      class="btn"
+                      style="
+                        background-color: white;
+                        color: blue;
+                        border: 1px solid blue;
+                        border-radius: 5px;
+                      "
+                      th:onclick="|func_member_ed(${member.memberNo});|"
+                    >
+                      수정
+                    </button>
 
-                    <td class="p-4" style="width: 25%">
-                      <span th:text="${member.memberJoinDatetime}"></span>
-                    </td>
-
-                    <td class="p-4" style="width: 20%">
-                      <button
-                        class="btn btn-primary"
-                        th:onclick="|func_member_ed(${member.memberNo});|"
-                      >
-                        수정
-                      </button>
-
-                      <button
-                        class="btn btn-danger"
-                        th:onclick="|func_member_delete(${member.memberNo});|"
-                      >
-                        삭제
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <!-- 페이지네이션 -->
-              <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+                    <button
+                      class="btn"
+                      style="
+                        background-color: white;
+                        color: red;
+                        border: 1px solid red;
+                        border-radius: 5px;
+                      "
+                      th:onclick="|func_member_delete(${member.memberNo});|"
+                    >
+                      삭제
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
