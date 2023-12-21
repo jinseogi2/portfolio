@@ -6,7 +6,7 @@ function seeMore(){
 window.location.href="/lastPage";
 }
 function megaOrder(){
-window.location.href="/orderpage";
+window.location.href="/order_recommand";
 }
 function payCard(){
 window.location.href="/payCard";
