@@ -11,32 +11,30 @@
       crossorigin="anonymous"
     />
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link rel="stylesheet" href="/css/select.css" />
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/select.css" />
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css"
+      rel="stylesheet"
+    />
+
   </head>
   <body>
     <div class="container">
       <div class="header">
-        <div id="top-left">
-          <a href="javascript:history.back();">
-            <img
-              src="/img/select/back_stamp.png"
-              alt="백"
-              style="max-width: 25%; max-height: 25%"
-            />
-          </a>
-        </div>
-
-        <div id="top-right">
-          <a href="/cart">
-            <img
-              src="/img/select/cart.png"
-              alt="리"
-              style="max-width: 25%; max-height: 25%"
-            />
-          </a>
+        <div id="headerimg">
+          <div id="imgbox">
+            <a href="javascript:history.back();">
+              <img src="/img/select/back_stamp.png" alt="" id="backimg" />
+            </a>
+          </div>
+          <div id="imgbox">
+            <a href="/cart">
+              <img src="/img/select/cart.png" alt="" id="cartimg" />
+            </a>
+          </div>
         </div>
       </div>
+
       <div class="sector">
         <div id="inner-img">
           <img
@@ -53,7 +51,10 @@
           <div class="sec1_hd">
             <div class="sec1_1">퍼스널 옵션</div>
             <div class="sec1_2">
-              <button onclick="downpage();" style="border:none;background-color:white;">
+              <button
+                onclick="downpage();"
+                style="border: none; background-color: white"
+              >
                 <img id="btnimg" src="/img/select/down.png" alt="" />
               </button>
             </div>
@@ -70,7 +71,7 @@
             <div id="optionTitle1">
               <input type="radio" id="option" name="options" />
               <div id="option_name">스모어잼추가</div>
-              <input type="hidden" id="option_price" value="700">
+              <input type="hidden" id="option_price" value="700" />
             </div>
 
             <div id="optionTitle">개인 텀블러 사용</div>
@@ -89,17 +90,21 @@
       </div>
 
       <div class="main">
-        <div id="but-con">
-          <div id="btn1">
-            <button onclick='count("minus");' value="-" id="minusbtn">-</button>
+        <div id="mainbox">
+          <div id="but-con">
+            <div id="btn1">
+              <button onclick='count("minus");' value="-" id="minusbtn">
+                -
+              </button>
+            </div>
+            <div id="result">1</div>
+            <div id="btn2">
+              <button onclick='count("plus");' value="+" id="plusbtn">+</button>
+            </div>
           </div>
-          <div id="result">1</div>
-          <div id="btn2">
-            <button onclick='count("plus");' value="+" id="plusbtn">+</button>
-          </div>
+          <input type="hidden" id="inputPrice" th:value="${item.itemPrice}" />
+          <div id="priceforadd" th:text="${item.itemPrice}">금액</div>
         </div>
-        <input type="hidden" id="inputPrice" th:value="${item.itemPrice}" />
-        <div id="priceforadd" th:text="${item.itemPrice}">금액</div>
       </div>
       <div class="footer">
         <div id="recommend">추천메뉴</div>
