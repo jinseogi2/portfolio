@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="/css/Main.css" />
     <script src="/js/Main.js"></script>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css" rel="stylesheet">
+    <link
+      href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css"
+      rel="stylesheet"
+    />
 
     <!-- Link Swiper's CSS -->
     <link
@@ -73,9 +76,7 @@
             <div class="itembtnimg">
               <img src="/img/paycard/c3.png" alt="" />
             </div>
-            <div class="itembtntext" >
-              주문하기
-            </div>
+            <div class="itembtntext">주문하기</div>
           </div>
           <div class="itembtn">
             <div class="itembtnimg">
@@ -125,7 +126,7 @@
         </div>
       </div>
       <div class="section">
-        <div id="secimg" >
+        <div id="secimg">
           <div id="sectext"></div>
         </div>
       </div>
@@ -166,50 +167,61 @@
         <!-- Swiper -->
         <div class="swiper mySwiper2" id="noswiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" id="noslide" th:each="notice, status:${notice}">
-              <div id="noslide_imgbox" th:onclick="|func_event(${notice.noticeNo});|">
             <div
               class="swiper-slide"
               id="noslide"
               th:each="notice, status:${notice}"
             >
-              <div id="noslide_imgbox">
-                <img th:src="${notice.noticeImageUrl}" />
+              <div
+                id="noslide_imgbox"
+                th:onclick="|func_event(${notice.noticeNo});|"
+              >
+                <div
+                  class="swiper-slide"
+                  id="noslide"
+                  th:each="notice, status:${notice}"
+                >
+                  <div id="noslide_imgbox">
+                    <img th:src="${notice.noticeImageUrl}" />
+                  </div>
+                  <div
+                    id="noslide_textbox"
+                    th:text="${notice.noticeTitle}"
+                  ></div>
+                </div>
               </div>
-              <div id="noslide_textbox" th:text="${notice.noticeTitle}"></div>
+              <!-- <div class="swiper-pagination"></div> -->
             </div>
           </div>
-          <!-- <div class="swiper-pagination"></div> -->
-        </div>
-      </div>
-      <div class="footer">
-        <div class="fmenu" onclick="mainPage();">
-          <div class="fimg">
-            <img src="/img/paycard/c1.png" alt="메인" />
+          <div class="footer">
+            <div class="fmenu" onclick="mainPage();">
+              <div class="fimg">
+                <img src="/img/paycard/c1.png" alt="메인" />
+              </div>
+              <div class="ftext">메인</div>
+            </div>
+            <div class="fmenu" onclick="payCard();">
+              <div class="fimg">
+                <img src="/img/paycard/c2.png" alt="메가선불카드" />
+              </div>
+              <div class="ftext">메가선불카드</div>
+            </div>
+            <div class="fmenu" onclick="megaOrder();">
+              <div class="fimg">
+                <img src="/img/paycard/c3.png" alt="메가오더" />
+              </div>
+              <div class="ftext">메가오더</div>
+            </div>
+            <div class="fmenu" onclick="seeMore();">
+              <div class="fimg">
+                <img src="/img/paycard/c4.png" alt="더보기" />
+              </div>
+              <div class="ftext">더보기</div>
+            </div>
           </div>
-          <div class="ftext">메인</div>
-        </div>
-        <div class="fmenu" onclick="payCard();">
-          <div class="fimg">
-            <img src="/img/paycard/c2.png" alt="메가선불카드" />
-          </div>
-          <div class="ftext">메가선불카드</div>
-        </div>
-        <div class="fmenu" onclick="megaOrder();">
-          <div class="fimg">
-            <img src="/img/paycard/c3.png" alt="메가오더" />
-          </div>
-          <div class="ftext">메가오더</div>
-        </div>
-        <div class="fmenu" onclick="seeMore();">
-          <div class="fimg">
-            <img src="/img/paycard/c4.png" alt="더보기" />
-          </div>
-          <div class="ftext">더보기</div>
         </div>
       </div>
     </div>
-
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
