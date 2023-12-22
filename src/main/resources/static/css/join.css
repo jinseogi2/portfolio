@@ -7,7 +7,7 @@
   /* overflow: hidden; */
   /* overflow: auto; */
   overflow: hidden;
-  font-family: 'NanumGothicCoding';
+  font-family: "NanumGothicCoding";
 }
 body {
   display: flex;
@@ -24,23 +24,76 @@ body {
   width: 550px;
   height: auto;
   min-height: 100%;
-}
-.input-form {
-  max-width: 550px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
 
-  margin-top: 80px;
-  padding: 32px;
 }
-img {
-  position: relative;
-  top: 60px;
-  width: 450px;
-  height: 150;
+.main{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+.input-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#megaimg1 {
+  width: 70%;
+  height: 100%;
+}
+#imgbox {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+#megaimg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 .input-form {
-  text-align: left;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.btn {
-  background-color: rgb(258, 208, 0);
-  color: black;
+
+.box {
+width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.validation-form{
+width:90%;
+
+}
+
+#inputbox{
+width:60%;
+height:100%;
+}
+
+.custom-control-label
+{font-weight: 800;
+}
+.joinbox{
+font-weight: 800;}
+.footer-p{
+font-weight: 800;}
+.labelbox{
+width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
