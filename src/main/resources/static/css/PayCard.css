@@ -32,7 +32,7 @@ body {
 
 /* 해더부분 */
 .header {
-      background-color: rgb(248, 249, 251);
+      background-color: white;
       position: fixed;
       top: 0;
       min-width: 550px;
@@ -162,7 +162,7 @@ align-items: center;
 .sec1_2 > button {
   width: 50%;
       height: 100%;
-      background-color: rgb(248, 249, 251);
+      background-color: white;
       border: none;
 }
 .sec1_2 > button > img {
@@ -205,7 +205,7 @@ width: 15%;
 .sec2_2 > button {
  width: 50%;
        height: 100%;
-       background-color: rgb(248, 249, 251);
+       background-color: white;
        border: none;
 }
 .sec2_2 > button > img {
@@ -252,6 +252,6 @@ width: 15%;
       font-size: 18px;
 }
 .fimg > img {
-      width: 30%;
-      height: 70%;
+         width: 30px;
+         height: 30px;
 }

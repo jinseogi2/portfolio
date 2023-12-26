@@ -15,28 +15,36 @@ body {
 }
 .container {
   background-color: white;
-  border: 2px solid #d3d3d3;
-  text-align: center;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  width: 550px;
-  height: auto;
-  min-height: 100%;
+      border: 2px solid #d3d3d3;
+      text-align: center;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      width: 550px;
+      height: auto;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 }
 .head {
   display: flex;
-  flex-direction: column; /* 컨테이너 내용을 세로로 배치 */
-  font-size: 13px;
+      flex-direction: column;
+      font-size: 18px;
+      width: 100%;
+      align-items: center;
+      height: 10%;
+      font-weight: 900;
 }
 .nav-link {
   color: black;
   padding: 0;
 }
 .nav {
-  list-style: none;
-  padding: 0;
-  margin: 10px;
-  display: flex;
-  justify-content: flex-start; /* 내비게이션 아이템들을 왼쪽으로 정렬 */
+ display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     width: 90%;
+     height: 60%; /* 내비게이션 아이템들을 왼쪽으로 정렬 */
 }
 
 .nav-item {
@@ -44,25 +52,25 @@ body {
 }
 
 #user-info {
-  display: flex;
-  align-items: center;
-  margin-top: 10px; /* user-info와 네비게이션 사이의 간격 설정 */
+      display: flex;
+      align-items: center;
+      width: 90%;
+      height: 40%; /* user-info와 네비게이션 사이의 간격 설정 */
 }
 #user-nickname {
   font-size: 25px;
   font-weight: bold;
 }
 
-#user-nickname {
-  margin-right: 10px;
-}
+
 /* 여기까지 완료 이미지 목록 */
 .section {
-  position: relative;
-  height: 320px;
-  width: 100%;
-  /* display: flex;
-  flex-direction: column; */
+ position: relative;
+     height: 280px;
+     width: 90%;
+     display: flex;
+     justify-content: center;
+     align-items: start;
 }
 .image-text {
   display: block;
@@ -73,36 +81,71 @@ body {
   color: white;
   height: 70px;
 }
-
+#linkcontainer{
+    width: 90%;
+    height: 830px;
+    display: flex;
+    flex-direction: column;
+}
 /* 여기까지 완료 */
 .center {
   height: 150px;
-  width: 100%;
-  font-size: 10px;
-  text-align: start;
-  color: gray;
-  padding: 5px;
+      width: 100%;
+
+      color: gray;
+      display: flex;
+      flex-direction: column;
+}
+#membership{
+text-align: start;
+    font-size: 17px;
+    height: 20%;
 }
 .center-box {
-  display: flex;
-  flex-direction: column;
-  font-weight: bold;
+display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    height: 80%;
+
+}
+
+#center-text1{
+height:33%;
+display:flex;
+align-items: center;
+font-size: 20px;
+
+}
+#center-text2{
+height:33%;
+display:flex;
+align-items: center;
+font-size: 20px;
+}
+#center-text3{
+height:33%;
+display:flex;
+align-items: center;
+font-size: 20px;
 }
 .center-box > a {
   text-decoration: none;
-  margin-top: 15px;
+
   color: black;
   font-size: 15px;
 }
+
+
+
 /* 여기까지 완료 */
 .under {
   margin-top: 20px;
-  height: 280px;
+  height: 300px;
   width: 100%;
-  font-size: 10px;
+  font-size: 17px;
   text-align: start;
   color: gray;
-  padding: 5px;
+
 }
 .under-box {
   display: flex;
@@ -110,20 +153,19 @@ body {
   font-weight: bold;
 }
 .under-box > a {
-  text-decoration: none;
-  margin-top: 20px;
-  color: black;
-  font-size: 15px;
+      text-decoration: none;
+      margin-top: 10px;
+      color: black;
+      font-size: 20px;
 }
 /* 여기까지 완료 */
 .end {
-  margin-top: 25px;
-  height: 150px;
-  width: 100%;
-  font-size: 10px;
-  text-align: start;
-  color: gray;
-  padding: 5px;
+
+      height: 140px;
+      width: 100%;
+      font-size: 17px;
+      text-align: start;
+      color: gray;
 }
 .end-box {
   display: flex;
@@ -132,17 +174,17 @@ body {
 }
 .end-box > a {
   text-decoration: none;
-  margin-top: 20px;
-  color: black;
-  font-size: 15px;
+      margin-top: 10px;
+      color: black;
+      font-size: 20px;
 }
 .last1 {
-  height: 150px;
-  width: 100%;
-  font-size: 10px;
-  text-align: start;
-  color: gray;
-  padding: 5px;
+
+        height: 90px;
+        width: 100%;
+        font-size: 17px;
+        text-align: start;
+        color: gray;
 }
 .last1-box {
   display: flex;
@@ -151,14 +193,14 @@ body {
 }
 .last1-box > a {
   text-decoration: none;
-  margin-top: 20px;
-  color: black;
-  font-size: 15px;
+      margin-top: 10px;
+      color: black;
+      font-size: 20px;
 }
 /* ----- css --- */
 .footer {
   z-index: 1;
-  width: 520px;
+  width: 546px;
   height: 80px;
   display: flex;
   position: fixed;
@@ -188,8 +230,8 @@ body {
       font-size: 18px;
 }
 .fimg > img {
-      width: 30%;
-      height: 70%;
+          width: 30px;
+          height: 30px;
 }
 
 /* test */
