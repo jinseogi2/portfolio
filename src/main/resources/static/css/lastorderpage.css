@@ -24,11 +24,13 @@ body {
   min-height: 100%;
 }
 .main {
-  /* border: 1px solid black; */
   width: 522px;
-  height: 100px;
-  background-color: white;
-  position: fixed;
+      height: 8%;
+      background-color: white;
+      position: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 }
 #toptitle {
   /* text-align: center; */
@@ -37,114 +39,174 @@ body {
   font-weight: bold;
 }
 .top {
-  margin-top: 80px;
-  margin-bottom: 35px;
-  /* border: 1px solid black; */
-  width: 100%;
-  height: 150px;
-  display: flex;
-  justify-content: center;
+          margin-top: 90px;
+          width: 100%;
+          height: 190px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 }
 #topinner {
-  margin-top: 50px;
-  width: 500px;
-  height: 90px;
-  line-height: 40px;
-  background-color: black;
-  color: white;
-  border-radius: 5%;
-  font-size: 17px;
+      width: 100%;
+      height: 60%;
+      background-color: black;
+      color: white;
+      font-size: 20px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 }
 .section {
-  /* border: 1px solid black; */
-  width: 100%;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
+
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         height: 350px;
+}
+
+.section-box1{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-box2{
+    width: 100%;
+    height: 25%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+.section-box3{
+    width: 100%;
+        height: 25%;
+        display: flex;
+        align-items: start;
+        justify-content: center;
 }
 #imgcont {
-  width: 200px;
-  height: 80px;
+      width: 70%;
+      height: 60%;
+      display: flex;
+      align-items: center;
+      justify-items: center;
 }
 #imgcont img {
   width: 100%;
   height: 100%;
 }
 #ordernum {
-  margin-top: 10px;
-  font-size: 20px;
+  font-size: 40px;
   font-weight: bold;
 }
 #ordertime {
-  font-size: 15px;
-  padding: 10px;
+  font-size: 20px;
+      font-weight: 900;
+
 }
 .footer {
-  /* border: 1px solid black; */
-  width: 100%;
-  height: 300px;
-  /* background-color: #f0f0f0; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+     width: 100%;
+     height: 350px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
 }
 #order1 {
-  width: 150px;
-  height: 150px;
-  margin-bottom: 20px;
+  width: 60%;
+      height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 }
 #order1 img {
   width: 100%;
   height: 100%;
 }
 #orderbox {
-  width: 350px;
-  height: 100px;
-  display: flex;
-  justify-content: space-between;
+      width: 90%;
+      height: 20%;
+      display: flex;
+      justify-content: space-between;
 }
 #order2 {
-  font-weight: bold;
-  font-size: 20px;
+     width: 30%;
+         font-size: 23px;
+         font-weight: 800;
+         display: flex;
+         justify-content: center;
 }
 .price {
-  font-family: bold;
-  color: gray;
-  font-size: 18px;
+font-family: bold;
+    color: gray;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    font-weight: 800;
 }
 .end {
-  /* border: 1px solid black; */
-  /* background-color: #f0f0f0; */
-  width: 100%;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
+      width: 100%;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+          align-items: center;
+          justify-content: center;
 }
 #endbox {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 50%;
+    align-items: center;
 }
 #payment {
-  font-size: 20px;
+  font-size: 30px;
+      font-weight: bold;
+      width: 40%;
+      height: 100%;
+      display: flex;
+          align-items: end;
+          justify-content: center;
 }
 .payment1 {
-  font-size: 17px;
-  font-weight: bold;
+ font-size: 30px;
+     font-weight: bold;
+     width: 25%;
+     height: 100%;
+     display: flex;
+         align-items: end;
+         justify-content: center;
 }
 #endbox2 {
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  height: 50px;
+  width: 90%;
+  height: 50%;
 }
 #stamp {
-  font-size: 20px;
+  font-size: 23px;
+        font-weight: bold;
+        width: 40%;
+        height: 100%;
+        display: flex;
+            align-items: center;
+            justify-content: center;
 }
 #stamp1 {
-  font-size: 17px;
-  font-weight: bold;
+  font-size: 30px;
+       font-weight: bold;
+       width: 25%;
+       height: 100%;
+       display: flex;
+           align-items: center;
+           justify-content: center;
+}
+.jinseokjjang{
+width:100%;
+height:200px;
 }

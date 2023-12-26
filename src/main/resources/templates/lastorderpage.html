@@ -26,9 +26,9 @@
         </div>
       </div>
       <div class="section">
-        <div id="imgcont"><img src="./img/lastorderpage/logo.png" alt="로고" /></div>
-        <div id="ordernum">주문번호 : 0000</div>
-        <div id="ordertime">2023. 12. 13. 00:00</div>
+        <div class=" section-box1"><div id="imgcont"><img src="./img/lastorderpage/logo.png" alt="로고" /></div></div>
+        <div class=" section-box2"><div id="ordernum">주문번호 : 0000</div></div>
+          <div class=" section-box3"><div id="ordertime">2023. 12. 13. 00:00</div></div>
       </div>
       <div class="footer" th:each="cart, status:${cart}">
         <!--  html에 금액을 뛰울려면 금액을 계산해야하기때문에 들고옴 -->
@@ -50,10 +50,12 @@
         </div>
         <div id="endbox2">
           <div id="stamp">누적 스탬프 적립</div>
-          <div id="stamp1">00</div>
+          <div id="stamp1">00개</div>
         </div>
       </div>
+      <div class="jinseokjjang"></div>
     </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

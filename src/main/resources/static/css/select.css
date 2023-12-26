@@ -36,7 +36,7 @@ html {
         justify-content: center;
       }
       #headerimg {
-        width: 90%;
+        width: 100%;
         header: 100%;
         display: flex;
         flex-direction: row;
