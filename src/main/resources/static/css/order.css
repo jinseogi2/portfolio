@@ -25,46 +25,47 @@ body {
   flex-direction: column;
   position: relative;
   padding-bottom: 50px;
+  justify-content: center;
+      align-items: center;
 }
 
 /* 해더부분 */
 .header {
-  background-color: rgb(255, 255, 255);
-  position: fixed;
-  top: 0;
+      background-color: rgb(255, 255, 255);
+      position: fixed;
+      top: 0;
+      z-index: 100;
+      width: 548px;
+      height: 80px;
+      display: flex;
+      justify-content: space-around;
+}
 
-  z-index: 100;
-  min-width: 545px;
-  height: 50px;
 
-  display: flex;
-  justify-content: space-around;
-}
-.hicon,
-.hicon_2,
-.htext {
-  margin-top: 7px;
-  width: 30%;
-  height: 90%;
-}
-.hicon_2 {
-  opacity: 0.7;
-}
 .hicon {
-  display: flex;
-  justify-self: start;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .hicon_1 {
-  width: 50px;
-  height: 80%;
+ width: 50%;
+     height: 100%;
+     display: flex;
+     align-items: center;
+     justify-items: center;
 }
 .hicon_1 > img {
-  width: 100%;
-  height: 100%;
+  width: 80%;
+      height: 50%;
 }
 .hicon_2 {
-  display: flex;
-  justify-content: end;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .hicon_2-1,
 .hicon_2-2 {
@@ -72,55 +73,94 @@ body {
   height: 100%;
   margin-left: 10px;
 }
-.hicon_2-1 > img,
-.hicon_2-2 > img {
-  width: 100%;
-  height: 80%;
-}
+
 .htext {
-  text-align: center;
+     width: 40%;
+     height: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
 }
 .htext > p {
-  font-size: 22px;
+  font-size: 25px;
+      display: flex;
+      align-items: center;
+      justify-items: center;
+      margin: 0;
+      font-weight: 800;
 }
 
 /* nav 영역 슬라이드 */
 .nav {
-  margin-top: 60px;
-  margin-left: 10px;
-  min-width: 550px;
-  height: 90px;
+      margin-top: 90px;
+      width: 100%;
+      height: 100px;
+      justify-content: center;
+}
+.swiper-wrapper{
+width: 100%;
+    transition-duration: 300ms;
+    transform: translate3d(0px, 0px, 0px);
+
+    display: flex;
+    align-items: center;
+}
+.swiper-slide
+{    flex-shrink: 0;
+         width: 100%;
+         height: 100%;
+         position: relative;
+         transition-property: transform;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+}
+#navslide_button{
+display:flex;
+
 }
 .navslide_button {
   width: 20%;
   height: 100%;
 }
 .navslide_button button {
-  width: 88%;
-  height: 100%;
-  border-radius: 30px;
+      width: 90%;
+      height: 100%;
+      border-radius: 30px;
+      font-weight: 900;
 }
 .nav_text {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  margin-left: 5px;
+ width: 90%;
+     height: 60%;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+}
+#nav_left_text{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    font-weight: 800;
 }
 #nav_right_text {
-  margin-right: 30px;
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      font-weight: 800;
 }
 
 /* item_list */
 .item_list {
-  width: 100%;
+  width: 90%;
   height: auto;
+  font-weight: 800;
+  justify-content: center;
 }
 
 /* 3줄로 볼때 */
 .item_box {
   height: 190px;
+
 }
 .item_img {
   height: 70%;
@@ -148,80 +188,112 @@ body {
   height: 150px;
 }
 .item_box_one .item_img {
-  height: 100%;
+ height: 100%;
+     width: 27%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
 }
 .item_box_one .item_img img {
-  height: 100%;
-  width: 100%;
+      height: 85%;
+      width: 100%;
 }
 .item_box_one .item_text {
   height: 100%;
+  width: 73%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .item_box_one .item_text .item_name {
-  width: 100%;
-  text-align: start;
+      width: 100%;
+      text-align: center;
 }
 .item_box_one .item_text .item_price {
-  text-align: start;
-  width: 100%;
+      width: 100%;
+      text-align: center;
 }
 
 /* 공지사항 탭 */
 .information {
-  width: 100%;
-  height: 220px;
-  background-color: #d8d8d8;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding-bottom: 30px;
+      width: 100%;
+      height: 300px;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 30px;
+      font-weight: 800;
 }
 #information-name {
-  margin: 10px;
+display: flex;
+    justify-content: start;
+    width: 100%;
+    align-items: center;
+}
+#information-name h6{
+font-size: 20px;
+    font-weight: 800;
 }
 
 #information-p {
   font-size: 13px;
-  margin: 10px;
+
 }
 #information-a {
   font-size: 13px;
-  color: #000000;
-  text-decoration: none;
-  margin: 10px;
+      color: #000000;
+      text-decoration: none;
+      width: 15%;
+      display: flex;
+      justify-content: center;
+}
+#information-a2 {
+  font-size: 13px;
+      color: #000000;
+      text-decoration: none;
+      width: 25%;
+      display: flex;
+      justify-content: center;
+}
+#infobox1 {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    width: 90%;
+
+}
+#infobox2 {
+display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+    width: 100%;
 }
 
 /* 푸터 */
 .footer {
-  width: 547px;
-  height: 52px;
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  background-color: #080808;
-  justify-content: space-between;
+ width: 550px;
+     height: 80px;
+     display: flex;
+     position: fixed;
+     bottom: 0;
+     background-color: #080808;
+     justify-content: end;
+     align-items: center;
 }
-.ftext {
-  width: auto;
-  height: 100%;
-  font-size: 22px;
-  line-height: 50px;
-  font-weight: 700;
-  margin-left: 20px;
-  color: white;
-}
+
 .fimg {
-  width: 8%;
-  height: 80%;
-  line-height: 52px;
-  margin-right: 10px;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .fimg img {
-  width: 80%;
-  height: 80%;
+  width: 40%;
+      height: 50%;
   filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%)
     contrast(100%);
 }
