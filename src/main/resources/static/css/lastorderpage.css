@@ -125,8 +125,8 @@ body {
       display: flex;
       align-items: start;
       justify-content: center;
-      background-color: beige;
-      border-radius: 10px;
+      background-color: #fbfbfb;
+      border-radius: 20px;
 }
 #order1 img {
   width: 100%;
