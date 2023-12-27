@@ -23,26 +23,5 @@ import java.util.List;
 public class Controller_3 {
     @Autowired
     private NoticeRepository noticeRepository;
-    @GetMapping("/event")
-    public String eventPage(@RequestParam String noticeNo,Model model ) {
-
-        NoticeEntity noticeEntity = noticeRepository.findById(Long.valueOf(noticeNo)).get();
-
-        NoticeDto noticeDto = NoticeDto.toDto(noticeEntity);
-        model.addAttribute("notice",noticeDto);
-
-        return "event";
-
-    }
-
-    @GetMapping("/noticeLink")
-  public String noticeLink (@RequestParam String noticeImageUrl, Model model){
-        List<NoticeEntity> noticeEntity = noticeRepository.findByNoticeImageUrl(noticeImageUrl);
-        NoticeEntity notice = noticeEntity.get(0);
-        model.addAttribute("noticeLink",notice);
-
-        System.out.println("noticeImageUrl :: " + noticeImageUrl);
-        return "noticeLink";
-    }
 
 }
