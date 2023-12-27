@@ -314,6 +314,17 @@ public class FrontController {
     }
 
 
+    @GetMapping("/select")
+    public String order(@RequestParam String itemNo, Model model) {
+
+        System.out.println("itemNo ::: " + itemNo);
+
+        ItemEntity itemEntity = itemRepository.findById(Long.valueOf(itemNo)).get();
+
+        model.addAttribute("item", itemEntity);
+        return "select";
+    }
+
     @GetMapping("/noticeLink")
     public String eventPage(@RequestParam String noticeNo,Model model ) {
 
