@@ -15,17 +15,17 @@ body {
   justify-content: center;
 }
 .wrap {
-  background-color: rgb(255 255 255);
-  border: 2px solid #d3d3d3;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  width: 550px;
-  height: auto;
-  min-height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  padding-bottom: 100px;
+    background-color: rgb(255 255 255);
+    border: 2px solid #d3d3d3;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 550px;
+    height: auto;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 100px;
+    align-items: center;
 }
 
 /* ---------- */
@@ -206,20 +206,21 @@ filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) co
       justify-content: center;
 }
 #mainimg {
-  position: absolute;
-  top: 0;
-  height: 350px;
+     position: absolute;
+     top: 0;
+     height: 350px;
+     width: 90%;
 }
 #mainimg > img {
   width: 100%;
   height: 100%;
 }
 #himg {
-  display: flex;
-      justify-content: end;
-      width: 90%;
-      height: 80%;
-      margin-top: 10px;
+display: flex;
+    justify-content: end;
+    width: 85%;
+    height: 15%;
+
 }
 #himg-1,
 #himg-2 {
@@ -227,16 +228,10 @@ filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) co
      width: 6%;
      padding: 10px;
 }
-#himg-1 {
-
-}
-#himg-2 {
-
-}
 #himg-1 > img,
 #himg-2 > img {
-  height: 100%;
-  width: 100%;
+    height: 25px;
+        width: 25px;
 }
 
 /* nav 스탬프,쿠폰*/

@@ -1,13 +1,13 @@
-//document.addEventListener("DOMContentLoaded", function () {
-//    // 초기 html이 켜졌을 때
-//    html_Start_Set();
-//    updateTotalPrice();
-//    updateTotalCount();
-//        // 5초 후에 리디렉션
-//    setTimeout(function() {
-//        window.location.href = "/";
-//    }, 5000); // 5000 밀리초 = 5초
-//});
+document.addEventListener("DOMContentLoaded", function () {
+    // 초기 html이 켜졌을 때
+    html_Start_Set();
+    updateTotalPrice();
+    updateTotalCount();
+        // 5초 후에 리디렉션
+    setTimeout(function() {
+        window.location.href = "/";
+    }, 5000); // 5000 밀리초 = 5초
+});
 
 function html_Start_Set() {
     // 주문번호 설정

@@ -41,21 +41,21 @@ body {
 .top {
           margin-top: 90px;
           width: 100%;
-          height: 190px;
+          height: 100px;
           display: flex;
           justify-content: center;
           align-items: center;
 }
 #topinner {
-      width: 100%;
-      height: 60%;
-      background-color: black;
-      color: white;
-      font-size: 20px;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+         width: 100%;
+         height: 100%;
+         background-color: black;
+         color: white;
+         font-size: 20px;
+         font-weight: 800;
+         display: flex;
+         align-items: center;
+         justify-content: center;
 }
 .section {
 
@@ -76,15 +76,15 @@ body {
 }
 
 .section-box2{
-    width: 100%;
-    height: 25%;
-    display: flex;
-    align-items: end;
-    justify-content: center;
+       width: 100%;
+       height: 25%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
 }
 .section-box3{
     width: 100%;
-        height: 25%;
+        height: 10%;
         display: flex;
         align-items: start;
         justify-content: center;
@@ -101,13 +101,16 @@ body {
   height: 100%;
 }
 #ordernum {
-  font-size: 40px;
-  font-weight: bold;
+     font-size: 40px;
+     font-weight: bold;
+     background-color: antiquewhite;
+     border-radius: 10px;
 }
 #ordertime {
-  font-size: 20px;
-      font-weight: 900;
-
+     font-size: 20px;
+     font-weight: 900;
+     background-color: aliceblue;
+     border-radius: 5px;
 }
 .footer {
      width: 100%;
@@ -117,11 +120,13 @@ body {
      align-items: center;
 }
 #order1 {
-  width: 60%;
+      width: 60%;
       height: 80%;
       display: flex;
-      align-items: center;
+      align-items: start;
       justify-content: center;
+      background-color: beige;
+      border-radius: 10px;
 }
 #order1 img {
   width: 100%;
@@ -132,6 +137,7 @@ body {
       height: 20%;
       display: flex;
       justify-content: space-between;
+      align-items: center;
 }
 #order2 {
      width: 30%;
@@ -158,55 +164,68 @@ font-family: bold;
           justify-content: center;
 }
 #endbox {
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    height: 50%;
-    align-items: center;
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        height: 30%;
+        align-items: center;
+        border-top: 1px solid lightgray;
 }
 #payment {
   font-size: 30px;
       font-weight: bold;
       width: 40%;
-      height: 100%;
+      height: 80%;
       display: flex;
-          align-items: end;
+          align-items: center;
           justify-content: center;
+              background-color: #ebebeb;
+              border-radius: 10px;
 }
 .payment1 {
  font-size: 30px;
      font-weight: bold;
      width: 25%;
-     height: 100%;
+     height: 80%;
      display: flex;
-         align-items: end;
+         align-items: center;
          justify-content: center;
+             background-color: #ebebeb;
+             border-radius: 10px;
 }
 #endbox2 {
   display: flex;
   justify-content: space-between;
+      align-items: center;
   width: 90%;
-  height: 50%;
+  height: 30%;
 }
 #stamp {
-  font-size: 23px;
+  font-size: 20px;
         font-weight: bold;
         width: 40%;
-        height: 100%;
+        height: 80%;
         display: flex;
             align-items: center;
             justify-content: center;
+            background-color: #fce5e5;
+                border-radius: 10px;
 }
 #stamp1 {
-  font-size: 30px;
+  font-size: 25px;
        font-weight: bold;
        width: 25%;
-       height: 100%;
+       height: 80%;
        display: flex;
            align-items: center;
            justify-content: center;
+           background-color: #fce5e5;
+               border-radius: 10px;
 }
 .jinseokjjang{
 width:100%;
 height:200px;
 }
+#endbox3{
+
+height:30%;}

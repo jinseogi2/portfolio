@@ -86,6 +86,7 @@ body {
     height: 830px;
     display: flex;
     flex-direction: column;
+    padding-top:30px;
 }
 /* 여기까지 완료 */
 .center {
