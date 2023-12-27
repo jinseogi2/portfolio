@@ -313,5 +313,17 @@ public class FrontController {
         return "loginpage";
     }
 
+
+    @GetMapping("/noticeLink")
+    public String eventPage(@RequestParam String noticeNo,Model model ) {
+
+        NoticeEntity noticeEntity = noticeRepository.findById(Long.valueOf(noticeNo)).get();
+
+        NoticeDto noticeDto = NoticeDto.toDto(noticeEntity);
+        model.addAttribute("notice",noticeDto);
+
+        return "noticeLink";
+    }
+
 }
 

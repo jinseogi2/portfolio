@@ -12,6 +12,7 @@
     />
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css" rel="stylesheet">
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/js/notice.js"></script>
     <link rel="stylesheet" href="./css/lastnotice.css" />
   </head>
   <body>
@@ -30,7 +31,7 @@
     <div class="section-box">
       <div class="section" th:each="notice, status:${notice}">
         <div id="nt1">
-          <div id="nt1-1">
+          <div id="nt1-1" th:onclick="|func_notice(${notice.noticeNo});|">
             <h2 style="margin:0;" th:text="${notice.noticeTitle}">[공지]여름시즌2<올여름 구매왕을 찾아라>이벤트 담청자 발표</h2>
             <p style="margin:0;" th:text="${notice.noticeDatetime}">2023.10.11</p>
           </div>

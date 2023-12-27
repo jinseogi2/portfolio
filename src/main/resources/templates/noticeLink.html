@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>이벤트</title>
-  <link rel="stylesheet" href="/css/noticeLink.css" />
-  <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="/js/Main.js"></script>
-  <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트</title>
+    <link rel="stylesheet" href="/css/event.css" />
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/js/main.js"></script>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-gothic-coding.css" rel="stylesheet">
+  </head>
 
-<body>
-<div class="wrap">
-  <!-- 헤더 아이콘 / 이벤트 -->
-  <div class="header">
-    <div class="hicon">
-      <div class="hicon_back" onclick="back()">
-        <img src="/img/event/back.png" alt="back" />
+  <body>
+    <div class="wrap">
+      <!-- 헤더 아이콘 / 이벤트 -->
+      <div class="header">
+        <div class="hicon">
+          <div class="hicon_back" onclick="back()">
+            <img src="/img/event/back.png" alt="back" />
+          </div>
+        </div>
+        <div class="header_text">
+          <p>이벤트</p>
+        </div>
+      </div>
+      <!-- 메인 -->
+      <div class="main" th:each="notice, status:${notice}">
+        <!-- 메인 헤더부분 -->
+        <div class="event_title">
+          <div class="tltleName">
+            <p th:text="|[${notice.noticeType}] ${notice.noticeTitle}|">[이벤트] 이벤트 이름 예시</p>
+          </div>
+          <div class="timeStamp">
+            <p th:text="${notice.noticeDatetime}">2023.12.10</p>
+          </div>
+        </div>
+        <!-- 이벤트 이미지 들어갈곳 -->
+        <div class="event_img">
+          <div class="event_img_1">
+            <img th:src="${notice.noticeImageUrl}" alt="이벤트 이미지" />
+          </div>
+        </div>
       </div>
     </div>
-    <div class="header_text">
-      <p>공지사항</p>
-    </div>
-  </div>
-  <!-- 메인 -->
-  <div class="main">
-    <!-- 메인 헤더부분 -->
-    <div class="event_title">
-      <div class="tltleName">
-        <p>[공지사항] 공지사항 이름 예시</p>
-      </div>
-      <div class="timeStamp">
-        <p>2023.12.10</p>
-      </div>
-    </div>
-    <!-- 이벤트 이미지 들어갈곳 -->
-    <div class="event_img">
-      <div class="event_img_1">
-        <img th:src="${noticeLink.noticeImageUrl}" alt="이벤트 이미지" />
-      </div>
-    </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>

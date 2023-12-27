@@ -160,7 +160,7 @@ function modal_barcode_on() {
 }
 
 function func_event(noticeNo) {
-  window.location.href = "/event?noticeNo=" + noticeNo;
+  window.location.href = "/noticeLink?noticeNo=" + noticeNo;
 }
 function back() {
   history.back();
