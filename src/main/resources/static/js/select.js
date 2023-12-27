@@ -67,21 +67,26 @@ const radioOption = document.getElementById("option");
 
 // 라디오박스 상태 변화 이벤트 처리
 radioOption.addEventListener("change", function () {
+let cart_option1_price = document.getElementById("option_price").value;
   if (radioOption.checked) {
     console.log("스모어 잼 추가가 체크되었습니다.");
     // 스모어 잼 추가가 체크되었을 때의 동작 추가
     servePrice = 700;
     count("check");
+    cart_option1_price = 700;
+
   }
 });
 
 // 라디오박스 상태 변화 이벤트 처리
 radioNone.addEventListener("change", function () {
+let cart_option1_price = document.getElementById("option_price").value;
   if (radioNone.checked) {
     console.log("선택안함이 체크되었습니다.");
     // 선택안함이 체크되었을 때의 동작 추가
     servePrice = 0;
     count("uncheck");
+    cart_option1_price = 0;
   }
 });
 
@@ -93,6 +98,10 @@ function func_cart() {
   let cartCount = document.getElementById("result").innerText;
   let cart_option1_name = document.getElementById("option_name").innerText;
   let cart_option1_price = document.getElementById("option_price").value;
+
+  if(cart_option1_price==0){
+    cart_option1_name = null;
+  }
 
   console.log("cartName :: " + cartName);
   console.log("cartImageUrl :: " + cartImageUrl);
@@ -139,6 +148,9 @@ function goCart() {
   let cart_option1_name = document.getElementById("option_name").innerText;
   let cart_option1_price = document.getElementById("option_price").value;
 
+if(cart_option1_price==0){
+    cart_option1_name = null;
+  }
   console.log("cartName :: " + cartName);
   console.log("cartImageUrl :: " + cartImageUrl);
   console.log("cartPrice :: " + cartPrice);
@@ -167,7 +179,7 @@ function goCart() {
     }) // 서버 응답
     .then((json) => {
       //{ status: "ok", result: 5 }
-      window.location.href = "/cart";
+     window.location.href = "/cart";
 
     }) // 실제 데이터
     .catch((error) => {

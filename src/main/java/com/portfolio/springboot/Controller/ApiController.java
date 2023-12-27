@@ -448,8 +448,13 @@ public class ApiController {
     @PostMapping("/cartAddAction")
     public ResultDto cartAdd_Action(@RequestBody CartAddDto cartAddDto){
 
+        System.out.println("cart추가 들어올때 서브 :: " + cartAddDto.getCartOption1Name());
+
         CartEntity cartEntity = CartEntity.toEntity(cartAddDto);
         cartEntity.setCartDatetime(LocalDateTime.now());
+
+        System.out.println("cart추가 엔티티에넣고 :: " + cartEntity.getCartOption1Name());
+        System.out.println("cart엔티티 다른 서브이름 :: " + cartEntity.getCartOption2Name());
 
         cartRepository.save(cartEntity);
 
