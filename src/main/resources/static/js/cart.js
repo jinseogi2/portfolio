@@ -83,7 +83,7 @@ function updateTotalPrice() {
             }
 
             // 총 가격 계산 및 총합에 더하기
-            var totalPrice = indexCount * price * count + optionPrice1 + optionPrice2 + optionPrice3;
+            var totalPrice = indexCount * (price * count + optionPrice1 + optionPrice2 + optionPrice3);
             totalSum += totalPrice;
 
             // 각 totalPrice 엘리먼트의 innerText 업데이트
