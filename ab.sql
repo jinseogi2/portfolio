@@ -386,20 +386,17 @@ INSERT INTO notice VALUES(NULL,'BASIC','기본공지 예제3',
 					DEFAULT);
 INSERT INTO notice VALUES(NULL,'EVENT','이벤트공지 예제1',
 				'이벤트공지 예제1 입니다 ~~~~',
-				'/img/notice/notice1.jpg',
+				'/img/notice/event1.jpg',
 					DEFAULT);
 INSERT INTO notice VALUES(NULL,'EVENT','이벤트공지 예제2',
 				'이벤트공지 예제2 입니다 ~~~~',
-				'/img/notice/notice2.jpg',
+				'/img/notice/event2.jpg',
 					DEFAULT);
 INSERT INTO notice VALUES(NULL,'EVENT','이벤트공지 예제3',
 				'이벤트공지 예제3 입니다 ~~~~',
-				'/img/notice/notice1.jpg',
+				'/img/notice/event3.jpg',
 					DEFAULT);
-INSERT INTO notice VALUES(NULL,'EVENT','이벤트공지 예제4',
-				'이벤트공지 예제4 입니다 ~~~~',
-				'/img/notice/notice3.jpg',
-					DEFAULT);
+
 
 SELECT * FROM notice;
 
