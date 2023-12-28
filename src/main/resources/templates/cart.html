@@ -24,7 +24,7 @@
         </div>
         <div class="section" th:each="cart, status:${cart}">
             <!-- 히든으로 카드에 대한 정보를 가지고 있음. -->
-            <input type="hidden" class="cartinfo_no" th:value="${cart.cartNo}">
+            <input type="hidden" id="cartinfo_no" class="cartinfo_no" th:value="${cart.cartNo}">
             <input type="hidden" class="cartinfo_price" th:value="${cart.cartPrice}">
             <input type="hidden" class="cartinfo_count" th:value="${cart.cartCount}">
             <input type="hidden" class="cartinfo_option1Name" th:value="${cart.cartOption1Name}">

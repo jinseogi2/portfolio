@@ -17,6 +17,7 @@ package com.portfolio.springboot.entity;
 // 	cart_datetime DATETIME DEFAULT NOW() -- 작성시간
 // );
 import com.portfolio.springboot.dto.CartAddDto;
+import com.portfolio.springboot.dto.CartEdDto;
 import com.portfolio.springboot.dto.NoticeEdDto;
 import jakarta.persistence.*;
 import lombok.*;
@@ -74,6 +75,12 @@ public class CartEntity {
                 .cartCount(dto.getCartCount())
                 .cartOption1Name(dto.getCartOption1Name())
                 .cartOption1Price(dto.getCartOption1Price())
+                .build();
+    }
+    public static CartEntity toEntity(CartEdDto dto) {
+        return CartEntity.builder()
+                .cartNo(dto.getCartNo())
+                .cartCount(dto.getCartCount())
                 .build();
     }
 }
