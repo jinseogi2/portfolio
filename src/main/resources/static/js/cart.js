@@ -26,12 +26,45 @@ function count(action) {
     document.getElementById('result').innerText = index;
 
     updateTotalPrice();
+    func_cartEdAction();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     updateTotalPrice(); // 초기 총 가격을 계산하고 표시합니다.
 });
 
+function func_cartEdAction(){
+    var index = parseInt(document.getElementById('result').innerText);
+    var cartInfo = document.getElementById('cartinfo_no');
+    var cartNo = parseInt(cartInfo.value);
+
+    console.log("count :: " + index);
+    console.log("cartInfo :: " + cartInfo);
+    console.log("cartNo :: " + cartNo);
+
+
+
+    let params = {
+    cartNo : cartNo,
+    cartCount : index,
+    }
+
+     fetch("/cartEdAction", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(params),
+      })
+        .then((response) => {
+          console.log("response:" + response);
+          return response.json();
+        }) // 서버 응답
+        .then((json) => {
+          console.log("json:" + json);
+        }) // 실제 데이터
+        .catch((error) => {
+          console.log(error);
+        });
+}
 
 // 콤마찍어주는 함수
 function addCommas(number) {

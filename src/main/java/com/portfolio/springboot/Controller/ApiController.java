@@ -483,5 +483,22 @@ public class ApiController {
 
         return resultDto;
     }
+    @PostMapping("/cartEdAction")
+    public ResultDto cartPlusAction(@RequestBody CartEdDto cartEdDto){
+
+        CartEntity cartEntity = cartRepository.findById(cartEdDto.getCartNo()).get();
+        cartEntity.setCartCount(cartEdDto.getCartCount());
+
+        CartEntity newEntity = cartRepository.save(cartEntity);
+
+        ResultDto resultDto = null;
+
+        resultDto = ResultDto.builder()
+                .status("ok")
+                .result(1)
+                .build();
+
+        return resultDto;
+    }
 
 }
