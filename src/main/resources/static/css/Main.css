@@ -238,6 +238,8 @@ filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%) co
      top: 0;
      height: 350px;
      width: 90%;
+     padding-top: 10px;
+
 }
 #mainimg > img {
   width: 100%;
@@ -248,6 +250,7 @@ display: flex;
     justify-content: end;
     width: 85%;
     height: 15%;
+    padding-top: 10px;
 
 }
 #himg-1,
