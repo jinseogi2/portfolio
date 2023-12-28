@@ -16,7 +16,9 @@ function click_menu() {
 function click_order() {
   window.location.href = "/admin_order";
 }
-
+function closeWindow() {
+  window.close();
+}
 //////////////////////
 ///////멤버 수정//////
 //////////////////////
