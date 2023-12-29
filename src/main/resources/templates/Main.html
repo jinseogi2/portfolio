@@ -98,7 +98,7 @@
       </div>
       <div class="header">
         <div id="himg">
-          <div id="himg-1" onclick="modal_barcode_on();">
+          <div id="himg-1" onclick="modal_barcode_on();" style="cursor: pointer;">
             <img src="/img/main/m1.png" alt="바코드" />
           </div>
           <div id="himg-2">
@@ -110,7 +110,7 @@
         <div id="username" th:text="|${user.memberName} 님|">사용자이름</div>
         <div id="navbtn">
           <div id="navbtn-1" onclick="stampPage();">
-            <div id="navbtnimg">
+            <div id="navbtnimg" style="cursor: pointer;">
               <img src="/img/main/stamp.png" alt="" />
             </div>
             <div id="navbtntext" th:text="|스탬프 ${user.memberStamp}|">
@@ -162,7 +162,7 @@
       <div class="notice">
         <div id="notext">
           <div id="notext1">새소식</div>
-          <div id="notext2" onclick="goNotice();">전체보기</div>
+          <div id="notext2" onclick="goNotice();" style="cursor: pointer;">전체보기</div>
         </div>
         <!-- Swiper -->
         <div class="swiper mySwiper2" id="noswiper">
@@ -175,6 +175,7 @@
               <div
                 id="noslide_imgbox"
                 th:onclick="|func_event(${notice.noticeNo});|"
+                style="cursor: pointer;"
               >
                 <div
                   class="swiper-slide"
