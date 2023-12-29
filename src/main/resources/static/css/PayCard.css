@@ -164,6 +164,7 @@ align-items: center;
       height: 100%;
       background-color: white;
       border: none;
+      cursor:pointer
 }
 .sec1_2 > button > img {
   width: 30px;
@@ -201,12 +202,14 @@ width: 15%;
       display: flex;
       align-items: center;
       justify-content: center;
+
 }
 .sec2_2 > button {
  width: 50%;
        height: 100%;
        background-color: white;
        border: none;
+       cursor:pointer
 }
 .sec2_2 > button > img {
   width: 30px;
@@ -250,8 +253,10 @@ width: 15%;
       text-align: center;
       font-weight: 800;
       font-size: 18px;
+      cursor: pointer;
 }
 .fimg > img {
          width: 30px;
          height: 30px;
+         cursor: pointer;
 }
