@@ -156,7 +156,7 @@ function func_notice_delete(noticeNo) {
 //메뉴 추가 페이지를 새창으로 여는 함수
 
 function func_admin_menu_add() {
-  window.open("/admin_menu_add", "_blank", "width=845, height=445");
+  window.open("/admin_menu_add", "_blank", "width=975, height=520");
 }
 
 function menu_Add_onClickUpload() {
