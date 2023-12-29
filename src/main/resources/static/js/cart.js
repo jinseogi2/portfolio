@@ -6,9 +6,7 @@ function func_cart_delete(cartNo) {
         window.location.href = "/cartRe?cartNo=" + cartNo;
     }
 }
-
-var indexCount = 1;
-
+var indexCount = 0;
 // 수량 조절 함수
 function count(action) {
     // 현재 수량 가져오기
@@ -17,10 +15,11 @@ function count(action) {
     // 증가 또는 감소 동작에 따라 수량 조절
     if (action === "plus") {
         index++;
+        indexCount++;
     } else if (action === "minus" && index > 1) {
         index--;
+        indexCount--;
     }
-    indexCount = index;
 
     // 조절된 수량을 HTML에 반영
     document.getElementById('result').innerText = index;
@@ -30,6 +29,7 @@ function count(action) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+
     updateTotalPrice(); // 초기 총 가격을 계산하고 표시합니다.
 });
 
@@ -116,7 +116,7 @@ function updateTotalPrice() {
             }
 
             // 총 가격 계산 및 총합에 더하기
-            var totalPrice = indexCount * (price * count + optionPrice1 + optionPrice2 + optionPrice3);
+            var totalPrice = (count+indexCount) * (price + optionPrice1 + optionPrice2 + optionPrice3);
             totalSum += totalPrice;
 
             // 각 totalPrice 엘리먼트의 innerText 업데이트
