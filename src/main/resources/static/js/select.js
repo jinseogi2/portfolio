@@ -36,8 +36,8 @@ function count(type) {
 
   // 새로운 수량 및 가격 표시
   resultElement.innerText = result;
-  priceElement.innerText = addCommas(itemPrice * result + servePrice) +" 원";
-  inputItemElement.innerText = addCommas(itemPrice * result + servePrice) +" 원";
+  priceElement.innerText = addCommas(result*(itemPrice + servePrice)) +" 원";
+  inputItemElement.innerText = addCommas(result*(itemPrice + servePrice)) +" 원";
 }
 
  document.addEventListener("DOMContentLoaded", function() {
