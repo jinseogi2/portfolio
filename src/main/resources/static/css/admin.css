@@ -101,21 +101,22 @@ font-weight:800;
 }
 .btn1{
 background-color: #ffffff;
-    color: #5641ec;
-    border: 4px solid blue;
-    border-radius: 10px;
-    width: 70px;
-    height: 50px;
-    font-size: 20px;
-    font-weight: 800;
+    background-color: #ffffff;
+        color: #5641ec;
+        border: 2px solid blue;
+        border-radius: 5px;
+        width: 60px;
+        height: 40px;
+        font-size: 13px;
+        font-weight: 800;
     }
     .btn2{
        background-color: #ffffff;
-       color: #fa5252;
-       border: 4px solid #fa0202c4;
-       border-radius: 10px;
-       width: 70px;
-       height: 50px;
-       font-size: 20px;
-       font-weight: 800;
+           color: #fa5252;
+           border: 2px solid #fa0202c4;
+           border-radius: 5px;
+           width: 60px;
+           height: 40px;
+           font-size: 13px;
+           font-weight: 800;
         }
