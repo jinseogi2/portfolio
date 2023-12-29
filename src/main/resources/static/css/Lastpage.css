@@ -201,7 +201,7 @@ font-size: 20px;
 /* ----- css --- */
 .footer {
   z-index: 1;
-  width: 546px;
+  width: 550px;
   height: 80px;
   display: flex;
   position: fixed;
@@ -223,6 +223,7 @@ font-size: 20px;
 
   text-align: center;
 }
+
 .ftext {
   width: 100%;
       height: 25%;
@@ -231,11 +232,27 @@ font-size: 20px;
       font-size: 18px;
       cursor: pointer;
 }
-.fimg > img {
-          width: 30px;
-          height: 30px;
-          cursor: pointer;
+#footer-img1 {
+         width: 30px;
+         height: 30px;
+         cursor: pointer;
 }
+#footer-img2 {
+         width: 30px;
+         height: 30px;
+         cursor: pointer;
+}
+#footer-img3 {
+         width: 40px;
+         height: 35px;
+         cursor: pointer;
+}
+#footer-img4 {
+         width: 40px;
+         height: 35px;
+         cursor: pointer;
+}
+
 
 /* test */
 /* .test1 {

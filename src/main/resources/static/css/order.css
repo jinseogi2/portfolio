@@ -83,7 +83,7 @@ body {
      align-items: center;
 }
 .htext > p {
-  font-size: 25px;
+  font-size: 28px;
       display: flex;
       align-items: center;
       justify-items: center;
@@ -142,12 +142,14 @@ display:flex;
     display: flex;
     justify-content: center;
     font-weight: 800;
+    font-size: 20px;
 }
 #nav_right_text {
       width: 20%;
       display: flex;
       justify-content: center;
       font-weight: 800;
+      font-size: 20px;
 }
 #nav_right_text:hover{
 background-color: #f0f0f0;
