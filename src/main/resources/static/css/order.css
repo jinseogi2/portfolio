@@ -50,15 +50,16 @@ body {
     align-items: center;
 }
 .hicon_1 {
- width: 50%;
-     height: 100%;
-     display: flex;
-     align-items: center;
-     justify-items: center;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
 }
 .hicon_1 > img {
-  width: 80%;
-      height: 50%;
+  width: 40px;
+      height: 40px;
+      cursor: pointer;
 }
 .hicon_2 {
     width: 20%;
@@ -148,7 +149,11 @@ display:flex;
       justify-content: center;
       font-weight: 800;
 }
-
+#nav_right_text:hover{
+background-color: #f0f0f0;
+    opacity:0.9;
+    border-radius:10px;
+}
 /* item_list */
 .item_list {
   width: 90%;
@@ -159,14 +164,20 @@ display:flex;
 
 /* 3줄로 볼때 */
 .item_box {
-  height: 190px;
+  height: 240px;
+
 
 }
+.item_box:hover{
+    background-color: #f0f0f0;
+    opacity:0.9;
+    border-radius:10px;
+}
 .item_img {
-  height: 70%;
+  height: 67%;
 }
 .item_img img {
-  height: 100%;
+  height: 90%;
   width: 100%;
 }
 .item_text {
@@ -296,4 +307,5 @@ display: flex;
       height: 50%;
   filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(81deg) brightness(115%)
     contrast(100%);
+    cursor: pointer;
 }
