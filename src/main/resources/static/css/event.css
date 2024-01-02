@@ -17,7 +17,7 @@ body {
 }
 .wrap {
   background-color: rgb(248, 249, 251);
-  border: 2px solid #d3d3d3;
+
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   width: 550px;
   height : 878px;
